@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
       <div className="nav-inner">
         <a href="#top" className="brand">
           <span className="brand-mark">
-            <Image src="/assets/img-1.jpg" alt="Logo Variedades Isaías" width={38} height={38} />
+            <Image src="/assets/logo-isaias.png" alt="Logo Variedades Isaías" width={48} height={48} />
           </span>
           <span className="brand-name">
             Variedades <span>Isaías</span>

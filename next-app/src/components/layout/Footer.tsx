@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
         <div className="foot-grid">
           <div>
             <div className="foot-brand">
-              <Image src="/assets/img-1.jpg" alt="Logo Isaías" width={34} height={34} />
+              <Image src="/assets/logo-isaias.png" alt="Logo Isaías" width={48} height={48} />
               <span>Variedades Isaías</span>
             </div>
             <p>
