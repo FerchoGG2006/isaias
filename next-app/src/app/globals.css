@@ -12,7 +12,7 @@
   --wa: #25D366;
   --radius: 2px;
   --shadow: 0 18px 40px -18px rgba(0, 6, 30, 0.6);
-  --sec-pad: 108px;
+  --sec-pad: clamp(48px, 6vw, 80px);
 }
 
 * {
@@ -66,7 +66,8 @@ button {
 .wrap {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .eyebrow {
@@ -103,8 +104,8 @@ header.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
-  max-width: 1180px;
+  padding: 12px clamp(24px, 4vw, 64px);
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -557,20 +558,8 @@ section {
 /* ---------- TECHNIQUES ---------- */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
-}
-
-@media(max-width: 900px) {
-  .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media(max-width: 520px) {
-  .tech-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .tech-card {
@@ -756,20 +745,8 @@ section {
 
 .prod-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 22px;
-}
-
-@media(max-width: 940px) {
-  .prod-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media(max-width: 600px) {
-  .prod-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .prod-card {
