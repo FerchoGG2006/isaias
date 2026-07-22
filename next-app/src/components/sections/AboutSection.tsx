@@ -1,0 +1,26 @@
+import React from 'react';
+import Image from 'next/image';
+
+export const AboutSection: React.FC = () => {
+  return (
+    <section id="nosotros" className="wrap">
+      <div className="about-grid">
+        <div className="about-photos">
+          <Image src="/assets/img-17.jpg" alt="Taller de estampados" width={300} height={420} className="ph-a" />
+          <Image src="/assets/img-18.jpg" alt="Detalle de estampado" width={240} height={200} className="ph-b" />
+        </div>
+        <div className="about-copy">
+          <span className="eyebrow">Sobre Nosotros</span>
+          <h2>Variedades Isaías</h2>
+          <div className="quote">&quot;Calidad que resalta en cada fibra, hecha por manos vallenatas.&quot;</div>
+          <p>
+            Somos un taller familiar dedicado a transformar ideas en ropa y accesorios personalizados de alta calidad. Desde pequeños pedidos individuales hasta grandes dotaciones para empresas locales.
+          </p>
+          <p>
+            Nos respaldan años de experiencia combinando tecnología de estampado directo y técnicas artesanales para ofrecer prendas duraderas al mejor precio del mercado.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
