@@ -178,11 +178,39 @@ nav.links a:hover{opacity:1;color:var(--cyan);}
 .stamp-badge{
   position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) scale(.4) rotate(-8deg);
   opacity:0;z-index:6;
-  width:150px;height:150px;border-radius:50%;border:3px solid var(--cyan);
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  background:rgba(6,10,22,.85);
-  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--cyan);
-  padding:10px;
+  width:130px;height:130px;border-radius:50%;
+  border:3px double var(--cyan);
+  background:rgba(6,10,22,.9);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,174,235,0.15);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.stamp-stars{
+  color:var(--cyan);
+  font-size:8px;
+  letter-spacing:4px;
+  margin-bottom:3px;
+  opacity:0.9;
+  text-indent:4px;
+}
+.stamp-text{
+  color:var(--paper);
+  font-size:9px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  line-height:1.2;
+}
+.stamp-city{
+  color:var(--cyan);
+  font-family:'Anton',sans-serif;
+  font-size:17px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  margin-top:2px;
+  line-height:1;
 }
 @keyframes pressDown{
   0%{top:-140px;}
@@ -408,10 +436,12 @@ section{padding:var(--sec-pad) 0;}
 .about-photos .ph-a{
   width:72%;height:440px;position:relative;z-index:2;
   border:3px solid rgba(0,174,235,.2);
+  object-position: center top;
 }
 .about-photos .ph-b{
-  width:58%;height:280px;position:absolute;bottom:0;right:0;z-index:3;
+  width:58%;height:350px;position:absolute;bottom:-20px;right:0;z-index:3;
   border:3px solid rgba(234,243,251,.15);
+  object-position: center 15%;
 }
 /* decorative accent for about photos */
 .about-photos::before{
