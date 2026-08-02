@@ -613,6 +613,142 @@ section{position:relative;}
 ::-webkit-scrollbar-track{background:var(--ink);}
 ::-webkit-scrollbar-thumb{background:var(--steel-2);border-radius:4px;}
 
+/* ---------- PRODUCT OPTIONS ROW ---------- */
+.prod-options{display:flex;gap:10px;flex-wrap:wrap;}
+.prod-options .tela-select{flex:1;min-width:0;}
+.size-select{
+  width:auto;min-width:80px;background:var(--ink);border:1px solid rgba(234,243,251,.18);color:var(--paper);
+  padding:9px 12px;border-radius:4px;font-family:'Space Mono',monospace;font-size:11.5px;
+  transition:border-color .2s;
+}
+.size-select:focus{border-color:var(--cyan);}
+
+/* ---------- ADMIN PANEL (LOGGED-IN) ---------- */
+.admin-section{display:none;padding:0;}
+.admin-section.visible{display:block;}
+.admin-tabs{display:flex;gap:0;border-bottom:1px solid rgba(234,243,251,.12);margin-bottom:24px;}
+.admin-tab{
+  background:none;border:none;color:#7B8CA3;padding:14px 22px;font-size:13px;font-weight:700;
+  letter-spacing:.03em;text-transform:uppercase;position:relative;transition:color .2s;
+}
+.admin-tab.active{color:var(--cyan);}
+.admin-tab.active::after{
+  content:'';position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--cyan);
+}
+.admin-tab:hover{color:var(--paper);}
+.admin-tab-content{display:none;}
+.admin-tab-content.visible{display:block;}
+
+/* WhatsApp phone editor */
+.phone-editor{display:flex;gap:12px;align-items:flex-end;max-width:420px;}
+.phone-editor .field{flex:1;display:flex;flex-direction:column;gap:6px;}
+.phone-editor label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#B3C2D6;}
+.phone-editor input{
+  background:var(--ink);border:1px solid rgba(234,243,251,.2);color:var(--paper);
+  padding:11px 14px;border-radius:4px;font-family:'Space Mono',monospace;font-size:14px;
+}
+.phone-editor input:focus{border-color:var(--cyan);}
+.btn-save{
+  background:var(--cyan);color:var(--ink);border:none;padding:11px 20px;border-radius:4px;
+  font-weight:700;font-size:12px;letter-spacing:.03em;text-transform:uppercase;
+  transition:all .2s;white-space:nowrap;
+}
+.btn-save:hover{box-shadow:0 6px 18px -4px rgba(0,174,235,.4);transform:translateY(-1px);}
+.phone-success{color:var(--wa);font-size:12px;margin-top:10px;opacity:0;transition:opacity .3s;}
+.phone-success.show{opacity:1;}
+
+/* Price editor list */
+.price-list{display:flex;flex-direction:column;gap:12px;}
+.price-item{
+  display:flex;align-items:center;gap:16px;background:var(--steel-2);
+  padding:14px 18px;border-radius:6px;border:1px solid rgba(234,243,251,.06);
+}
+.price-item .pi-name{flex:1;font-size:14px;font-weight:700;}
+.price-item .pi-input{
+  width:140px;background:var(--ink);border:1px solid rgba(234,243,251,.2);color:var(--cyan);
+  padding:9px 12px;border-radius:4px;font-family:'Space Mono',monospace;font-size:14px;
+  font-weight:700;text-align:right;
+}
+.price-item .pi-input:focus{border-color:var(--cyan);}
+.price-item .btn-save{padding:9px 16px;}
+.price-success{color:var(--wa);font-size:12px;margin-top:12px;opacity:0;transition:opacity .3s;}
+.price-success.show{opacity:1;}
+.admin-footer{margin-top:30px;padding-top:20px;border-top:1px solid rgba(234,243,251,.08);display:flex;justify-content:flex-end;}
+
+/* ---------- MOBILE NAV DRAWER ---------- */
+.mobile-nav{
+  position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(6,10,22,.96);
+  z-index:85;display:none;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{
+  font-family:'Anton',sans-serif;font-size:28px;text-transform:uppercase;text-decoration:none;
+  color:var(--paper);letter-spacing:.04em;transition:color .2s;
+}
+.mobile-nav a:hover{color:var(--cyan);}
+.mobile-nav .close-mobile{
+  position:absolute;top:20px;right:24px;background:none;border:none;color:var(--paper);
+  width:40px;height:40px;
+}
+.mobile-nav .close-mobile svg{width:24px;height:24px;}
+
+/* ---------- CATALOG SEARCH BAR ---------- */
+.cat-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:30px;}
+.cat-toolbar .cat-tabs{margin-bottom:0;}
+.cat-search{position:relative;min-width:240px;flex:1;max-width:320px;}
+.cat-search input{
+  width:100%;background:var(--steel);border:1px solid rgba(234,243,251,.18);color:var(--paper);
+  padding:10px 16px 10px 38px;border-radius:999px;font-family:'Work Sans',sans-serif;font-size:13px;
+  transition:border-color .2s, box-shadow .2s;
+}
+.cat-search input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,174,235,.15);}
+.cat-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#7B8CA3;pointer-events:none;}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:10px;}
+.testi-card{
+  background:linear-gradient(160deg, var(--steel), var(--steel-2));border:1px solid rgba(234,243,251,.08);
+  border-radius:8px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;
+  position:relative;transition:transform .3s ease, border-color .3s ease;
+}
+.testi-card:hover{transform:translateY(-4px);border-color:rgba(0,174,235,.25);}
+.testi-stars{color:#FFD700;font-size:15px;letter-spacing:2px;}
+.testi-text{font-size:14px;color:#CBD8E6;line-height:1.6;font-style:italic;margin:0;flex:1;}
+.testi-author{display:flex;align-items:center;gap:12px;margin-top:6px;}
+.testi-avatar{
+  width:42px;height:42px;border-radius:50%;background:var(--cyan-deep);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:16px;
+  border:2px solid rgba(0,174,235,.3);flex-shrink:0;
+}
+.testi-info h5{margin:0;font-size:14px;font-weight:700;letter-spacing:0;font-family:'Work Sans',sans-serif;}
+.testi-info span{font-size:11.5px;color:#7B8CA3;font-family:'Space Mono',monospace;}
+
+/* ---------- FAQ ACCORDION ---------- */
+.faq-grid{display:flex;flex-direction:column;gap:12px;max-width:800px;margin:0 auto;}
+.faq-item{
+  background:var(--steel);border:1px solid rgba(234,243,251,.08);border-radius:6px;overflow:hidden;
+  transition:border-color .2s;
+}
+.faq-item.open{border-color:rgba(0,174,235,.3);}
+.faq-question{
+  width:100%;background:none;border:none;color:var(--paper);padding:18px 22px;text-align:left;
+  font-size:15px;font-weight:700;display:flex;justify-content:space-between;align-items:center;
+  gap:16px;cursor:pointer;
+}
+.faq-question:hover{color:var(--cyan);}
+.faq-icon{
+  width:24px;height:24px;border-radius:50%;background:rgba(234,243,251,.08);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s;
+}
+.faq-item.open .faq-icon{transform:rotate(180deg);background:rgba(0,174,235,.2);color:var(--cyan);}
+.faq-icon svg{width:14px;height:14px;}
+.faq-answer{
+  max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1), padding .35s ease;
+  padding:0 22px;color:#A9BAD0;font-size:14px;line-height:1.65;
+}
+.faq-item.open .faq-answer{max-height:200px;padding:0 22px 20px;}
+
 .btn-full{width:100%;}
 .is-hidden{display:none !important;}
 

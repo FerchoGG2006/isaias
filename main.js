@@ -1,12 +1,77 @@
-// State
+// ============================================================
+// Variedades Isaías — Main JS (Fully Functional)
+// ============================================================
+
+// Default product catalog (source of truth for names & default prices)
+const DEFAULT_PRODUCTS = [
+  { id: 'camiseta-basica',  title: 'Camiseta Básica Personalizada',  defaultPrice: 35000 },
+  { id: 'hoodie-buzo',      title: 'Hoodie / Buzo con Capota',       defaultPrice: 75000 },
+  { id: 'gorra-trucker',    title: 'Gorra Malla / Trucker',          defaultPrice: 25000 },
+  { id: 'mug-ceramica',     title: 'Mug de Cerámica 11oz',           defaultPrice: 18000 },
+  { id: 'polo-corporativa', title: 'Camiseta Tipo Polo Corporativa', defaultPrice: 45000 },
+  { id: 'termo-aluminio',   title: 'Termo de Aluminio 600ml',        defaultPrice: 32000 },
+];
+
+const DEFAULT_PHONE = '573000000000';
+const ADMIN_PASSWORD = 'isaias2026';
+
+// ---- State ----
 const state = {
   cart: [],
+  phone: DEFAULT_PHONE,
+  prices: {},           // { productId: number }
   activeCategory: 'todos',
-  phone: '573000000000' // WhatsApp phone number
 };
 
-// DOM Elements
+// ---- LocalStorage Keys ----
+const LS_CART = 'isaias_cart';
+const LS_PHONE = 'isaias_phone';
+const LS_PRICES = 'isaias_prices';
+
+// ---- Helpers ----
+function saveState() {
+  localStorage.setItem(LS_CART, JSON.stringify(state.cart));
+  localStorage.setItem(LS_PHONE, state.phone);
+  localStorage.setItem(LS_PRICES, JSON.stringify(state.prices));
+}
+
+function loadState() {
+  try {
+    const cart = localStorage.getItem(LS_CART);
+    if (cart) state.cart = JSON.parse(cart);
+  } catch { state.cart = []; }
+
+  const phone = localStorage.getItem(LS_PHONE);
+  if (phone) state.phone = phone;
+
+  try {
+    const prices = localStorage.getItem(LS_PRICES);
+    if (prices) state.prices = JSON.parse(prices);
+  } catch { state.prices = {}; }
+}
+
+function getPrice(index) {
+  const product = DEFAULT_PRODUCTS[index];
+  if (!product) return 0;
+  return state.prices[product.id] ?? product.defaultPrice;
+}
+
+function getPriceByTitle(title) {
+  const product = DEFAULT_PRODUCTS.find(p => p.title === title);
+  if (!product) return 0;
+  return state.prices[product.id] ?? product.defaultPrice;
+}
+
+function formatCOP(num) {
+  return '$' + num.toLocaleString('es-CO');
+}
+
+// ============================================================
+// INIT
+// ============================================================
 document.addEventListener('DOMContentLoaded', () => {
+  loadState();
+  applyPricesToDOM();
   initHeroAnimation();
   initGallery();
   initCatalog();
@@ -14,9 +79,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initAdmin();
   initScrollReveal();
   initWhatsAppLinks();
+  initMobileNav();
+  initCatalogSearch();
+  initFAQ();
+  syncFooterPhone();
+  renderCart();
 });
 
-/* Hero Heat Press Animation */
+// ============================================================
+// APPLY SAVED PRICES TO DOM
+// ============================================================
+function applyPricesToDOM() {
+  const cards = document.querySelectorAll('.prod-card');
+  cards.forEach((card, idx) => {
+    const priceEl = card.querySelector('.price');
+    if (priceEl && idx < DEFAULT_PRODUCTS.length) {
+      priceEl.textContent = formatCOP(getPrice(idx)) + ' COP';
+    }
+  });
+}
+
+// ============================================================
+// HERO ANIMATION
+// ============================================================
 function initHeroAnimation() {
   const pressRig = document.getElementById('pressRig');
   if (pressRig) {
@@ -26,7 +111,9 @@ function initHeroAnimation() {
   }
 }
 
-/* Gallery Controls & Drag Scroll */
+// ============================================================
+// GALLERY
+// ============================================================
 function initGallery() {
   const track = document.querySelector('.gallery-track');
   const prevBtn = document.getElementById('gnavPrev');
@@ -122,7 +209,9 @@ function initGallery() {
   updateActiveState();
 }
 
-/* Catalog Filter Tabs */
+// ============================================================
+// CATALOG FILTER + ADD TO CART
+// ============================================================
 function initCatalog() {
   const tabs = document.querySelectorAll('.cat-tab');
   const prods = document.querySelectorAll('.prod-card');
@@ -144,25 +233,28 @@ function initCatalog() {
   });
 
   // Add to cart buttons
-  document.querySelectorAll('.add-btn').forEach(btn => {
+  document.querySelectorAll('.add-btn').forEach((btn, idx) => {
     btn.addEventListener('click', (e) => {
       const card = e.target.closest('.prod-card');
       if (!card) return;
 
       const title = card.querySelector('h4')?.textContent || 'Producto';
-      const priceText = card.querySelector('.price')?.textContent || '$0';
-      const price = parseInt(priceText.replace(/[^0-9]/g, '')) || 0;
+      const price = getPrice(idx);
       const img = card.querySelector('img')?.src || '';
-      const select = card.querySelector('.tela-select');
-      const fabric = select ? select.value : '';
+      const telaSelect = card.querySelector('.tela-select');
+      const sizeSelect = card.querySelector('.size-select');
+      const fabric = telaSelect ? telaSelect.value : '';
+      const size = sizeSelect ? sizeSelect.value : '';
 
-      addToCart({ title, price, img, fabric });
+      addToCart({ title, price, img, fabric, size });
       showToast(`¡${title} añadido al carrito!`);
     });
   });
 }
 
-/* Cart Drawer Logic */
+// ============================================================
+// CART LOGIC
+// ============================================================
 function initCart() {
   const cartBtn = document.getElementById('cartBtn');
   const drawer = document.getElementById('cartDrawer');
@@ -194,10 +286,14 @@ function initCart() {
       state.cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
         total += itemTotal;
-        msg += `${index + 1}. *${item.title}* ${item.fabric ? '(' + item.fabric + ')' : ''} x${item.qty} - $${itemTotal.toLocaleString('es-CO')}\n`;
+        const details = [];
+        if (item.fabric) details.push(item.fabric);
+        if (item.size) details.push('Talla ' + item.size);
+        const detailStr = details.length > 0 ? ' (' + details.join(' · ') + ')' : '';
+        msg += `${index + 1}. *${item.title}*${detailStr} x${item.qty} - ${formatCOP(itemTotal)}\n`;
       });
 
-      msg += `\n*Total estimado:* $${total.toLocaleString('es-CO')}\n`;
+      msg += `\n*Total estimado:* ${formatCOP(total)}\n`;
       msg += "\n¿Me ayudan a confirmar disponibilidades y tiempo de entrega?";
 
       const waUrl = `https://wa.me/${state.phone}?text=${encodeURIComponent(msg)}`;
@@ -208,7 +304,7 @@ function initCart() {
 
 function addToCart(product) {
   const existing = state.cart.find(
-    item => item.title === product.title && item.fabric === product.fabric
+    item => item.title === product.title && item.fabric === product.fabric && item.size === product.size
   );
 
   if (existing) {
@@ -218,6 +314,7 @@ function addToCart(product) {
   }
 
   renderCart();
+  saveState();
 }
 
 function updateQty(index, delta) {
@@ -226,6 +323,7 @@ function updateQty(index, delta) {
     state.cart.splice(index, 1);
   }
   renderCart();
+  saveState();
 }
 
 function renderCart() {
@@ -247,16 +345,22 @@ function renderCart() {
     cartItemsContainer.innerHTML = '<div class="empty-cart">Tu carrito está vacío.<br>¡Agrega algunos productos!</div>';
   } else {
     cartItemsContainer.innerHTML = state.cart.map((item, idx) => {
-      const itemTotal = item.price * item.qty;
+      // Use latest price from state
+      const latestPrice = getPriceByTitle(item.title) || item.price;
+      const itemTotal = latestPrice * item.qty;
       totalMoney += itemTotal;
+
+      const details = [];
+      if (item.fabric) details.push(item.fabric);
+      if (item.size) details.push('Talla ' + item.size);
 
       return `
         <div class="cart-row">
           ${item.img ? `<img src="${item.img}" alt="${item.title}">` : '<div class="mug-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></div>'}
           <div class="cart-info">
             <div class="nm">${item.title}</div>
-            ${item.fabric ? `<div class="tela-tag">${item.fabric}</div>` : ''}
-            <div class="px">$${item.price.toLocaleString('es-CO')}</div>
+            ${details.length > 0 ? `<div class="tela-tag">${details.join(' · ')}</div>` : ''}
+            <div class="px">${formatCOP(latestPrice)}</div>
             <div class="qty-row">
               <button class="qty-btn" onclick="window.updateCartQty(${idx}, -1)">-</button>
               <span class="qty-val">${item.qty}</span>
@@ -270,30 +374,150 @@ function renderCart() {
   }
 
   if (subtotalVal) {
-    subtotalVal.textContent = `$${totalMoney.toLocaleString('es-CO')}`;
+    subtotalVal.textContent = formatCOP(totalMoney) + ' COP';
   }
 }
 
 // Global scope binding for inline onclick
 window.updateCartQty = (idx, delta) => updateQty(idx, delta);
 
-/* Admin Overlay Modal */
+// ============================================================
+// ADMIN PANEL
+// ============================================================
 function initAdmin() {
   const adminLink = document.getElementById('adminLink');
   const adminOverlay = document.getElementById('adminOverlay');
   const closeAdmin = document.getElementById('closeAdmin');
+  const adminGate = document.getElementById('adminGate');
+  const adminSection = document.getElementById('adminSection');
+  const adminLoginBtn = document.getElementById('adminLoginBtn');
+  const adminPass = document.getElementById('adminPass');
+  const adminError = document.getElementById('adminError');
+  const adminLogout = document.getElementById('adminLogout');
 
+  // Open overlay
   adminLink?.addEventListener('click', (e) => {
     e.preventDefault();
     adminOverlay?.classList.add('open');
+    // Reset state: show gate, hide section
+    if (adminGate) adminGate.style.display = 'block';
+    if (adminSection) adminSection.classList.remove('visible');
+    if (adminPass) adminPass.value = '';
+    if (adminError) adminError.style.display = 'none';
   });
 
+  // Close overlay
   closeAdmin?.addEventListener('click', () => {
     adminOverlay?.classList.remove('open');
   });
+
+  // Login
+  adminLoginBtn?.addEventListener('click', () => {
+    const pw = adminPass?.value || '';
+    if (pw === ADMIN_PASSWORD) {
+      if (adminGate) adminGate.style.display = 'none';
+      if (adminSection) adminSection.classList.add('visible');
+      if (adminError) adminError.style.display = 'none';
+      renderAdminPriceList();
+      // Set current phone
+      const phoneInput = document.getElementById('phoneInput');
+      if (phoneInput) phoneInput.value = state.phone;
+    } else {
+      if (adminError) adminError.style.display = 'block';
+    }
+  });
+
+  // Allow Enter key on password field
+  adminPass?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') adminLoginBtn?.click();
+  });
+
+  // Logout
+  adminLogout?.addEventListener('click', () => {
+    if (adminGate) adminGate.style.display = 'block';
+    if (adminSection) adminSection.classList.remove('visible');
+    if (adminPass) adminPass.value = '';
+  });
+
+  // Admin Tabs
+  document.querySelectorAll('.admin-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const tabName = tab.dataset.tab;
+      document.querySelectorAll('.admin-tab-content').forEach(tc => tc.classList.remove('visible'));
+      const target = document.getElementById('tab-' + tabName);
+      if (target) target.classList.add('visible');
+    });
+  });
+
+  // Save phone
+  const savePhoneBtn = document.getElementById('savePhoneBtn');
+  savePhoneBtn?.addEventListener('click', () => {
+    const phoneInput = document.getElementById('phoneInput');
+    const phoneSuccess = document.getElementById('phoneSuccess');
+    const newPhone = phoneInput?.value?.replace(/[^0-9]/g, '') || '';
+    if (newPhone.length >= 10) {
+      state.phone = newPhone;
+      saveState();
+      initWhatsAppLinks();
+      // Update footer display
+      const footerPhone = document.querySelector('.foot-grid');
+      if (footerPhone) {
+        const ps = footerPhone.querySelectorAll('p');
+        ps.forEach(p => {
+          if (p.textContent.includes('WhatsApp:')) {
+            p.textContent = 'WhatsApp: +' + newPhone.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1 $2 $3 $4');
+          }
+        });
+      }
+      if (phoneSuccess) {
+        phoneSuccess.classList.add('show');
+        setTimeout(() => phoneSuccess.classList.remove('show'), 3000);
+      }
+    }
+  });
 }
 
-/* Toast Notification */
+function renderAdminPriceList() {
+  const priceList = document.getElementById('priceList');
+  if (!priceList) return;
+
+  priceList.innerHTML = DEFAULT_PRODUCTS.map((product, idx) => {
+    const currentPrice = getPrice(idx);
+    return `
+      <div class="price-item" data-product-id="${product.id}" data-product-index="${idx}">
+        <span class="pi-name">${product.title}</span>
+        <input type="number" class="pi-input" value="${currentPrice}" min="0" step="1000" id="price-input-${idx}">
+        <button class="btn-save" onclick="window.saveProductPrice(${idx})">Guardar</button>
+      </div>
+    `;
+  }).join('');
+}
+
+window.saveProductPrice = (idx) => {
+  const input = document.getElementById('price-input-' + idx);
+  const priceSuccess = document.getElementById('priceSuccess');
+  if (!input) return;
+
+  const newPrice = parseInt(input.value) || 0;
+  const product = DEFAULT_PRODUCTS[idx];
+  if (!product) return;
+
+  state.prices[product.id] = newPrice;
+  saveState();
+  applyPricesToDOM();
+  renderCart(); // update cart with new prices
+
+  if (priceSuccess) {
+    priceSuccess.classList.add('show');
+    setTimeout(() => priceSuccess.classList.remove('show'), 2500);
+  }
+};
+
+// ============================================================
+// TOAST
+// ============================================================
 function showToast(msg) {
   let toast = document.getElementById('toast');
   if (!toast) {
@@ -311,7 +535,9 @@ function showToast(msg) {
   }, 2500);
 }
 
-/* Scroll Reveal */
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -325,7 +551,9 @@ function initScrollReveal() {
   reveals.forEach(el => observer.observe(el));
 }
 
-/* Dynamic WhatsApp Hero/Nav Buttons */
+// ============================================================
+// WHATSAPP LINKS
+// ============================================================
 function initWhatsAppLinks() {
   const defaultMsg = "¡Hola! Me gustaría cotizar un trabajo de sublimación / DTF / bordado en Valledupar.";
   const url = `https://wa.me/${state.phone}?text=${encodeURIComponent(defaultMsg)}`;
@@ -338,3 +566,89 @@ function initWhatsAppLinks() {
   if (waHeroBtn) waHeroBtn.href = url;
   if (waCtaBtn) waCtaBtn.href = url;
 }
+
+// ============================================================
+// MOBILE NAV
+// ============================================================
+function initMobileNav() {
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const closeMobile = document.getElementById('closeMobile');
+
+  burgerBtn?.addEventListener('click', () => {
+    mobileNav?.classList.add('open');
+  });
+
+  closeMobile?.addEventListener('click', () => {
+    mobileNav?.classList.remove('open');
+  });
+
+  // Close on link click
+  mobileNav?.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+    });
+  });
+}
+
+// ============================================================
+// CATALOG SEARCH
+// ============================================================
+function initCatalogSearch() {
+  const searchInput = document.getElementById('catSearchInput');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    const prods = document.querySelectorAll('.prod-card');
+    const activeTab = document.querySelector('.cat-tab.active');
+    const cat = activeTab?.dataset.category || 'todos';
+
+    prods.forEach(prod => {
+      const title = prod.querySelector('h4')?.textContent.toLowerCase() || '';
+      const desc = prod.querySelector('.desc')?.textContent.toLowerCase() || '';
+      const categoryMatch = (cat === 'todos' || prod.dataset.category === cat);
+      const searchMatch = !query || title.includes(query) || desc.includes(query);
+
+      if (categoryMatch && searchMatch) {
+        prod.style.display = 'flex';
+      } else {
+        prod.style.display = 'none';
+      }
+    });
+  });
+}
+
+// ============================================================
+// FAQ ACCORDION
+// ============================================================
+function initFAQ() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    btn?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      // Close other accordion items
+      faqItems.forEach(i => i.classList.remove('open'));
+      // Toggle current
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+}
+
+// ============================================================
+// SYNC FOOTER PHONE
+// ============================================================
+function syncFooterPhone() {
+  const footerGrid = document.querySelector('.foot-grid');
+  if (!footerGrid) return;
+  const ps = footerGrid.querySelectorAll('p');
+  ps.forEach(p => {
+    if (p.textContent.includes('WhatsApp:')) {
+      p.textContent = 'WhatsApp: +' + state.phone;
+    }
+  });
+}
+

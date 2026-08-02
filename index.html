@@ -6,6 +6,12 @@
   <title>Variedades Isaías — Sublimación, DTF y Bordado en Valledupar</title>
   <meta name="description" content="Estampados y personalización en Valledupar: Sublimación, DTF, bordados y transfer en camisetas, gorras y artículos publicitarios.">
   
+  <link rel="icon" type="image/png" href="/assets/logo-small.png">
+  <meta property="og:title" content="Variedades Isaías — Sublimación, DTF y Bordado en Valledupar">
+  <meta property="og:description" content="Estampados y personalización en Valledupar: Sublimación, DTF, bordados y transfer en camisetas, gorras y artículos publicitarios.">
+  <meta property="og:image" content="/assets/logo-isaias-redes.png">
+  <meta property="og:type" content="website">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -26,6 +32,8 @@
         <a href="#galeria">Galería</a>
         <a href="#catalogo">Catálogo</a>
         <a href="#nosotros">Nosotros</a>
+        <a href="#testimonios">Reseñas</a>
+        <a href="#faq">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="nav-actions">
@@ -36,9 +44,24 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M2.5 3h2l2.6 12.3a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6"/></svg>
           <span class="cart-count is-hidden" id="cartCount">0</span>
         </button>
+        <button class="burger icon-btn" id="burgerBtn" title="Menú" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-mobile" id="closeMobile" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <a href="#tecnicas" class="mobile-link">Técnicas</a>
+    <a href="#galeria" class="mobile-link">Galería</a>
+    <a href="#catalogo" class="mobile-link">Catálogo</a>
+    <a href="#nosotros" class="mobile-link">Nosotros</a>
+    <a href="#testimonios" class="mobile-link">Reseñas</a>
+    <a href="#faq" class="mobile-link">Preguntas</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+  </div>
 
   <main id="top">
     <!-- HERO SECTION -->
@@ -158,11 +181,17 @@
         <p>Selecciona tu prenda o artículo favorito, elige la tela de tu preferencia y agrégalo al carrito para solicitar tu cotización.</p>
       </div>
 
-      <div class="cat-tabs">
-        <button class="cat-tab active" data-category="todos">Todos</button>
-        <button class="cat-tab" data-category="sueteres">Suéteres & Camisetas</button>
-        <button class="cat-tab" data-category="gorras">Gorras</button>
-        <button class="cat-tab" data-category="mugs">Mugs & Mementos</button>
+      <div class="cat-toolbar">
+        <div class="cat-tabs">
+          <button class="cat-tab active" data-category="todos">Todos</button>
+          <button class="cat-tab" data-category="sueteres">Suéteres & Camisetas</button>
+          <button class="cat-tab" data-category="gorras">Gorras</button>
+          <button class="cat-tab" data-category="mugs">Mugs & Mementos</button>
+        </div>
+        <div class="cat-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="catSearchInput" placeholder="Buscar prenda o artículo...">
+        </div>
       </div>
 
       <div class="prod-grid">
@@ -175,11 +204,19 @@
           <div class="prod-body">
             <h4>Camiseta Básica Personalizada</h4>
             <p class="desc">Ideal para eventos, promocionales o diseño personal. Disponible en múltiples colores.</p>
-            <select class="tela-select" title="Seleccionar opción de tela" aria-label="Seleccionar opción de tela">
-              <option value="Poliéster 100%">Tela: Poliéster 100% (Sublimación)</option>
-              <option value="Algodón 100%">Tela: Algodón 100% (DTF)</option>
-              <option value="Piel de Durazno">Tela: Piel de Durazno</option>
-            </select>
+            <div class="prod-options">
+              <select class="tela-select" title="Seleccionar opción de tela" aria-label="Seleccionar opción de tela">
+                <option value="Poliéster 100%">Tela: Poliéster 100% (Sublimación)</option>
+                <option value="Algodón 100%">Tela: Algodón 100% (DTF)</option>
+                <option value="Piel de Durazno">Tela: Piel de Durazno</option>
+              </select>
+              <select class="size-select" title="Seleccionar talla" aria-label="Seleccionar talla">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
             <div class="prod-foot">
               <span class="price">$35.000 COP</span>
               <button class="add-btn">Añadir +</button>
@@ -196,10 +233,18 @@
           <div class="prod-body">
             <h4>Hoodie / Buzo con Capota</h4>
             <p class="desc">Excelente calidad de tela perchada, abrigado y con estampado de máxima resolución.</p>
-            <select class="tela-select" title="Seleccionar opción de tela" aria-label="Seleccionar opción de tela">
-              <option value="Algodón Perchado">Tela: Algodón Perchado Heavy</option>
-              <option value="Poliéster Deportivo">Tela: Poliéster Térmico</option>
-            </select>
+            <div class="prod-options">
+              <select class="tela-select" title="Seleccionar opción de tela" aria-label="Seleccionar opción de tela">
+                <option value="Algodón Perchado">Tela: Algodón Perchado Heavy</option>
+                <option value="Poliéster Deportivo">Tela: Poliéster Térmico</option>
+              </select>
+              <select class="size-select" title="Seleccionar talla" aria-label="Seleccionar talla">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
             <div class="prod-foot">
               <span class="price">$75.000 COP</span>
               <button class="add-btn">Añadir +</button>
@@ -257,10 +302,18 @@
           <div class="prod-body">
             <h4>Camiseta Tipo Polo Corporativa</h4>
             <p class="desc">Ideal para uniformes de empresas y dotación. Elegante bordado en pechera o manga.</p>
-            <select class="tela-select" title="Seleccionar opción de tela" aria-label="Seleccionar opción de tela">
-              <option value="Algodón Piqué">Tela: Algodón Piqué 100%</option>
-              <option value="Poliéster Piqué">Tela: Poliéster Piqué</option>
-            </select>
+            <div class="prod-options">
+              <select class="tela-select" title="Seleccionar opción de tela" aria-label="Seleccionar opción de tela">
+                <option value="Algodón Piqué">Tela: Algodón Piqué 100%</option>
+                <option value="Poliéster Piqué">Tela: Poliéster Piqué</option>
+              </select>
+              <select class="size-select" title="Seleccionar talla" aria-label="Seleccionar talla">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
             <div class="prod-foot">
               <span class="price">$45.000 COP</span>
               <button class="add-btn">Añadir +</button>
@@ -336,6 +389,97 @@
           <div class="quote">"Calidad que resalta en cada fibra, hecha por manos vallenatas."</div>
           <p>Somos una empresa familiar dedicada a transformar ideas en ropa y accesorios personalizados de alta calidad. Desde pequeños pedidos individuales hasta grandes dotaciones para empresas locales.</p>
           <p>Nos respaldan años de experiencia combinando tecnología de estampado directo y técnicas artesanales para ofrecer prendas duraderas al mejor precio del mercado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="wrap reveal">
+      <div class="section-head">
+        <span class="eyebrow">Experiencias Reales</span>
+        <h2>Lo que dicen nuestros clientes</h2>
+        <p>Empresas, eventos y clientes particulares en Valledupar confían en nuestro trabajo.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★ ★ ★ ★ ★</div>
+          <p class="testi-text">"Mandamos a hacer 50 polos para la dotación de la empresa. El bordado impecable y la tela súper fresca para el clima de Valledupar."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">CAR</div>
+            <div class="testi-info">
+              <h5>Carlos A. Rodríguez</h5>
+              <span>Empresa de Logística</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★ ★ ★ ★ ★</div>
+          <p class="testi-text">"El estampado en DTF para el cumpleaños de mi hijo quedó hermoso. Lo hemos lavado varias veces y no se agrieta ni pierde color."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MAR</div>
+            <div class="testi-info">
+              <h5>María Elena Gómez</h5>
+              <span>Cliente Particular</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★ ★ ★ ★ ★</div>
+          <p class="testi-text">"Súper recomendados para gorras y mugs publicitarios. Cumplieron con los tiempos de entrega exacta para nuestro evento."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JUA</div>
+            <div class="testi-info">
+              <h5>Juan David Mendoza</h5>
+              <span>Organizador de Eventos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section id="faq" class="wrap reveal">
+      <div class="section-head text-center" style="margin: 0 auto 40px; text-align: center;">
+        <span class="eyebrow" style="justify-content: center;">Resuelve tus dudas</span>
+        <h2>Preguntas Frecuentes</h2>
+        <p>Todo lo que necesitas saber antes de realizar tu pedido con nosotros.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuál es el tiempo de entrega de un pedido?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Para pedidos individuales o pequeñas cantidades (1 a 10 prendas), entregamos de 24 a 48 horas hábiles. Para dotaciones empresariales o grandes volúmenes, acordamos la fecha de entrega según la cantidad.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Puedo llevar mis propias prendas para estampar o bordar?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>¡Sí! Puedes traer tus propias prendas (suéteres, gorras, chaquetas) y realizamos únicamente el servicio de estampado en DTF, sublimación o bordado.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Hacen envíos fuera de Valledupar?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>Hacemos envíos a todos los municipios del Cesar (Aguachica, Codazzi, Bosconia, La Paz, etc.) y a nivel nacional a través de Interrapidísimo o la empresa de tu preferencia.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Existe una cantidad mínima de pedido?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <p>No tenemos mínimo. Personalizamos desde 1 unidad en adelante (camisetas, gorras, mugs, termos). ¡Tú decides la cantidad!</p>
+          </div>
         </div>
       </div>
     </section>
@@ -417,11 +561,40 @@
         <button class="mini-btn" id="closeAdmin" title="Cerrar panel de administración" aria-label="Cerrar panel de administración"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       </div>
       <div class="admin-body">
-        <div class="admin-gate">
+        <!-- Login Gate -->
+        <div class="admin-gate" id="adminGate">
           <h3>Ingresar Clave</h3>
           <input type="password" placeholder="••••••••" id="adminPass">
-          <button class="btn btn-primary btn-full">Acceder</button>
+          <button class="btn btn-primary btn-full" id="adminLoginBtn">Acceder</button>
           <div class="hint">Modo de administración para actualizar precios y catálogo.</div>
+          <div id="adminError" style="color:var(--red);font-size:12px;margin-top:10px;display:none;">Clave incorrecta. Intente de nuevo.</div>
+        </div>
+        <!-- Admin Section (Hidden until login) -->
+        <div class="admin-section" id="adminSection">
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="precios">Precios</button>
+            <button class="admin-tab" data-tab="whatsapp">WhatsApp</button>
+          </div>
+          <!-- Prices Tab -->
+          <div class="admin-tab-content visible" id="tab-precios">
+            <div class="price-list" id="priceList"></div>
+            <div class="price-success" id="priceSuccess">✓ Precio actualizado correctamente.</div>
+          </div>
+          <!-- WhatsApp Tab -->
+          <div class="admin-tab-content" id="tab-whatsapp">
+            <p style="color:#B3C2D6;font-size:13.5px;margin-bottom:20px;">Actualiza el número de teléfono de WhatsApp para todos los botones del sitio. Usa formato internacional sin signos (ej: 573001234567).</p>
+            <div class="phone-editor">
+              <div class="field">
+                <label for="phoneInput">Número WhatsApp</label>
+                <input type="tel" id="phoneInput" placeholder="573001234567">
+              </div>
+              <button class="btn-save" id="savePhoneBtn">Guardar</button>
+            </div>
+            <div class="phone-success" id="phoneSuccess">✓ Número actualizado correctamente.</div>
+          </div>
+          <div class="admin-footer">
+            <button class="admin-logout" id="adminLogout">Cerrar Sesión Admin</button>
+          </div>
         </div>
       </div>
     </div>
