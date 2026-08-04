@@ -41,17 +41,21 @@ img{max-width:100%;display:block;}
 .prod-media img,
 .about-photos img,
 .photo-card img{
-  filter: contrast(1.08) saturate(1.15) brightness(1.04);
-  image-rendering: auto;
+  filter: contrast(1.12) saturate(1.22) brightness(1.05);
+  image-rendering: -webkit-optimize-contrast;
+  transition: filter .4s ease, transform .5s cubic-bezier(.25,.46,.45,.94);
 }
 .gallery-item img{
-  filter: contrast(1.1) saturate(1.18) brightness(1.02);
+  filter: contrast(1.14) saturate(1.25) brightness(1.03);
 }
 .prod-media img{
-  filter: contrast(1.06) saturate(1.12) brightness(1.06);
+  filter: contrast(1.1) saturate(1.2) brightness(1.06);
+}
+.prod-card:hover .prod-media img{
+  filter: contrast(1.15) saturate(1.28) brightness(1.08);
 }
 .about-photos img{
-  filter: contrast(1.1) saturate(1.2) brightness(1.05);
+  filter: contrast(1.12) saturate(1.22) brightness(1.05);
 }
 button{font-family:inherit;cursor:pointer;}
 :focus-visible{outline:3px solid var(--cyan);outline-offset:2px;}

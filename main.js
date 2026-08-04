@@ -4,12 +4,17 @@
 
 // Default product catalog (source of truth for names & default prices)
 const DEFAULT_PRODUCTS = [
-  { id: 'camiseta-basica',  title: 'Camiseta Básica Personalizada',  defaultPrice: 35000 },
-  { id: 'hoodie-buzo',      title: 'Hoodie / Buzo con Capota',       defaultPrice: 75000 },
-  { id: 'gorra-trucker',    title: 'Gorra Malla / Trucker',          defaultPrice: 25000 },
-  { id: 'mug-ceramica',     title: 'Mug de Cerámica 11oz',           defaultPrice: 18000 },
-  { id: 'polo-corporativa', title: 'Camiseta Tipo Polo Corporativa', defaultPrice: 45000 },
-  { id: 'termo-aluminio',   title: 'Termo de Aluminio 600ml',        defaultPrice: 32000 },
+  { id: 'ajustada-estampada', title: 'Camiseta Ajustada Estampada',    defaultPrice: 38000 },
+  { id: 'ajustada-dama',      title: 'Camiseta Dama Piel de Durazno',  defaultPrice: 36000 },
+  { id: 'polo-cuello-tejido', title: 'Camiseta Polo Cuello Tejido',   defaultPrice: 48000 },
+  { id: 'polo-corporativa',   title: 'Polo Corporativa Premium',       defaultPrice: 52000 },
+  { id: 'qatar-deportiva',    title: 'Camiseta Poliéster Qatar',       defaultPrice: 35000 },
+  { id: 'qatar-sublimada',    title: 'Camiseta Qatar Sublimada',       defaultPrice: 38000 },
+  { id: 'nino-dtf',           title: 'Camiseta Infantil Personalizada',defaultPrice: 28000 },
+  { id: 'reflectivo-nocturno',title: 'Camiseta Vinilo Reflectivo',     defaultPrice: 42000 },
+  { id: 'gorra-trucker',      title: 'Gorra Malla / Trucker',          defaultPrice: 25000 },
+  { id: 'mug-ceramica',       title: 'Mug de Cerámica 11oz',           defaultPrice: 18000 },
+  { id: 'termo-aluminio',     title: 'Termo de Aluminio 600ml',        defaultPrice: 32000 },
 ];
 
 const DEFAULT_PHONE = '573000000000';
