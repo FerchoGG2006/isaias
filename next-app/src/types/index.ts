@@ -23,8 +23,7 @@ export interface CartItem {
   title: string;
   price: number;
   image: string;
-  fabric: string;
-  size: string;
+  optionSelected: string;
   qty: number;
 }
 
@@ -32,7 +31,7 @@ export interface Technique {
   id: string;
   title: string;
   description: string;
-  iconPath: string;
+  iconSvg: string;
 }
 
 export interface ProcessStep {

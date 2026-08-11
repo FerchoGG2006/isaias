@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const [selectedOption, setSelectedOption] = useState(product.options[0]);
+  const [selectedOption, setSelectedOption] = useState(product.fabrics[0]?.label || '');
   const { addToCart } = useCart();
 
   const handleAdd = () => {
@@ -36,12 +36,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className="tela-select"
           value={selectedOption}
           onChange={(e) => setSelectedOption(e.target.value)}
-          title={`Seleccionar ${product.optionsLabel.toLowerCase()}`}
-          aria-label={`Seleccionar ${product.optionsLabel.toLowerCase()}`}
+          title={`Seleccionar ${product.fabricLabel.toLowerCase()}`}
+          aria-label={`Seleccionar ${product.fabricLabel.toLowerCase()}`}
         >
-          {product.options.map((opt, idx) => (
-            <option key={idx} value={opt}>
-              {product.optionsLabel}: {opt}
+          {product.fabrics.map((opt, idx) => (
+            <option key={idx} value={opt.label}>
+              {product.fabricLabel}: {opt.label}
             </option>
           ))}
         </select>

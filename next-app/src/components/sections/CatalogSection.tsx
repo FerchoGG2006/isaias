@@ -1,16 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PRODUCTS } from '@/data/products';
+import { PRODUCTS, CATEGORIES } from '@/data/products';
 import { CategoryId } from '@/types';
 import { ProductCard } from '@/components/ui/ProductCard';
 
-const CATEGORIES: { id: CategoryId; label: string }[] = [
-  { id: 'todos', label: 'Todos' },
-  { id: 'sueteres', label: 'Suéteres & Camisetas' },
-  { id: 'gorras', label: 'Gorras' },
-  { id: 'mugs', label: 'Mugs & Mementos' },
-];
 
 export const CatalogSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('todos');
