@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   syncFooterPhone();
   renderCart();
+  initLightbox();
 });
 
 // ============================================================
@@ -601,10 +602,33 @@ function initMobileNav() {
 // ============================================================
 function initCatalogSearch() {
   const searchInput = document.getElementById('catSearchInput');
+  const shortcut = document.getElementById('searchShortcut');
   if (!searchInput) return;
+
+  // Global Ctrl + K listener
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  searchInput.addEventListener('focus', () => {
+    if (shortcut) shortcut.style.display = 'none';
+  });
+
+  searchInput.addEventListener('blur', () => {
+    if (!searchInput.value && shortcut) {
+      shortcut.style.display = 'flex';
+    }
+  });
 
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();
+    if (query && shortcut) {
+      shortcut.style.display = 'none';
+    }
+
     const prods = document.querySelectorAll('.prod-card');
     const activeTab = document.querySelector('.cat-tab.active');
     const cat = activeTab?.dataset.category || 'todos';
@@ -654,6 +678,89 @@ function syncFooterPhone() {
     if (p.textContent.includes('WhatsApp:')) {
       p.textContent = 'WhatsApp: +' + state.phone;
     }
+  });
+}
+
+// ============================================================
+// DYNAMIC LIGHTBOX / 21st.dev Style Preview Modal
+// ============================================================
+function initLightbox() {
+  const modal = document.getElementById('lightboxModal');
+  const closeBtn = document.getElementById('closeLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxTag = document.getElementById('lightboxTag');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+  const lightboxWaBtn = document.getElementById('lightboxWaBtn');
+
+  if (!modal || !closeBtn) return;
+
+  function openLightbox(imgSrc, title, tag, desc) {
+    if (lightboxImg) lightboxImg.src = imgSrc;
+    if (lightboxTitle) lightboxTitle.textContent = title;
+    if (lightboxTag) lightboxTag.textContent = tag;
+    if (lightboxDesc) lightboxDesc.textContent = desc;
+
+    // Generate specific WhatsApp link
+    if (lightboxWaBtn) {
+      const text = encodeURIComponent(`¡Hola! Estoy interesado en el diseño "${title}" (${tag}) que vi en su catálogo web: ${window.location.origin}${imgSrc}`);
+      lightboxWaBtn.href = `https://wa.me/${state.phone}?text=${text}`;
+    }
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeLightbox();
+  });
+
+  // Esc key closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Attach to Gallery items
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (!img) return;
+      const title = img.alt || "Diseño Personalizado";
+      
+      // Infer category from src path
+      let catLabel = "Trabajo Reciente";
+      if (img.src.includes('ajustadas')) catLabel = "Tela Ajustada";
+      else if (img.src.includes('cuello_tejido')) catLabel = "Polo / Cuello Tejido";
+      else if (img.src.includes('qatar')) catLabel = "Poliéster Qatar";
+      else if (img.src.includes('reflectivos_ninos')) catLabel = "Reflectivo / Infantil";
+
+      openLightbox(img.getAttribute('src'), title, catLabel, `Estampado de alta definición para ${title.toLowerCase()}. Trabajo realizado en Valledupar.`);
+    });
+  });
+
+  // Attach to Product images
+  document.querySelectorAll('.prod-card').forEach(card => {
+    const imgContainer = card.querySelector('.prod-media');
+    if (!imgContainer) return;
+    
+    imgContainer.addEventListener('click', (e) => {
+      // Prevent open if clicking the tag or the add button
+      if (e.target.closest('.prod-tag') || e.target.closest('.add-btn') || e.target.closest('.tela-select') || e.target.closest('.size-select')) return;
+
+      const img = imgContainer.querySelector('img');
+      const title = card.querySelector('h4')?.textContent || "Prenda del catálogo";
+      const tag = card.querySelector('.prod-tag')?.textContent || "Prenda";
+      const desc = card.querySelector('.desc')?.textContent || "Prenda para estampados y personalización.";
+      if (img) {
+        openLightbox(img.getAttribute('src'), title, tag, desc);
+      }
+    });
   });
 }
 
