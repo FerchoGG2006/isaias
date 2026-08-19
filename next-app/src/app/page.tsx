@@ -1,37 +1,21 @@
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
+import { Navigation } from '@/components/layout/Navigation';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { MarqueeSection } from '@/components/sections/MarqueeSection';
-import { InfiniteImageTicker } from '@/components/ui/InfiniteImageTicker';
-import { TechniquesSection } from '@/components/sections/TechniquesSection';
-import { FullWidthShowcaseBanner } from '@/components/sections/FullWidthShowcaseBanner';
-import { GallerySection } from '@/components/sections/GallerySection';
-import { CatalogSection } from '@/components/sections/CatalogSection';
-import { ProcessSection } from '@/components/sections/ProcessSection';
-import { AboutSection } from '@/components/sections/AboutSection';
-import { ContactSection } from '@/components/sections/ContactSection';
-import { CartDrawer } from '@/components/cart/CartDrawer';
-import { AdminModal } from '@/components/admin/AdminModal';
+import { MaterialExplorer } from '@/components/sections/MaterialExplorer';
+import { ProductStage } from '@/components/sections/ProductStage';
+import { EditorialGallery } from '@/components/sections/EditorialGallery';
+import { QuoteSection } from '@/components/sections/QuoteSection';
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main id="top">
+      <Navigation />
+      <main>
         <HeroSection />
-        <MarqueeSection />
-        <InfiniteImageTicker />
-        <TechniquesSection />
-        <FullWidthShowcaseBanner />
-        <GallerySection />
-        <CatalogSection />
-        <ProcessSection />
-        <AboutSection />
-        <ContactSection />
+        <MaterialExplorer />
+        <ProductStage />
+        <EditorialGallery />
+        <QuoteSection />
       </main>
-      <Footer />
-      <CartDrawer />
-      <AdminModal />
     </>
   );
 }

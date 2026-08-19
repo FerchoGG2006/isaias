@@ -7,8 +7,9 @@
 ---
 
 **Project:** Variedades Isaias
-**Generated:** 2026-08-11 01:00:30
-**Category:** Pharmacy/Drug Store
+**Generated:** 2026-08-17 01:15:02
+**Category:** Photography Studio
+**Design Dials:** Variance 7/10 (Balanced / Modern) | Motion 6/10 (Standard) | Density 3/10 (Spacious)
 
 ---
 
@@ -18,36 +19,44 @@
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#E11D48` | `--color-primary` |
+| Primary | `#18181B` | `--color-primary` |
 | On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#FB7185` | `--color-secondary` |
-| Accent/CTA | `#2563EB` | `--color-accent` |
-| Background | `#FFF1F2` | `--color-background` |
-| Foreground | `#881337` | `--color-foreground` |
-| Muted | `#F0ECF2` | `--color-muted` |
-| Border | `#FECDD3` | `--color-border` |
-| Destructive | `#DC2626` | `--color-destructive` |
-| Ring | `#E11D48` | `--color-ring` |
+| Secondary | `#27272A` | `--color-secondary` |
+| Accent/CTA | `#F8FAFC` | `--color-accent` |
+| Background | `#000000` | `--color-background` |
+| Foreground | `#FAFAFA` | `--color-foreground` |
+| Muted | `#181818` | `--color-muted` |
+| Border | `#3F3F46` | `--color-border` |
+| Destructive | `#EF4444` | `--color-destructive` |
+| Ring | `#18181B` | `--color-ring` |
 
-**Color Notes:** Vibrant rose + engagement blue
+**Color Notes:** Pure black + white contrast
 
 ### Typography
 
-- **Heading Font:** Inter
+- **Heading Font:** Playfair Display
 - **Body Font:** Inter
-- **Mood:** Clear + Functional typography
+- **Mood:** elegant, luxury, sophisticated, timeless, premium, editorial
+- **Google Fonts:** [Playfair Display + Inter](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap)
+
+**CSS Import:**
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+```
 
 ### Spacing Variables
+
+*Density: 3/10 — Spacious*
 
 | Token | Value | Usage |
 |-------|-------|-------|
 | `--space-xs` | `4px` / `0.25rem` | Tight gaps |
 | `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
+| `--space-md` | `24px` / `1.5rem` | Standard padding |
+| `--space-lg` | `32px` / `2rem` | Section padding |
+| `--space-xl` | `48px` / `3rem` | Large gaps |
+| `--space-2xl` | `64px` / `4rem` | Section margins |
+| `--space-3xl` | `96px` / `6rem` | Hero padding |
 
 ### Shadow Depths
 
@@ -67,7 +76,7 @@
 ```css
 /* Primary Button */
 .btn-primary {
-  background: #2563EB;
+  background: #F8FAFC;
   color: white;
   padding: 12px 24px;
   border-radius: 8px;
@@ -84,8 +93,8 @@
 /* Secondary Button */
 .btn-secondary {
   background: transparent;
-  color: #E11D48;
-  border: 2px solid #E11D48;
+  color: #18181B;
+  border: 2px solid #18181B;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
@@ -98,7 +107,7 @@
 
 ```css
 .card {
-  background: #FFF1F2;
+  background: #000000;
   border-radius: 12px;
   padding: 24px;
   box-shadow: var(--shadow-md);
@@ -124,9 +133,9 @@
 }
 
 .input:focus {
-  border-color: #E11D48;
+  border-color: #18181B;
   outline: none;
-  box-shadow: 0 0 0 3px #E11D4820;
+  box-shadow: 0 0 0 3px #18181B20;
 }
 ```
 
@@ -152,29 +161,43 @@
 
 ## Style Guidelines
 
-**Style:** Accessible & Ethical
+**Style:** Tactile Digital / Deformable UI
 
-**Keywords:** High contrast, large text (16px+), keyboard navigation, screen reader friendly, WCAG compliant, focus state, semantic
+**Keywords:** Jelly buttons, chrome, clay, squishy, deformable, bouncy, physical, tactile feedback, press response
 
-**Best For:** Government, healthcare, education, inclusive products, large audience, legal compliance, public
+**Best For:** Modern mobile apps, playful brands, entertainment, gaming UI, consumer products, interactive demos
 
-**Key Effects:** Clear focus rings (3-4px), ARIA labels, skip links, responsive design, reduced motion, 44x44px touch targets
+**Key Effects:** Press deformation (scale + squish), bounce-back (cubic-bezier), material response, haptic-like feedback, spring physics
 
 ### Page Pattern
 
-**Pattern Name:** App Store Style Landing
+**Pattern Name:** Storytelling-Driven + Hero-Centric
 
-- **Conversion Strategy:** Show real screenshots. Include ratings (4.5+ stars). QR code for mobile. Platform-specific CTAs.
-- **CTA Placement:** Download buttons prominent (App Store + Play Store) throughout
-- **Section Order:** 1. Hero with device mockup, 2. Screenshots carousel, 3. Features with icons, 4. Reviews/ratings, 5. Download CTAs
+- **CTA Placement:** Above fold
+- **Section Order:** Hero > Features > CTA
+
+---
+
+## Motion
+
+**Stagger List** (Standard) — Trigger: load or scroll | Duration: 300-450ms | Easing: `back.out(1.4)`
+
+```js
+gsap.from('.grid-item', { opacity: 0, scale: 0.92, y: 16, duration: 0.4, stagger: { each: 0.06, from: 'start', grid: 'auto' }, ease: 'back.out(1.4)' });
+```
+
+**Framework notes:** grid: 'auto' lets GSAP infer rows/columns from a CSS grid layout for a natural wave stagger
+
+- ✅ Combine with from: 'center' for a bento-grid layout to draw the eye inward first
+- ❌ Don't use back.out on dense data tables; the overshoot reads as sloppy on informational UI
+- ⚡ Group DOM writes; avoid interleaving layout reads (getBoundingClientRect) between staggered tweens
 
 ---
 
 ## Anti-Patterns (Do NOT Use)
 
-- ❌ Confusing layout
-- ❌ Privacy concerns
-- ❌ AI purple/pink gradients
+- ❌ Heavy text
+- ❌ Poor image showcase
 
 ### Additional Forbidden Patterns
 

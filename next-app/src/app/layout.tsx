@@ -1,30 +1,27 @@
 import type { Metadata } from 'next';
-import { Anton, Work_Sans, Space_Mono } from 'next/font/google';
+import { DM_Mono, DM_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
-import { CartProvider } from '@/context/CartContext';
-import FloatingGooeyMenu from '@/components/ui/FloatingGooeyMenu';
 
-const anton = Anton({
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+const dmMono = DM_Mono({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-anton',
-});
-
-const workSans = Work_Sans({
-  subsets: ['latin'],
-  variable: '--font-work-sans',
-});
-
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
-  title: 'Variedades Isaías — Sublimación, DTF y Bordado en Valledupar',
+  title: 'Variedades Isaías — Estudio textil y personalización',
   description:
-    'Taller de estampados en Valledupar: Sublimación, DTF, bordados y transfer en camisetas, gorras y artículos publicitarios.',
+    'Personalización textil, sublimación, DTF y bordado en Valledupar.',
 };
 
 export default function RootLayout({
@@ -33,13 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${anton.variable} ${workSans.variable} ${spaceMono.variable}`}>
-      <body>
-        <CartProvider>
-          {children}
-          <FloatingGooeyMenu />
-        </CartProvider>
-      </body>
+    <html lang="es" className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

@@ -94,7 +94,7 @@ export const CinematicSection: React.FC = () => {
       {/* Expanding Frame */}
       <div ref={imageFrameRef} className="cinematic-frame">
         <Image
-          ref={imageRef as any}
+          ref={imageRef}
           src="/assets/new_images/media_1786601283456.png"
           alt="Proceso de prensado e impresión textil en alta definición"
           fill
