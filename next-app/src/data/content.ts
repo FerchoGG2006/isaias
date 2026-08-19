@@ -51,12 +51,12 @@ export const PROCESS_STEPS: ProcessStep[] = [
 ];
 
 export const GALLERY_IMAGES = [
-  '/assets/img-5.jpg',
-  '/assets/img-6.jpg',
-  '/assets/img-7.jpg',
-  '/assets/img-8.jpg',
-  '/assets/img-9.jpg',
-  '/assets/img-10.jpg'
+  '/assets/new_images/media_1786601283456.png',
+  '/assets/new_images/media_1786601283492.png',
+  '/assets/new_images/media_1786601283558.png',
+  '/assets/new_images/media_1786601283727.png',
+  '/assets/new_images/media_1786601135223.png',
+  '/assets/new_images/media_1786601143574.png'
 ];
 
 export const MARQUEE_ITEMS = [

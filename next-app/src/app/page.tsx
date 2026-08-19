@@ -2,7 +2,9 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { MarqueeSection } from '@/components/sections/MarqueeSection';
+import { InfiniteImageTicker } from '@/components/ui/InfiniteImageTicker';
 import { TechniquesSection } from '@/components/sections/TechniquesSection';
+import { FullWidthShowcaseBanner } from '@/components/sections/FullWidthShowcaseBanner';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { CatalogSection } from '@/components/sections/CatalogSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
@@ -18,7 +20,9 @@ export default function Home() {
       <main id="top">
         <HeroSection />
         <MarqueeSection />
+        <InfiniteImageTicker />
         <TechniquesSection />
+        <FullWidthShowcaseBanner />
         <GallerySection />
         <CatalogSection />
         <ProcessSection />

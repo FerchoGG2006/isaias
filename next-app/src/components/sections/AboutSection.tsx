@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 
@@ -6,8 +8,20 @@ export const AboutSection: React.FC = () => {
     <section id="nosotros" className="wrap">
       <div className="about-grid">
         <div className="about-photos">
-          <Image src="/assets/img-17.jpg" alt="Taller de estampados" width={300} height={420} className="ph-a" />
-          <Image src="/assets/img-18.jpg" alt="Detalle de estampado" width={240} height={200} className="ph-b" />
+          <Image
+            src="/assets/new_images/media_1786601283492.png"
+            alt="Taller de estampados en Valledupar"
+            width={300}
+            height={420}
+            className="ph-a"
+          />
+          <Image
+            src="/assets/new_images/media_1786601283558.png"
+            alt="Detalle de estampado de alta precisión"
+            width={240}
+            height={200}
+            className="ph-b"
+          />
         </div>
         <div className="about-copy">
           <span className="eyebrow">Sobre Nosotros</span>

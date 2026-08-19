@@ -12,6 +12,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [selectedOption, setSelectedOption] = useState(product.fabrics[0]?.label || '');
   const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
 
   const handleAdd = () => {
     addToCart({
@@ -21,6 +22,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       image: product.image,
       optionSelected: selectedOption,
     });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
   };
 
   return (
@@ -32,6 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="prod-body">
         <h4>{product.title}</h4>
         <p className="desc">{product.description}</p>
+
         <select
           className="tela-select"
           value={selectedOption}
@@ -45,10 +49,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </option>
           ))}
         </select>
+
         <div className="prod-foot">
           <span className="price">${product.price.toLocaleString('es-CO')} COP</span>
-          <button className="add-btn" onClick={handleAdd}>
-            Añadir +
+          <button className={`add-btn ${added ? 'added' : ''}`} onClick={handleAdd}>
+            {added ? '✓ Añadido' : 'Añadir +'}
           </button>
         </div>
       </div>

@@ -1,17 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 
 export const HeroSection: React.FC = () => {
-  const [animate, setAnimate] = useState(false);
   const { whatsappPhone } = useCart();
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimate(true), 400);
-    return () => clearTimeout(timer);
-  }, []);
 
   const waUrl = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
     '¡Hola! Me gustaría cotizar un trabajo de sublimación / DTF / bordado en Valledupar.'
@@ -23,11 +17,11 @@ export const HeroSection: React.FC = () => {
         <div className="hero-copy">
           <span className="eyebrow">Taller de estampados · Valledupar</span>
           <h1>
-            Lo que <em>imaginas</em>,<br />
+            Lo que <span>imaginas</span>,<br />
             lo prensamos.
           </h1>
           <p className="lede">
-            Sublimación, DTF, bordado y transfer sobre suéteres, gorras, mugs y todo tipo de artículos. Diseño, prensa y entrega — hecho a mano en Valledupar.
+            Sublimación de alta definición, DTF textil premium y bordados computarizados sobre camisetas, gorras, mugs y todo tipo de artículos. Calidad hecha a mano en Valledupar.
           </p>
           <div className="hero-cta">
             <a href="#catalogo" className="btn btn-primary">
@@ -46,18 +40,15 @@ export const HeroSection: React.FC = () => {
         </div>
 
         <div className="hero-stack">
-          <div className={`press-rig ${animate ? 'run' : ''}`}>
-            <div className="press-head"></div>
-            <div className="flash"></div>
-            <div className="stamp-badge">100% HECHO EN VALLEDUPAR</div>
+          <div className="hero-cards-deck">
             <div className="photo-card pc-1">
-              <Image src="/assets/img-2.jpg" alt="Estampado muestra 1" width={230} height={290} />
+              <Image src="/assets/new_images/media_1786601148524.png" alt="Estampado DTF Premium" width={260} height={340} style={{ objectFit: 'cover' }} />
             </div>
             <div className="photo-card pc-2">
-              <Image src="/assets/img-3.jpg" alt="Estampado muestra 2" width={230} height={290} />
+              <Image src="/assets/new_images/media_1786601152822.png" alt="Camiseta Piel de Durazno" width={260} height={340} style={{ objectFit: 'cover' }} />
             </div>
             <div className="photo-card pc-3">
-              <Image src="/assets/img-4.jpg" alt="Estampado muestra 3" width={210} height={290} />
+              <Image src="/assets/new_images/media_1786601157399.png" alt="Polo Bordada Corporativa" width={240} height={310} style={{ objectFit: 'cover' }} />
             </div>
           </div>
         </div>

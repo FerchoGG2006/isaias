@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Anton, Work_Sans, Space_Mono } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
-import { Toast } from '@/components/ui/Toast';
+import FloatingGooeyMenu from '@/components/ui/FloatingGooeyMenu';
 
 const anton = Anton({
   weight: '400',
@@ -37,7 +37,7 @@ export default function RootLayout({
       <body>
         <CartProvider>
           {children}
-          <Toast />
+          <FloatingGooeyMenu />
         </CartProvider>
       </body>
     </html>

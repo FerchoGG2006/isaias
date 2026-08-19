@@ -5,7 +5,6 @@ import { PRODUCTS, CATEGORIES } from '@/data/products';
 import { CategoryId } from '@/types';
 import { ProductCard } from '@/components/ui/ProductCard';
 
-
 export const CatalogSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('todos');
 
@@ -20,7 +19,7 @@ export const CatalogSection: React.FC = () => {
         <span className="eyebrow">Productos y Prendas</span>
         <h2>Catálogo de Productos</h2>
         <p>
-          Selecciona tu prenda o artículo favorito, elige la opción de tu preferencia y agrégalo al carrito para solicitar tu cotización.
+          Selecciona tu prenda o artículo favorito, elige la opción de tu preferencia y agrégalo al carrito para solicitar tu cotización por WhatsApp.
         </p>
       </div>
 

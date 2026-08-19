@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { TECHNIQUES } from '@/data/content';
 
@@ -15,9 +17,11 @@ export const TechniquesSection: React.FC = () => {
       <div className="tech-grid">
         {TECHNIQUES.map((tech) => (
           <div key={tech.id} className="tech-card">
-            <svg className="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d={tech.iconSvg} />
-            </svg>
+            <div className="tech-icon-wrap">
+              <svg className="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d={tech.iconSvg} />
+              </svg>
+            </div>
             <h3>{tech.title}</h3>
             <p>{tech.description}</p>
           </div>

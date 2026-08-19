@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { PROCESS_STEPS } from '@/data/content';
 
