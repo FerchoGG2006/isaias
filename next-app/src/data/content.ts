@@ -51,12 +51,12 @@ export const PROCESS_STEPS: ProcessStep[] = [
 ];
 
 export const GALLERY_IMAGES = [
-  '/assets/new_images/media_1786601283456.png',
-  '/assets/new_images/media_1786601283492.png',
-  '/assets/new_images/media_1786601283558.png',
-  '/assets/new_images/media_1786601283727.png',
-  '/assets/new_images/media_1786601135223.png',
-  '/assets/new_images/media_1786601143574.png'
+  '/assets/telas/ajustadas/ajustada-1.jpg',
+  '/assets/telas/cuello_tejido/cuello-1.jpg',
+  '/assets/telas/qatar/qatar-1.jpg',
+  '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
+  '/assets/telas/ajustadas/ajustada-2.jpg',
+  '/assets/telas/cuello_tejido/cuello-2.jpg'
 ];
 
 export const MARQUEE_ITEMS = [

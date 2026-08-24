@@ -15,7 +15,7 @@ const RICH_GALLERY_ITEMS: GalleryItemData[] = [
   { src: '/assets/telas/cuello_tejido/cuello-2.jpg', title: 'Polo Blanco Cuello Tejido', category: 'Cuello Tejido', aspect: 'landscape' },
   { src: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg', title: 'DTF Infantil Personaje', category: 'Niños & Reflectivos', aspect: 'square' },
   { src: '/assets/telas/qatar/qatar-3.jpg', title: 'Textura Qatar Transpirable', category: 'Poliéster Qatar', aspect: 'portrait' },
-  { src: '/assets/new_images/media_1786601283492.png', title: 'Prensa Térmica en Taller', category: 'Proceso Directo', aspect: 'landscape' },
+  { src: '/assets/telas/ajustadas/ajustada-4.jpg', title: 'Estampado DTF en Taller', category: 'Proceso Directo', aspect: 'landscape' },
   { src: '/assets/telas/reflectivos_ninos/reflectivo-4.jpg', title: 'Reflectivo Nocturno Alta Visibilidad', category: 'Niños & Reflectivos', aspect: 'square' },
   { src: '/assets/telas/cuello_tejido/cuello-6.jpg', title: 'Bordado Corporativo Verde', category: 'Cuello Tejido', aspect: 'portrait' },
   { src: '/assets/img-12.jpg', title: 'Detalle de Sublimación Full Color', category: 'Sublimación', aspect: 'portrait' },

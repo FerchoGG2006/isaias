@@ -9,14 +9,14 @@ export const AboutSection: React.FC = () => {
       <div className="about-grid">
         <div className="about-photos">
           <Image
-            src="/assets/new_images/media_1786601283492.png"
+            src="/assets/telas/cuello_tejido/cuello-2.jpg"
             alt="Taller de estampados en Valledupar"
             width={300}
             height={420}
             className="ph-a"
           />
           <Image
-            src="/assets/new_images/media_1786601283558.png"
+            src="/assets/telas/ajustadas/ajustada-3.jpg"
             alt="Detalle de estampado de alta precisión"
             width={240}
             height={200}

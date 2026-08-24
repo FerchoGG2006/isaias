@@ -1,7 +1,14 @@
 {
   "mcpServers": {
-    "higgsfield": {
-      "serverUrl": "https://mcp.higgsfield.ai/mcp"
+    "figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@sethdouglasford/mcp-figma"
+      ],
+      "env": {
+        "FIGMA_PERSONAL_ACCESS_TOKEN": "TU_FIGMA_PERSONAL_ACCESS_TOKEN_AQUI"
+      }
     }
   }
 }

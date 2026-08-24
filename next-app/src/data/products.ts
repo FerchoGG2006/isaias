@@ -17,7 +17,7 @@ export const PRODUCTS: Product[] = [
     price: 38000,
     description: 'Silueta entallada al cuerpo. Tela suave piel de durazno de alta elasticidad e impresión DTF durable.',
     tag: 'Piel de Durazno / Ajustada',
-    image: '/assets/new_images/media_1786601148524.png',
+    image: '/assets/telas/ajustadas/ajustada-1.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Piel de Durazno', label: 'Piel de Durazno Spandex' },
@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     price: 36000,
     description: 'Acabado ultra suave y estampado de máxima definición full color. Ideal para uso diario y eventos.',
     tag: 'DTF Full Color',
-    image: '/assets/new_images/media_1786601152822.png',
+    image: '/assets/telas/ajustadas/ajustada-2.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Piel de Durazno Premium', label: 'Piel de Durazno Premium' },
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     price: 48000,
     description: 'Elegante cuello tejido con tejido contrastado y pechera reforzada. Excelente para uniforme corporativo.',
     tag: 'Polo Cuello Tejido / Bordado',
-    image: '/assets/new_images/media_1786601157399.png',
+    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Algodón Piqué Tejido', label: 'Algodón Piqué 100%' },
@@ -62,7 +62,7 @@ export const PRODUCTS: Product[] = [
     price: 52000,
     description: 'Bordado de alta densidad en pechera o manga. Resistencia a lavadas frecuentes para trabajo duro.',
     tag: 'Dotación Empresarial',
-    image: '/assets/new_images/media_1786601199357.png',
+    image: '/assets/telas/cuello_tejido/cuello-2.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Piqué 220g Heavy', label: 'Piqué 220g Heavyweight' },
@@ -77,7 +77,7 @@ export const PRODUCTS: Product[] = [
     price: 35000,
     description: 'Textura microporosa de secado rápido. Sublimación full color que se fusiona con la fibra sin sentir peso.',
     tag: 'Poliéster Qatar / Sublimación',
-    image: '/assets/new_images/media_1786601199395.png',
+    image: '/assets/telas/qatar/qatar-1.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Poliéster Qatar DryFit', label: 'Poliéster Qatar DryFit' },
@@ -92,7 +92,7 @@ export const PRODUCTS: Product[] = [
     price: 38000,
     description: 'Ideal para equipos deportivos, uniformes de ciclismo o eventos al aire libre en clima cálido.',
     tag: 'Sublimación Total',
-    image: '/assets/new_images/media_1786601199455.png',
+    image: '/assets/telas/qatar/qatar-2.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Poliéster Qatar Malla', label: 'Poliéster Qatar Malla' },
@@ -107,7 +107,7 @@ export const PRODUCTS: Product[] = [
     price: 28000,
     description: 'Estampado suave y flexible apto para piel sensible de niños. Motivos de caricaturas y personajes.',
     tag: 'DTF Infantil / Algodón',
-    image: '/assets/new_images/media_1786601199514.png',
+    image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Algodón Infantil 100%', label: 'Algodón 100% Suave' },
@@ -122,7 +122,7 @@ export const PRODUCTS: Product[] = [
     price: 42000,
     description: 'Vinilo textil de alta visibilidad que brilla intensamente al reflejar luces en la noche. Ideal para ciclistas.',
     tag: 'Estampado Reflectivo Nocturno',
-    image: '/assets/new_images/media_1786601199525.png',
+    image: '/assets/telas/reflectivos_ninos/reflectivo-4.jpg',
     fabricLabel: 'Tela',
     fabrics: [
       { value: 'Algodón Negro Heavy', label: 'Algodón Negro 100%' },

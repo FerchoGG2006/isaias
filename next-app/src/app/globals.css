@@ -1,17 +1,17 @@
+@import "tailwindcss";
+
 :root {
-  --ink: #060A16;
-  --steel: #0E1730;
-  --steel-2: #152140;
-  --paper: #EAF3FB;
-  --paper-dim: #C9D9E8;
+  --ink: #0B0B0C;
+  --steel: #141416;
+  --steel-2: #1D1D20;
+  --paper: #F4F1EA;
+  --paper-dim: #A0A0A5;
+  --gold: #C8A96E;
   --blue: #1414E8;
-  --blue-deep: #0A0AA6;
   --cyan: #00AEEB;
-  --cyan-deep: #0E7AB8;
-  --red: #C24B3F;
   --wa: #25D366;
   --radius: 6px;
-  --shadow: 0 18px 40px -18px rgba(0, 6, 30, 0.6);
+  --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
   --sec-pad: clamp(56px, 7vw, 92px);
 }
 
@@ -27,22 +27,23 @@ body {
   margin: 0;
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--font-work-sans), 'Work Sans', sans-serif;
+  font-family: var(--font-inter), var(--font-work-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-h1, h2, h3, .display {
-  font-family: var(--font-anton), 'Anton', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 0.96;
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif !important;
 }
 
-.mono {
-  font-family: var(--font-space-mono), 'Space Mono', monospace;
+.font-sans {
+  font-family: var(--font-inter), sans-serif !important;
 }
+
+.mono, .font-mono {
+  font-family: var(--font-space-mono), monospace !important;
+}
+
 
 a {
   color: inherit;
@@ -64,10 +65,11 @@ button {
 }
 
 .wrap {
-  max-width: 1180px;
+  max-width: 1720px;
+  width: 100%;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: clamp(24px, 4vw, 64px);
+  padding-right: clamp(24px, 4vw, 64px);
 }
 
 .eyebrow {
@@ -104,8 +106,9 @@ header.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px clamp(24px, 4vw, 64px);
-  max-width: 100%;
+  padding: 16px clamp(24px, 4vw, 64px);
+  max-width: 1720px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -228,8 +231,8 @@ nav.links a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
 }
 
@@ -240,8 +243,9 @@ nav.links a:hover {
 }
 
 .hero-copy h1 {
-  font-size: clamp(42px, 6.5vw, 76px);
+  font-size: clamp(48px, 6.8vw, 88px);
   margin: 14px 0 18px;
+  line-height: 0.95;
 }
 
 .hero-copy h1 span {
@@ -249,9 +253,9 @@ nav.links a:hover {
 }
 
 .hero-copy p.lede {
-  font-size: 17px;
+  font-size: clamp(17px, 1.3vw, 20px);
   line-height: 1.6;
-  max-width: 48ch;
+  max-width: 54ch;
   color: #D7E6F4;
   opacity: 0.9;
   margin-bottom: 32px;
@@ -424,8 +428,8 @@ section {
 /* ---------- TECHNIQUES ---------- */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
 }
 
 .tech-card {
@@ -472,10 +476,10 @@ section {
 }
 
 /* ---------- GALLERY ---------- */
-.gallery-grid {
+.gallery-grid, .rich-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
 }
 
 .gallery-card {
@@ -596,8 +600,8 @@ section {
 
 .prod-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
 }
 
 .prod-card {
