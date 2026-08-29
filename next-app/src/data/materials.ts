@@ -1,3 +1,5 @@
+import { Material } from '@/domain';
+
 export interface MaterialStory {
   id: string;
   index: string;
@@ -9,6 +11,65 @@ export interface MaterialStory {
   technical: string[];
 }
 
+export const MATERIALS: Material[] = [
+  {
+    id: 'piel-durazno-220g',
+    name: 'Piel de Durazno Spandex',
+    slug: 'piel-de-durazno',
+    description:
+      'Tejido de microfibra cepillada con elastano de 220 g/m². Ofrece un tacto aterciopelado sumamente suave, caída fluida y memoria elástica que abraza la silueta sin deformarse.',
+    weight: '220 g',
+    composition: '92% Poliéster microfibra, 8% Spandex',
+    suitableTechniques: ['dtf-full-color', 'dtf-reflectivo', 'sublimacion-4k'],
+    image: '/assets/telas/ajustadas/ajustada-1.jpg',
+    alt: 'Detalle de tejido piel de durazno spandex 220g en prenda confeccionada',
+    points: ['Tacto aterciopelado', 'Caída fluida', 'Memoria elástica 220 g/m²', 'Antiarrugas'],
+    technicalSpecs: ['Gramaje: 220 g/m²', 'Elasticidad bidireccional', 'Acabado peach skin'],
+  },
+  {
+    id: 'algodon-pique-heavy',
+    name: 'Algodón Piqué Premium',
+    slug: 'algodon-pique',
+    description:
+      'Estructura de nido de abeja tejida en hilo peinado de alto gramaje. La base predilecta para bordados computarizados Wilcom 3D gracias a su firmeza estructural.',
+    weight: '230 g',
+    composition: '100% Algodón peinado o 65/35 Polialgodón',
+    suitableTechniques: ['bordado-3d', 'dtf-full-color'],
+    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
+    alt: 'Cuello tejido y pechera en tejido de algodón piqué',
+    points: ['Estructura firme', 'Tejido nido de abeja', 'Soporte para bordado denso', 'Frescura'],
+    technicalSpecs: ['Gramaje: 230 g/m²', 'Pechera reforzada', 'Cuello tejido con elasticidad'],
+  },
+  {
+    id: 'poliester-qatar-dryfit',
+    name: 'Poliéster Qatar DryFit',
+    slug: 'poliester-qatar',
+    description:
+      'Malla técnica microporosa de absorción y secado rápido. Diseñada para soportar la penetración molecular de la sublimación 4K a 200 °C sin perder transpirabilidad.',
+    weight: '160 g',
+    composition: '100% Poliéster técnico microporoso',
+    suitableTechniques: ['sublimacion-4k', 'dtf-reflectivo'],
+    image: '/assets/telas/qatar/qatar-1.jpg',
+    alt: 'Textura de poliéster Qatar deportivo con sublimación',
+    points: ['Secado rápido', 'Cero tacto con sublimación 4K', 'Microporos transpirables', 'Ligereza'],
+    technicalSpecs: ['Gramaje: 160 g/m²', 'Curado térmico a 200 °C', 'Tratamiento dry fit'],
+  },
+  {
+    id: 'algodon-peinado-100',
+    name: 'Algodón Peinado Heavyweight',
+    slug: 'algodon-peinado',
+    description:
+      'Algodón hilado en anillo de tacto compacto y superficie lisa libre de impurezas. Asegura una transferencia térmica perfecta para DTF reflectivo a 160 °C.',
+    weight: '200 g',
+    composition: '100% Algodón hilado en anillo',
+    suitableTechniques: ['dtf-reflectivo', 'dtf-full-color', 'bordado-3d'],
+    image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
+    alt: 'Prenda en algodón peinado con estampado reflectivo',
+    points: ['Superficie ultra lisa', 'Hipoalergénico suave', 'Curado DTF a 160 °C', 'Confort'],
+    technicalSpecs: ['Gramaje: 200 g/m²', 'Hilos compactados', 'Preencogido'],
+  },
+];
+
 export const materialStories: MaterialStory[] = [
   {
     id: 'dtf',
@@ -16,9 +77,9 @@ export const materialStories: MaterialStory[] = [
     title: 'DTF reflectivo',
     eyebrow: 'Materia en movimiento',
     image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
-    alt: 'Camiseta negra infantil con estampado gráfico personalizado',
-    points: ['Textura', 'Definición', 'Acabado', 'Reflejo'],
-    technical: ['DTF reflectivo', 'Curado a 160°C'],
+    alt: 'Camiseta negra infantil con estampado gráfico reflectivo personalizado',
+    points: ['Textura', 'Definición', 'Acabado', 'Reflejo nocturno'],
+    technical: ['DTF reflectivo', 'Curado a 160 °C', 'Elasticidad alta'],
   },
   {
     id: 'piel-durazno',
@@ -26,18 +87,22 @@ export const materialStories: MaterialStory[] = [
     title: 'Piel de durazno spandex',
     eyebrow: 'Superficie y caída',
     image: '/assets/telas/ajustadas/ajustada-1.jpg',
-    alt: 'Modelo usando una camiseta rosa personalizada',
-    points: ['Textura', 'Superficie', 'Acabado'],
-    technical: ['Piel de durazno spandex', '220 g'],
+    alt: 'Modelo usando prenda personalizada en piel de durazno spandex',
+    points: ['Textura aterciopelada', 'Superficie uniforme', 'Caída anatómica'],
+    technical: ['Piel de durazno spandex', '220 g', 'Memoria elástica'],
   },
   {
     id: 'bordado',
     index: '03',
-    title: 'Bordado 3D',
+    title: 'Bordado 3D Wilcom',
     eyebrow: 'Construcción de puntada',
     image: '/media/embroidery-machine.jpeg',
-    alt: 'Máquina de bordado computarizado en el taller',
-    points: ['Volumen', 'Relieve', 'Puntadas', 'Textura'],
-    technical: ['Bordado 3D', 'Computarizado Wilcom', 'Sobre algodón piqué'],
+    alt: 'Máquina de bordado computarizado en el taller de confección',
+    points: ['Volumen tridimensional', 'Relieve táctil', 'Puntadas de alta densidad'],
+    technical: ['Bordado 3D computarizado', 'Wilcom ES', 'Sobre algodón piqué'],
   },
 ];
+
+export function getMaterialById(id: string): Material | undefined {
+  return MATERIALS.find((m) => m.id === id || m.slug === id);
+}

@@ -1,9 +1,11 @@
-const configuredPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '');
+import { getBusiness } from '@/data/businesses';
+
+export const isaiasBusiness = getBusiness('isaias');
 
 export const brand = {
-  name: 'Variedades Isaías',
-  city: 'Valledupar, Cesar · Colombia',
-  whatsappPhone: configuredPhone ?? '',
+  name: isaiasBusiness.name,
+  city: `${isaiasBusiness.city}, ${isaiasBusiness.department} · ${isaiasBusiness.country}`,
+  whatsappPhone: isaiasBusiness.whatsappPhone,
 };
 
 export function quoteHref(message = 'Hola, quiero solicitar una cotización.') {
