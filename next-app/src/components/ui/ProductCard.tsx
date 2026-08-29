@@ -1,117 +1,123 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { Product } from '@/types';
-import { useCart } from '@/context/CartContext';
+import Link from 'next/link';
+import { Product } from '@/domain';
+import { Badge } from '@/components/ui/Badge';
 
-interface ProductCardProps {
+export interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const [selectedOption, setSelectedOption] = useState(product.fabrics[0]?.label || '');
-  const { addToCart } = useCart();
-  const [added, setAdded] = useState(false);
+  const categorySlug = product.categorySlug || 'ropa';
+  const productHref = `/catalogo/${categorySlug}/${product.slug}`;
 
-  const handleAdd = () => {
-    addToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      image: product.image,
-      optionSelected: selectedOption,
-    });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1800);
+  // Formato de precio según modalidad
+  const renderPricing = () => {
+    switch (product.pricing.type) {
+      case 'fixed':
+        return (
+          <div className="flex flex-col items-end">
+            <span className="font-mono font-bold text-sm text-[#C8A96E]">
+              ${(product.pricing.basePrice || 0).toLocaleString('es-CO')}
+            </span>
+            <span className="font-mono text-[10px] text-[#A0A0A5]">COP / {product.pricing.unit || 'unidad'}</span>
+          </div>
+        );
+      case 'from':
+        return (
+          <div className="flex flex-col items-end">
+            <span className="font-mono text-[11px] text-[#A0A0A5] uppercase tracking-wider">Desde</span>
+            <span className="font-mono font-bold text-sm text-[#C8A96E]">
+              ${(product.pricing.basePrice || 0).toLocaleString('es-CO')} COP
+            </span>
+          </div>
+        );
+      case 'on_quote':
+      default:
+        return (
+          <div className="flex flex-col items-end">
+            <span className="font-mono text-[11px] text-[#C8A96E] font-semibold uppercase tracking-wider bg-black/40 px-2 py-0.5 border border-[#C8A96E]/20 rounded-xs">
+              Bajo cotización
+            </span>
+          </div>
+        );
+    }
   };
 
   return (
-    <div className="group relative bg-[#0e0e11] border border-white/10 hover:border-[#C8A96E]/50 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#C8A96E]/10">
+    <article className="group relative bg-[#0e0e11] border border-white/10 hover:border-[#C8A96E]/50 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#C8A96E]/10">
       
-      {/* 1. PRODUCT MEDIA CONTAINER WITH SHOPIFY HOVER EFFECT */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#141419]">
-        {/* Category / Fabric Badge */}
-        <span className="absolute top-3 left-3 z-10 font-mono text-[10px] uppercase tracking-widest text-[#C8A96E] bg-[#070708]/90 backdrop-blur-md px-3 py-1 border border-[#C8A96E]/30 rounded-xs">
-          {product.tag}
-        </span>
+      {/* Product Image Container */}
+      <Link href={productHref} className="relative aspect-[4/5] w-full overflow-hidden bg-[#141419] block">
+        {/* Technical Fact / Material Badge */}
+        <div className="absolute top-3 left-3 z-10">
+          <Badge variant="gold" size="sm">
+            {product.tag}
+          </Badge>
+        </div>
 
         <Image
-          src={product.image}
+          src={product.featuredImage || product.images[0] || '/assets/hero-main.jpg'}
           alt={product.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover object-center group-hover:scale-106 transition-transform duration-700 ease-out"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
         />
         
         {/* Soft Vignette Bottom Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e11] via-transparent to-transparent opacity-80" />
-      </div>
+      </Link>
 
-      {/* 2. PRODUCT BODY & OPTIONS */}
+      {/* Product Information Body */}
       <div className="p-5 flex flex-col flex-1 justify-between gap-4">
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-2">
+          
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-sans font-bold text-lg text-[#F4F1EA] tracking-tight leading-snug group-hover:text-[#C8A96E] transition-colors">
-              {product.title}
-            </h3>
-            <span className="font-mono font-bold text-sm text-[#C8A96E] whitespace-nowrap pt-0.5">
-              ${product.price.toLocaleString('es-CO')}
-            </span>
+            <Link href={productHref} className="group-hover:text-[#C8A96E] transition-colors">
+              <h3 className="font-sans font-bold text-lg text-[#F4F1EA] tracking-tight leading-snug">
+                {product.title}
+              </h3>
+            </Link>
+            {renderPricing()}
           </div>
 
           <p className="text-xs text-[#A0A0A5] leading-relaxed line-clamp-2">
             {product.description}
           </p>
+
+          {/* Material & Specs subtle caption */}
+          {product.materialName && (
+            <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#A0A0A5]/80 pt-1">
+              <span className="text-[#C8A96E]">■</span>
+              <span>{product.materialName}</span>
+              {product.materialSpecs && product.materialSpecs.length > 0 && (
+                <span>· {product.materialSpecs.join(', ')}</span>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Fabric Specification Selector */}
-        <div className="flex flex-col gap-3 pt-1 border-t border-white/5">
-          <div className="flex items-center justify-between font-mono text-[11px] text-[#A0A0A5]">
-            <span className="uppercase tracking-wider">{product.fabricLabel}:</span>
-          </div>
+        {/* Action Footer */}
+        <div className="pt-3 border-t border-white/5 flex items-center justify-between gap-3">
+          <span className="font-mono text-[11px] text-[#A0A0A5] uppercase tracking-widest">
+            {product.customCapabilities.availableSizes.length > 1
+              ? `${product.customCapabilities.availableSizes.length} tallas`
+              : product.customCapabilities.availableSizes[0] || 'Personalizable'}
+          </span>
 
-          <select
-            className="w-full bg-[#16161d] text-[#F4F1EA] border border-white/15 focus:border-[#C8A96E] font-mono text-xs px-3 py-2 rounded-xs outline-none transition-colors cursor-pointer"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
-            title={`Seleccionar ${product.fabricLabel.toLowerCase()}`}
-            aria-label={`Seleccionar ${product.fabricLabel.toLowerCase()}`}
+          <Link
+            href={productHref}
+            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest font-bold text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"
           >
-            {product.fabrics.map((opt, idx) => (
-              <option key={idx} value={opt.label} className="bg-[#0e0e11] text-[#F4F1EA]">
-                {opt.label}
-              </option>
-            ))}
-          </select>
-
-          {/* Quick Add CTA */}
-          <button
-            onClick={handleAdd}
-            className={`w-full font-mono text-xs uppercase tracking-widest font-bold py-3 transition-all duration-300 rounded-xs flex items-center justify-center gap-2 ${
-              added
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/30'
-                : 'bg-[#F4F1EA] hover:bg-[#C8A96E] text-[#070708] shadow-md hover:shadow-xl'
-            }`}
-          >
-            {added ? (
-              <>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-                Añadido a Cotización
-              </>
-            ) : (
-              <>
-                <span>Añadir a Cotización</span>
-                <span className="text-base leading-none">+</span>
-              </>
-            )}
-          </button>
+            <span>Configurar</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
         </div>
       </div>
 
-    </div>
+    </article>
   );
 };
-
