@@ -5,7 +5,6 @@ import { MarqueeSection } from '@/components/sections/MarqueeSection';
 import { TechniquesSection } from '@/components/sections/TechniquesSection';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { CatalogSection } from '@/components/sections/CatalogSection';
-import { ProcessSection } from '@/components/sections/ProcessSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { CartDrawer } from '@/components/cart/CartDrawer';
@@ -21,7 +20,6 @@ export default function Home() {
         <TechniquesSection />
         <GallerySection />
         <CatalogSection />
-        <ProcessSection />
         <AboutSection />
         <ContactSection />
       </main>

@@ -2,9 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { PRODUCTS } from '@/data/products';
 import { CategoryId } from '@/types';
-import { ProductCard } from '@/components/ui/ProductCard';
 
 interface FeaturedCategoryItem {
   id: CategoryId;
@@ -51,13 +49,8 @@ const FEATURED_CATEGORIES: FeaturedCategoryItem[] = [
 ];
 
 export const CatalogSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<CategoryId>('todos');
+  const [isPaused, setIsPaused] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
-
-  const filteredProducts =
-    activeCategory === 'todos'
-      ? PRODUCTS
-      : PRODUCTS.filter((p) => p.category === activeCategory);
 
   const scrollSlider = (direction: 'left' | 'right') => {
     if (sliderRef.current) {
@@ -66,13 +59,32 @@ export const CatalogSection: React.FC = () => {
     }
   };
 
+  // Auto-play interval for Stone Island category slider
+  React.useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      if (sliderRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+        // Reset to start if reached near the end
+        if (scrollLeft + clientWidth >= scrollWidth - 20) {
+          sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          sliderRef.current.scrollBy({ left: 380, behavior: 'smooth' });
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <section id="catalogo" className="wrap py-16 sm:py-24 border-t border-white/10">
       
       {/* ========================================================================= */}
       {/* STONE ISLAND EXACT COMPRAR POR CATEGORÍA SECTION */}
       {/* ========================================================================= */}
-      <div className="mb-20">
+      <div className="mb-8">
         
         {/* Stone Island Header Bar (Three-Column Clean Monospace Bar) */}
         <div className="flex items-center justify-between gap-4 pb-4 border-b border-white/20 mb-6 font-mono text-xs uppercase tracking-[0.2em] text-[#F4F1EA]">
@@ -88,9 +100,12 @@ export const CatalogSection: React.FC = () => {
 
           {/* Right Pause & Slider Controls */}
           <div className="flex items-center gap-4 text-[#A0A0A5]">
-            <span className="hidden sm:inline text-[11px] hover:text-[#F4F1EA] cursor-pointer">
-              || PAUSAR
-            </span>
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="hidden sm:inline text-[11px] hover:text-[#F4F1EA] cursor-pointer transition-colors font-semibold"
+            >
+              {isPaused ? '▶ REANUDAR' : '|| PAUSAR'}
+            </button>
             <div className="flex items-center gap-3">
               <button
                 onClick={() => scrollSlider('left')}
@@ -110,19 +125,17 @@ export const CatalogSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Stone Island Category Cards Track */}
+        {/* Stone Island Category Cards Track - 0 GAP between columns */}
         <div
           ref={sliderRef}
-          className="flex items-stretch gap-6 overflow-x-auto pb-4 scrollbar-none scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="flex items-stretch gap-0 overflow-x-auto pb-4 scrollbar-none scroll-smooth"
         >
           {FEATURED_CATEGORIES.map((item) => (
             <div
               key={item.id}
-              onClick={() => {
-                setActiveCategory(item.id);
-                document.getElementById('grid-productos')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="group relative min-w-[290px] sm:min-w-[380px] md:min-w-[440px] h-[520px] sm:h-[580px] bg-[#0e0e11] overflow-hidden flex flex-col justify-end cursor-pointer select-none transition-transform duration-500"
+              className="group relative min-w-[290px] sm:min-w-[380px] md:min-w-[440px] h-[520px] sm:h-[580px] bg-[#0e0e11] border-r border-white/10 overflow-hidden flex flex-col justify-end cursor-pointer select-none transition-transform duration-500"
             >
               {/* Full Bleed Background Image */}
               <Image
@@ -161,49 +174,6 @@ export const CatalogSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* ========================================================================= */}
-      {/* MAIN CATALOG PRODUCT GRID (SEPARATED PRODUCT SECTION) */}
-      {/* ========================================================================= */}
-      <div id="grid-productos" className="pt-12 border-t border-white/10">
-        
-        {/* Product Catalog Section Title */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div className="flex flex-col gap-1">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-semibold">
-              PRENDAS & PRODUCTOS EN INVENTARIO
-            </span>
-            <h3 className="text-2xl sm:text-4xl font-sans font-bold text-[#F4F1EA] tracking-tight uppercase">
-              CATÁLOGO DE PRODUCTOS
-            </h3>
-          </div>
-
-          <div className="font-mono text-xs text-[#A0A0A5] uppercase tracking-widest bg-[#0e0e11] px-4 py-2 border border-white/10 rounded-sm self-start sm:self-auto">
-            MOSTRANDO <span className="text-[#C8A96E] font-bold">{filteredProducts.length}</span> PRENDAS
-          </div>
-        </div>
-
-        {/* Active Category Reset Banner */}
-        {activeCategory !== 'todos' && (
-          <div className="flex items-center justify-between gap-4 mb-6 font-mono text-xs text-[#A0A0A5] uppercase tracking-widest bg-[#0e0e11] px-5 py-3 border border-[#C8A96E]/40 rounded-sm">
-            <span>FILTRADO POR CATEGORÍA: <strong className="text-[#C8A96E]">{activeCategory.toUpperCase()}</strong></span>
-            <button
-              onClick={() => setActiveCategory('todos')}
-              className="text-[#F4F1EA] hover:text-[#C8A96E] underline cursor-pointer"
-            >
-              VER TODAS LAS PRENDAS (RESET)
-            </button>
-          </div>
-        )}
-
-        {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
