@@ -1,11 +1,24 @@
-export type CategoryId = 'todos' | 'ajustadas' | 'cuello_tejido' | 'qatar' | 'reflectivos_ninos' | 'mementos';
+export * from '@/domain';
+
+export type CategoryId =
+  | 'todos'
+  | 'ropa'
+  | 'accesorios'
+  | 'sublimacion'
+  | 'dotaciones'
+  | 'merchandising'
+  | 'ajustadas'
+  | 'cuello_tejido'
+  | 'qatar'
+  | 'reflectivos_ninos'
+  | 'mementos';
 
 export interface FabricOption {
   value: string;
   label: string;
 }
 
-export interface Product {
+export interface LegacyProduct {
   id: string;
   title: string;
   category: CategoryId;
@@ -18,20 +31,13 @@ export interface Product {
   sizes?: string[];
 }
 
-export interface CartItem {
+export interface LegacyCartItem {
   id: string;
   title: string;
   price: number;
   image: string;
   optionSelected: string;
   qty: number;
-}
-
-export interface Technique {
-  id: string;
-  title: string;
-  description: string;
-  iconSvg: string;
 }
 
 export interface ProcessStep {
