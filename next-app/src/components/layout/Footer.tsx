@@ -51,9 +51,12 @@ export const Footer: React.FC = () => {
               Servicios de Maquila
             </Link>
             <Link href="/#materiales" className="hover:text-[#C8A96E] transition-colors">
-              Explorador de Materiales
+              Explorador de Materiales (10X)
             </Link>
-            <Link href="/#nosotros" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
+              Archivo de Proyectos
+            </Link>
+            <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
               Sobre Nuestro Taller
             </Link>
           </div>

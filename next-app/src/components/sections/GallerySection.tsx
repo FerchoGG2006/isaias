@@ -78,7 +78,7 @@ export const GallerySection: React.FC = () => {
   }, [lightboxSrc]);
 
   return (
-    <section id="galeria" className="wrap py-24 border-t border-white/10">
+    <section id="galeria" className="wrap py-24 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -86,7 +86,7 @@ export const GallerySection: React.FC = () => {
           <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.28em] font-semibold">
             <span className="opacity-60">05</span>
             <span>/</span>
-            <span>WORK / 026 · ARCHIVO DE TALLER</span>
+            <span>PROYECTOS · ARCHIVO DE TALLER (WORK / 026)</span>
           </div>
           <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
             Archivo Visual de Proyectos

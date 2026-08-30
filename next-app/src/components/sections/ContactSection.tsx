@@ -9,7 +9,7 @@ export const ContactSection: React.FC = () => {
   const { url, isConfigured } = getWhatsAppUrl();
 
   return (
-    <section id="contacto" className="wrap py-28 border-t border-white/10">
+    <section id="contacto" className="wrap py-28 border-t border-white/10 scroll-mt-24">
       <div className="bg-[#0b0b0e] border border-white/10 rounded-sm p-8 sm:p-14 lg:p-20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 shadow-2xl relative overflow-hidden">
         
         {/* Subtle accent glow */}
@@ -17,7 +17,7 @@ export const ContactSection: React.FC = () => {
 
         <div className="flex flex-col gap-5 max-w-2xl relative z-10">
           <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#C8A96E] font-semibold">
-            09 / CONTACTO DIRECTO · VALLEDUPAR
+            09 / ATENCIÓN DIRECTA · COTIZAR EN VALLEDUPAR
           </span>
           <h2 className="font-sans font-extrabold text-4xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-tight">
             ¿Qué vamos <br className="hidden sm:block" />

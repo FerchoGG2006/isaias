@@ -4,8 +4,8 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { MarqueeSection } from '@/components/sections/MarqueeSection';
 import { CreateCategoriesSection } from '@/components/sections/CreateCategoriesSection';
 import { CatalogSection } from '@/components/sections/CatalogSection';
-import { TechniquesSection } from '@/components/sections/TechniquesSection';
 import { MaterialExplorer } from '@/components/sections/MaterialExplorer';
+import { TechniquesSection } from '@/components/sections/TechniquesSection';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ForTeamsSection } from '@/components/sections/ForTeamsSection';
@@ -19,37 +19,37 @@ export default function Home() {
     <>
       <Header />
       <main id="top" className="min-h-screen bg-[#070708] text-[#F4F1EA] selection:bg-[#C8A96E] selection:text-[#070708]">
-        {/* 01 HERO */}
+        {/* INICIO */}
         <HeroSection />
 
-        {/* 02 THE ATELIER */}
+        {/* CINTA DE OFICIO & MANIFIESTO */}
         <MarqueeSection />
 
-        {/* 03 QUÉ QUIERES CREAR */}
+        {/* 01 · LÍNEAS DE CREACIÓN */}
         <CreateCategoriesSection />
 
-        {/* 04 THE COLLECTION / 026 */}
+        {/* 02 · CATÁLOGO & SILUETAS */}
         <CatalogSection />
 
-        {/* 05 THE PROCESS OF PRINT */}
-        <TechniquesSection />
-
-        {/* 06 FEEL THE MATERIAL */}
+        {/* 03 · MATERIA PRIMA (10X) */}
         <MaterialExplorer />
 
-        {/* 07 WORK / 026 */}
+        {/* 04 · FIJACIÓN INDUSTRIAL & TÉCNICAS */}
+        <TechniquesSection />
+
+        {/* 05 · ARCHIVO DE PROYECTOS */}
         <GallerySection />
 
-        {/* 08 MADE IN VALLEDUPAR */}
+        {/* 06 · RAÍZ & TALLER EN VALLEDUPAR */}
         <AboutSection />
 
-        {/* 09 FOR TEAMS */}
+        {/* 07 · PRODUCCIÓN EN VOLUMEN & EMPRESAS */}
         <ForTeamsSection />
 
-        {/* 10 FROM IDEA TO PIECE */}
+        {/* 08 · METODOLOGÍA & FLUJO */}
         <ProcessSection />
 
-        {/* 11 CTA FINAL */}
+        {/* 09 · CONTACTO & COTIZACIÓN */}
         <ContactSection />
       </main>
       <Footer />
@@ -58,4 +58,5 @@ export default function Home() {
     </>
   );
 }
+
 

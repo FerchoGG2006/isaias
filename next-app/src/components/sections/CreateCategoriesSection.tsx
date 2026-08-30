@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const CreateCategoriesSection: React.FC = () => {
   return (
-    <section className="wrap py-24 border-t border-white/10">
+    <section id="crear" className="wrap py-24 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -14,15 +14,16 @@ export const CreateCategoriesSection: React.FC = () => {
           <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.28em] font-semibold">
             <span className="opacity-60">01</span>
             <span>/</span>
-            <span>LÍNEAS DE CREACIÓN & TALLER</span>
+            <span>LÍNEAS DE CREACIÓN · ¿QUÉ QUIERES CREAR?</span>
           </div>
           <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
-            ¿Qué quieres crear?
+            Diseña, Personaliza y Viste
           </h2>
           <p className="text-sm sm:text-base text-[#A0A0A5] leading-relaxed font-light mt-1">
-            Desde piezas individuales en piel de durazno spandex hasta producciones de dotación corporativa de gran formato.
+            Desde prendas individuales en piel de durazno spandex hasta dotaciones corporativas y artículos de merchandising.
           </p>
         </div>
+
 
         <Link
           href="/catalogo"

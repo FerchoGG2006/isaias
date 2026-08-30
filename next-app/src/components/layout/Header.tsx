@@ -45,7 +45,7 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Navigation Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-[#D0CFC9]">
+        <nav className="hidden md:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-[#D0CFC9]">
           <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
             Catálogo
           </Link>
@@ -55,7 +55,10 @@ export const Header: React.FC = () => {
           <Link href="/#materiales" className="hover:text-[#C8A96E] transition-colors">
             Materiales
           </Link>
-          <Link href="/#nosotros" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
+            Proyectos
+          </Link>
+          <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
             Taller
           </Link>
           <Link href="/#contacto" className="hover:text-[#C8A96E] transition-colors">
@@ -146,17 +149,24 @@ export const Header: React.FC = () => {
               onClick={closeMobileMenu}
               className="py-2 border-b border-white/5 hover:text-[#C8A96E] transition-colors"
             >
-              Servicios de Estampación & Bordado
+              Servicios & Maquila
             </Link>
             <Link
               href="/#materiales"
               onClick={closeMobileMenu}
               className="py-2 border-b border-white/5 hover:text-[#C8A96E] transition-colors"
             >
-              Inspección de Materiales
+              Inspección de Materiales (10X)
             </Link>
             <Link
-              href="/#nosotros"
+              href="/#galeria"
+              onClick={closeMobileMenu}
+              className="py-2 border-b border-white/5 hover:text-[#C8A96E] transition-colors"
+            >
+              Archivo de Proyectos
+            </Link>
+            <Link
+              href="/#taller"
               onClick={closeMobileMenu}
               className="py-2 border-b border-white/5 hover:text-[#C8A96E] transition-colors"
             >
@@ -167,7 +177,7 @@ export const Header: React.FC = () => {
               onClick={closeMobileMenu}
               className="py-2 hover:text-[#C8A96E] transition-colors"
             >
-              Contacto & Ubicación
+              Contacto & Cotización
             </Link>
           </nav>
 

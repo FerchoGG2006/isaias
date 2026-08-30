@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="nosotros" className="wrap py-24 border-t border-white/10">
+    <section id="taller" className="wrap py-24 border-t border-white/10 scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
         {/* Left Column: Workshop Real Imagery (6 Cols) */}
@@ -30,7 +30,7 @@ export const AboutSection: React.FC = () => {
         <div className="lg:col-span-6 flex flex-col gap-8">
           <div className="flex flex-col gap-3">
             <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#C8A96E] font-semibold">
-              06 / OFICIO & RAÍZ
+              06 / RAÍZ & OFICIO · MADE IN VALLEDUPAR
             </span>
             <h2 className="font-sans font-extrabold text-4xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.05]">
               MADE IN <br />
