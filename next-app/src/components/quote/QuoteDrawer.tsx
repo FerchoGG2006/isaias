@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useQuote } from '@/context/QuoteContext';
 import { Button } from '@/components/ui/Button';
@@ -22,6 +22,22 @@ export const QuoteDrawer: React.FC = () => {
   } = useQuote();
 
   const [showContactForm, setShowContactForm] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsQuoteDrawerOpen(false);
+      }
+    };
+    if (isQuoteDrawerOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isQuoteDrawerOpen, setIsQuoteDrawerOpen]);
 
   if (!isQuoteDrawerOpen) return null;
 
