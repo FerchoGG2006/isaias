@@ -1,123 +1,102 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import { MacroViewer } from '@/components/catalog/MacroViewer';
 import { materialStories } from '@/data/materials';
 
 export function MaterialExplorer() {
-  const macroMaterial = materialStories[0]; // Piel de durazno spandex 220g
+  const [selectedMaterialIndex, setSelectedMaterialIndex] = useState(0);
+  const activeMaterial = materialStories[selectedMaterialIndex] || materialStories[0];
 
   return (
-    <section id="materiales" className="wrap py-20 border-t border-white/10">
+    <section id="materiales" className="wrap py-24 border-t border-white/10">
       
-      {/* Section Head */}
-      <div className="flex flex-col gap-2 max-w-2xl mb-12">
-        <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.25em] font-semibold">
-          <span className="opacity-60">01</span>
-          <span>/</span>
-          <span>CIENCIA TEXTIL & MATERIA PRIMA</span>
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col gap-2 max-w-2xl">
+          <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.28em] font-semibold">
+            <span className="opacity-60">04</span>
+            <span>/</span>
+            <span>FEEL THE MATERIAL · SENSACIÓN & TEXTURA</span>
+          </div>
+          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
+            Siente la Materia Prima
+          </h2>
+          <p className="text-sm sm:text-base text-[#A0A0A5] leading-relaxed font-light mt-1">
+            Gramajes densos, hilatura peinada y confort táctil. Usa el lente macro 10X para inspeccionar la fibra real.
+          </p>
         </div>
-        <h2 className="font-sans font-bold text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight">
-          Inspección de Materiales en Alta Definición
-        </h2>
-        <p className="text-sm sm:text-base text-[#A0A0A5] leading-relaxed font-light mt-1">
-          Una lectura pausada de las materias primas, gramajes y acabados textiles procesados en nuestro taller de Valledupar.
-        </p>
+
+        {/* Material Switcher Tabs */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none font-mono text-xs uppercase tracking-wider">
+          {materialStories.map((mat, idx) => (
+            <button
+              key={mat.id}
+              onClick={() => setSelectedMaterialIndex(idx)}
+              className={`px-3.5 py-2 rounded-xs border transition-all cursor-pointer whitespace-nowrap ${
+                idx === selectedMaterialIndex
+                  ? 'bg-[#C8A96E] border-[#C8A96E] text-[#070708] font-bold shadow-md'
+                  : 'bg-[#141419] border-white/10 text-[#A0A0A5] hover:text-[#F4F1EA] hover:border-white/30'
+              }`}
+            >
+              {mat.title.split('·')[0].trim()}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Interactive 10X Macro Inspection Shell */}
-      <div className="bg-[#121216] border border-white/10 rounded-sm p-6 sm:p-10 mb-12 shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      {/* Main Protagonist 10X Tactile Stage */}
+      <div className="bg-[#0e0e11] border border-white/10 rounded-sm p-6 sm:p-10 lg:p-12 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: Technical Narrative (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] bg-[#C8A96E]/10 border border-[#C8A96E]/30 px-3 py-1 rounded-xs w-fit">
-              INSPECCIÓN INTERACTIVA · 10X
-            </span>
+          {/* Left Column: Sensory Narrative (5 Cols) */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] bg-[#C8A96E]/10 border border-[#C8A96E]/30 px-3 py-1 rounded-xs">
+                INSPECCIÓN 10X · TACTO
+              </span>
+              <span className="font-mono text-xs text-[#A0A0A5]">{activeMaterial.index}</span>
+            </div>
             
-            <h3 className="font-sans font-bold text-2xl text-[#F4F1EA] tracking-tight">
-              Piel de Durazno Spandex · 220 g
+            <h3 className="font-sans font-extrabold text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight leading-tight">
+              {activeMaterial.title}
             </h3>
             
-            <p className="text-xs sm:text-sm text-[#A0A0A5] leading-relaxed">
-              Mueve el cursor o toca la superficie para activar el lente macroscópico 10X. Observa la uniformidad del tejido peinado, la ausencia de motas y la densidad de 220 gramos diseñada para fijación térmica DTF y confort ergonómico.
+            <p className="text-sm text-[#D0CFC9] leading-relaxed font-light">
+              Mueve el cursor o desliza sobre el lienzo para activar el aumento 10X. Aprecia la continuidad del hilo, la suavidad al contacto y la respuesta térmica de la base.
             </p>
 
-            <div className="flex flex-wrap gap-2 pt-3 border-t border-white/5 font-mono text-[10px] text-[#C8A96E]">
-              <span className="bg-black/60 px-2.5 py-1 border border-white/10 rounded-xs">
-                ✓ 220 g/m² densidad
-              </span>
-              <span className="bg-black/60 px-2.5 py-1 border border-white/10 rounded-xs">
-                ✓ Microfibra esmerilada
-              </span>
-              <span className="bg-black/60 px-2.5 py-1 border border-white/10 rounded-xs">
-                ✓ Elasticidad 4-way
-              </span>
+            <div className="flex flex-col gap-2 pt-4 border-t border-white/5 font-mono text-xs text-[#A0A0A5]">
+              {activeMaterial.points.map((pt, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="text-[#C8A96E] font-bold">✓</span>
+                  <span className="text-[#F4F1EA]">{pt}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              {activeMaterial.technical.map((tech) => (
+                <span key={tech} className="font-mono text-[10px] bg-black/60 text-[#C8A96E] px-2.5 py-1 border border-white/10 rounded-xs">
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Right Column: 10X Loupe Viewer (7 Cols) */}
           <div className="lg:col-span-7">
             <MacroViewer
-              image={macroMaterial.image}
-              alt="Inspección macroscópica de Piel de durazno spandex 220g"
+              key={activeMaterial.id}
+              image={activeMaterial.image}
+              alt={`Inspección macroscópica de ${activeMaterial.title}`}
             />
           </div>
 
         </div>
       </div>
 
-      {/* 3 Structured Material Story Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {materialStories.map((story) => (
-          <article
-            key={story.id}
-            className="group bg-[#121216] border border-white/10 hover:border-[#C8A96E]/50 rounded-sm overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-black/60"
-          >
-            <div className="relative w-full aspect-[16/10] bg-[#0d0d10] overflow-hidden border-b border-white/10">
-              <Image
-                src={story.image}
-                alt={story.alt}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 left-3 z-10 font-mono text-[9px] uppercase tracking-[0.2em] text-[#C8A96E] bg-black/80 backdrop-blur-md px-2.5 py-1 border border-[#C8A96E]/30 rounded-xs">
-                {story.eyebrow}
-              </div>
-            </div>
-
-            <div className="p-6 flex flex-col gap-3 flex-1 justify-between">
-              <div>
-                <span className="font-mono text-[10px] font-bold text-[#C8A96E] tracking-widest block mb-1">
-                  {story.index}
-                </span>
-                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
-                  {story.title}
-                </h4>
-                <ul className="mt-3 flex flex-col gap-1.5 font-mono text-xs text-[#A0A0A5]">
-                  {story.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-1.5">
-                      <span className="text-[#C8A96E] shrink-0">—</span>
-                      <span>{pt}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-4 border-t border-white/5 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#A0A0A5]">
-                {story.technical.map((tech) => (
-                  <span key={tech} className="bg-black/40 px-2 py-0.5 border border-white/5 rounded-xs">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
     </section>
   );
 }
+

@@ -6,79 +6,69 @@ import Link from 'next/link';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="nosotros" className="wrap py-20 border-t border-white/10">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <section id="nosotros" className="wrap py-24 border-t border-white/10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        {/* Left Column: Workshop Photos (5 Cols) */}
-        <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-          <div className="relative aspect-[3/4] rounded-sm overflow-hidden border border-white/10 shadow-2xl">
-            <Image
-              src="/assets/telas/cuello_tejido/cuello-2.jpg"
-              alt="Taller de confección y bordado en Valledupar"
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-[3/4] rounded-sm overflow-hidden border border-white/10 shadow-2xl mt-8">
-            <Image
-              src="/assets/telas/ajustadas/ajustada-3.jpg"
-              alt="Detalle de estampado de alta precisión en taller"
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="object-cover"
-            />
+        {/* Left Column: Workshop Real Imagery (6 Cols) */}
+        <div className="lg:col-span-6 relative aspect-[4/5] rounded-sm overflow-hidden bg-[#141419] border border-white/10 shadow-2xl">
+          <Image
+            src="/assets/telas/ajustadas/ajustada-4.jpg"
+            alt="Taller y confección real en Valledupar"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070708] via-transparent to-black/30" />
+
+          <div className="absolute bottom-6 left-6 right-6 font-mono text-xs text-[#F4F1EA] bg-black/80 backdrop-blur-md p-4 border border-white/10 rounded-xs flex items-center justify-between">
+            <span className="text-[#C8A96E] font-bold uppercase tracking-wider">TALLER ACTIVO · VALLEDUPAR</span>
+            <span className="text-[#A0A0A5] text-[11px]">CALIBRACIÓN WILCOM 3D</span>
           </div>
         </div>
 
-        {/* Right Column: Editorial Copy (7 Cols) */}
-        <div className="lg:col-span-7 flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.25em] font-semibold">
-              <span className="opacity-60">06</span>
-              <span>/</span>
-              <span>ESTUDIO & RAÍZ VALLENATA</span>
-            </div>
-            <h2 className="font-sans font-bold text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight">
-              Variedades Isaías · Valledupar
+        {/* Right Column: Editorial Manifesto (6 Cols) */}
+        <div className="lg:col-span-6 flex flex-col gap-8">
+          <div className="flex flex-col gap-3">
+            <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#C8A96E] font-semibold">
+              06 / OFICIO & RAÍZ
+            </span>
+            <h2 className="font-sans font-extrabold text-4xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.05]">
+              MADE IN <br />
+              <span className="text-[#C8A96E] font-serif italic font-normal">VALLEDUPAR.</span>
             </h2>
           </div>
 
-          <blockquote className="font-serif italic text-lg sm:text-xl text-[#C8A96E] border-l-2 border-[#C8A96E] pl-4 my-1">
-            &ldquo;Calidad que resalta en cada fibra, hecha por manos de nuestra tierra.&rdquo;
-          </blockquote>
-
-          <div className="flex flex-col gap-3 text-xs sm:text-sm text-[#A0A0A5] leading-relaxed font-light">
-            <p>
-              Somos un estudio y taller especializado en transformar ideas en prendas y piezas personalizadas con estándares de confección superior. Desde pedidos individuales exclusivos hasta dotaciones institucionales de alto volumen para empresas del Cesar y el Caribe.
+          <div className="flex flex-col gap-4 text-sm sm:text-base text-[#D0CFC9] leading-relaxed font-light">
+            <p className="text-[#F4F1EA] font-medium">
+              Una idea. Una máquina. Una prenda bien hecha.
             </p>
             <p>
-              Trabajamos con maquinaria industrial calibrada, software de ponchado computarizado Wilcom y sustratos de máxima durabilidad para asegurar que cada prenda mantenga su color, elasticidad y definición tras innumerables lavadas.
+              Desde Valledupar transformamos diseños en piezas textiles que se pueden vestir, obsequiar, comercializar y recordar. Sin intermediarios, con control directo sobre cada metro de tela, curva térmica de curado y densidad de puntada.
             </p>
           </div>
 
-          {/* Workshop Facts */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-white/10 font-mono text-xs">
-            <div>
-              <span className="text-[#C8A96E] font-bold block text-sm">Valledupar</span>
-              <span className="text-[#A0A0A5] text-[11px]">Punto físico de entrega</span>
+          {/* 3 Authentic Craft Pillars */}
+          <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 font-mono text-xs">
+            <div className="flex flex-col gap-1">
+              <span className="text-[#C8A96E] font-bold text-sm">LOCAL</span>
+              <span className="text-[#A0A0A5] text-[11px]">Valledupar, Cesar</span>
             </div>
-            <div>
-              <span className="text-[#C8A96E] font-bold block text-sm">Todo el Cesar</span>
-              <span className="text-[#A0A0A5] text-[11px]">Despachos intermunicipales</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-[#C8A96E] font-bold text-sm">OFICIO</span>
+              <span className="text-[#A0A0A5] text-[11px]">Bordado & Estampación</span>
             </div>
-            <div>
-              <span className="text-[#C8A96E] font-bold block text-sm">Nacional</span>
-              <span className="text-[#A0A0A5] text-[11px]">Envíos a toda Colombia</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-[#C8A96E] font-bold text-sm">ESCALA</span>
+              <span className="text-[#A0A0A5] text-[11px]">Unidad → Producción</span>
             </div>
           </div>
 
           <div className="pt-2">
             <Link
               href="/#contacto"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#F4F1EA] hover:text-[#C8A96E] transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#F4F1EA] hover:text-[#C8A96E] transition-colors"
             >
-              <span>Conoce nuestra ubicación y canales directos</span>
+              <span>Conoce nuestra ubicación física en Valledupar</span>
               <span>→</span>
             </Link>
           </div>
@@ -89,3 +79,4 @@ export const AboutSection: React.FC = () => {
     </section>
   );
 };
+

@@ -14,6 +14,8 @@ interface QuoteContextType {
   clearQuote: () => void;
   isQuoteDrawerOpen: boolean;
   setIsQuoteDrawerOpen: (open: boolean) => void;
+  openQuoteDrawer: () => void;
+  closeQuoteDrawer: () => void;
   isAdminOpen: boolean;
   setIsAdminOpen: (open: boolean) => void;
   totalUnits: number;
@@ -39,6 +41,7 @@ interface QuoteContextType {
   subtotal: number;
   whatsappPhone: string;
 }
+
 
 const QuoteContext = createContext<QuoteContextType | undefined>(undefined);
 
@@ -167,6 +170,9 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return getWhatsAppQuoteUrl(request, business);
   };
 
+  const openQuoteDrawer = () => setIsQuoteDrawerOpen(true);
+  const closeQuoteDrawer = () => setIsQuoteDrawerOpen(false);
+
   return (
     <QuoteContext.Provider
       value={{
@@ -177,8 +183,11 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         clearQuote,
         isQuoteDrawerOpen,
         setIsQuoteDrawerOpen,
+        openQuoteDrawer,
+        closeQuoteDrawer,
         isAdminOpen,
         setIsAdminOpen,
+
         totalUnits,
         estimatedTotal,
         toastMessage,
