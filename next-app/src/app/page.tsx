@@ -1,11 +1,11 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { MarqueeSection } from '@/components/sections/MarqueeSection';
-import { CreateCategoriesSection } from '@/components/sections/CreateCategoriesSection';
+import { ManifestoSection } from '@/components/sections/ManifestoSection';
 import { CatalogSection } from '@/components/sections/CatalogSection';
-import { MaterialExplorer } from '@/components/sections/MaterialExplorer';
+import { FeaturedPieceSection } from '@/components/sections/FeaturedPieceSection';
 import { TechniquesSection } from '@/components/sections/TechniquesSection';
+import { MaterialExplorer } from '@/components/sections/MaterialExplorer';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ForTeamsSection } from '@/components/sections/ForTeamsSection';
@@ -19,37 +19,37 @@ export default function Home() {
     <>
       <Header />
       <main id="top" className="min-h-screen bg-[#070708] text-[#F4F1EA] selection:bg-[#C8A96E] selection:text-[#070708]">
-        {/* INICIO */}
+        {/* 01 · HERO EDITORIAL */}
         <HeroSection />
 
-        {/* CINTA DE OFICIO & MANIFIESTO */}
-        <MarqueeSection />
+        {/* 02 · MANIFIESTO DE ESTUDIO */}
+        <ManifestoSection />
 
-        {/* 01 · LÍNEAS DE CREACIÓN */}
-        <CreateCategoriesSection />
-
-        {/* 02 · CATÁLOGO & SILUETAS */}
+        {/* 03 · THE COLLECTION (LOOKBOOK) */}
         <CatalogSection />
 
-        {/* 03 · MATERIA PRIMA (10X) */}
-        <MaterialExplorer />
+        {/* 04 · FEATURED PIECE (SILUETA PROTAGONISTA) */}
+        <FeaturedPieceSection />
 
-        {/* 04 · FIJACIÓN INDUSTRIAL & TÉCNICAS */}
+        {/* 05 · TECHNIQUES (PROCESOS TEXTILES) */}
         <TechniquesSection />
 
-        {/* 05 · ARCHIVO DE PROYECTOS */}
+        {/* 06 · MATERIALS (FEEL THE MATERIAL 10X) */}
+        <MaterialExplorer />
+
+        {/* 07 · LOOKBOOK / PROJECTS (ARCHIVO VISUAL) */}
         <GallerySection />
 
-        {/* 06 · RAÍZ & TALLER EN VALLEDUPAR */}
+        {/* 08 · ATELIER (MADE IN VALLEDUPAR) */}
         <AboutSection />
 
-        {/* 07 · PRODUCCIÓN EN VOLUMEN & EMPRESAS */}
+        {/* 09 · FOR TEAMS (PRODUCCIÓN EMPRESARIAL) */}
         <ForTeamsSection />
 
-        {/* 08 · METODOLOGÍA & FLUJO */}
+        {/* 10 · PROCESS (METODOLOGÍA NARRATIVA) */}
         <ProcessSection />
 
-        {/* 09 · CONTACTO & COTIZACIÓN */}
+        {/* 11 · FINAL CTA (¿QUÉ VAMOS A CREAR?) */}
         <ContactSection />
       </main>
       <Footer />
@@ -58,5 +58,6 @@ export default function Home() {
     </>
   );
 }
+
 
 

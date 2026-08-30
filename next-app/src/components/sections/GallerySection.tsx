@@ -3,57 +3,52 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-interface EditorialProject {
+interface LookbookProject {
   id: string;
-  num: string;
+  tag: string;
   title: string;
+  productType: string;
   technique: string;
-  material: string;
-  location: string;
+  context: string;
   image: string;
-  aspect: 'tall' | 'wide' | 'square';
 }
 
-const EDITORIAL_PROJECTS: EditorialProject[] = [
+const LOOKBOOK_PROJECTS: LookbookProject[] = [
   {
-    id: 'proj-1',
-    num: 'WORK / 01',
-    title: 'Camiseta Spandex Negra',
-    technique: 'DTF Reflectivo 160°C',
-    material: 'Piel de Durazno 220g',
-    location: 'Valledupar · 2026',
+    id: 'project-01',
+    tag: 'PROJECT 01',
+    title: 'Silueta Ajustada Negra',
+    productType: 'Camiseta Piel de Durazno 220g',
+    technique: 'DTF Reflectivo a 160 °C',
+    context: 'Línea de moda personal · Valledupar',
     image: '/assets/telas/ajustadas/ajustada-2.jpg',
-    aspect: 'tall',
   },
   {
-    id: 'proj-2',
-    num: 'WORK / 02',
+    id: 'project-02',
+    tag: 'PROJECT 02',
     title: 'Polo Blanco Cuello Tejido',
+    productType: 'Algodón Piqué Pesado',
     technique: 'Bordado Computarizado 3D Wilcom',
-    material: 'Algodón Piqué Pesado',
-    location: 'Estudio Textil Isaías',
+    context: 'Dotación institucional de estudio',
     image: '/assets/telas/cuello_tejido/cuello-2.jpg',
-    aspect: 'wide',
   },
   {
-    id: 'proj-3',
-    num: 'WORK / 03',
-    title: 'Estampado Reflectivo Infantil',
-    technique: 'DTF Alta Visibilidad',
-    material: 'Fijación Térmica Curada',
-    location: 'Producción Local',
-    image: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg',
-    aspect: 'tall',
-  },
-  {
-    id: 'proj-4',
-    num: 'WORK / 04',
-    title: 'Textura Qatar Transpirable',
-    technique: 'Sublimación 4K 200°C',
-    material: 'Poliéster Microfibra Deportiva',
-    location: 'Maquila Valledupar',
+    id: 'project-03',
+    tag: 'PROJECT 03',
+    title: 'Prenda Deportiva Transpirable',
+    productType: 'Poliéster Microfibra Qatar',
+    technique: 'Sublimación Fotográfica 4K a 200 °C',
+    context: 'Equipamiento deportivo y eventos',
     image: '/assets/telas/qatar/qatar-3.jpg',
-    aspect: 'wide',
+  },
+  {
+    id: 'project-04',
+    tag: 'PROJECT 04',
+    title: 'Grafismo Reflectivo Infantil',
+    productType: 'Fijación Térmica Curada',
+    technique: 'DTF Alta Visibilidad',
+    context: 'Colección cápsula de taller',
+    image: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg',
   },
 ];
 
@@ -78,141 +73,139 @@ export const GallerySection: React.FC = () => {
   }, [lightboxSrc]);
 
   return (
-    <section id="galeria" className="wrap py-24 border-t border-white/10 scroll-mt-24">
+    <section id="galeria" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-        <div className="flex flex-col gap-2 max-w-2xl">
-          <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.28em] font-semibold">
-            <span className="opacity-60">05</span>
-            <span>/</span>
-            <span>PROYECTOS · ARCHIVO DE TALLER (WORK / 026)</span>
-          </div>
-          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
-            Archivo Visual de Proyectos
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24">
+        <div className="flex flex-col gap-3 max-w-2xl">
+          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
+            07 / ARCHIVO VISUAL
+          </span>
+          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
+            LOOKBOOK & PROJECTS
           </h2>
-          <p className="text-sm sm:text-base text-[#A0A0A5] leading-relaxed font-light mt-1">
-            Fotografías reales capturadas directamente en nuestro estudio en Valledupar. Piezas producidas y entregadas.
+          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
+            &ldquo;Proyectos reales materializados en nuestro taller de Valledupar.&rdquo;
           </p>
         </div>
 
         <span className="font-mono text-xs text-[#A0A0A5] uppercase tracking-widest self-start md:self-auto">
-          EDICIÓN 2026
+          EDICIÓN 026
         </span>
       </div>
 
-      {/* Editorial Spacious Asymmetric Showcase */}
-      <div className="flex flex-col gap-16 lg:gap-24">
+      {/* Asymmetric Maison Project Layouts */}
+      <div className="flex flex-col gap-20 sm:gap-28">
         
-        {/* Row 1: Split Tall + Wide with Negative Space */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        {/* Pair 1: Project 01 (Large Portrait 5 Cols) + Project 02 (Wide Landscape 7 Cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Work 01 (5 Cols) */}
+          {/* Project 01 */}
           <div
             className="lg:col-span-5 flex flex-col gap-4 group cursor-pointer"
-            onClick={() => setLightboxSrc(EDITORIAL_PROJECTS[0].image)}
+            onClick={() => setLightboxSrc(LOOKBOOK_PROJECTS[0].image)}
           >
-            <div className="relative aspect-[3/4] w-full rounded-sm overflow-hidden bg-[#141419] border border-white/10 group-hover:border-[#C8A96E]/50 transition-all duration-500 shadow-2xl">
+            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#141419] border border-white/5 group-hover:border-[#C8A96E]/50 transition-all duration-700 shadow-2xl">
               <Image
-                src={EDITORIAL_PROJECTS[0].image}
-                alt={EDITORIAL_PROJECTS[0].title}
+                src={LOOKBOOK_PROJECTS[0].image}
+                alt={LOOKBOOK_PROJECTS[0].title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
             </div>
 
             <div className="flex items-start justify-between gap-4 font-mono text-xs pt-1">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[#C8A96E] font-bold tracking-widest text-[11px]">{EDITORIAL_PROJECTS[0].num}</span>
-                <span className="font-sans font-bold text-base text-[#F4F1EA]">{EDITORIAL_PROJECTS[0].title}</span>
-                <span className="text-[#A0A0A5] text-[11px]">{EDITORIAL_PROJECTS[0].material} · {EDITORIAL_PROJECTS[0].technique}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[#C8A96E] font-bold tracking-[0.25em] text-[11px]">{LOOKBOOK_PROJECTS[0].tag}</span>
+                <span className="font-sans font-bold text-xl text-[#F4F1EA]">{LOOKBOOK_PROJECTS[0].title}</span>
+                <span className="text-[#A0A0A5] text-[11px]">{LOOKBOOK_PROJECTS[0].productType} · {LOOKBOOK_PROJECTS[0].technique}</span>
               </div>
-              <span className="text-[#A0A0A5] text-[11px] shrink-0">{EDITORIAL_PROJECTS[0].location}</span>
+              <span className="text-[#A0A0A5] text-[11px] shrink-0 text-right">{LOOKBOOK_PROJECTS[0].context}</span>
             </div>
           </div>
 
-          {/* Work 02 (7 Cols) */}
+          {/* Project 02 */}
           <div
             className="lg:col-span-7 flex flex-col gap-4 group cursor-pointer lg:pl-6"
-            onClick={() => setLightboxSrc(EDITORIAL_PROJECTS[1].image)}
+            onClick={() => setLightboxSrc(LOOKBOOK_PROJECTS[1].image)}
           >
-            <div className="relative aspect-[16/11] w-full rounded-sm overflow-hidden bg-[#141419] border border-white/10 group-hover:border-[#C8A96E]/50 transition-all duration-500 shadow-2xl">
+            <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#141419] border border-white/5 group-hover:border-[#C8A96E]/50 transition-all duration-700 shadow-2xl">
               <Image
-                src={EDITORIAL_PROJECTS[1].image}
-                alt={EDITORIAL_PROJECTS[1].title}
+                src={LOOKBOOK_PROJECTS[1].image}
+                alt={LOOKBOOK_PROJECTS[1].title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
             </div>
 
             <div className="flex items-start justify-between gap-4 font-mono text-xs pt-1">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[#C8A96E] font-bold tracking-widest text-[11px]">{EDITORIAL_PROJECTS[1].num}</span>
-                <span className="font-sans font-bold text-base text-[#F4F1EA]">{EDITORIAL_PROJECTS[1].title}</span>
-                <span className="text-[#A0A0A5] text-[11px]">{EDITORIAL_PROJECTS[1].material} · {EDITORIAL_PROJECTS[1].technique}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[#C8A96E] font-bold tracking-[0.25em] text-[11px]">{LOOKBOOK_PROJECTS[1].tag}</span>
+                <span className="font-sans font-bold text-xl text-[#F4F1EA]">{LOOKBOOK_PROJECTS[1].title}</span>
+                <span className="text-[#A0A0A5] text-[11px]">{LOOKBOOK_PROJECTS[1].productType} · {LOOKBOOK_PROJECTS[1].technique}</span>
               </div>
-              <span className="text-[#A0A0A5] text-[11px] shrink-0">{EDITORIAL_PROJECTS[1].location}</span>
+              <span className="text-[#A0A0A5] text-[11px] shrink-0 text-right">{LOOKBOOK_PROJECTS[1].context}</span>
             </div>
           </div>
 
         </div>
 
-        {/* Row 2: Inverted Wide + Tall */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        {/* Pair 2: Inverted Layout: Project 03 (Wide Landscape 7 Cols) + Project 04 (Portrait 5 Cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Work 04 (7 Cols) */}
+          {/* Project 03 */}
           <div
             className="lg:col-span-7 flex flex-col gap-4 group cursor-pointer lg:pr-6"
-            onClick={() => setLightboxSrc(EDITORIAL_PROJECTS[3].image)}
+            onClick={() => setLightboxSrc(LOOKBOOK_PROJECTS[2].image)}
           >
-            <div className="relative aspect-[16/11] w-full rounded-sm overflow-hidden bg-[#141419] border border-white/10 group-hover:border-[#C8A96E]/50 transition-all duration-500 shadow-2xl">
+            <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#141419] border border-white/5 group-hover:border-[#C8A96E]/50 transition-all duration-700 shadow-2xl">
               <Image
-                src={EDITORIAL_PROJECTS[3].image}
-                alt={EDITORIAL_PROJECTS[3].title}
+                src={LOOKBOOK_PROJECTS[2].image}
+                alt={LOOKBOOK_PROJECTS[2].title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
             </div>
 
             <div className="flex items-start justify-between gap-4 font-mono text-xs pt-1">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[#C8A96E] font-bold tracking-widest text-[11px]">{EDITORIAL_PROJECTS[3].num}</span>
-                <span className="font-sans font-bold text-base text-[#F4F1EA]">{EDITORIAL_PROJECTS[3].title}</span>
-                <span className="text-[#A0A0A5] text-[11px]">{EDITORIAL_PROJECTS[3].material} · {EDITORIAL_PROJECTS[3].technique}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[#C8A96E] font-bold tracking-[0.25em] text-[11px]">{LOOKBOOK_PROJECTS[2].tag}</span>
+                <span className="font-sans font-bold text-xl text-[#F4F1EA]">{LOOKBOOK_PROJECTS[2].title}</span>
+                <span className="text-[#A0A0A5] text-[11px]">{LOOKBOOK_PROJECTS[2].productType} · {LOOKBOOK_PROJECTS[2].technique}</span>
               </div>
-              <span className="text-[#A0A0A5] text-[11px] shrink-0">{EDITORIAL_PROJECTS[3].location}</span>
+              <span className="text-[#A0A0A5] text-[11px] shrink-0 text-right">{LOOKBOOK_PROJECTS[2].context}</span>
             </div>
           </div>
 
-          {/* Work 03 (5 Cols) */}
+          {/* Project 04 */}
           <div
             className="lg:col-span-5 flex flex-col gap-4 group cursor-pointer"
-            onClick={() => setLightboxSrc(EDITORIAL_PROJECTS[2].image)}
+            onClick={() => setLightboxSrc(LOOKBOOK_PROJECTS[3].image)}
           >
-            <div className="relative aspect-[3/4] w-full rounded-sm overflow-hidden bg-[#141419] border border-white/10 group-hover:border-[#C8A96E]/50 transition-all duration-500 shadow-2xl">
+            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#141419] border border-white/5 group-hover:border-[#C8A96E]/50 transition-all duration-700 shadow-2xl">
               <Image
-                src={EDITORIAL_PROJECTS[2].image}
-                alt={EDITORIAL_PROJECTS[2].title}
+                src={LOOKBOOK_PROJECTS[3].image}
+                alt={LOOKBOOK_PROJECTS[3].title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
             </div>
 
             <div className="flex items-start justify-between gap-4 font-mono text-xs pt-1">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[#C8A96E] font-bold tracking-widest text-[11px]">{EDITORIAL_PROJECTS[2].num}</span>
-                <span className="font-sans font-bold text-base text-[#F4F1EA]">{EDITORIAL_PROJECTS[2].title}</span>
-                <span className="text-[#A0A0A5] text-[11px]">{EDITORIAL_PROJECTS[2].material} · {EDITORIAL_PROJECTS[2].technique}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[#C8A96E] font-bold tracking-[0.25em] text-[11px]">{LOOKBOOK_PROJECTS[3].tag}</span>
+                <span className="font-sans font-bold text-xl text-[#F4F1EA]">{LOOKBOOK_PROJECTS[3].title}</span>
+                <span className="text-[#A0A0A5] text-[11px]">{LOOKBOOK_PROJECTS[3].productType} · {LOOKBOOK_PROJECTS[3].technique}</span>
               </div>
-              <span className="text-[#A0A0A5] text-[11px] shrink-0">{EDITORIAL_PROJECTS[2].location}</span>
+              <span className="text-[#A0A0A5] text-[11px] shrink-0 text-right">{LOOKBOOK_PROJECTS[3].context}</span>
             </div>
           </div>
 
@@ -230,7 +223,7 @@ export const GallerySection: React.FC = () => {
           aria-label="Inspección de proyecto"
         >
           <button
-            className="absolute top-6 right-6 text-[#A0A0A5] hover:text-[#F4F1EA] p-3 rounded-full bg-black/60 border border-white/10 transition-colors"
+            className="absolute top-6 right-6 text-[#A0A0A5] hover:text-[#F4F1EA] p-3 rounded-full bg-black/60 border border-white/10 transition-colors cursor-pointer"
             onClick={() => setLightboxSrc(null)}
             aria-label="Cerrar modal (Esc)"
           >
@@ -252,4 +245,5 @@ export const GallerySection: React.FC = () => {
     </section>
   );
 };
+
 

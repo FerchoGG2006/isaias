@@ -4,83 +4,84 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TECHNIQUES } from '@/data/techniques';
 
-interface TechniqueMedia {
+interface TechniqueProcess {
   id: string;
-  image: string;
+  name: string;
   badge: string;
-  temperature: string;
+  thermalFact: string;
   headline: string;
-  narrative: string;
-  substrate: string;
-  durability: string;
+  description: string;
+  compatibleProducts: string[];
+  image: string;
+  serviceSlug: string;
 }
 
-const TECHNIQUE_STORIES: TechniqueMedia[] = [
+const TECHNIQUES_DATA: TechniqueProcess[] = [
   {
-    id: 'dtf-reflectivo',
+    id: 'dtf',
+    name: 'DTF REFLECTIVO & FULL COLOR',
+    badge: 'ESTRUCTURA DE POLIAMIDA & CURADO 160°C',
+    thermalFact: '160 °C · 15s de presión neumática',
+    headline: 'Impresión Directa a Film: Definición Vectorial sin Límites',
+    description: 'Pigmentos textiles de alta cobertura con base blanca densa y microesferas reflectivas de alta intensidad. Funde el diseño íntimamente con la fibra elástica, manteniendo flexibilidad total sin cuartearse.',
+    compatibleProducts: ['Camisetas Piel de Durazno 220g', 'Baby Tees', 'Hoodies & Suéteres', 'Dotaciones'],
     image: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg',
-    badge: 'ALTA VISIBILIDAD & RETROREFLEXIÓN',
-    temperature: '160 °C · Curado Exacto',
-    headline: 'DTF Reflectivo: Visibilidad que No Se Quiebra',
-    narrative: 'Partículas micro-prismáticas que rebotan la luz de noche con máxima intensidad. Curado térmico industrial a 160 °C que funde la poliamida en la fibra elástica sin perder tacto suave.',
-    substrate: 'Piel de durazno spandex, algodón y mezclas sintéticas',
-    durability: '50+ lavadas sin agrietamiento ni pérdida de brillo',
+    serviceSlug: 'impresion-dtf-por-metro',
   },
   {
-    id: 'dtf-full-color',
-    image: '/assets/telas/ajustadas/ajustada-3.jpg',
-    badge: 'DETALLE VECTORIAL & DEGRADADOS',
-    temperature: '160 °C · Termofijado',
-    headline: 'DTF Full Color: Fidelidad Fotográfica Directa',
-    narrative: 'Impresión digital directa a film con base de tinta blanca de alta densidad. Reproduce líneas de 0.2 mm, degradados tonales suaves y colores vibrantes sobre cualquier color de tela.',
-    substrate: 'Telas claras, oscuras y mezclas elásticas',
-    durability: 'Elasticidad integrada con el movimiento de la prenda',
-  },
-  {
-    id: 'bordado-computarizado',
-    image: '/assets/telas/cuello_tejido/cuello-6.jpg',
-    badge: 'PONCHADO COMPUTARIZADO WILCOM',
-    temperature: 'Costura de Alta Densidad',
-    headline: 'Bordado 3D Wilcom: Volumen Tridimensional Permanente',
-    narrative: 'Matrices de puntadas diseñadas en software Wilcom e hilatura de poliéster brillante de alto calibre. Realces en relieve 3D sobre pecheras de polo piqué y frentes de gorras.',
-    substrate: 'Algodón piqué, dril pesado y sargas corporativas',
-    durability: 'Inalterable de por vida ante uso y lavado rudo',
-  },
-  {
-    id: 'sublimacion-fotografica',
+    id: 'sublimacion',
+    name: 'SUBLIMACIÓN FOTOGRÁFICA 4K',
+    badge: 'TRANSFERENCIA GASEOSA A 200°C',
+    thermalFact: '200 °C · Integración molecular',
+    headline: 'Color Gaseoso Permanente: Tacto Cero & Transpirabilidad',
+    description: 'El tinte térmico vaporiza a 200 °C integrándose dentro de las moléculas de poliéster y polímeros cerámicos. El resultado es 100% transpirable, indeleble ante el lavado y de resolución fotográfica 4K.',
+    compatibleProducts: ['Prendas Deportivas Qatar', 'Mugs Cerámicos', 'Botellas Térmicas', 'Cintas & Merch'],
     image: '/assets/img-12.jpg',
-    badge: 'RESOLUCIÓN 4K POR VAPORIZACIÓN',
-    temperature: '200 °C · Presión Neumática',
-    headline: 'Sublimación 4K: Color Integrado a Nivel Molecular',
-    narrative: 'Transferencia térmica gaseosa a 200 °C donde el pigmento pasa a formar parte íntima del polímero sintético. Cero tacto plástico, 100% transpirable e indeleble.',
-    substrate: 'Poliéster transpirable Qatar, tazas cerámicas y termos',
-    durability: 'Resistencia total a la intemperie y rayos UV',
+    serviceSlug: 'sublimacion-fotografica-maquila',
+  },
+  {
+    id: 'bordado',
+    name: 'BORDADO COMPUTARIZADO 3D',
+    badge: 'MATRICES WILCOM & RELIEVE 3D',
+    thermalFact: 'Hilatura de poliéster de alta resistencia',
+    headline: 'Volumen Tridimensional: Ponchado de Alta Densidad',
+    description: 'Digitalización vectorial en software Wilcom para crear relieves densos y matrices de costura tridimensional. Resistencia inalterable al paso del tiempo sobre prendas estructuradas.',
+    compatibleProducts: ['Polos Cuello Tejido en Algodón Piqué', 'Gorras Estructuradas', 'Camisas de Dotación'],
+    image: '/assets/telas/cuello_tejido/cuello-6.jpg',
+    serviceSlug: 'bordado-computarizado-prendas',
+  },
+  {
+    id: 'vinil',
+    name: 'VINIL TEXTIL TERMOFIJADO',
+    badge: 'CORTE VECTORIAL DE ALTO CONTRASTE',
+    thermalFact: '150 °C · Adhesivo térmico industrial',
+    headline: 'Acabados Especiales: Metálicos, Mates y Reflectivos',
+    description: 'Películas de poliuretano de alta gama cortadas con cuchilla micrométrica para números deportivos, logotipos monocromáticos limpios y acabados texturizados de máximo contraste.',
+    compatibleProducts: ['Prendas Deportivas', 'Uniformes de Equipo', 'Gorras', 'Bolsos Textiles'],
+    image: '/assets/telas/ajustadas/ajustada-4.jpg',
+    serviceSlug: 'impresion-dtf-por-metro',
   },
 ];
 
 export const TechniquesSection: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>('dtf-reflectivo');
-
-  const activeStory = TECHNIQUE_STORIES.find((t) => t.id === activeId) || TECHNIQUE_STORIES[0];
+  const [activeIdx, setActiveIdx] = useState(0);
+  const activeTech = TECHNIQUES_DATA[activeIdx] || TECHNIQUES_DATA[0];
 
   return (
-    <section id="tecnicas" className="wrap py-24 border-t border-white/10 scroll-mt-24">
+    <section id="tecnicas" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-        <div className="flex flex-col gap-2 max-w-2xl">
-          <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.28em] font-semibold">
-            <span className="opacity-60">04</span>
-            <span>/</span>
-            <span>FIJACIÓN INDUSTRIAL · THE PROCESS OF PRINT</span>
-          </div>
-          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
-            Técnicas de Fijación Térmica
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
+        <div className="flex flex-col gap-3 max-w-2xl">
+          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
+            05 / PROCESOS DE TALLER
+          </span>
+          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
+            THE TECHNIQUES
           </h2>
-          <p className="text-sm sm:text-base text-[#A0A0A5] leading-relaxed font-light mt-1">
-            Cada material requiere una temperatura, calibración de presión y química específica para garantizar longevidad.
+          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
+            &ldquo;Química textil, curvas térmicas y costura de precisión.&rdquo;
           </p>
         </div>
 
@@ -88,100 +89,100 @@ export const TechniquesSection: React.FC = () => {
           href="/servicios"
           className="font-mono text-xs uppercase tracking-widest text-[#C8A96E] hover:text-[#F4F1EA] flex items-center gap-2 transition-colors self-start md:self-auto"
         >
-          <span>Ver maquila de servicios</span>
+          <span>Ver todos los servicios de maquila</span>
           <span>→</span>
         </Link>
       </div>
 
-      {/* Interactive Split-Screen Narrative */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#0d0d10] border border-white/10 rounded-sm p-6 sm:p-10 lg:p-12 shadow-2xl">
+      {/* Vertical Editorial Process Stage */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        {/* Left Column: Macro Finished Piece Photo (6 Cols) */}
-        <div className="lg:col-span-6 relative aspect-[4/3] sm:aspect-[16/11] rounded-xs overflow-hidden bg-[#141419] border border-white/10 shadow-2xl">
+        {/* Left Column: Technique Image with Fade Reveal (7 Cols) */}
+        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-xs overflow-hidden bg-[#141419] border border-white/10 shadow-2xl">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeStory.id}
-              initial={{ opacity: 0, scale: 0.96 }}
+              key={activeTech.id}
+              initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full h-full"
             >
               <Image
-                src={activeStory.image}
-                alt={activeStory.headline}
+                src={activeTech.image}
+                alt={activeTech.headline}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] bg-black/80 backdrop-blur-md px-3.5 py-1.5 border border-[#C8A96E]/30 rounded-xs">
-            {activeStory.badge}
+          <div className="absolute top-6 left-6 z-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] bg-black/80 backdrop-blur-md px-3.5 py-1.5 border border-[#C8A96E]/30 rounded-xs">
+            {activeTech.badge}
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between font-mono text-xs text-[#F4F1EA] bg-black/70 backdrop-blur-md p-3 border border-white/10 rounded-xs">
-            <span className="text-[#C8A96E] font-bold">{activeStory.temperature}</span>
-            <span className="text-[#A0A0A5] text-[11px] truncate max-w-[200px]">{activeStory.substrate}</span>
+          <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-xs text-[#F4F1EA] bg-black/80 backdrop-blur-md p-4 border border-white/10 rounded-xs">
+            <span className="text-[#C8A96E] font-bold">{activeTech.thermalFact}</span>
+            <span className="text-[#A0A0A5] text-[11px]">Taller de Producción Valledupar</span>
           </div>
         </div>
 
-        {/* Right Column: Interactive Technique Selector & Story (6 Cols) */}
-        <div className="lg:col-span-6 flex flex-col gap-6">
+        {/* Right Column: Vertical Technique Navigation & Story (5 Cols) */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
           
-          {/* Technique Pills Tab Bar */}
-          <div className="flex flex-wrap gap-2 pb-4 border-b border-white/10">
-            {TECHNIQUES.map((tech) => {
-              const isSelected = tech.id === activeId || tech.slug === activeId;
+          {/* Vertical Menu Tabs */}
+          <div className="flex flex-col border-b border-white/10">
+            {TECHNIQUES_DATA.map((tech, idx) => {
+              const isActive = idx === activeIdx;
               return (
                 <button
                   key={tech.id}
-                  type="button"
-                  onClick={() => setActiveId(tech.id)}
-                  className={`px-3.5 py-2 rounded-xs font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#C8A96E] text-[#070708] font-bold shadow-lg shadow-[#C8A96E]/10'
-                      : 'bg-[#141419] text-[#A0A0A5] border border-white/10 hover:border-[#C8A96E]/40 hover:text-[#F4F1EA]'
+                  onClick={() => setActiveIdx(idx)}
+                  className={`py-4 flex items-center justify-between font-mono text-xs uppercase tracking-widest border-t border-white/10 transition-all text-left cursor-pointer group ${
+                    isActive
+                      ? 'text-[#C8A96E] font-bold pl-3 border-l-2 border-l-[#C8A96E]'
+                      : 'text-[#A0A0A5] hover:text-[#F4F1EA] hover:pl-2'
                   }`}
-                  aria-pressed={isSelected}
                 >
-                  {tech.name.replace('Estampación ', '').replace('Impresión ', '')}
+                  <span>{tech.name}</span>
+                  <span className="text-[11px] opacity-60 group-hover:opacity-100 transition-opacity">0{idx + 1}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Active Story Narrative */}
+          {/* Active Technique Details */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight leading-snug">
-              {activeStory.headline}
+            <h3 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight leading-snug">
+              {activeTech.headline}
             </h3>
 
             <p className="text-sm text-[#D0CFC9] leading-relaxed font-light">
-              {activeStory.narrative}
+              {activeTech.description}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-white/5 font-mono text-xs">
-              <div className="flex flex-col gap-1 p-3 bg-[#141419] border border-white/5 rounded-xs">
-                <span className="text-[10px] uppercase text-[#C8A96E] font-semibold">Sustrato Recomendado</span>
-                <span className="text-[#F4F1EA] text-[11px]">{activeStory.substrate}</span>
-              </div>
-              <div className="flex flex-col gap-1 p-3 bg-[#141419] border border-white/5 rounded-xs">
-                <span className="text-[10px] uppercase text-[#C8A96E] font-semibold">Durabilidad en Taller</span>
-                <span className="text-[#F4F1EA] text-[11px]">{activeStory.durability}</span>
+            {/* Compatible Garments */}
+            <div className="pt-4 flex flex-col gap-2 font-mono text-xs">
+              <span className="text-[10px] uppercase tracking-wider text-[#A0A0A5]">Prendas y Sustratos Compatibles:</span>
+              <div className="flex flex-wrap gap-1.5">
+                {activeTech.compatibleProducts.map((prod) => (
+                  <span key={prod} className="bg-[#141419] px-2.5 py-1 border border-white/10 text-[#F4F1EA] text-[11px] rounded-xs">
+                    {prod}
+                  </span>
+                ))}
               </div>
             </div>
 
-            <div className="pt-4 flex items-center gap-4">
+            <div className="pt-4">
               <Link
-                href={`/servicios/${activeId === 'dtf-reflectivo' || activeId === 'dtf-full-color' ? 'impresion-dtf-por-metro' : activeId === 'bordado-computarizado' ? 'bordado-computarizado-prendas' : 'sublimacion-fotografica-maquila'}`}
-                className="font-mono text-xs uppercase tracking-wider text-[#C8A96E] hover:text-[#F4F1EA] font-semibold flex items-center gap-2 group"
+                href={`/servicios/${activeTech.serviceSlug}`}
+                className="font-mono text-xs uppercase tracking-widest text-[#C8A96E] hover:text-[#F4F1EA] font-semibold inline-flex items-center gap-2 transition-colors"
               >
-                <span>Cotizar esta técnica en maquila</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <span>Cotizar servicio de {activeTech.name.split('&')[0].trim()}</span>
+                <span>→</span>
               </Link>
             </div>
           </div>
@@ -193,4 +194,5 @@ export const TechniquesSection: React.FC = () => {
     </section>
   );
 };
+
 

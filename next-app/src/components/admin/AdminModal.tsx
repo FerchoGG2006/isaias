@@ -15,11 +15,7 @@ export const AdminModal: React.FC = () => {
     showToast,
   } = useQuote();
 
-  const [phoneInput, setPhoneInput] = useState(customPhone);
-
-  useEffect(() => {
-    setPhoneInput(customPhone);
-  }, [customPhone]);
+  const [phoneInput, setPhoneInput] = useState(() => customPhone);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

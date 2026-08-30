@@ -11,54 +11,49 @@ export const CatalogSection: React.FC = () => {
 
   const filteredProducts = useMemo(() => {
     if (activeCategory === 'todos') {
-      return PRODUCTS.slice(0, 5);
+      return PRODUCTS.slice(0, 4);
     }
     return PRODUCTS.filter(
       (p) => p.categorySlug === activeCategory || p.categoryId === activeCategory
-    ).slice(0, 5);
+    ).slice(0, 4);
   }, [activeCategory]);
 
-  const mainHeroProduct = filteredProducts[0] || PRODUCTS[0];
-  const secondaryProducts = filteredProducts.slice(1);
-
   return (
-    <section id="catalogo" className="wrap py-24 border-t border-white/10 scroll-mt-24">
+    <section id="catalogo" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
       
       {/* Editorial Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div className="flex flex-col gap-2 max-w-2xl">
-          <div className="flex items-center gap-2 font-mono text-xs text-[#C8A96E] uppercase tracking-[0.28em] font-semibold">
-            <span className="opacity-60">02</span>
-            <span>/</span>
-            <span>COLECCIÓN · THE COLLECTION / 026</span>
-          </div>
-          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
-            Prendas para Hacerlas Tuyas
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
+        <div className="flex flex-col gap-3 max-w-2xl">
+          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
+            03 / ARCHIVO 026
+          </span>
+          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
+            THE COLLECTION
           </h2>
-          <p className="text-sm sm:text-base text-[#A0A0A5] leading-relaxed font-light mt-1">
-            Siluetas confeccionadas con materias primas seleccionadas, listas para configurar con tu diseño o logotipo.
+          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
+            &ldquo;Prendas hechas para llevar tus ideas.&rdquo;
           </p>
         </div>
 
-        {/* Minimal Category Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none font-mono text-xs uppercase tracking-wider">
+        {/* Minimal Category Switcher */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none font-mono text-xs uppercase tracking-widest">
           <button
             onClick={() => setActiveCategory('todos')}
-            className={`px-3.5 py-1.5 rounded-xs transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 transition-colors cursor-pointer ${
               activeCategory === 'todos'
-                ? 'text-[#C8A96E] border-b-2 border-[#C8A96E] font-bold'
+                ? 'text-[#C8A96E] border-b border-[#C8A96E] font-bold'
                 : 'text-[#A0A0A5] hover:text-[#F4F1EA]'
             }`}
           >
             [ Todo ]
           </button>
-          {CATEGORIES.slice(0, 4).map((cat) => (
+          {CATEGORIES.slice(0, 3).map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-3.5 py-1.5 rounded-xs transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 transition-colors cursor-pointer whitespace-nowrap ${
                 activeCategory === cat.slug
-                  ? 'text-[#C8A96E] border-b-2 border-[#C8A96E] font-bold'
+                  ? 'text-[#C8A96E] border-b border-[#C8A96E] font-bold'
                   : 'text-[#A0A0A5] hover:text-[#F4F1EA]'
               }`}
             >
@@ -68,99 +63,105 @@ export const CatalogSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Masonry Editorial Showcase */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      {/* Asymmetric Maison Editorial Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
-        {/* Dominant Hero Product (7 Cols) */}
-        {mainHeroProduct && (
-          <div className="lg:col-span-7 flex flex-col gap-5">
+        {/* Large Dominant Lookbook Piece (7 Cols) */}
+        {filteredProducts[0] && (
+          <div className="lg:col-span-7 flex flex-col gap-6 group">
             <Link
-              href={`/catalogo/${mainHeroProduct.categorySlug || 'ropa'}/${mainHeroProduct.slug}`}
-              className="group relative aspect-[4/5] rounded-sm overflow-hidden bg-[#141419] border border-white/10 hover:border-[#C8A96E]/50 transition-all duration-500 block shadow-2xl"
+              href={`/catalogo/${filteredProducts[0].categorySlug || 'ropa'}/${filteredProducts[0].slug}`}
+              className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden bg-[#141419] rounded-xs block border border-white/5 group-hover:border-[#C8A96E]/40 transition-all duration-700"
             >
-              <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] bg-black/80 backdrop-blur-md px-3.5 py-1.5 border border-[#C8A96E]/30 rounded-xs">
-                {mainHeroProduct.tag}
-              </div>
-
               <Image
-                src={mainHeroProduct.featuredImage || mainHeroProduct.images[0] || '/assets/hero-main.jpg'}
-                alt={mainHeroProduct.title}
+                src={filteredProducts[0].featuredImage || filteredProducts[0].images[0] || '/assets/hero-main.jpg'}
+                alt={filteredProducts[0].title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070708] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
             </Link>
 
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div className="flex flex-col gap-1 max-w-lg">
-                <span className="font-mono text-xs text-[#A0A0A5]">CÓDIGO: {mainHeroProduct.code}</span>
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pt-2">
+              <div className="flex flex-col gap-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E]">
+                  {filteredProducts[0].tag || 'PIEL DE DURAZNO SPANDEX · 220G'}
+                </span>
                 <Link
-                  href={`/catalogo/${mainHeroProduct.categorySlug || 'ropa'}/${mainHeroProduct.slug}`}
-                  className="font-sans font-bold text-2xl text-[#F4F1EA] hover:text-[#C8A96E] transition-colors"
+                  href={`/catalogo/${filteredProducts[0].categorySlug || 'ropa'}/${filteredProducts[0].slug}`}
+                  className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"
                 >
-                  {mainHeroProduct.title}
+                  {filteredProducts[0].title}
                 </Link>
-                <p className="text-xs sm:text-sm text-[#A0A0A5] leading-relaxed font-light">
-                  {mainHeroProduct.description}
-                </p>
+                <span className="font-mono text-xs text-[#A0A0A5]">
+                  Técnicas: {filteredProducts[0].customCapabilities?.allowedTechniques?.map(t => t.toUpperCase()).join(' · ') || 'DTF · Bordado 3D Wilcom'}
+                </span>
               </div>
 
               <Link
-                href={`/catalogo/${mainHeroProduct.categorySlug || 'ropa'}/${mainHeroProduct.slug}`}
-                className="font-mono text-xs uppercase tracking-wider text-[#070708] bg-[#C8A96E] hover:bg-[#dbbe82] font-bold px-5 py-3 rounded-xs shrink-0 transition-all text-center"
+                href={`/catalogo/${filteredProducts[0].categorySlug || 'ropa'}/${filteredProducts[0].slug}`}
+                className="font-mono text-xs uppercase tracking-widest text-[#F4F1EA] group-hover:text-[#C8A96E] font-bold flex items-center gap-2 transition-colors shrink-0"
               >
-                Configurar Pieza →
+                <span>Ver Pieza</span>
+                <span className="group-hover:translate-x-1.5 transition-transform">→</span>
               </Link>
             </div>
           </div>
         )}
 
-        {/* Secondary Masonry Column (5 Cols, 2x2 Grid) */}
-        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {secondaryProducts.map((prod) => (
-            <Link
-              key={prod.id}
-              href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
-              className="group flex flex-col gap-3 bg-[#0e0e11] border border-white/10 hover:border-[#C8A96E]/40 rounded-sm p-4 transition-all hover:shadow-xl"
-            >
-              <div className="relative aspect-[3/4] w-full rounded-xs overflow-hidden bg-[#141419]">
+        {/* Secondary Asymmetric Column (5 Cols, 2 Stacked Pieces) */}
+        <div className="lg:col-span-5 flex flex-col gap-14">
+          {filteredProducts.slice(1, 3).map((prod) => (
+            <div key={prod.id} className="flex flex-col gap-4 group">
+              <Link
+                href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
+                className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden bg-[#141419] rounded-xs block border border-white/5 group-hover:border-[#C8A96E]/40 transition-all duration-700"
+              >
                 <Image
                   src={prod.featuredImage || prod.images[0] || '/assets/hero-main.jpg'}
                   alt={prod.title}
                   fill
-                  sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wider text-[#C8A96E] bg-black/80 px-2 py-0.5 border border-[#C8A96E]/30 rounded-xs">
-                  {prod.tag}
-                </div>
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+              </Link>
 
-              <div className="flex flex-col gap-1">
-                <h4 className="font-sans font-bold text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors truncate">
-                  {prod.title}
-                </h4>
-                <div className="flex items-center justify-between font-mono text-[11px] text-[#A0A0A5]">
-                  <span>{prod.materialSpecs?.[0] || 'Confección'}</span>
-                  <span className="text-[#C8A96E] font-semibold group-hover:translate-x-0.5 transition-transform">Ver →</span>
+              <div className="flex items-baseline justify-between gap-4 font-mono text-xs">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] uppercase tracking-wider text-[#C8A96E]">{prod.tag}</span>
+                  <Link
+                    href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
+                    className="font-sans font-bold text-lg text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"
+                  >
+                    {prod.title}
+                  </Link>
+                  <span className="text-[#A0A0A5] text-[11px]">{prod.materialSpecs?.[0] || 'Confección en taller'}</span>
                 </div>
+
+                <Link
+                  href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
+                  className="text-[#F4F1EA] group-hover:text-[#C8A96E] font-bold uppercase tracking-wider text-[11px] flex items-center gap-1 transition-colors shrink-0"
+                >
+                  <span>Ver</span>
+                  <span>→</span>
+                </Link>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
       </div>
 
-      {/* Direct Link to full catalog */}
-      <div className="mt-14 pt-8 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-        <span className="text-[#A0A0A5]">Explora nuestro archivo completo de piezas y complementos.</span>
+      {/* Catalog Link Strip */}
+      <div className="mt-16 sm:mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs">
+        <span className="text-[#A0A0A5]">Archivo completo disponible para personalización y pedidos institucionales.</span>
         <Link
           href="/catalogo"
           className="text-[#C8A96E] hover:text-[#F4F1EA] font-bold uppercase tracking-widest flex items-center gap-2 transition-colors"
         >
-          <span>Ver todo el catálogo (12+ siluetas)</span>
+          <span>Ver todas las prendas del catálogo (12+)</span>
           <span>→</span>
         </Link>
       </div>
@@ -168,4 +169,5 @@ export const CatalogSection: React.FC = () => {
     </section>
   );
 };
+
 
