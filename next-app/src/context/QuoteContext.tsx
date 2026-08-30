@@ -29,6 +29,8 @@ interface QuoteContextType {
   setGeneralNotes: (notes: string) => void;
   getFormattedQuoteRequest: () => QuoteRequest;
   getWhatsAppUrl: () => { url: string; isConfigured: boolean; message: string };
+  customPhone: string;
+  setCustomPhone: (phone: string) => void;
   // Compatibilidad legacy
   cart: QuoteItem[];
   isCartOpen: boolean;
@@ -55,6 +57,17 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return [];
   });
 
+  const [customPhone, setCustomPhoneState] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        return localStorage.getItem('vi_custom_phone') || '';
+      } catch {
+        return '';
+      }
+    }
+    return '';
+  });
+
   const [isQuoteDrawerOpen, setIsQuoteDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -62,7 +75,25 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [customer, setCustomer] = useState<QuoteCustomer>({});
   const [generalNotes, setGeneralNotes] = useState<string>('');
 
-  const business = getBusiness(businessId);
+  const baseBusiness = getBusiness(businessId);
+  const business: Business = {
+    ...baseBusiness,
+    whatsappPhone: customPhone || baseBusiness.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '',
+  };
+
+  const setCustomPhone = (phone: string) => {
+    const clean = phone.replace(/\D/g, '');
+    setCustomPhoneState(clean);
+    try {
+      if (clean) {
+        localStorage.setItem('vi_custom_phone', clean);
+      } else {
+        localStorage.removeItem('vi_custom_phone');
+      }
+    } catch {
+      // Ignorar
+    }
+  };
 
   // Guardar en localStorage ante cambios
   useEffect(() => {
@@ -161,6 +192,8 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setGeneralNotes,
         getFormattedQuoteRequest,
         getWhatsAppUrl,
+        customPhone,
+        setCustomPhone,
         // Compatibilidad legacy
         cart: quoteItems,
         isCartOpen: isQuoteDrawerOpen,
