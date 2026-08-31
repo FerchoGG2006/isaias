@@ -85,29 +85,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             ))}
           </select>
 
-          {/* Quick Add CTA */}
-          <button
-            onClick={handleAdd}
-            className={`w-full font-mono text-xs uppercase tracking-widest font-bold py-3 transition-all duration-300 rounded-xs flex items-center justify-center gap-2 ${
-              added
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/30'
-                : 'bg-[#F4F1EA] hover:bg-[#C8A96E] text-[#070708] shadow-md hover:shadow-xl'
-            }`}
-          >
-            {added ? (
-              <>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-                Añadido a Cotización
-              </>
-            ) : (
-              <>
-                <span>Añadir a Cotización</span>
-                <span className="text-base leading-none">+</span>
-              </>
-            )}
-          </button>
+          {/* Quick Config / Quote CTA */}
+          <div className="flex gap-2">
+            <a
+              href={`/catalogo/ropa/${product.id}`}
+              className="flex-1 font-mono text-xs uppercase tracking-widest font-bold py-3 transition-all duration-300 rounded-xs flex items-center justify-center gap-1 bg-[#F4F1EA] hover:bg-[#C8A96E] text-[#070708] shadow-md hover:shadow-xl"
+            >
+              <span>Configurar</span>
+              <span className="text-xs">→</span>
+            </a>
+            <button
+              onClick={handleAdd}
+              title="Añadir a lista rápida"
+              className={`px-3 font-mono text-xs font-bold py-3 transition-all duration-300 rounded-xs flex items-center justify-center ${
+                added
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-[#16161d] hover:bg-neutral-800 text-neutral-300 border border-white/10'
+              }`}
+            >
+              {added ? '✓' : '+'}
+            </button>
+          </div>
         </div>
       </div>
 

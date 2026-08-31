@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { QuoteLink } from '@/components/ui/QuoteLink';
 
 const links = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#materiales', label: 'Materiales' },
-  { href: '#coleccion', label: 'Colección' },
-  { href: '#catalogo', label: 'Catálogo' },
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/', label: 'Inicio' },
+  { href: '/catalogo', label: 'Catálogo' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/#materiales', label: 'Materiales' },
+  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/#contacto', label: 'Contacto' },
 ];
 
 export function Navigation() {

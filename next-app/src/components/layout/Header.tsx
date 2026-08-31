@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 
 export const Header: React.FC = () => {
@@ -14,21 +15,22 @@ export const Header: React.FC = () => {
   return (
     <header className="nav">
       <div className="nav-inner">
-        <a href="#top" className="brand">
+        <Link href="/" className="brand">
           <span className="brand-mark">
             <Image src="/assets/logo-isaias.png" alt="Logo Variedades Isaías" width={44} height={44} />
           </span>
           <span className="brand-name">
             Variedades <span>Isaías</span>
           </span>
-        </a>
+        </Link>
 
         <nav className="links">
-          <a href="#tecnicas">Técnicas</a>
-          <a href="#galeria">Galería</a>
-          <a href="#catalogo">Catálogo</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto">Contacto</a>
+          <Link href="/catalogo">Catálogo</Link>
+          <Link href="/servicios">Servicios</Link>
+          <Link href="/#tecnicas">Técnicas</Link>
+          <Link href="/#galeria">Galería</Link>
+          <Link href="/#nosotros">Nosotros</Link>
+          <Link href="/#contacto">Contacto</Link>
         </nav>
 
         <div className="nav-actions">
