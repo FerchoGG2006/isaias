@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useQuote } from '@/context/QuoteContext';
@@ -9,13 +10,26 @@ export const HeroSection: React.FC = () => {
   const { openQuoteDrawer } = useQuote();
 
   return (
-    <section id="inicio" className="relative w-full min-h-[85vh] bg-[#12151C] overflow-hidden text-[#FFFFFF] flex items-center justify-center py-24 sm:py-32">
+    <section id="inicio" className="relative w-full min-h-[88vh] bg-[#12151C] overflow-hidden text-[#FFFFFF] flex items-center justify-center py-24 sm:py-32">
       
-      {/* 1. LUXURY AMBIENT LIGHTING (CLEAN & MINIMALIST) */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Soft atmospheric radial gradients */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-b from-[#3B82F6]/15 via-[#E5A910]/5 to-transparent rounded-full blur-[120px]" />
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#3B82F6]/10 rounded-full blur-[140px]" />
+      {/* 1. CINEMATIC BACKGROUND WITH CONTROLLED CONTRAST */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Background Image without Blur */}
+        <Image
+          src="/assets/hero-main.jpg"
+          alt="Variedades Isaías - Taller de confección y personalización en Valledupar"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center scale-105 opacity-40 brightness-[0.7] contrast-[1.15]"
+        />
+
+        {/* Multi-layered cinematic dark vignetting */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/75 to-[#12151C]/90" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#12151C]/40 to-[#12151C]" />
+        
+        {/* Soft luxury ambient glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[480px] bg-gradient-to-b from-[#3B82F6]/20 via-[#E5A910]/8 to-transparent rounded-full blur-[130px]" />
       </div>
 
       {/* 2. EDITORIAL HERO CONTENT */}
@@ -28,7 +42,7 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6"
         >
-          <span className="text-xs uppercase tracking-wider text-[#94A3B8] font-semibold bg-[#181D26]/90 border border-white/10 px-5 py-2 rounded-full shadow-sm">
+          <span className="text-xs uppercase tracking-wider text-[#94A3B8] font-semibold bg-[#181D26]/90 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full shadow-lg">
             Confección & Personalización Textil · Valledupar
           </span>
         </motion.div>
@@ -40,11 +54,11 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center max-w-4xl"
         >
-          <h1 className="font-serif font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#FFFFFF] tracking-tight leading-[0.95]">
+          <h1 className="font-serif font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#FFFFFF] tracking-tight leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]">
             HAZLO <span className="italic font-normal text-[#E5A910]">TUYO.</span>
           </h1>
 
-          <p className="font-sans text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl leading-relaxed font-light mt-6">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl leading-relaxed font-light mt-6 drop-shadow-md">
             Prendas de alta calidad, estampados duraderos y bordados personalizados hechos a tu medida para marcas, empresas y eventos.
           </p>
 
@@ -60,7 +74,7 @@ export const HeroSection: React.FC = () => {
 
             <button
               onClick={openQuoteDrawer}
-              className="text-xs uppercase tracking-wider text-[#FFFFFF] hover:text-[#E5A910] bg-[#181D26] hover:bg-[#202734] border border-white/15 hover:border-[#E5A910]/50 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] cursor-pointer text-center shadow-md"
+              className="text-xs uppercase tracking-wider text-[#FFFFFF] hover:text-[#E5A910] bg-[#181D26]/90 hover:bg-[#202734] backdrop-blur-xl border border-white/15 hover:border-[#E5A910]/50 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] cursor-pointer text-center shadow-lg"
             >
               Cotizar por WhatsApp
             </button>
@@ -72,7 +86,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="mt-14 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-[#94A3B8] bg-[#181D26]/80 backdrop-blur-md px-8 py-3.5 rounded-full border border-white/10 shadow-sm"
+          className="mt-14 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-[#94A3B8] bg-[#181D26]/90 backdrop-blur-md px-8 py-3.5 rounded-full border border-white/10 shadow-lg"
         >
           <span className="flex items-center gap-2 text-[#FFFFFF]">
             <span className="text-[#3B82F6] font-bold">✓</span>
