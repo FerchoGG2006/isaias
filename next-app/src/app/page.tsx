@@ -1,9 +1,7 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { ManifestoSection } from '@/components/sections/ManifestoSection';
 import { CatalogSection } from '@/components/sections/CatalogSection';
-import { FeaturedPieceSection } from '@/components/sections/FeaturedPieceSection';
 import { TechniquesSection } from '@/components/sections/TechniquesSection';
 import { MaterialExplorer } from '@/components/sections/MaterialExplorer';
 import { GallerySection } from '@/components/sections/GallerySection';
@@ -22,34 +20,28 @@ export default function Home() {
         {/* 01 · HERO EDITORIAL */}
         <HeroSection />
 
-        {/* 02 · MANIFIESTO DE ESTUDIO */}
-        <ManifestoSection />
-
-        {/* 03 · THE COLLECTION (LOOKBOOK) */}
+        {/* 02 · THE COLLECTION (CATÁLOGO GENERAL) */}
         <CatalogSection />
 
-        {/* 04 · FEATURED PIECE (SILUETA PROTAGONISTA) */}
-        <FeaturedPieceSection />
-
-        {/* 05 · TECHNIQUES (PROCESOS TEXTILES) */}
+        {/* 03 · TECHNIQUES (PROCESOS TEXTILES) */}
         <TechniquesSection />
 
-        {/* 06 · MATERIALS (FEEL THE MATERIAL 10X) */}
+        {/* 04 · MATERIALS (TELAS & MATERIALES) */}
         <MaterialExplorer />
 
-        {/* 07 · LOOKBOOK / PROJECTS (ARCHIVO VISUAL) */}
+        {/* 05 · LOOKBOOK / PROJECTS (PROYECTOS REALIZADOS) */}
         <GallerySection />
 
-        {/* 08 · ATELIER (MADE IN VALLEDUPAR) */}
+        {/* 06 · ATELIER (HECHO EN VALLEDUPAR) */}
         <AboutSection />
 
-        {/* 09 · FOR TEAMS (PRODUCCIÓN EMPRESARIAL) */}
+        {/* 07 · FOR TEAMS (PRODUCCIÓN EMPRESARIAL) */}
         <ForTeamsSection />
 
-        {/* 10 · PROCESS (METODOLOGÍA NARRATIVA) */}
+        {/* 08 · PROCESS (CÓMO TRABAJAMOS) */}
         <ProcessSection />
 
-        {/* 11 · FINAL CTA (¿QUÉ VAMOS A CREAR?) */}
+        {/* 09 · FINAL CTA (¿QUÉ VAMOS A CREAR?) */}
         <ContactSection />
       </main>
       <Footer />
@@ -58,6 +50,3 @@ export default function Home() {
     </>
   );
 }
-
-
-

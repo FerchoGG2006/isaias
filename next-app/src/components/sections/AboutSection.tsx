@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const AboutSection: React.FC = () => {
@@ -8,26 +9,28 @@ export const AboutSection: React.FC = () => {
     <section id="taller" className="wrap py-28 sm:py-36 border-t border-[#94A3B8]/15 scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         
-        {/* Workshop Atelier Showcase (7 Cols) */}
-        <div className="lg:col-span-7 relative aspect-[4/5] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] shadow-2xl p-6 sm:p-8 flex flex-col justify-between group">
-          <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+        {/* Workshop Atelier Showcase with Real Photo (7 Cols) */}
+        <div className="lg:col-span-7 relative aspect-[4/5] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-white/10 bg-[#12151C] shadow-2xl p-6 sm:p-8 flex flex-col justify-between group">
+          
+          <Image
+            src="/assets/hero-main.jpg"
+            alt="Taller de confección y estampado Variedades Isaías en Valledupar"
+            fill
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/40 to-[#12151C]/60" />
 
           {/* Top Tag Bar */}
           <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-            <span className="text-[#E5A910] font-semibold uppercase">
+            <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
               Taller Propio
             </span>
-            <span>Valledupar · Cesar</span>
+            <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar · Cesar</span>
           </div>
 
-          {/* Center Atelier Icon & Story */}
-          <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-8">
-            <div className="w-20 h-20 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-4 bg-[#181D26]/80 backdrop-blur-sm group-hover:scale-105 transition-all shadow-md">
-              <svg className="w-9 h-9 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-
+          {/* Center Atelier Story Card */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6 bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 max-w-md mx-auto">
             <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
               CONFECCIÓN & ESTAMPACIÓN TEXTIL
             </span>
@@ -40,9 +43,9 @@ export const AboutSection: React.FC = () => {
           </div>
 
           {/* Bottom Info Bar */}
-          <div className="relative z-10 text-xs text-[#FFFFFF] bg-[#12151C]/90 backdrop-blur-md p-4 border border-white/10 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="relative z-10 text-xs text-[#FFFFFF] bg-black/50 px-4 py-2.5 rounded-full flex items-center justify-between">
             <span className="text-[#E5A910] font-bold uppercase tracking-wider text-xs">PRODUCCIÓN DIRECTA</span>
-            <span className="text-[#94A3B8] text-xs">PRECIOS DE TALLER SIN INTERMEDIARIOS</span>
+            <span className="text-white text-xs">PRECIOS DE TALLER SIN INTERMEDIARIOS</span>
           </div>
         </div>
 
@@ -96,5 +99,3 @@ export const AboutSection: React.FC = () => {
     </section>
   );
 };
-
-

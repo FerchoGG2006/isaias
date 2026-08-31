@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 interface LookbookProject {
   id: string;
@@ -10,6 +11,7 @@ interface LookbookProject {
   technique: string;
   context: string;
   aspect: string;
+  image: string;
 }
 
 const LOOKBOOK_PROJECTS: LookbookProject[] = [
@@ -21,6 +23,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     technique: 'DTF Reflectivo a 160 °C',
     context: 'Línea de moda personal · Valledupar',
     aspect: 'aspect-[3/4]',
+    image: '/assets/telas/ajustadas/ajustada-2.jpg',
   },
   {
     id: 'project-02',
@@ -30,6 +33,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     technique: 'Bordado Computarizado 3D Wilcom',
     context: 'Dotación institucional de estudio',
     aspect: 'aspect-[16/11]',
+    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
   },
   {
     id: 'project-03',
@@ -39,6 +43,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     technique: 'Sublimación Fotográfica 4K a 200 °C',
     context: 'Equipamiento deportivo y eventos',
     aspect: 'aspect-[16/11]',
+    image: '/assets/telas/qatar/qatar-1.jpg',
   },
   {
     id: 'project-04',
@@ -48,6 +53,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     technique: 'DTF Alta Visibilidad',
     context: 'Colección cápsula de taller',
     aspect: 'aspect-[3/4]',
+    image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
   },
 ];
 
@@ -79,28 +85,26 @@ export const GallerySection: React.FC = () => {
           
           {/* Project 01 */}
           <div className="lg:col-span-5 flex flex-col gap-3 group">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
-              <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[0].image}
+                alt={LOOKBOOK_PROJECTS[0].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
 
               <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase">
+                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
                   {LOOKBOOK_PROJECTS[0].tag}
                 </span>
-                <span>Valledupar</span>
+                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
               </div>
 
-              <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6">
-                <div className="w-16 h-16 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-3 bg-[#181D26]/80 group-hover:border-[#3B82F6] transition-colors shadow-md">
-                  <svg className="w-7 h-7 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <span className="font-serif text-2xl text-[#FFFFFF] font-bold">{LOOKBOOK_PROJECTS[0].title}</span>
-                <span className="font-sans text-xs text-[#94A3B8] mt-1">{LOOKBOOK_PROJECTS[0].technique}</span>
-              </div>
-
-              <div className="relative z-10 pt-3 border-t border-[#94A3B8]/15 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span>{LOOKBOOK_PROJECTS[0].productType}</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
+                <span className="text-white">{LOOKBOOK_PROJECTS[0].productType}</span>
                 <span className="text-[#3B82F6] font-semibold">Alta Definición</span>
               </div>
             </div>
@@ -116,28 +120,26 @@ export const GallerySection: React.FC = () => {
 
           {/* Project 02 */}
           <div className="lg:col-span-7 flex flex-col gap-3 group lg:pl-4">
-            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] group-hover:border-[#E5A910]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
-              <div className="absolute inset-0 bg-radial from-[#E5A910]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#E5A910]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[1].image}
+                alt={LOOKBOOK_PROJECTS[1].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
 
               <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase">
+                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
                   {LOOKBOOK_PROJECTS[1].tag}
                 </span>
-                <span>Valledupar</span>
+                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
               </div>
 
-              <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6">
-                <div className="w-16 h-16 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-3 bg-[#181D26]/80 group-hover:border-[#E5A910] transition-colors shadow-md">
-                  <svg className="w-7 h-7 text-[#E5A910]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <span className="font-serif text-2xl text-[#FFFFFF] font-bold">{LOOKBOOK_PROJECTS[1].title}</span>
-                <span className="font-sans text-xs text-[#94A3B8] mt-1">{LOOKBOOK_PROJECTS[1].technique}</span>
-              </div>
-
-              <div className="relative z-10 pt-3 border-t border-[#94A3B8]/15 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span>{LOOKBOOK_PROJECTS[1].productType}</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
+                <span className="text-white">{LOOKBOOK_PROJECTS[1].productType}</span>
                 <span className="text-[#E5A910] font-semibold">Dotación Empresarial</span>
               </div>
             </div>
@@ -153,34 +155,32 @@ export const GallerySection: React.FC = () => {
 
         </div>
 
-        {/* Pair 2: Inverted Layout */}
+        {/* Pair 2: Inverted Layout (Project 03 Wide 7 Cols + Project 04 Portrait 5 Cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Project 03 */}
           <div className="lg:col-span-7 flex flex-col gap-3 group lg:pr-4">
-            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
-              <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[2].image}
+                alt={LOOKBOOK_PROJECTS[2].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
 
               <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#3B82F6] font-semibold uppercase">
+                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
                   {LOOKBOOK_PROJECTS[2].tag}
                 </span>
-                <span>Valledupar</span>
+                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
               </div>
 
-              <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6">
-                <div className="w-16 h-16 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-3 bg-[#181D26]/80 group-hover:border-[#3B82F6] transition-colors shadow-md">
-                  <svg className="w-7 h-7 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <span className="font-serif text-2xl text-[#FFFFFF] font-bold">{LOOKBOOK_PROJECTS[2].title}</span>
-                <span className="font-sans text-xs text-[#94A3B8] mt-1">{LOOKBOOK_PROJECTS[2].technique}</span>
-              </div>
-
-              <div className="relative z-10 pt-3 border-t border-[#94A3B8]/15 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span>{LOOKBOOK_PROJECTS[2].productType}</span>
-                <span className="text-[#3B82F6] font-semibold">Deportivo 4K</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
+                <span className="text-white">{LOOKBOOK_PROJECTS[2].productType}</span>
+                <span className="text-[#3B82F6] font-semibold">Sublimación 4K</span>
               </div>
             </div>
 
@@ -195,29 +195,27 @@ export const GallerySection: React.FC = () => {
 
           {/* Project 04 */}
           <div className="lg:col-span-5 flex flex-col gap-3 group">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
-              <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#E5A910]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[3].image}
+                alt={LOOKBOOK_PROJECTS[3].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
 
               <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase">
+                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
                   {LOOKBOOK_PROJECTS[3].tag}
                 </span>
-                <span>Valledupar</span>
+                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
               </div>
 
-              <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6">
-                <div className="w-16 h-16 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-3 bg-[#181D26]/80 group-hover:border-[#3B82F6] transition-colors shadow-md">
-                  <svg className="w-7 h-7 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <span className="font-serif text-2xl text-[#FFFFFF] font-bold">{LOOKBOOK_PROJECTS[3].title}</span>
-                <span className="font-sans text-xs text-[#94A3B8] mt-1">{LOOKBOOK_PROJECTS[3].technique}</span>
-              </div>
-
-              <div className="relative z-10 pt-3 border-t border-[#94A3B8]/15 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span>{LOOKBOOK_PROJECTS[3].productType}</span>
-                <span className="text-[#3B82F6] font-semibold">Alta Visibilidad</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
+                <span className="text-white">{LOOKBOOK_PROJECTS[3].productType}</span>
+                <span className="text-[#E5A910] font-semibold">Cápsula Reflectiva</span>
               </div>
             </div>
 
@@ -237,5 +235,3 @@ export const GallerySection: React.FC = () => {
     </section>
   );
 };
-
-

@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SensoryMaterial {
   id: string;
@@ -12,6 +14,7 @@ interface SensoryMaterial {
   tactilePillars: string[];
   densityGrammage: string;
   thermalSpec: string;
+  image: string;
 }
 
 const SENSORY_MATERIALS: SensoryMaterial[] = [
@@ -25,6 +28,7 @@ const SENSORY_MATERIALS: SensoryMaterial[] = [
     tactilePillars: ['Tela gruesa de 220 g/m² que no se trasluce', 'Elasticidad en 4 direcciones que no pierde la horma', 'No genera motas ni bolitas con el uso'],
     densityGrammage: '220 g/m² Grosor Premium',
     thermalSpec: 'Suave & Elástica',
+    image: '/assets/telas/ajustadas/ajustada-1.jpg',
   },
   {
     id: 'dtf-reflectivo-mat',
@@ -36,6 +40,7 @@ const SENSORY_MATERIALS: SensoryMaterial[] = [
     tactilePillars: ['Se estira junto con la tela sin romperse', 'Refleja la luz de carros y cámaras', 'Resistente a más de 50 lavadas'],
     densityGrammage: 'Reflectividad de Alta Intensidad',
     thermalSpec: 'Flexible & Duradero',
+    image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
   },
   {
     id: 'bordado-wilcom-mat',
@@ -47,6 +52,7 @@ const SENSORY_MATERIALS: SensoryMaterial[] = [
     tactilePillars: ['Bordado con relieve que resalta tu logotipo', 'Hilos brillantes resistentes a la decoloración', 'Base ideal en camisas polo y gorras'],
     densityGrammage: 'Hilo de Alta Resistencia',
     thermalSpec: 'Duración Permanente',
+    image: '/assets/telas/cuello_tejido/cuello-2.jpg',
   },
   {
     id: 'sublimacion-4k-mat',
@@ -58,6 +64,7 @@ const SENSORY_MATERIALS: SensoryMaterial[] = [
     tactilePillars: ['Fotografías y colores vivos sin límite', 'Prendas 100% frescas y transpirables', 'No se destiñe con el sol ni el sudor'],
     densityGrammage: 'Color Fotográfico',
     thermalSpec: '100% Transpirable',
+    image: '/assets/telas/qatar/qatar-2.jpg',
   },
 ];
 
@@ -98,93 +105,102 @@ export function MaterialExplorer() {
       </div>
 
       {/* Main Tactile Stage */}
-      <div className="bg-[#181D26]/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        
+        {/* Left Column: Texture Stage with Real Fabric Photo (7 Cols) */}
+        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-white/10 bg-[#12151C] shadow-2xl p-6 sm:p-8 flex flex-col justify-between group">
           
-          {/* Left Column: Sensory Narrative (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-5">
-            <div className="flex items-center justify-between">
-              <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
-                Tela Seleccionada
-              </span>
-              <span className="text-xs text-[#94A3B8] font-medium">{activeMaterial.index}</span>
-            </div>
-            
-            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#FFFFFF] tracking-tight leading-tight">
-              {activeMaterial.name}
-            </h3>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeMaterial.id}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 z-0"
+            >
+              <Image
+                src={activeMaterial.image}
+                alt={activeMaterial.name}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/40 to-[#12151C]/60" />
+            </motion.div>
+          </AnimatePresence>
 
-            <p className="font-serif italic text-base text-[#E5A910]">
-              {activeMaterial.sensoryQuote}
-            </p>
-            
-            <p className="font-sans text-sm text-[#94A3B8] leading-relaxed font-light">
-              {activeMaterial.description}
-            </p>
-
-            <div className="flex flex-col gap-2.5 pt-3 border-t border-[#94A3B8]/15 text-xs text-[#FFFFFF]">
-              {activeMaterial.tactilePillars.map((pt, i) => (
-                <div key={i} className="flex items-start gap-2.5">
-                  <span className="text-[#3B82F6] font-bold">✓</span>
-                  <span className="text-[#94A3B8] text-xs">{pt}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-2 flex items-center gap-3 text-xs text-[#94A3B8]">
-              <span className="bg-[#12151C] px-4 py-2 rounded-full border border-white/10 text-[#E5A910] font-semibold">
-                {activeMaterial.densityGrammage}
-              </span>
-              <span className="bg-[#12151C] px-4 py-2 rounded-full border border-white/10 text-[#3B82F6] font-semibold">
-                {activeMaterial.thermalSpec}
-              </span>
-            </div>
+          {/* Top Bar */}
+          <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
+            <span className="uppercase tracking-wider text-[#E5A910] font-semibold bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
+              {activeMaterial.subtitle}
+            </span>
+            <span className="text-white bg-black/50 px-3.5 py-1 rounded-full border border-white/10 font-medium">
+              {activeMaterial.densityGrammage}
+            </span>
           </div>
 
-          {/* Right Column: Textile Lookbook Frame (7 Cols) */}
-          <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#12151C] to-[#0E1016] shadow-xl p-6 sm:p-8 flex flex-col justify-between group">
-            
-            <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+          {/* Center Quote Box */}
+          <div className="relative z-10 my-auto py-6 text-center max-w-lg mx-auto bg-black/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/10">
+            <p className="font-serif italic text-lg sm:text-2xl text-[#FFFFFF] leading-relaxed">
+              {activeMaterial.sensoryQuote}
+            </p>
+            <span className="text-xs text-[#E5A910] uppercase tracking-wider block mt-3 font-semibold">
+              Sensación al Tacto
+            </span>
+          </div>
 
-            {/* Top Bar */}
-            <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-              <span className="text-[#3B82F6] uppercase font-semibold">
-                Taller Valledupar
-              </span>
-              <span className="text-[#E5A910] font-semibold">
-                100% Garantizado
-              </span>
-            </div>
-
-            {/* Central Texture Icon & Title */}
-            <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#94A3B8]/25 flex items-center justify-center mb-3 bg-[#181D26]/80 backdrop-blur-md shadow-lg group-hover:scale-105 transition-transform">
-                <svg className="w-8 h-8 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                </svg>
-              </div>
-
-              <span className="font-serif text-xl sm:text-2xl text-[#FFFFFF] font-bold">
-                Muestra de Tela & Acabado
-              </span>
-              <p className="font-sans text-xs sm:text-sm text-[#94A3B8] mt-1 max-w-sm font-light">
-                Espacio preparado para fotografía de textura en primer plano para apreciar la suavidad de la tela.
-              </p>
-            </div>
-
-            {/* Bottom Status Bar */}
-            <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8] pt-3 border-t border-[#94A3B8]/15">
-              <span>Telas suaves y frescas</span>
-              <span className="text-[#3B82F6] font-semibold">Calidad comprobada</span>
-            </div>
-
+          {/* Bottom Indicators */}
+          <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
+            <span className="text-white font-medium">{activeMaterial.name}</span>
+            <span className="text-[#3B82F6] font-semibold">{activeMaterial.thermalSpec}</span>
           </div>
 
         </div>
+
+        {/* Right Column: Tactile Description & Pillars (5 Cols) */}
+        <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
+              {activeMaterial.index}
+            </span>
+            <h3 className="font-serif font-bold text-3xl sm:text-4xl text-[#FFFFFF] tracking-tight">
+              {activeMaterial.name}
+            </h3>
+            <p className="font-sans text-sm text-[#94A3B8] leading-relaxed font-light mt-1">
+              {activeMaterial.description}
+            </p>
+          </div>
+
+          {/* Tactile Pillars */}
+          <div className="flex flex-col gap-3 pt-3 border-t border-[#94A3B8]/15">
+            <span className="text-xs uppercase tracking-wider text-[#94A3B8] font-semibold">
+              Ventajas Principales
+            </span>
+            <ul className="flex flex-col gap-2.5">
+              {activeMaterial.tactilePillars.map((pillar, idx) => (
+                <li key={idx} className="flex items-center gap-3 text-xs text-[#FFFFFF]">
+                  <span className="w-5 h-5 rounded-full bg-[#181D26] border border-[#3B82F6]/30 text-[#3B82F6] flex items-center justify-center text-[10px] shrink-0 font-bold">
+                    ✓
+                  </span>
+                  <span>{pillar}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quality badge */}
+          <div className="p-4 bg-[#181D26]/90 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-between text-xs text-[#94A3B8]">
+            <div className="flex items-center gap-2">
+              <span className="text-[#E5A910]">★</span>
+              <span className="text-[#FFFFFF] font-medium">Telas Seleccionadas y Probadas en Taller</span>
+            </div>
+            <span className="text-[#3B82F6] font-semibold">Calidad 1A</span>
+          </div>
+        </div>
+
       </div>
 
     </section>
   );
 }
-
-
