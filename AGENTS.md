@@ -1,59 +1,217 @@
 # Variedades Isaías — instrucciones de proyecto
 
-## Objetivo
+## Objetivo del producto
 
-Transformar la aplicación en una landing y catálogo editorial premium de personalización textil. La experiencia debe sentirse como una marca de moda y un estudio textil: fotográfica, táctil, contemporánea y sobria. La conversión principal es solicitar una cotización por WhatsApp.
+Transformar la aplicación en un **catálogo digital especializado en personalización y producción bajo pedido**, manteniendo una dirección editorial premium.
+
+Principio rector:
+
+> Transformar la experiencia visual de Variedades Isaías de una tienda electrónica genérica a una landing y catálogo editorial de alta costura textil.
+
+La experiencia no debe convertirse en un clon de Shopify. La conversión principal es:
+
+`Landing → Catálogo → Producto → Configurador → Cotización → WhatsApp`
+
+La especificación funcional completa vive en `PRODUCT_SPEC.md`. Léela antes de implementar cambios estructurales.
 
 ## Estado del repositorio
 
 - La aplicación objetivo es `next-app/` (Next.js + React + TypeScript + Tailwind CSS).
-- Antes de editar o ejecutar la app, confirma que ese directorio y sus dependencias existen en el árbol de trabajo. No restaures, borres ni sobrescribas cambios de Git sin autorización expresa.
-- Las fotografías reales son el activo visual principal. Se encuentran principalmente en `extracted/` y deben conservarse; no generar imágenes artificiales para sustituirlas.
-- No mover, duplicar ni recomprimir assets de forma masiva sin un inventario y una razón concreta.
+- Mantener la stack existente salvo necesidad real.
+- No reescribir la aplicación desde cero.
+- Preservar trabajo existente y cambios ajenos.
+- Antes de editar o ejecutar la app, confirma que `next-app/` y sus dependencias existen.
+- No restaures, borres ni sobrescribas cambios de Git sin autorización expresa.
 
-## Dirección de arte
+## Dirección de producto
 
-- Priorizar fotografía, composición editorial, espacio negativo, tipografía y ritmo de movimiento sobre la cantidad de efectos.
-- Evitar estética SaaS, dashboards, cyberpunk, neón, glassmorphism excesivo, grids uniformes y cards ecommerce genéricas.
-- Usar una navegación limpia, titulares grandes, labels técnicos y captions discretos.
-- Las animaciones deben ser intencionales, suaves y respetar `prefers-reduced-motion`.
+El sistema debe evolucionar desde una landing con catálogo visual y carrito hacia:
 
-## Hechos de producto autorizados
+```text
+Landing editorial
+      ↓
+Catálogo
+      ↓
+Producto configurable
+      ↓
+Solicitud de cotización
+      ↓
+WhatsApp
+```
 
-Usar únicamente estas especificaciones cuando correspondan:
+Futuro:
+
+```text
+                         ┌─────────────┐
+                         │    ADMIN    │
+                         └──────┬──────┘
+                                │
+                                ▼
+Cliente → Catálogo → Producto → Configurador → Cotización → WhatsApp
+```
+
+## Dominio
+
+Separar explícitamente:
+
+- `Business`: Variedades Isaías / El Palacio de la Sublimación.
+- `Category`: agrupación comercial.
+- `Product`: producto físico.
+- `Material`: material/sustrato.
+- `Technique`: DTF, sublimación, bordado, estampado, etc.
+- `ProductVariant`: color, modelo u otra variante.
+- `Customization`: configuración solicitada por el cliente.
+- `Service`: servicio de producción que puede solicitarse sin comprar un producto.
+- `QuoteRequest`: solicitud comercial estructurada.
+
+No mezclar producto, material, técnica y servicio en una sola entidad.
+
+## Multiempresa
+
+Construir un solo motor reutilizable para las dos marcas. Los productos y cotizaciones deben poder asociarse a `businessId`.
+
+No duplicar componentes ni aplicaciones para cada empresa.
+
+## Catálogo
+
+La navegación pública debe evolucionar hacia:
+
+```text
+/catalogo
+/catalogo/[category]
+/catalogo/[category]/[product]
+/servicios
+/servicios/[service]
+/personaliza
+/cotizar
+```
+
+Las categorías comerciales iniciales pueden incluir ropa, sublimación, accesorios, dotaciones y merchandising, pero solo deben publicarse productos realmente confirmados.
+
+## Producto configurable
+
+La página de producto debe priorizar fotografía y permitir, cuando el producto lo soporte:
+
+- variante/color;
+- talla o distribución de tallas;
+- técnica de personalización;
+- cantidad;
+- carga de diseño;
+- ubicación/tamaño si está definido;
+- notas;
+- resumen de cotización.
+
+El configurador debe ser **capability-driven**: un producto declara qué opciones soporta. No duplicar configuradores por tipo de producto.
+
+El CTA principal es `Solicitar cotización`, no `Comprar ahora`.
+
+## Cotización y WhatsApp
+
+La cotización debe ser un objeto estructurado y el mensaje de WhatsApp debe generarse desde esos datos.
+
+No enviar mensajes vagos cuando existe información de producto/configuración.
+
+El número real de WhatsApp debe provenir de configuración de la empresa. Nunca publicar `573000000000` ni ningún otro placeholder como dato real.
+
+No implementar checkout/pagos en el MVP salvo requerimiento explícito.
+
+## Datos y veracidad
+
+No inventar materiales, precios, prestaciones o especificaciones.
+
+Especificaciones autorizadas cuando correspondan:
 
 - Piel de durazno spandex — 220 g.
 - DTF reflectivo — curado a 160 °C.
 - Bordado 3D computarizado Wilcom — sobre algodón piqué.
 - Sublimación fotográfica — 4K, 200 °C.
 
-No inventar materiales, precios, prestaciones, propiedades técnicas ni especificaciones. Si falta una correspondencia entre producto y fotografía, marcarla como pendiente de confirmación.
+Los precios actuales del catálogo deben considerarse provisionales hasta confirmación comercial.
 
-## Arquitectura
+## Arquitectura de componentes
 
-- Mantener componentes pequeños y reutilizables. No construir la página completa en un único archivo.
-- Centralizar productos y su información en `src/data/` y tiparlos. La presentación no debe contener productos hardcodeados.
-- Organizar funcionalidades nuevas en áreas equivalentes a `components/`, `sections/`, `ui/`, `animations/`, `catalog/`, `products/`, `data/`, `config/` y `lib/`, adaptándose a la estructura existente.
-- Usar `next/image` para fotografías locales cuando sea compatible con la interacción. Mantener rutas y tipos centralizados.
-- Preferir GSAP + ScrollTrigger para secuencias de scroll por sección. Evitar cientos de listeners o triggers aislados.
-- No introducir Three.js/WebGL. Lenis solo si mejora perceptiblemente la experiencia y no empeora accesibilidad ni rendimiento.
+Preferir:
 
-## Alcance funcional esperado
+```text
+components/
+├── catalog/
+├── product/
+├── customization/
+├── quote/
+├── services/
+└── ui/
+```
 
-- Hero fotográfico fullscreen con profundidad y parallax sutil.
-- Macro Viewer circular de material (aprox. 10x) con movimiento interpolado y uso táctil adaptado.
-- Material Explorer para DTF reflectivo, piel de durazno spandex y bordado 3D.
-- Product Stage editorial, Textile Palette de muestras textiles, galería asimétrica con filtros animados y lightbox accesible.
-- CTA de cotización que conserve la integración de WhatsApp existente. No publicar un número de teléfono de ejemplo como dato real.
+Mantener componentes pequeños y reutilizables. La presentación no debe contener catálogos hardcodeados.
 
-## Calidad y accesibilidad
+## Diseño
 
-- Mantener teclado, foco visible, `aria-label`, textos alternativos útiles, contraste y cierre con Escape para overlays/modales.
-- En móvil, simplificar el movimiento y adaptar las interacciones de cursor a touch; no limitarse a escalar el desktop.
-- En cada fase ejecutable: lint, typecheck si existe, build cuando corresponda y verificación en navegador. Corregir errores antes de avanzar.
-- Medir antes de optimizar; usar listeners pasivos, `requestAnimationFrame` o GSAP ticker solo cuando sea necesario y limpiar animaciones/listeners al desmontar.
+Mantener la identidad editorial existente, pero no tratarla como una camisa de fuerza.
+
+Prioridades:
+
+1. Producto y fotografía.
+2. Material y textura.
+3. Jerarquía tipográfica.
+4. Espacio negativo.
+5. Claridad comercial.
+6. Movimiento sutil e intencional.
+7. Rendimiento y accesibilidad.
+
+Evitar:
+
+- estética SaaS;
+- dashboards en la experiencia pública;
+- cyberpunk/neón;
+- glassmorphism excesivo;
+- grids uniformes sin intención;
+- cards ecommerce genéricas;
+- efectos que compitan con el producto.
+
+Las animaciones deben respetar `prefers-reduced-motion`. GSAP + ScrollTrigger ya está disponible; no introducir nuevas librerías de animación sin justificación.
+
+## Assets
+
+Las fotografías reales son activos prioritarios. Conservarlas y no sustituirlas por imágenes artificiales.
+
+No mover, duplicar ni recomprimir assets masivamente sin inventario y motivo.
+
+Usar `next/image` cuando sea compatible con la interacción.
+
+## Migración del carrito
+
+El `CartContext` existente representa una etapa anterior del producto. No eliminarlo de forma abrupta si todavía hay dependencias. Evolucionarlo gradualmente hacia una semántica de **quote/cart de cotización**, donde cada item conserve su configuración completa.
+
+Un item de cotización debe poder representar:
+
+```text
+producto
+variante
+opciones de personalización
+tallas
+cantidad
+diseño/notas
+```
+
+No calcular precios dinámicos no verificados.
+
+## Calidad
+
+Después de cada fase significativa:
+
+- lint;
+- typecheck si existe;
+- build cuando corresponda;
+- verificación en navegador.
+
+Corregir errores antes de avanzar.
+
+En móvil no limitarse a escalar desktop: adaptar navegación, configurador, carga de archivos y movimiento.
 
 ## Seguridad de cambios
 
-- El repositorio puede contener trabajo del usuario sin confirmar. Preservar cambios ajenos y limitar cada edición al alcance solicitado.
-- Antes de agregar dependencias, comprobar si la capacidad ya está instalada. Antes de cambiar dependencias, verificar versión y compatibilidad.
+- Trabajar por fases pequeñas.
+- Preferir ramas y PRs para cambios grandes.
+- No tocar producción/main innecesariamente.
+- No eliminar funcionalidad existente sin comprobar dependencias.
+- Antes de agregar dependencias, comprobar si ya existe una capacidad equivalente.
