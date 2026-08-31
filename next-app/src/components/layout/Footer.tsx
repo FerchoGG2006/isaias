@@ -47,8 +47,14 @@ export const Footer: React.FC = () => {
             <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
               Catálogo de Prendas
             </Link>
+            <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
+              Personaliza tu Pieza
+            </Link>
             <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
               Servicios de Maquila
+            </Link>
+            <Link href="/cotizar" className="hover:text-[#C8A96E] transition-colors">
+              Solicitud de Cotización
             </Link>
             <Link href="/#materiales" className="hover:text-[#C8A96E] transition-colors">
               Explorador de Materiales (10X)

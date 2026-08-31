@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
 import { Button } from '@/components/ui/Button';
 
@@ -313,6 +314,14 @@ export const QuoteDrawer: React.FC = () => {
             >
               Enviar Cotización por WhatsApp
             </Button>
+
+            <Link
+              href="/cotizar"
+              onClick={() => setIsQuoteDrawerOpen(false)}
+              className="font-mono text-[11px] uppercase tracking-wider text-center text-[#C8A96E] hover:text-[#F4F1EA] py-1 transition-colors"
+            >
+              Ver página completa de cotización & datos de entrega →
+            </Link>
 
             <div className="flex items-center justify-between text-[11px] font-mono text-[#A0A0A5]">
               <span>* Se abrirá WhatsApp con el resumen formateado.</span>
