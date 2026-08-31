@@ -39,15 +39,9 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   };
 
   return (
-    <article className="group bg-[#0e0e11] border border-white/10 hover:border-[#C8A96E]/50 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#C8A96E]/10">
+    <article className="group bg-[#181D26]/80 backdrop-blur-xl border border-white/10 hover:border-[#3B82F6]/50 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#3B82F6]/10">
       {/* Service Header / Media */}
       <Link href={serviceHref} className="relative aspect-[16/10] w-full overflow-hidden bg-[#141419] block">
-        <div className="absolute top-3.5 left-3.5 z-10">
-          <Badge variant="gold" size="sm">
-            {service.tag}
-          </Badge>
-        </div>
-
         <Image
           src={service.image}
           alt={service.title}

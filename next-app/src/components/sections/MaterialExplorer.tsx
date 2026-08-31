@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MacroViewer } from '@/components/catalog/MacroViewer';
 
 interface SensoryMaterial {
   id: string;
@@ -11,49 +10,54 @@ interface SensoryMaterial {
   sensoryQuote: string;
   description: string;
   tactilePillars: string[];
-  image: string;
+  densityGrammage: string;
+  thermalSpec: string;
 }
 
 const SENSORY_MATERIALS: SensoryMaterial[] = [
   {
     id: 'piel-durazno',
     index: '01 / 04',
-    name: 'PIEL DE DURAZNO SPANDEX 220G',
-    subtitle: 'TACTO ESMERILADO & MICROFIBRA PEINADA',
-    sensoryQuote: '«Suave al roce, elástica al cuerpo, indeformable con el uso.»',
-    description: 'Microfibra de 220 gramos con acabado esmerilado tipo piel de durazno. Proporciona una caída limpia y una base textil ultra-lisa que recibe la fijación térmica sin crear textura rugosa.',
-    tactilePillars: ['220 g/m² densidad pesada', 'Elongación 4-way que acompaña el movimiento', 'Cero motas tras múltiples lavadas'],
-    image: '/assets/telas/ajustadas/ajustada-1.jpg',
+    name: 'Piel de Durazno Spandex',
+    subtitle: 'TACTO ATERCIOPELADO & MÁXIMA SUAVIDAD',
+    sensoryQuote: '«Suave al roce, fresca todo el día y se adapta a tu cuerpo sin apretar.»',
+    description: 'Tela de 220 gramos de grosor ideal que no se transparenta. Su acabado suave tipo piel de durazno ofrece una sensación de comodidad única para camisetas y vestidos.',
+    tactilePillars: ['Tela gruesa de 220 g/m² que no se trasluce', 'Elasticidad en 4 direcciones que no pierde la horma', 'No genera motas ni bolitas con el uso'],
+    densityGrammage: '220 g/m² Grosor Premium',
+    thermalSpec: 'Suave & Elástica',
   },
   {
     id: 'dtf-reflectivo-mat',
     index: '02 / 04',
-    name: 'DTF REFLECTIVO 160°C',
-    subtitle: 'RETROREFLEXIÓN & CURADO TÉRMICO',
-    sensoryQuote: '«Invisible de día, reflectivo en la oscuridad, elástico siempre.»',
-    description: 'Polímeros con micro-perlas reflectivas fusionadas a 160 °C sobre la fibra elástica. No se quiebra al estirar la prenda y devuelve destellos de luz intensa ante fuentes directas.',
-    tactilePillars: ['Curado térmico exacto a 160 °C', 'Elasticidad idéntica al textil base', '50+ lavadas con reflectividad intacta'],
-    image: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg',
+    name: 'Estampado Reflectivo',
+    subtitle: 'ALTA VISIBILIDAD & BRILLO DE NOCHE',
+    sensoryQuote: '«Discreto y elegante de día, brillante e impactante de noche.»',
+    description: 'Estampado especial que refleja la luz directa en la oscuridad. Perfecto para marcas que buscan destacar o para prendas deportivas y de seguridad vial.',
+    tactilePillars: ['Se estira junto con la tela sin romperse', 'Refleja la luz de carros y cámaras', 'Resistente a más de 50 lavadas'],
+    densityGrammage: 'Reflectividad de Alta Intensidad',
+    thermalSpec: 'Flexible & Duradero',
   },
   {
     id: 'bordado-wilcom-mat',
     index: '03 / 04',
-    name: 'BORDADO 3D WILCOM',
-    subtitle: 'RELIEVE TRIDIMENSIONAL & ALGODÓN PIQUÉ',
-    sensoryQuote: '«Volumen que se siente al tacto y permanece de por vida.»',
-    description: 'Miles de puntadas en hilatura de poliéster brillante de alto calibre sobre algodón piqué estructurado. Los realces tridimensionales 3D aportan presencia y elegancia indiscutible.',
-    tactilePillars: ['Ponchado matricial en software Wilcom', 'Relieve 3D con densidad reforzada', 'Base ideal en algodón piqué y dril'],
-    image: '/assets/telas/cuello_tejido/cuello-6.jpg',
+    name: 'Bordado en Relieve 3D',
+    subtitle: 'PUNTADAS DE PRECISIÓN & ALGODÓN PIQUÉ',
+    sensoryQuote: '«Un acabado formal y elegante que dura toda la vida de la prenda.»',
+    description: 'Miles de puntadas en hilo brillante sobre tela polo piqué o gorras. Aporta presencia ejecutiva y formalidad a la imagen de tu empresa o marca.',
+    tactilePillars: ['Bordado con relieve que resalta tu logotipo', 'Hilos brillantes resistentes a la decoloración', 'Base ideal en camisas polo y gorras'],
+    densityGrammage: 'Hilo de Alta Resistencia',
+    thermalSpec: 'Duración Permanente',
   },
   {
     id: 'sublimacion-4k-mat',
     index: '04 / 04',
-    name: 'SUBLIMACIÓN 4K · 200°C',
-    subtitle: 'FUSIÓN MOLECULAR & TRANSPIRABILIDAD',
-    sensoryQuote: '«El color no está sobre la tela: es la tela misma.»',
-    description: 'Transferencia térmica gaseosa a 200 °C donde el pigmento pasa a formar parte íntima del polímero sintético. Cero tacto plástico, 100% transpirable e indeleble ante la intemperie.',
-    tactilePillars: ['Resolución fotográfica 4K', 'Tacto imperceptible y cero sudoración', 'Resistencia total a rayos UV'],
-    image: '/assets/img-12.jpg',
+    name: 'Sublimación Digital 4K',
+    subtitle: 'COLOR TOTAL & CERO TACTO',
+    sensoryQuote: '«El diseño forma parte de la tela: nunca se despega ni se borra.»',
+    description: 'Impresión digital donde la tinta se funde con la tela deportiva o artículos como pocillos y termos. Permite fotos y degradados en colores súper vivos.',
+    tactilePillars: ['Fotografías y colores vivos sin límite', 'Prendas 100% frescas y transpirables', 'No se destiñe con el sol ni el sudor'],
+    densityGrammage: 'Color Fotográfico',
+    thermalSpec: '100% Transpirable',
   },
 ];
 
@@ -62,86 +66,118 @@ export function MaterialExplorer() {
   const activeMaterial = SENSORY_MATERIALS[selectedIdx] || SENSORY_MATERIALS[0];
 
   return (
-    <section id="materiales" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
+    <section id="materiales" className="wrap py-24 sm:py-32 border-t border-[#94A3B8]/15 scroll-mt-24">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
-        <div className="flex flex-col gap-3 max-w-2xl">
-          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
-            06 / EXPERIENCIA SENSORIAL
-          </span>
-          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
-            FEEL THE MATERIAL
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col gap-2.5 max-w-2xl">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-[#FFFFFF] tracking-tight">
+            Telas & Materiales
           </h2>
-          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
-            &ldquo;La textura no se describe. Se siente y se inspecciona.&rdquo;
+          <p className="font-sans text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
+            Prendas suaves, frescas y con la mejor textura para tu comodidad diaria.
           </p>
         </div>
 
         {/* Sensory Switcher Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none font-mono text-xs uppercase tracking-widest">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-medium">
           {SENSORY_MATERIALS.map((mat, idx) => (
             <button
               key={mat.id}
               onClick={() => setSelectedIdx(idx)}
-              className={`px-3 py-1.5 transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-5 py-2.5 rounded-full transition-all cursor-pointer whitespace-nowrap ${
                 idx === selectedIdx
-                  ? 'text-[#C8A96E] border-b border-[#C8A96E] font-bold'
-                  : 'text-[#A0A0A5] hover:text-[#F4F1EA]'
+                  ? 'bg-[#3B82F6] text-[#FFFFFF] font-semibold shadow-md shadow-[#3B82F6]/25'
+                  : 'text-[#94A3B8] hover:text-[#FFFFFF] bg-[#181D26] hover:bg-[#202734] border border-[#94A3B8]/15'
               }`}
             >
-              [ {mat.name.split(' ')[0]} {mat.name.includes('220G') ? '220G' : mat.name.includes('160°C') ? '160°C' : mat.name.includes('3D') ? '3D' : '4K'} ]
+              {mat.name.split(' ')[0]} {mat.name.includes('Spandex') ? 'Spandex' : mat.name.includes('Reflectivo') ? 'Reflectivo' : mat.name.includes('3D') ? 'Bordado' : '4K'}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Main Protagonist 10X Tactile Stage */}
-      <div className="bg-[#0b0b0e] border border-white/10 rounded-xs p-8 sm:p-12 lg:p-16 shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* Main Tactile Stage */}
+      <div className="bg-[#181D26]/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Sensory Narrative (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C8A96E] bg-black/60 border border-[#C8A96E]/30 px-3 py-1 rounded-xs">
-                INSPECCIÓN 10X · MACRO
+          <div className="lg:col-span-5 flex flex-col gap-5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
+                Tela Seleccionada
               </span>
-              <span className="font-mono text-xs text-[#A0A0A5]">{activeMaterial.index}</span>
+              <span className="text-xs text-[#94A3B8] font-medium">{activeMaterial.index}</span>
             </div>
             
-            <h3 className="font-sans font-extrabold text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight leading-tight">
+            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#FFFFFF] tracking-tight leading-tight">
               {activeMaterial.name}
             </h3>
 
-            <p className="font-serif italic text-base sm:text-lg text-[#C8A96E]">
+            <p className="font-serif italic text-base text-[#E5A910]">
               {activeMaterial.sensoryQuote}
             </p>
             
-            <p className="text-sm text-[#D0CFC9] leading-relaxed font-light">
+            <p className="font-sans text-sm text-[#94A3B8] leading-relaxed font-light">
               {activeMaterial.description}
             </p>
 
-            <div className="flex flex-col gap-2 pt-4 border-t border-white/10 font-mono text-xs text-[#D0CFC9]">
+            <div className="flex flex-col gap-2.5 pt-3 border-t border-[#94A3B8]/15 text-xs text-[#FFFFFF]">
               {activeMaterial.tactilePillars.map((pt, i) => (
                 <div key={i} className="flex items-start gap-2.5">
-                  <span className="text-[#C8A96E] font-bold">✓</span>
-                  <span>{pt}</span>
+                  <span className="text-[#3B82F6] font-bold">✓</span>
+                  <span className="text-[#94A3B8] text-xs">{pt}</span>
                 </div>
               ))}
             </div>
 
-            <div className="pt-2 font-mono text-[11px] text-[#A0A0A5]">
-              Arrastra el cursor o toca el lienzo para activar el aumento 10X.
+            <div className="pt-2 flex items-center gap-3 text-xs text-[#94A3B8]">
+              <span className="bg-[#12151C] px-4 py-2 rounded-full border border-white/10 text-[#E5A910] font-semibold">
+                {activeMaterial.densityGrammage}
+              </span>
+              <span className="bg-[#12151C] px-4 py-2 rounded-full border border-white/10 text-[#3B82F6] font-semibold">
+                {activeMaterial.thermalSpec}
+              </span>
             </div>
           </div>
 
-          {/* Right Column: 10X Loupe Viewer (7 Cols) */}
-          <div className="lg:col-span-7">
-            <MacroViewer
-              key={activeMaterial.id}
-              image={activeMaterial.image}
-              alt={`Inspección macroscópica de ${activeMaterial.name}`}
-            />
+          {/* Right Column: Textile Lookbook Frame (7 Cols) */}
+          <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#12151C] to-[#0E1016] shadow-xl p-6 sm:p-8 flex flex-col justify-between group">
+            
+            <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+
+            {/* Top Bar */}
+            <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
+              <span className="text-[#3B82F6] uppercase font-semibold">
+                Taller Valledupar
+              </span>
+              <span className="text-[#E5A910] font-semibold">
+                100% Garantizado
+              </span>
+            </div>
+
+            {/* Central Texture Icon & Title */}
+            <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#94A3B8]/25 flex items-center justify-center mb-3 bg-[#181D26]/80 backdrop-blur-md shadow-lg group-hover:scale-105 transition-transform">
+                <svg className="w-8 h-8 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+              </div>
+
+              <span className="font-serif text-xl sm:text-2xl text-[#FFFFFF] font-bold">
+                Muestra de Tela & Acabado
+              </span>
+              <p className="font-sans text-xs sm:text-sm text-[#94A3B8] mt-1 max-w-sm font-light">
+                Espacio preparado para fotografía de textura en primer plano para apreciar la suavidad de la tela.
+              </p>
+            </div>
+
+            {/* Bottom Status Bar */}
+            <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8] pt-3 border-t border-[#94A3B8]/15">
+              <span>Telas suaves y frescas</span>
+              <span className="text-[#3B82F6] font-semibold">Calidad comprobada</span>
+            </div>
+
           </div>
 
         </div>

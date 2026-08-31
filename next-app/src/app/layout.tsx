@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${anton.variable} ${workSans.variable} ${spaceMono.variable} ${playfair.variable} ${inter.variable}`}>
-      <body className="bg-[#0B0B0C] text-[#F4F1EA] antialiased selection:bg-[#C8A96E] selection:text-[#0B0B0C]">
+      <body className="bg-[#12151C] text-[#FFFFFF] antialiased selection:bg-[#3B82F6] selection:text-[#FFFFFF]">
         <CartProvider>
           {children}
           <Toast />

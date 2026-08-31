@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -13,53 +12,48 @@ interface TechniqueProcess {
   headline: string;
   description: string;
   compatibleProducts: string[];
-  image: string;
   serviceSlug: string;
 }
 
 const TECHNIQUES_DATA: TechniqueProcess[] = [
   {
     id: 'dtf',
-    name: 'DTF REFLECTIVO & FULL COLOR',
-    badge: 'ESTRUCTURA DE POLIAMIDA & CURADO 160°C',
-    thermalFact: '160 °C · 15s de presión neumática',
-    headline: 'Impresión Directa a Film: Definición Vectorial sin Límites',
-    description: 'Pigmentos textiles de alta cobertura con base blanca densa y microesferas reflectivas de alta intensidad. Funde el diseño íntimamente con la fibra elástica, manteniendo flexibilidad total sin cuartearse.',
-    compatibleProducts: ['Camisetas Piel de Durazno 220g', 'Baby Tees', 'Hoodies & Suéteres', 'Dotaciones'],
-    image: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg',
+    name: 'Estampado DTF Textil',
+    badge: 'ALTA DEFINICIÓN & ELASTICIDAD',
+    thermalFact: 'Fijación duradera que no se cuartea',
+    headline: 'Colores Vivos y Detalles Nítidos en Cualquier Prenda',
+    description: 'Permite estampar desde logotipos pequeños hasta ilustraciones complejas a todo color. El estampado se integra con la tela, resistiendo estiramientos y múltiples lavadas sin perder intensidad.',
+    compatibleProducts: ['Camisetas Ajustadas', 'Baby Tees', 'Buzos & Hoodies', 'Dotaciones'],
     serviceSlug: 'impresion-dtf-por-metro',
   },
   {
     id: 'sublimacion',
-    name: 'SUBLIMACIÓN FOTOGRÁFICA 4K',
-    badge: 'TRANSFERENCIA GASEOSA A 200°C',
-    thermalFact: '200 °C · Integración molecular',
-    headline: 'Color Gaseoso Permanente: Tacto Cero & Transpirabilidad',
-    description: 'El tinte térmico vaporiza a 200 °C integrándose dentro de las moléculas de poliéster y polímeros cerámicos. El resultado es 100% transpirable, indeleble ante el lavado y de resolución fotográfica 4K.',
-    compatibleProducts: ['Prendas Deportivas Qatar', 'Mugs Cerámicos', 'Botellas Térmicas', 'Cintas & Merch'],
-    image: '/assets/img-12.jpg',
+    name: 'Sublimación Fotográfica',
+    badge: 'TACTO CERO & CALIDAD FOTOGRÁFICA',
+    thermalFact: 'El color pasa a ser parte de la fibra',
+    headline: 'Impresión que No se Siente al Tacto y No se Cae',
+    description: 'La tinta se fusiona directamente con la fibra sintética y artículos promocionales. La prenda queda 100% transpirable, suave y el color nunca se borra con el lavado.',
+    compatibleProducts: ['Prendas Deportivas', 'Mugs & Pocillos', 'Termos Metálicos', 'Accesorios'],
     serviceSlug: 'sublimacion-fotografica-maquila',
   },
   {
     id: 'bordado',
-    name: 'BORDADO COMPUTARIZADO 3D',
-    badge: 'MATRICES WILCOM & RELIEVE 3D',
-    thermalFact: 'Hilatura de poliéster de alta resistencia',
-    headline: 'Volumen Tridimensional: Ponchado de Alta Densidad',
-    description: 'Digitalización vectorial en software Wilcom para crear relieves densos y matrices de costura tridimensional. Resistencia inalterable al paso del tiempo sobre prendas estructuradas.',
-    compatibleProducts: ['Polos Cuello Tejido en Algodón Piqué', 'Gorras Estructuradas', 'Camisas de Dotación'],
-    image: '/assets/telas/cuello_tejido/cuello-6.jpg',
+    name: 'Bordado Computarizado 3D',
+    badge: 'RELIEVE ELEGANTE & MÁXIMA DURACIÓN',
+    thermalFact: 'Hilo resistente de alto brillo',
+    headline: 'Elegancia y Prestigio para tu Marca o Empresa',
+    description: 'Bordados con puntadas precisas y opción de relieve 3D para darle presencia institucional y sofisticación a camisas polo, gorras y uniformes corporativos.',
+    compatibleProducts: ['Polos Cuello Tejido', 'Gorras', 'Camisas Ejecutivas', 'Chalecos'],
     serviceSlug: 'bordado-computarizado-prendas',
   },
   {
     id: 'vinil',
-    name: 'VINIL TEXTIL TERMOFIJADO',
-    badge: 'CORTE VECTORIAL DE ALTO CONTRASTE',
-    thermalFact: '150 °C · Adhesivo térmico industrial',
-    headline: 'Acabados Especiales: Metálicos, Mates y Reflectivos',
-    description: 'Películas de poliuretano de alta gama cortadas con cuchilla micrométrica para números deportivos, logotipos monocromáticos limpios y acabados texturizados de máximo contraste.',
-    compatibleProducts: ['Prendas Deportivas', 'Uniformes de Equipo', 'Gorras', 'Bolsos Textiles'],
-    image: '/assets/telas/ajustadas/ajustada-4.jpg',
+    name: 'Vinilo Textil Especial',
+    badge: 'ACABADOS METALIZADOS & REFLECTIVOS',
+    thermalFact: 'Corte limpio de alta precisión',
+    headline: 'Efectos Brillantes, Dorados y Reflectivos de Noche',
+    description: 'Ideal para números de camisetas deportivas, nombres personalizados y logotipos que requieran acabados brillantes, dorados o reflectivos de alta visibilidad.',
+    compatibleProducts: ['Uniformes Deportivos', 'Prendas de Noche', 'Gorras', 'Bolsos'],
     serviceSlug: 'impresion-dtf-por-metro',
   },
 ];
@@ -69,119 +63,140 @@ export const TechniquesSection: React.FC = () => {
   const activeTech = TECHNIQUES_DATA[activeIdx] || TECHNIQUES_DATA[0];
 
   return (
-    <section id="tecnicas" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
+    <section id="tecnicas" className="wrap py-24 sm:py-32 border-t border-[#94A3B8]/15 scroll-mt-24">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
-        <div className="flex flex-col gap-3 max-w-2xl">
-          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
-            05 / PROCESOS DE TALLER
-          </span>
-          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
-            THE TECHNIQUES
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col gap-2.5 max-w-2xl">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-[#FFFFFF] tracking-tight">
+            Cómo Personalizamos
           </h2>
-          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
-            &ldquo;Química textil, curvas térmicas y costura de precisión.&rdquo;
+          <p className="font-sans text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
+            Acabados de calidad para que tus prendas duren por años sin perder el color.
           </p>
         </div>
 
         <Link
           href="/servicios"
-          className="font-mono text-xs uppercase tracking-widest text-[#C8A96E] hover:text-[#F4F1EA] flex items-center gap-2 transition-colors self-start md:self-auto"
+          className="text-xs uppercase tracking-wider text-[#3B82F6] hover:text-[#FFFFFF] flex items-center gap-2 transition-colors self-start md:self-auto font-semibold"
         >
-          <span>Ver todos los servicios de maquila</span>
+          <span>Ver todos los servicios de taller</span>
           <span>→</span>
         </Link>
       </div>
 
-      {/* Vertical Editorial Process Stage */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* Stage & Details */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
-        {/* Left Column: Technique Image with Fade Reveal (7 Cols) */}
-        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-xs overflow-hidden bg-[#141419] border border-white/10 shadow-2xl">
+        {/* Left Column: Technique Stage (7 Cols) */}
+        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+          
+          <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent pointer-events-none" />
+
+          {/* Top Stage Bar */}
+          <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
+            <span className="uppercase tracking-wider text-[#E5A910] font-semibold">
+              {activeTech.badge}
+            </span>
+            <span className="uppercase tracking-wider font-semibold">
+              Taller Propio
+            </span>
+          </div>
+
+          {/* Dynamic Interactive Stage Center */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTech.id}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full h-full"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-6"
             >
-              <Image
-                src={activeTech.image}
-                alt={activeTech.headline}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#94A3B8]/25 flex items-center justify-center mb-3 bg-[#181D26]/90 backdrop-blur-md shadow-lg">
+                <svg className="w-8 h-8 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+
+              <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
+                Proceso de Estampación
+              </span>
+              <h4 className="font-serif text-2xl sm:text-4xl text-[#FFFFFF] font-bold mt-1">
+                {activeTech.name}
+              </h4>
+              <p className="font-sans text-xs sm:text-sm text-[#94A3B8] max-w-md mt-2 font-light">
+                {activeTech.headline}
+              </p>
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute top-6 left-6 z-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] bg-black/80 backdrop-blur-md px-3.5 py-1.5 border border-[#C8A96E]/30 rounded-xs">
-            {activeTech.badge}
+          {/* Bottom Strip */}
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#FFFFFF] bg-[#12151C]/90 backdrop-blur-md p-3.5 border border-white/10 rounded-2xl">
+            <span className="text-[#3B82F6] font-semibold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
+              {activeTech.thermalFact}
+            </span>
+            <span className="text-[#94A3B8] text-xs">Valledupar, Cesar</span>
           </div>
 
-          <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-xs text-[#F4F1EA] bg-black/80 backdrop-blur-md p-4 border border-white/10 rounded-xs">
-            <span className="text-[#C8A96E] font-bold">{activeTech.thermalFact}</span>
-            <span className="text-[#A0A0A5] text-[11px]">Taller de Producción Valledupar</span>
-          </div>
         </div>
 
-        {/* Right Column: Vertical Technique Navigation & Story (5 Cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-8">
+        {/* Right Column: Technique Navigation & Story (5 Cols) */}
+        <div className="lg:col-span-5 flex flex-col gap-6">
           
-          {/* Vertical Menu Tabs */}
-          <div className="flex flex-col border-b border-white/10">
+          {/* Menu Tabs */}
+          <div className="flex flex-col border-b border-[#94A3B8]/15">
             {TECHNIQUES_DATA.map((tech, idx) => {
               const isActive = idx === activeIdx;
               return (
                 <button
                   key={tech.id}
                   onClick={() => setActiveIdx(idx)}
-                  className={`py-4 flex items-center justify-between font-mono text-xs uppercase tracking-widest border-t border-white/10 transition-all text-left cursor-pointer group ${
+                  className={`py-3.5 flex items-center justify-between text-xs uppercase tracking-wider border-t border-[#94A3B8]/15 transition-all text-left cursor-pointer group ${
                     isActive
-                      ? 'text-[#C8A96E] font-bold pl-3 border-l-2 border-l-[#C8A96E]'
-                      : 'text-[#A0A0A5] hover:text-[#F4F1EA] hover:pl-2'
+                      ? 'text-[#3B82F6] font-semibold pl-3.5 border-l-2 border-l-[#3B82F6] bg-white/[0.02]'
+                      : 'text-[#94A3B8] hover:text-[#FFFFFF] hover:pl-2'
                   }`}
                 >
-                  <span>{tech.name}</span>
-                  <span className="text-[11px] opacity-60 group-hover:opacity-100 transition-opacity">0{idx + 1}</span>
+                  <span className="flex items-center gap-2">
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />}
+                    {tech.name}
+                  </span>
+                  <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">0{idx + 1}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Active Technique Details */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight leading-snug">
+          <div className="flex flex-col gap-3.5">
+            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#FFFFFF] tracking-tight leading-snug">
               {activeTech.headline}
             </h3>
 
-            <p className="text-sm text-[#D0CFC9] leading-relaxed font-light">
+            <p className="text-sm text-[#94A3B8] leading-relaxed font-light">
               {activeTech.description}
             </p>
 
             {/* Compatible Garments */}
-            <div className="pt-4 flex flex-col gap-2 font-mono text-xs">
-              <span className="text-[10px] uppercase tracking-wider text-[#A0A0A5]">Prendas y Sustratos Compatibles:</span>
+            <div className="pt-3 flex flex-col gap-2 text-xs">
+              <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">Prendas recomendadas para esta técnica:</span>
               <div className="flex flex-wrap gap-1.5">
                 {activeTech.compatibleProducts.map((prod) => (
-                  <span key={prod} className="bg-[#141419] px-2.5 py-1 border border-white/10 text-[#F4F1EA] text-[11px] rounded-xs">
+                  <span key={prod} className="bg-[#181D26] px-3.5 py-1.5 border border-[#94A3B8]/20 text-[#FFFFFF] text-xs rounded-full font-medium">
                     {prod}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-3">
               <Link
                 href={`/servicios/${activeTech.serviceSlug}`}
-                className="font-mono text-xs uppercase tracking-widest text-[#C8A96E] hover:text-[#F4F1EA] font-semibold inline-flex items-center gap-2 transition-colors"
+                className="text-xs uppercase tracking-wider text-[#3B82F6] hover:text-[#FFFFFF] font-semibold inline-flex items-center gap-2 transition-colors"
               >
-                <span>Cotizar servicio de {activeTech.name.split('&')[0].trim()}</span>
+                <span>Cotizar servicio de {activeTech.name}</span>
                 <span>→</span>
               </Link>
             </div>

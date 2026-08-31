@@ -31,48 +31,45 @@ const STORY_STEPS = [
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section id="proceso" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
+    <section id="proceso" className="wrap py-24 sm:py-32 border-t border-[#94A3B8]/15 scroll-mt-24">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24">
-        <div className="flex flex-col gap-3 max-w-2xl">
-          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
-            10 / METODOLOGÍA & NARRATIVA
-          </span>
-          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
-            THE PROCESS
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col gap-2.5 max-w-2xl">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-[#FFFFFF] tracking-tight">
+            Cómo Trabajamos
           </h2>
-          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
-            &ldquo;Cuatro pasos transparentes de la mente a la prenda terminada.&rdquo;
+          <p className="font-sans text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
+            Cuatro pasos sencillos desde tu idea hasta la prenda terminada en tus manos.
           </p>
         </div>
 
-        <span className="font-mono text-xs text-[#A0A0A5] uppercase tracking-widest self-start md:self-auto">
-          FLUJO DIRECTO SIN INTERMEDIARIOS
+        <span className="text-xs text-[#3B82F6] uppercase tracking-wider self-start md:self-auto font-semibold">
+          Proceso en Taller
         </span>
       </div>
 
-      {/* Continuous Horizontal Visual Narrative (No Boxy Grids) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 border-t border-white/10 pt-12">
+      {/* Continuous Horizontal Narrative */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-t border-[#94A3B8]/15 pt-10">
         {STORY_STEPS.map((step) => (
-          <div key={step.num} className="flex flex-col gap-5 group">
+          <div key={step.num} className="flex flex-col gap-4 group">
             
             {/* Step Header */}
-            <div className="flex items-baseline justify-between font-mono">
-              <span className="text-4xl sm:text-5xl font-extrabold text-[#C8A96E] tracking-tighter group-hover:translate-x-1 transition-transform">
+            <div className="flex items-baseline justify-between">
+              <span className="text-4xl sm:text-5xl font-extrabold text-[#3B82F6] tracking-tight group-hover:translate-x-1 transition-all">
                 {step.num}
               </span>
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#A0A0A5]">
+              <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
                 {step.subtitle}
               </span>
             </div>
 
             {/* Step Content */}
-            <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
-              <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#F4F1EA] tracking-tight group-hover:text-[#C8A96E] transition-colors">
+            <div className="flex flex-col gap-1.5 pt-2 border-t border-[#94A3B8]/15">
+              <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#FFFFFF] tracking-tight group-hover:text-[#3B82F6] transition-colors">
                 {step.title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#A0A0A5] leading-relaxed font-light">
+              <p className="font-sans text-xs sm:text-sm text-[#94A3B8] leading-relaxed font-light">
                 {step.narrative}
               </p>
             </div>

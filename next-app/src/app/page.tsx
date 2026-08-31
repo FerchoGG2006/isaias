@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main id="top" className="min-h-screen bg-[#070708] text-[#F4F1EA] selection:bg-[#C8A96E] selection:text-[#070708]">
+      <main id="top" className="min-h-screen bg-[#12151C] text-[#FFFFFF] selection:bg-[#3B82F6] selection:text-[#FFFFFF]">
         {/* 01 · HERO EDITORIAL */}
         <HeroSection />
 

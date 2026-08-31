@@ -2,7 +2,6 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { PRODUCTS } from '@/data/products';
 import { CATEGORIES } from '@/data/categories';
 
@@ -19,132 +18,149 @@ export const CatalogSection: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <section id="catalogo" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
+    <section id="catalogo" className="wrap py-24 sm:py-32 border-t border-[#94A3B8]/15 scroll-mt-24">
       
-      {/* Editorial Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
-        <div className="flex flex-col gap-3 max-w-2xl">
-          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.32em] font-semibold">
-            03 / ARCHIVO 026
-          </span>
-          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tighter">
-            THE COLLECTION
+      {/* Section Header with Category Filter */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col gap-2.5 max-w-2xl">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-[#FFFFFF] tracking-tight">
+            Catálogo de Prendas
           </h2>
-          <p className="font-serif italic text-lg sm:text-2xl text-[#D0CFC9] leading-relaxed font-normal">
-            &ldquo;Prendas hechas para llevar tus ideas.&rdquo;
+          <p className="font-sans text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
+            Siluetas y artículos listos para estampar, bordar o personalizar a tu medida.
           </p>
         </div>
 
-        {/* Minimal Category Switcher */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none font-mono text-xs uppercase tracking-widest">
+        {/* Category Switcher */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-medium">
           <button
             onClick={() => setActiveCategory('todos')}
-            className={`px-3 py-1.5 transition-colors cursor-pointer ${
+            className={`px-5 py-2.5 rounded-full transition-all cursor-pointer ${
               activeCategory === 'todos'
-                ? 'text-[#C8A96E] border-b border-[#C8A96E] font-bold'
-                : 'text-[#A0A0A5] hover:text-[#F4F1EA]'
+                ? 'bg-[#3B82F6] text-[#FFFFFF] font-semibold shadow-md shadow-[#3B82F6]/25'
+                : 'text-[#94A3B8] hover:text-[#FFFFFF] bg-[#181D26] hover:bg-[#202734] border border-[#94A3B8]/15'
             }`}
           >
-            [ Todo ]
+            Todos
           </button>
           {CATEGORIES.slice(0, 3).map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-3 py-1.5 transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-5 py-2.5 rounded-full transition-all cursor-pointer whitespace-nowrap ${
                 activeCategory === cat.slug
-                  ? 'text-[#C8A96E] border-b border-[#C8A96E] font-bold'
-                  : 'text-[#A0A0A5] hover:text-[#F4F1EA]'
+                  ? 'bg-[#3B82F6] text-[#FFFFFF] font-semibold shadow-md shadow-[#3B82F6]/25'
+                  : 'text-[#94A3B8] hover:text-[#FFFFFF] bg-[#181D26] hover:bg-[#202734] border border-[#94A3B8]/15'
               }`}
             >
-              [ {cat.name.split(' ')[0]} ]
+              {cat.name}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Asymmetric Maison Editorial Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      {/* Luxury Editorial Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         
-        {/* Large Dominant Lookbook Piece (7 Cols) */}
+        {/* Dominant Lookbook Piece (7 Cols) */}
         {filteredProducts[0] && (
-          <div className="lg:col-span-7 flex flex-col gap-6 group">
+          <div className="lg:col-span-7 flex flex-col gap-5 group">
             <Link
               href={`/catalogo/${filteredProducts[0].categorySlug || 'ropa'}/${filteredProducts[0].slug}`}
-              className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden bg-[#141419] rounded-xs block border border-white/5 group-hover:border-[#C8A96E]/40 transition-all duration-700"
+              className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl block border border-white/10 bg-gradient-to-b from-[#181D26] via-[#12151C] to-[#0E1016] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl"
             >
-              <Image
-                src={filteredProducts[0].featuredImage || filteredProducts[0].images[0] || '/assets/hero-main.jpg'}
-                alt={filteredProducts[0].title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-radial from-[#3B82F6]/15 via-transparent to-transparent opacity-80" />
+
+              {/* Center Silhouette Icon / Visual Anchor */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+                <div className="w-16 h-16 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-3 group-hover:scale-105 group-hover:border-[#3B82F6] transition-all bg-[#181D26]/80 backdrop-blur-sm shadow-md">
+                  <svg className="w-8 h-8 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <span className="font-serif text-2xl sm:text-3xl text-[#FFFFFF] font-bold">
+                  {filteredProducts[0].title}
+                </span>
+                <span className="font-sans text-xs sm:text-sm text-[#94A3B8] mt-1.5 max-w-sm font-light">
+                  Silueta de confección local lista para estampar tu marca o diseño.
+                </span>
+              </div>
+
+              {/* Bottom Spec Footer within frame */}
+              <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#12151C] via-[#12151C]/80 to-transparent flex items-center justify-between text-xs text-[#94A3B8]">
+                <span>220G SPANDEX</span>
+                <span className="text-[#E5A910] font-semibold">DISPONIBLE BAJO PEDIDO</span>
+              </div>
             </Link>
 
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pt-1">
               <div className="flex flex-col gap-1">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E]">
-                  {filteredProducts[0].tag || 'PIEL DE DURAZNO SPANDEX · 220G'}
+                <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
+                  {filteredProducts[0].tag || 'Piel de Durazno Spandex · 220g'}
                 </span>
                 <Link
                   href={`/catalogo/${filteredProducts[0].categorySlug || 'ropa'}/${filteredProducts[0].slug}`}
-                  className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"
+                  className="font-serif font-bold text-2xl sm:text-3xl text-[#FFFFFF] group-hover:text-[#3B82F6] transition-colors"
                 >
                   {filteredProducts[0].title}
                 </Link>
-                <span className="font-mono text-xs text-[#A0A0A5]">
-                  Técnicas: {filteredProducts[0].customCapabilities?.allowedTechniques?.map(t => t.toUpperCase()).join(' · ') || 'DTF · Bordado 3D Wilcom'}
+                <span className="font-sans text-xs text-[#94A3B8]">
+                  Personalizable con Estampado DTF o Bordado Computarizado 3D
                 </span>
               </div>
 
               <Link
                 href={`/catalogo/${filteredProducts[0].categorySlug || 'ropa'}/${filteredProducts[0].slug}`}
-                className="font-mono text-xs uppercase tracking-widest text-[#F4F1EA] group-hover:text-[#C8A96E] font-bold flex items-center gap-2 transition-colors shrink-0"
+                className="text-xs uppercase tracking-wider text-[#FFFFFF] bg-[#3B82F6] hover:bg-[#2563EB] px-6 py-3.5 rounded-full font-semibold flex items-center gap-2 transition-all shrink-0 shadow-md shadow-[#3B82F6]/25 hover:shadow-[#3B82F6]/40 hover:scale-[1.02]"
               >
-                <span>Ver Pieza</span>
-                <span className="group-hover:translate-x-1.5 transition-transform">→</span>
+                <span>Personalizar Prenda</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
           </div>
         )}
 
-        {/* Secondary Asymmetric Column (5 Cols, 2 Stacked Pieces) */}
-        <div className="lg:col-span-5 flex flex-col gap-14">
+        {/* Secondary Column (5 Cols, 2 Stacked Pieces) */}
+        <div className="lg:col-span-5 flex flex-col gap-10">
           {filteredProducts.slice(1, 3).map((prod) => (
-            <div key={prod.id} className="flex flex-col gap-4 group">
+            <div key={prod.id} className="flex flex-col gap-3 group">
               <Link
                 href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
-                className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden bg-[#141419] rounded-xs block border border-white/5 group-hover:border-[#C8A96E]/40 transition-all duration-700"
+                className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-2xl block border border-white/10 bg-gradient-to-b from-[#181D26] to-[#12151C] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-xl"
               >
-                <Image
-                  src={prod.featuredImage || prod.images[0] || '/assets/hero-main.jpg'}
-                  alt={prod.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-radial from-[#3B82F6]/10 via-transparent to-transparent" />
+
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                  <div className="w-12 h-12 rounded-full border border-[#94A3B8]/20 flex items-center justify-center mb-2 group-hover:border-[#3B82F6] transition-colors bg-[#181D26]/70 shadow-sm">
+                    <svg className="w-5 h-5 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <span className="font-serif text-xl text-[#FFFFFF] font-bold">
+                    {prod.title}
+                  </span>
+                  <span className="font-sans text-xs text-[#94A3B8] mt-1 font-light">
+                    Tallas completas y colores a elección
+                  </span>
+                </div>
               </Link>
 
-              <div className="flex items-baseline justify-between gap-4 font-mono text-xs">
+              <div className="flex items-center justify-between gap-4 text-xs">
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-[10px] uppercase tracking-wider text-[#C8A96E]">{prod.tag}</span>
+                  <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">{prod.tag}</span>
                   <Link
                     href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
-                    className="font-sans font-bold text-lg text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"
+                    className="font-serif font-bold text-xl text-[#FFFFFF] group-hover:text-[#3B82F6] transition-colors"
                   >
                     {prod.title}
                   </Link>
-                  <span className="text-[#A0A0A5] text-[11px]">{prod.materialSpecs?.[0] || 'Confección en taller'}</span>
                 </div>
 
                 <Link
                   href={`/catalogo/${prod.categorySlug || 'ropa'}/${prod.slug}`}
-                  className="text-[#F4F1EA] group-hover:text-[#C8A96E] font-bold uppercase tracking-wider text-[11px] flex items-center gap-1 transition-colors shrink-0"
+                  className="text-[#3B82F6] hover:text-[#FFFFFF] uppercase tracking-wider font-semibold text-xs inline-flex items-center gap-1.5 transition-colors shrink-0"
                 >
-                  <span>Ver</span>
+                  <span>Ver detalle</span>
                   <span>→</span>
                 </Link>
               </div>
@@ -155,11 +171,11 @@ export const CatalogSection: React.FC = () => {
       </div>
 
       {/* Catalog Link Strip */}
-      <div className="mt-16 sm:mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs">
-        <span className="text-[#A0A0A5]">Archivo completo disponible para personalización y pedidos institucionales.</span>
+      <div className="mt-14 sm:mt-16 pt-6 border-t border-[#94A3B8]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+        <span className="text-[#94A3B8]">Catálogo completo disponible para pedidos personales y empresariales.</span>
         <Link
           href="/catalogo"
-          className="text-[#C8A96E] hover:text-[#F4F1EA] font-bold uppercase tracking-widest flex items-center gap-2 transition-colors"
+          className="text-[#3B82F6] hover:text-[#FFFFFF] font-semibold uppercase tracking-wider flex items-center gap-2 transition-colors"
         >
           <span>Ver todas las prendas del catálogo (12+)</span>
           <span>→</span>
@@ -169,5 +185,3 @@ export const CatalogSection: React.FC = () => {
     </section>
   );
 };
-
-
