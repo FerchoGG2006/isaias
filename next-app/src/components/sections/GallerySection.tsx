@@ -59,21 +59,26 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
 
 export const GallerySection: React.FC = () => {
   return (
-    <section id="galeria" className="wrap py-24 sm:py-32 border-t border-[#94A3B8]/15 scroll-mt-24">
+    <section id="galeria" className="wrap py-24 sm:py-32 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
         <div className="flex flex-col gap-2.5 max-w-2xl">
-          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-[#FFFFFF] tracking-tight">
-            Proyectos Realizados
+          <div className="flex items-baseline gap-4 mb-1">
+            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
+              PRODUCCIÓN REAL
+            </span>
+          </div>
+          <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
+            Proyectos del Atelier.
           </h2>
-          <p className="font-sans text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
+          <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
             Piezas y trabajos reales confeccionados en nuestro taller de Valledupar.
           </p>
         </div>
 
-        <span className="text-xs text-[#E5A910] uppercase tracking-wider self-start md:self-auto font-semibold">
-          Producción Propia
+        <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest self-start md:self-auto font-medium">
+          [ PRODUCCIÓN PROPIA ]
         </span>
       </div>
 
@@ -85,7 +90,7 @@ export const GallerySection: React.FC = () => {
           
           {/* Project 01 */}
           <div className="lg:col-span-5 flex flex-col gap-3 group">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
               
               <Image
                 src={LOOKBOOK_PROJECTS[0].image}
@@ -94,33 +99,33 @@ export const GallerySection: React.FC = () => {
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
 
-              <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
                   {LOOKBOOK_PROJECTS[0].tag}
                 </span>
-                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
               </div>
 
-              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
-                <span className="text-white">{LOOKBOOK_PROJECTS[0].productType}</span>
-                <span className="text-[#3B82F6] font-semibold">Alta Definición</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[0].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Alta Definición</span>
               </div>
             </div>
 
             <div className="flex items-start justify-between gap-4 text-xs pt-1">
               <div className="flex flex-col gap-0.5">
-                <span className="font-serif font-bold text-lg text-[#FFFFFF]">{LOOKBOOK_PROJECTS[0].title}</span>
-                <span className="text-[#94A3B8] text-xs font-sans">{LOOKBOOK_PROJECTS[0].productType} · {LOOKBOOK_PROJECTS[0].technique}</span>
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[0].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[0].productType} · {LOOKBOOK_PROJECTS[0].technique}</span>
               </div>
-              <span className="text-[#94A3B8] text-xs shrink-0 text-right">{LOOKBOOK_PROJECTS[0].context}</span>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[0].context}</span>
             </div>
           </div>
 
           {/* Project 02 */}
           <div className="lg:col-span-7 flex flex-col gap-3 group lg:pl-4">
-            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#E5A910]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
               
               <Image
                 src={LOOKBOOK_PROJECTS[1].image}
@@ -129,27 +134,27 @@ export const GallerySection: React.FC = () => {
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
 
-              <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
                   {LOOKBOOK_PROJECTS[1].tag}
                 </span>
-                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
               </div>
 
-              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
-                <span className="text-white">{LOOKBOOK_PROJECTS[1].productType}</span>
-                <span className="text-[#E5A910] font-semibold">Dotación Empresarial</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[1].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Dotación Empresarial</span>
               </div>
             </div>
 
             <div className="flex items-start justify-between gap-4 text-xs pt-1">
               <div className="flex flex-col gap-0.5">
-                <span className="font-serif font-bold text-lg text-[#FFFFFF]">{LOOKBOOK_PROJECTS[1].title}</span>
-                <span className="text-[#94A3B8] text-xs font-sans">{LOOKBOOK_PROJECTS[1].productType} · {LOOKBOOK_PROJECTS[1].technique}</span>
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[1].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[1].productType} · {LOOKBOOK_PROJECTS[1].technique}</span>
               </div>
-              <span className="text-[#94A3B8] text-xs shrink-0 text-right">{LOOKBOOK_PROJECTS[1].context}</span>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[1].context}</span>
             </div>
           </div>
 
@@ -160,7 +165,7 @@ export const GallerySection: React.FC = () => {
           
           {/* Project 03 */}
           <div className="lg:col-span-7 flex flex-col gap-3 group lg:pr-4">
-            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#3B82F6]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
               
               <Image
                 src={LOOKBOOK_PROJECTS[2].image}
@@ -169,33 +174,33 @@ export const GallerySection: React.FC = () => {
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
 
-              <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
                   {LOOKBOOK_PROJECTS[2].tag}
                 </span>
-                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
               </div>
 
-              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
-                <span className="text-white">{LOOKBOOK_PROJECTS[2].productType}</span>
-                <span className="text-[#3B82F6] font-semibold">Sublimación 4K</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[2].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Sublimación 4K</span>
               </div>
             </div>
 
             <div className="flex items-start justify-between gap-4 text-xs pt-1">
               <div className="flex flex-col gap-0.5">
-                <span className="font-serif font-bold text-lg text-[#FFFFFF]">{LOOKBOOK_PROJECTS[2].title}</span>
-                <span className="text-[#94A3B8] text-xs font-sans">{LOOKBOOK_PROJECTS[2].productType} · {LOOKBOOK_PROJECTS[2].technique}</span>
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[2].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[2].productType} · {LOOKBOOK_PROJECTS[2].technique}</span>
               </div>
-              <span className="text-[#94A3B8] text-xs shrink-0 text-right">{LOOKBOOK_PROJECTS[2].context}</span>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[2].context}</span>
             </div>
           </div>
 
           {/* Project 04 */}
           <div className="lg:col-span-5 flex flex-col gap-3 group">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#12151C] group-hover:border-[#E5A910]/60 transition-all duration-400 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
               
               <Image
                 src={LOOKBOOK_PROJECTS[3].image}
@@ -204,27 +209,27 @@ export const GallerySection: React.FC = () => {
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/30 to-[#12151C]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
 
-              <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-                <span className="text-[#E5A910] font-semibold uppercase bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
                   {LOOKBOOK_PROJECTS[3].tag}
                 </span>
-                <span className="bg-black/50 px-3.5 py-1 rounded-full border border-white/10 text-white">Valledupar</span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
               </div>
 
-              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
-                <span className="text-white">{LOOKBOOK_PROJECTS[3].productType}</span>
-                <span className="text-[#E5A910] font-semibold">Cápsula Reflectiva</span>
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[3].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Cápsula Reflectiva</span>
               </div>
             </div>
 
             <div className="flex items-start justify-between gap-4 text-xs pt-1">
               <div className="flex flex-col gap-0.5">
-                <span className="font-serif font-bold text-lg text-[#FFFFFF]">{LOOKBOOK_PROJECTS[3].title}</span>
-                <span className="text-[#94A3B8] text-xs font-sans">{LOOKBOOK_PROJECTS[3].productType} · {LOOKBOOK_PROJECTS[3].technique}</span>
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[3].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[3].productType} · {LOOKBOOK_PROJECTS[3].technique}</span>
               </div>
-              <span className="text-[#94A3B8] text-xs shrink-0 text-right">{LOOKBOOK_PROJECTS[3].context}</span>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[3].context}</span>
             </div>
           </div>
 

@@ -12,8 +12,43 @@ import { ProductGallery } from '@/components/catalog/ProductGallery';
 import { ProductConfigurator } from '@/components/configurator/ProductConfigurator';
 import { ProductCard } from '@/components/ui/ProductCard';
 
+import { getBusiness } from '@/data/businesses';
+import { Metadata } from 'next';
+
 interface ProductDetailPageProps {
   params: Promise<{ category: string; slug: string }>;
+}
+
+export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) return {};
+
+  const business = getBusiness(product.businessId);
+
+  return {
+    title: `${product.title} | ${business.name} · Valledupar`,
+    description: product.description,
+    openGraph: {
+      title: `${product.title} — ${business.name}`,
+      description: product.description,
+      images: [
+        {
+          url: product.featuredImage || product.images[0],
+          width: 1200,
+          height: 630,
+          alt: product.title,
+        },
+      ],
+      siteName: business.name,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.title,
+      description: product.description,
+      images: [product.featuredImage || product.images[0]],
+    },
+  };
 }
 
 export async function generateStaticParams() {

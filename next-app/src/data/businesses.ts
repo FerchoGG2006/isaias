@@ -14,7 +14,7 @@ export const BUSINESSES: Record<string, Business> = {
     address: 'Valledupar, Cesar · Colombia',
     whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '',
     email: 'contacto@variedadesisaias.com',
-    logoUrl: '/assets/logo-isaias.png',
+    logoUrl: '/assets/logo-isaias-3.png',
     specialties: [
       'Piel de durazno spandex 220g',
       'DTF reflectivo curado a 160 °C',
@@ -37,7 +37,7 @@ export const BUSINESSES: Record<string, Business> = {
     address: 'Valledupar, Cesar · Colombia',
     whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '',
     email: 'contacto@elpalaciodelasublimacion.com',
-    logoUrl: '/assets/logos-todos.png',
+    logoUrl: '/assets/logo-palacio.png',
     specialties: [
       'Sublimación fotográfica 4K',
       'Mugs cerámicos y mágicos',

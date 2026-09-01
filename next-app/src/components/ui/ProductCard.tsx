@@ -20,17 +20,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       case 'fixed':
         return (
           <div className="flex flex-col items-end">
-            <span className="font-bold text-sm text-[#E5A910]">
+            <span className="font-mono font-bold text-xs text-[#C8A96E]">
               ${(product.pricing.basePrice || 0).toLocaleString('es-CO')}
             </span>
-            <span className="text-[10px] text-[#94A3B8]">COP / {product.pricing.unit || 'unidad'}</span>
+            <span className="text-[10px] text-[#8A8A92] uppercase font-sans">COP / {product.pricing.unit || 'unidad'}</span>
           </div>
         );
       case 'from':
         return (
           <div className="flex flex-col items-end">
-            <span className="text-[10px] text-[#94A3B8] uppercase tracking-wider">Desde</span>
-            <span className="font-bold text-sm text-[#E5A910]">
+            <span className="text-[10px] text-[#8A8A92] uppercase tracking-wider font-sans">Desde</span>
+            <span className="font-mono font-bold text-xs text-[#C8A96E]">
               ${(product.pricing.basePrice || 0).toLocaleString('es-CO')} COP
             </span>
           </div>
@@ -39,8 +39,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       default:
         return (
           <div className="flex flex-col items-end">
-            <span className="text-[11px] text-[#3B82F6] font-semibold">
-              Bajo cotización
+            <span className="text-[10px] text-[#C8A96E] uppercase font-mono tracking-wider font-medium">
+              Bajo Cotización
             </span>
           </div>
         );
@@ -48,10 +48,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
   };
 
   return (
-    <article className="group relative bg-[#181D26]/90 backdrop-blur-xl border border-white/10 hover:border-[#3B82F6]/50 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#3B82F6]/10">
+    <article className="group relative bg-[#0b0b0e] border border-white/10 hover:border-[#C8A96E]/50 rounded-xs overflow-hidden flex flex-col transition-all duration-300 shadow-xl">
       
       {/* Product Image Container */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#12151C] block">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#141419] block">
         <Link href={productHref} className="absolute inset-0">
           <Image
             src={product.featuredImage || product.images[0] || '/assets/hero-main.jpg'}
@@ -60,16 +60,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#181D26] via-transparent to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0e] via-transparent to-transparent opacity-75" />
         </Link>
 
         {/* Quick View Button on Image */}
         {onQuickView && (
           <button
             onClick={() => onQuickView(product)}
-            className="absolute bottom-3 right-3 z-10 text-[11px] font-medium text-white bg-black/60 hover:bg-black/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 transition-all cursor-pointer opacity-90 group-hover:opacity-100"
+            className="absolute bottom-3 right-3 z-10 text-[10px] font-mono uppercase tracking-widest text-[#F4F1EA] bg-black/70 hover:bg-black/90 backdrop-blur-md px-3 py-1 rounded-xs border border-white/15 transition-all cursor-pointer opacity-90 group-hover:opacity-100"
           >
-            Ficha & Medidas ↗
+            Ficha ↗
           </button>
         )}
       </div>
@@ -79,25 +79,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
         <div className="flex flex-col gap-2">
           
           <div className="flex items-start justify-between gap-2">
-            <Link href={productHref} className="group-hover:text-[#3B82F6] transition-colors">
-              <h3 className="font-serif font-bold text-lg text-[#FFFFFF] tracking-tight leading-snug">
+            <Link href={productHref} className="group-hover:text-[#C8A96E] transition-colors">
+              <h3 className="font-serif font-normal text-lg text-[#F4F1EA] tracking-tight leading-snug">
                 {product.title}
               </h3>
             </Link>
             {renderPricing()}
           </div>
 
-          <p className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2 font-light">
+          <p className="text-xs text-[#8A8A92] leading-relaxed line-clamp-2 font-light">
             {product.description}
           </p>
 
           {/* Material & Specs subtle caption */}
           {product.materialName && (
-            <div className="flex items-center gap-1.5 text-[11px] text-[#94A3B8] pt-1">
-              <span className="text-[#3B82F6]">■</span>
+            <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#C8A96E] pt-1 uppercase tracking-wider">
+              <span>▪</span>
               <span>{product.materialName}</span>
               {product.materialSpecs && product.materialSpecs.length > 0 && (
-                <span>· {product.materialSpecs.join(', ')}</span>
+                <span className="text-[#8A8A92]">· {product.materialSpecs.join(', ')}</span>
               )}
             </div>
           )}
@@ -105,15 +105,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
 
         {/* Action Footer */}
         <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-3">
-          <span className="text-[11px] text-[#94A3B8]">
+          <span className="font-mono text-[10px] text-[#8A8A92] uppercase tracking-wider">
             {product.customCapabilities.availableSizes.length > 1
-              ? `${product.customCapabilities.availableSizes.length} tallas`
-              : product.customCapabilities.availableSizes[0] || 'Personalizable'}
+              ? `${product.customCapabilities.availableSizes.length} TALLAS`
+              : product.customCapabilities.availableSizes[0] || 'PERSONALIZABLE'}
           </span>
 
           <Link
             href={productHref}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#FFFFFF] bg-[#3B82F6] hover:bg-[#2563EB] px-4 py-2 rounded-full transition-all shadow-md shadow-[#3B82F6]/20 hover:scale-[1.02]"
+            className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest text-[#070708] bg-[#C8A96E] hover:bg-[#dbbe82] px-3.5 py-1.5 rounded-xs transition-all font-bold"
           >
             <span>Configurar</span>
             <span className="group-hover:translate-x-0.5 transition-transform">→</span>

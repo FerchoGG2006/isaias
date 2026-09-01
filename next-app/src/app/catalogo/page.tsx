@@ -7,7 +7,6 @@ import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { AdminModal } from '@/components/admin/AdminModal';
 import { PRODUCTS } from '@/data/products';
-import { CATEGORIES } from '@/data/categories';
 import { ProductQuickViewModal } from '@/components/catalog/ProductQuickViewModal';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 import { Product } from '@/domain';

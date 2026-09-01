@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Service } from '@/domain';
-import { Badge } from '@/components/ui/Badge';
 
 export interface ServiceCardProps {
   service: Service;
@@ -39,18 +38,18 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   };
 
   return (
-    <article className="group bg-[#181D26]/80 backdrop-blur-xl border border-white/10 hover:border-[#3B82F6]/50 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#3B82F6]/10">
+    <article className="group bg-[#121316] border border-white/10 hover:border-[#C8A96E]/50 rounded-sm overflow-hidden flex flex-col transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#C8A96E]/5">
       {/* Service Header / Media */}
-      <Link href={serviceHref} className="relative aspect-[16/10] w-full overflow-hidden bg-[#141419] block">
+      <Link href={serviceHref} className="relative aspect-[16/10] w-full overflow-hidden bg-[#0C0D10] block">
         <Image
           src={service.image}
           alt={service.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 contrast-[1.05]"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e11] via-[#0e0e11]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/40 to-transparent" />
       </Link>
 
       {/* Service Content */}

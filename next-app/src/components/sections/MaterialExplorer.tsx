@@ -73,47 +73,60 @@ export function MaterialExplorer() {
   const activeMaterial = SENSORY_MATERIALS[selectedIdx] || SENSORY_MATERIALS[0];
 
   return (
-    <section id="materiales" className="wrap py-24 sm:py-32 border-t border-[#94A3B8]/15 scroll-mt-24">
+    <section id="materiales" className="wrap py-24 sm:py-32 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
         <div className="flex flex-col gap-2.5 max-w-2xl">
-          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-[#FFFFFF] tracking-tight">
-            Telas & Materiales
+          <div className="flex items-baseline gap-4 mb-1">
+            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
+              TEXTURA & CALIDAD
+            </span>
+          </div>
+          <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
+            Telas & Materiales.
           </h2>
-          <p className="font-sans text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
-            Prendas suaves, frescas y con la mejor textura para tu comodidad diaria.
+          <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
+            Sustratos seleccionados y probados para resistencia térmica y confort.
           </p>
         </div>
 
-        {/* Sensory Switcher Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-medium">
-          {SENSORY_MATERIALS.map((mat, idx) => (
-            <button
-              key={mat.id}
-              onClick={() => setSelectedIdx(idx)}
-              className={`px-5 py-2.5 rounded-full transition-all cursor-pointer whitespace-nowrap ${
-                idx === selectedIdx
-                  ? 'bg-[#3B82F6] text-[#FFFFFF] font-semibold shadow-md shadow-[#3B82F6]/25'
-                  : 'text-[#94A3B8] hover:text-[#FFFFFF] bg-[#181D26] hover:bg-[#202734] border border-[#94A3B8]/15'
-              }`}
-            >
-              {mat.name.split(' ')[0]} {mat.name.includes('Spandex') ? 'Spandex' : mat.name.includes('Reflectivo') ? 'Reflectivo' : mat.name.includes('3D') ? 'Bordado' : '4K'}
-            </button>
-          ))}
-        </div>
+        {/* Sensory Switcher Typographic Tabs */}
+        <nav className="flex items-center gap-6 sm:gap-8 overflow-x-auto pb-2 scrollbar-none text-xs font-sans tracking-[0.2em] uppercase">
+          {SENSORY_MATERIALS.map((mat, idx) => {
+            const isActive = idx === selectedIdx;
+            const shortLabel = mat.name.split(' ')[0] + (mat.name.includes('Spandex') ? ' Spandex' : mat.name.includes('Reflectivo') ? ' Reflectivo' : mat.name.includes('3D') ? ' Bordado' : ' 4K');
+            return (
+              <button
+                key={mat.id}
+                type="button"
+                onClick={() => setSelectedIdx(idx)}
+                className={`relative py-2 transition-colors duration-300 cursor-pointer whitespace-nowrap ${
+                  isActive
+                    ? 'text-[#F4F1EA] font-semibold'
+                    : 'text-[#8A8A92] hover:text-[#F4F1EA]'
+                }`}
+              >
+                <span>{shortLabel}</span>
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#C8A96E]" />
+                )}
+              </button>
+            );
+          })}
+        </nav>
       </div>
 
       {/* Main Tactile Stage */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
         {/* Left Column: Texture Stage with Real Fabric Photo (7 Cols) */}
-        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-white/10 bg-[#12151C] shadow-2xl p-6 sm:p-8 flex flex-col justify-between group">
+        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-xs overflow-hidden border border-white/10 bg-[#141419] shadow-2xl p-6 sm:p-8 flex flex-col justify-between group">
           
           <AnimatePresence mode="wait">
             <motion.div
               key={activeMaterial.id}
-              initial={{ opacity: 0, scale: 1.05 }}
+              initial={{ opacity: 0, scale: 1.04 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
@@ -126,34 +139,34 @@ export function MaterialExplorer() {
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12151C] via-[#12151C]/40 to-[#12151C]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/40 to-[#0C0D10]/60" />
             </motion.div>
           </AnimatePresence>
 
           {/* Top Bar */}
-          <div className="relative z-10 flex items-center justify-between text-xs text-[#94A3B8]">
-            <span className="uppercase tracking-wider text-[#E5A910] font-semibold bg-black/50 px-3.5 py-1 rounded-full border border-white/10">
+          <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+            <span className="uppercase tracking-widest text-[#C8A96E] font-medium bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
               {activeMaterial.subtitle}
             </span>
-            <span className="text-white bg-black/50 px-3.5 py-1 rounded-full border border-white/10 font-medium">
+            <span className="text-[#F4F1EA] bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 font-light">
               {activeMaterial.densityGrammage}
             </span>
           </div>
 
           {/* Center Quote Box */}
-          <div className="relative z-10 my-auto py-6 text-center max-w-lg mx-auto bg-black/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/10">
-            <p className="font-serif italic text-lg sm:text-2xl text-[#FFFFFF] leading-relaxed">
+          <div className="relative z-10 my-auto py-6 text-center max-w-lg mx-auto bg-black/60 backdrop-blur-md p-6 sm:p-8 rounded-xs border border-white/10">
+            <p className="font-serif italic text-lg sm:text-2xl text-[#F4F1EA] leading-relaxed">
               {activeMaterial.sensoryQuote}
             </p>
-            <span className="text-xs text-[#E5A910] uppercase tracking-wider block mt-3 font-semibold">
+            <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest block mt-3 font-medium">
               Sensación al Tacto
             </span>
           </div>
 
           {/* Bottom Indicators */}
-          <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#94A3B8] bg-black/50 px-4 py-2 rounded-full">
-            <span className="text-white font-medium">{activeMaterial.name}</span>
-            <span className="text-[#3B82F6] font-semibold">{activeMaterial.thermalSpec}</span>
+          <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+            <span className="text-[#F4F1EA] font-medium">{activeMaterial.name}</span>
+            <span className="text-[#C8A96E] font-semibold">{activeMaterial.thermalSpec}</span>
           </div>
 
         </div>
@@ -161,26 +174,26 @@ export function MaterialExplorer() {
         {/* Right Column: Tactile Description & Pillars (5 Cols) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <span className="text-xs uppercase tracking-wider text-[#E5A910] font-semibold">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#C8A96E] font-medium">
               {activeMaterial.index}
             </span>
-            <h3 className="font-serif font-bold text-3xl sm:text-4xl text-[#FFFFFF] tracking-tight">
+            <h3 className="font-serif font-normal text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight">
               {activeMaterial.name}
             </h3>
-            <p className="font-sans text-sm text-[#94A3B8] leading-relaxed font-light mt-1">
+            <p className="font-sans text-sm text-[#8A8A92] leading-relaxed font-light mt-1">
               {activeMaterial.description}
             </p>
           </div>
 
           {/* Tactile Pillars */}
-          <div className="flex flex-col gap-3 pt-3 border-t border-[#94A3B8]/15">
-            <span className="text-xs uppercase tracking-wider text-[#94A3B8] font-semibold">
+          <div className="flex flex-col gap-3 pt-3 border-t border-white/10">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#C8A96E] font-semibold">
               Ventajas Principales
             </span>
             <ul className="flex flex-col gap-2.5">
               {activeMaterial.tactilePillars.map((pillar, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-xs text-[#FFFFFF]">
-                  <span className="w-5 h-5 rounded-full bg-[#181D26] border border-[#3B82F6]/30 text-[#3B82F6] flex items-center justify-center text-[10px] shrink-0 font-bold">
+                <li key={idx} className="flex items-center gap-3 text-xs text-[#F4F1EA] font-sans">
+                  <span className="w-5 h-5 rounded-xs bg-[#141419] border border-[#C8A96E]/30 text-[#C8A96E] flex items-center justify-center font-mono text-[10px] shrink-0 font-bold">
                     ✓
                   </span>
                   <span>{pillar}</span>
@@ -190,12 +203,12 @@ export function MaterialExplorer() {
           </div>
 
           {/* Quality badge */}
-          <div className="p-4 bg-[#181D26]/90 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-between text-xs text-[#94A3B8]">
+          <div className="p-4 bg-[#141419] border border-white/10 rounded-xs flex items-center justify-between text-xs text-[#8A8A92]">
             <div className="flex items-center gap-2">
-              <span className="text-[#E5A910]">★</span>
-              <span className="text-[#FFFFFF] font-medium">Telas Seleccionadas y Probadas en Taller</span>
+              <span className="text-[#C8A96E]">★</span>
+              <span className="text-[#F4F1EA] font-light">Telas Seleccionadas y Probadas en Taller</span>
             </div>
-            <span className="text-[#3B82F6] font-semibold">Calidad 1A</span>
+            <span className="font-mono text-[#C8A96E] font-bold uppercase tracking-wider">Calidad 1A</span>
           </div>
         </div>
 

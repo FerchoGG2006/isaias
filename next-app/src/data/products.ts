@@ -283,7 +283,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'qatar-sublimada',
     slug: 'camiseta-qatar-sublimacion-total',
-    businessId: 'isaias',
+    businessId: 'palacio',
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Qatar Sublimación Total',
@@ -481,7 +481,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'mug-ceramica',
     slug: 'mug-ceramico-11oz-sublimado',
-    businessId: 'isaias',
+    businessId: 'palacio',
     categoryId: 'sublimacion',
     categorySlug: 'sublimacion',
     title: 'Mug Cerámico 11oz Sublimado',
@@ -532,7 +532,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'termo-aluminio',
     slug: 'termo-aluminio-deportivo-600ml',
-    businessId: 'isaias',
+    businessId: 'palacio',
     categoryId: 'sublimacion',
     categorySlug: 'sublimacion',
     title: 'Termo de Aluminio Deportivo 600ml',
@@ -639,4 +639,8 @@ export function getProductsByCategory(categorySlug: string): Product[] {
   return PRODUCTS.filter(
     (p) => p.categorySlug === categorySlug || p.categoryId === categorySlug
   );
+}
+
+export function getProductsByBusiness(businessId: string): Product[] {
+  return PRODUCTS.filter((p) => p.businessId === businessId);
 }

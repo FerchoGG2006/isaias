@@ -9,8 +9,40 @@ import { AdminModal } from '@/components/admin/AdminModal';
 import { SERVICES, getServiceBySlug } from '@/data/services';
 import { ServiceConfigurator } from '@/components/services/ServiceConfigurator';
 
+import { Metadata } from 'next';
+
 interface ServiceDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: ServiceDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+  if (!service) return {};
+
+  return {
+    title: `${service.title} | Servicios de Personalización · Valledupar`,
+    description: service.shortDescription,
+    openGraph: {
+      title: `${service.title} — Estampación & Bordado en Valledupar`,
+      description: service.shortDescription,
+      images: [
+        {
+          url: service.image,
+          width: 1200,
+          height: 630,
+          alt: service.title,
+        },
+      ],
+      siteName: 'Variedades Isaías',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: service.title,
+      description: service.shortDescription,
+      images: [service.image],
+    },
+  };
 }
 
 export async function generateStaticParams() {
