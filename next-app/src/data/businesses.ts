@@ -37,7 +37,7 @@ export const BUSINESSES: Record<string, Business> = {
     address: 'Valledupar, Cesar · Colombia',
     whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '',
     email: 'contacto@elpalaciodelasublimacion.com',
-    logoUrl: '/assets/logo-palacio.png',
+    logoUrl: '/assets/logo-palacio.png?v=3',
     specialties: [
       'Sublimación fotográfica 4K',
       'Mugs cerámicos y mágicos',
