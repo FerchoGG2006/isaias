@@ -22,8 +22,15 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const productHref = `/catalogo/${product.categorySlug || 'ropa'}/${product.slug}`;
 
-  // Proporción uniforme recomendada: aspect-[3/4] para evitar retículas desalineadas
-  const aspectClass = 'aspect-[3/4]';
+  // Proporción controlada: default aspect-[3/4] para alineación armónica de retícula
+  const aspectClass =
+    aspect === 'tall'
+      ? 'aspect-[2/3]'
+      : aspect === 'classic'
+      ? 'aspect-square'
+      : aspect === 'wide'
+      ? 'aspect-[4/3]'
+      : 'aspect-[3/4]';
 
   // Formato de técnicas autorizadas (e.g., "DTF · BORDADO 3D")
   const techniqueNames = product.customCapabilities.allowedTechniques

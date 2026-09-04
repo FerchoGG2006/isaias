@@ -47,21 +47,16 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
   onClose,
 }) => {
   const { business } = useQuote();
-  const [activeHotspotId, setActiveHotspotId] = useState<string | null>(null);
+  const [selectedHotspotId, setSelectedHotspotId] = useState<string | null>(null);
   const [showHotspots, setShowHotspots] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'hotspots' | 'medidas' | 'cuidados'>('hotspots');
   const modalContentRef = useRef<HTMLDivElement>(null);
 
   const hotspots: ProductHotspot[] = product ? getProductHotspots(product) : [];
 
-  // Establecer el primer hotspot activo por defecto cuando se abre el modal
-  useEffect(() => {
-    if (isOpen && hotspots.length > 0) {
-      setActiveHotspotId(hotspots[0].id);
-      setActiveTab('hotspots');
-      setShowHotspots(true);
-    }
-  }, [isOpen, product]);
+  // Hotspot activo derivado: seleccionado por el usuario o el primero por defecto
+  const activeHotspotId = selectedHotspotId || (hotspots.length > 0 ? hotspots[0].id : null);
+  const setActiveHotspotId = (id: string | null) => setSelectedHotspotId(id);
 
   // Bloqueo de scroll y cierre con tecla ESC
   useEffect(() => {
@@ -107,7 +102,6 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
 
   const sizeTable = SIZE_GUIDES[sizeKey] || SIZE_GUIDES.default;
   const imageSrc = product.featuredImage || product.images[0] || '/assets/hero-main.jpg';
-  const activeHotspot = hotspots.find((h) => h.id === activeHotspotId) || null;
 
   return (
     <div
