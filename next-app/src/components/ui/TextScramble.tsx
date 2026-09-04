@@ -21,7 +21,6 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
 }) => {
   const [displayed, setDisplayed] = useState('');
   const [started, setStarted] = useState(false);
-  const frameRef = useRef<number>(0);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {

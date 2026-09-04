@@ -1,123 +1,201 @@
-export type BusinessId = 'variedades-isaias' | 'palacio-sublimacion';
-
-export type ProductAvailability = 'available' | 'quote_only' | 'unavailable';
-
-export type PricingMode = 'fixed' | 'from' | 'quote';
-
-export type TechniqueId = 'dtf' | 'dtf-reflectivo' | 'sublimacion' | 'bordado-3d' | 'estampado';
-
-export type CustomizationCapability =
-  | 'color'
-  | 'size'
-  | 'size_distribution'
-  | 'technique'
-  | 'quantity'
-  | 'design_upload'
-  | 'placement'
-  | 'notes';
+/**
+ * Modelo de Dominio de Catálogo y Cotización Especializada
+ * Variedades Isaías & Plataforma Multiempresa
+ */
 
 export interface Business {
-  id: BusinessId;
-  slug: string;
+  id: string;
   name: string;
-  logo?: string;
-  whatsapp: string;
-  active: boolean;
+  slug: string;
+  tagline: string;
+  description: string;
+  city: string;
+  department: string;
+  country: string;
+  address: string;
+  whatsappPhone: string;
+  email?: string;
+  logoUrl: string;
+  specialties: string[];
+  defaultCurrency: 'COP';
 }
 
-export interface CatalogCategory {
+export interface Category {
   id: string;
-  businessId: BusinessId;
   slug: string;
+  businessId: string;
   name: string;
-  description?: string;
-  image?: string;
-  active: boolean;
+  subtitle: string;
+  description: string;
+  image: string;
+  tag: string;
+  order: number;
+  featured?: boolean;
 }
 
 export interface Material {
   id: string;
   name: string;
-  description?: string;
-  specification?: string;
+  slug: string;
+  description: string;
+  weight: string; // e.g. '220 g'
+  composition: string;
+  suitableTechniques: string[];
+  image: string;
+  alt: string;
+  points: string[];
+  technicalSpecs: string[];
 }
 
 export interface Technique {
-  id: TechniqueId;
+  id: string;
+  slug: string;
   name: string;
-  description: string;
-  specification?: string;
+  shortDescription: string;
+  fullDescription: string;
+  curingTemperature?: string; // e.g. '160 °C', '200 °C'
+  resolution?: string; // e.g. '4K'
+  machinery?: string; // e.g. 'Wilcom 3D computarizado'
+  minUnits: number;
+  iconSvg: string;
+  image: string;
+  advantages: string[];
+  recommendedMaterials: string[];
 }
 
 export interface ProductVariant {
   id: string;
-  name: string;
-  value: string;
+  colorName: string;
+  colorHex: string;
+  sku?: string;
   image?: string;
+  inStock?: boolean;
 }
 
+export interface PlacementOption {
+  id: string;
+  label: string;
+  maxDimensions?: string;
+}
+
+export interface CustomizationCapability {
+  allowedTechniques: string[]; // Technique IDs
+  allowedPlacements: PlacementOption[];
+  allowsDesignUpload: boolean;
+  allowsNotes: boolean;
+  sizingMode: 'distribution' | 'single_quantity' | 'none';
+  availableSizes: string[];
+  availableColors: ProductVariant[];
+  minQuantity: number;
+  defaultQuantity: number;
+}
+
+export type PricingType = 'fixed' | 'from' | 'on_quote';
+
 export interface ProductPricing {
-  mode: PricingMode;
-  amount?: number;
-  currency: 'COP';
+  type: PricingType;
+  basePrice?: number; // COP
+  unit?: string; // 'unidad', 'metro', 'par'
+  bulkDiscounts?: {
+    minQty: number;
+    pricePerUnit: number;
+  }[];
 }
 
 export interface Product {
   id: string;
-  businessId: BusinessId;
-  categoryId: string;
   slug: string;
-  code: string;
-  name: string;
+  businessId: string;
+  categoryId: string;
+  categorySlug: string;
+  title: string;
+  subtitle?: string;
   description: string;
-  availability: ProductAvailability;
+  code: string;
+  tag: string;
   pricing: ProductPricing;
-  materials: Material[];
-  techniques: TechniqueId[];
-  capabilities: CustomizationCapability[];
-  variants: ProductVariant[];
-  sizes: string[];
   images: string[];
+  featuredImage: string;
+  materialId?: string;
+  materialName?: string;
+  materialSpecs?: string[];
+  customCapabilities: CustomizationCapability;
+  specifications: { label: string; value: string }[];
+  featured?: boolean;
+  inStock?: boolean;
 }
 
-export interface SizeQuantity {
-  size: string;
-  quantity: number;
-}
-
-export interface ProductConfiguration {
-  productId: string;
-  variantId?: string;
-  techniqueId?: TechniqueId;
-  quantity: number;
-  sizeDistribution?: SizeQuantity[];
-  designFileName?: string;
-  designFileUrl?: string;
-  placement?: string;
-  notes?: string;
-}
-
-export interface QuoteItem {
-  productId: string;
-  productName: string;
-  configuration: ProductConfiguration;
+export interface Service {
+  id: string;
+  slug: string;
+  businessId: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  tag: string;
+  iconSvg: string;
+  image: string;
+  techniques: string[];
+  pricing: ProductPricing;
+  turnaroundTime: string;
+  minUnits: number;
+  features: string[];
+  requirements: string[];
 }
 
 export interface QuoteCustomer {
-  name: string;
-  phone: string;
-  email?: string;
+  name?: string;
+  phone?: string;
+  city?: string;
   company?: string;
+  email?: string;
 }
 
-export type QuoteStatus = 'pending' | 'contacted' | 'quoted' | 'approved' | 'rejected' | 'completed';
+export interface DesignFileAttachment {
+  name: string;
+  size: number;
+  type: string;
+  previewUrl?: string;
+}
+
+export interface QuoteItem {
+  id: string;
+  type: 'product' | 'service';
+  productId?: string;
+  productSlug?: string;
+  serviceId?: string;
+  serviceSlug?: string;
+  title: string;
+  code?: string;
+  image?: string;
+  selectedVariant?: ProductVariant;
+  selectedTechnique?: string;
+  selectedPlacements?: string[];
+  sizeDistribution?: Record<string, number>;
+  totalQuantity: number;
+  attachment?: DesignFileAttachment;
+  notes?: string;
+  pricingType: PricingType;
+  unitPrice?: number;
+  estimatedSubtotal?: number;
+}
+
+export type QuoteStatus =
+  | 'PENDING'
+  | 'CONTACTED'
+  | 'QUOTED'
+  | 'APPROVED'
+  | 'REJECTED'
+  | 'COMPLETED';
 
 export interface QuoteRequest {
   id: string;
-  businessId: BusinessId;
+  businessId: string;
   customer: QuoteCustomer;
   items: QuoteItem[];
-  notes?: string;
+  totalUnits: number;
+  estimatedTotal?: number;
+  generalNotes?: string;
   status: QuoteStatus;
   createdAt: string;
 }

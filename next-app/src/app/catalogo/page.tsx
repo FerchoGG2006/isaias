@@ -1,177 +1,264 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { CATALOG_CATEGORIES } from '@/data/categories';
-import { DOMAIN_PRODUCTS } from '@/data/catalogProducts';
-import { TECHNIQUES } from '@/data/services';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
+import { AdminModal } from '@/components/admin/AdminModal';
+import { PRODUCTS } from '@/data/products';
+import { ProductQuickViewModal } from '@/components/catalog/ProductQuickViewModal';
+import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
+import { Product } from '@/domain';
 
-export const metadata = {
-  title: 'Catálogo Digital — Variedades Isaías',
-  description: 'Catálogo especializado en personalización textil, estampados DTF, bordados 3D y sublimación de alta resolución.',
-};
+const EDITORIAL_FILTERS = [
+  { id: 'todos', label: 'TODAS' },
+  { id: 'ropa', label: 'ROPA' },
+  { id: 'accesorios', label: 'ACCESORIOS' },
+  { id: 'sublimacion', label: 'SUBLIMACIÓN' },
+  { id: 'dotaciones', label: 'DOTACIONES' },
+];
 
-export default function CatalogPage() {
+export default function CatalogoPage() {
+  const [activeCategory, setActiveCategory] = useState<string>('todos');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const filteredProducts = useMemo(() => {
+    return PRODUCTS.filter((product) => {
+      // Filter by category
+      if (activeCategory !== 'todos') {
+        const matchesCat =
+          product.categorySlug === activeCategory || product.categoryId === activeCategory;
+        if (!matchesCat) return false;
+      }
+
+      // Filter by textual search query
+      if (searchQuery.trim() !== '') {
+        const q = searchQuery.toLowerCase();
+        const matchesQuery =
+          product.title.toLowerCase().includes(q) ||
+          product.description.toLowerCase().includes(q) ||
+          product.code.toLowerCase().includes(q) ||
+          product.tag.toLowerCase().includes(q) ||
+          (product.materialName && product.materialName.toLowerCase().includes(q));
+        if (!matchesQuery) return false;
+      }
+
+      return true;
+    });
+  }, [activeCategory, searchQuery]);
+
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 pt-24 pb-16">
-      <div className="wrap space-y-12">
-        {/* Header Editorial */}
-        <div className="border-b border-neutral-800 pb-8 space-y-3">
-          <div className="inline-flex items-center space-x-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400">
-            <span>Catálogo Especializado</span>
-            <span>•</span>
-            <span>Edición 2026</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight uppercase text-white">
-            Catálogo & Sustratos
-          </h1>
-          <p className="max-w-2xl text-base text-neutral-400">
-            Explora nuestra línea de prendas de vestir, sublimables y dotaciones listas para ser personalizadas mediante DTF, bordado computarizado o sublimación fotográfica.
-          </p>
-        </div>
-
-        {/* Categorías Principales */}
-        <section className="space-y-6">
-          <h2 className="text-xl font-bold uppercase tracking-wider text-neutral-200 border-l-2 border-amber-500 pl-3">
-            Categorías Comerciales
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CATALOG_CATEGORIES.map((cat) => (
-              <Link
-                key={cat.id}
-                href={`/catalogo/${cat.slug}`}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 transition hover:border-amber-500/50 hover:shadow-xl hover:shadow-amber-950/20"
-              >
-                <div className="aspect-[16/9] w-full overflow-hidden bg-neutral-900 relative">
-                  {cat.image ? (
-                    <Image
-                      src={cat.image}
-                      alt={cat.name}
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="h-full w-full bg-neutral-800 flex items-center justify-center text-neutral-600">
-                      Sin imagen
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
-                </div>
-                <div className="p-5 space-y-2 relative">
-                  <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition">
-                    {cat.name}
-                  </h3>
-                  <p className="text-xs text-neutral-400 line-clamp-2">
-                    {cat.description}
-                  </p>
-                  <span className="inline-flex items-center text-xs font-bold text-amber-400 group-hover:translate-x-1 transition">
-                    Ver sustratos →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Productos Destacados */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
-            <h2 className="text-xl font-bold uppercase tracking-wider text-neutral-200 border-l-2 border-amber-500 pl-3">
-              Todos los Productos
-            </h2>
-            <span className="text-xs text-neutral-500 font-mono">
-              {DOMAIN_PRODUCTS.length} productos disponibles
-            </span>
+    <>
+      <Header />
+      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-12 pb-32">
+        
+        {/* 1. MAISON EDITORIAL HEADER */}
+        <section className="wrap mb-16 sm:mb-24">
+          
+          {/* Top minimal breadcrumb */}
+          <div className="flex items-center justify-between font-sans text-[11px] uppercase tracking-[0.25em] text-[#8A8A92] mb-8 sm:mb-12">
+            <span>Variedades Isaías · Atelier</span>
+            <span>Valledupar · Colombia</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {DOMAIN_PRODUCTS.map((product) => {
-              const mainImage = product.images[0] || '/assets/telas/ajustadas/ajustada-1.jpg';
-
-              return (
-                <div
-                  key={product.id}
-                  className="group rounded-xl border border-neutral-800 bg-neutral-900/60 overflow-hidden flex flex-col justify-between transition hover:border-neutral-700"
-                >
-                  <div>
-                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-900">
-                      <Image
-                        src={mainImage}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute top-3 left-3 bg-neutral-950/80 backdrop-blur-md border border-neutral-700 px-2.5 py-1 rounded text-[10px] font-bold text-amber-400">
-                        {product.code}
-                      </div>
-                    </div>
-                    <div className="p-4 space-y-2">
-                      <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-xs text-neutral-400 line-clamp-2">
-                        {product.description}
-                      </p>
-                      <div className="pt-1 flex flex-wrap gap-1">
-                        {product.techniques.map((tId) => (
-                          <span
-                            key={tId}
-                            className="bg-neutral-800 text-neutral-300 text-[10px] px-2 py-0.5 rounded font-mono uppercase"
-                          >
-                            {tId}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-4 pt-0 border-t border-neutral-800/60 mt-3 flex items-center justify-between">
-                    <div>
-                      <span className="block text-[10px] uppercase text-neutral-500 font-semibold">
-                        Precio
-                      </span>
-                      <span className="text-sm font-bold text-amber-400">
-                        ${product.pricing.amount?.toLocaleString('es-CO')} COP
-                      </span>
-                    </div>
-                    <Link
-                      href={`/catalogo/${product.categoryId}/${product.slug}`}
-                      className="rounded-lg bg-neutral-800 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-500 hover:text-black transition"
-                    >
-                      Configurar
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Sección de Técnicas */}
-        <section className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-8 space-y-6">
-          <h2 className="text-xl font-bold uppercase tracking-wider text-neutral-200">
-            Técnicas de Producción Disponibles
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {TECHNIQUES.map((tech) => (
-              <div
-                key={tech.id}
-                className="p-4 rounded-xl border border-neutral-800/80 bg-neutral-950 space-y-2"
-              >
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block font-mono">
-                  {tech.id}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-white/10">
+            <div>
+              <div className="flex items-baseline gap-4 mb-3">
+                <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
+                  COLLECTION
                 </span>
-                <h3 className="text-sm font-bold text-white">{tech.name}</h3>
-                <p className="text-xs text-neutral-400">{tech.description}</p>
-                {tech.specification && (
-                  <span className="inline-block text-[10px] bg-amber-950/60 text-amber-300 border border-amber-800/50 px-2 py-0.5 rounded">
-                    {tech.specification}
-                  </span>
-                )}
+                <span className="font-serif italic text-sm text-[#8A8A92]">2026</span>
               </div>
-            ))}
+
+              <h1 className="font-serif font-normal text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tight leading-[1.05]">
+                Piezas para hacerlas tuyas.
+              </h1>
+            </div>
+
+            {/* Discreet piece counter */}
+            <div className="flex flex-col lg:items-end text-left lg:text-right font-sans text-xs uppercase tracking-[0.2em] text-[#8A8A92]">
+              <span className="text-[#C8A96E] font-medium">
+                [ {filteredProducts.length} {filteredProducts.length === 1 ? 'PIEZA' : 'PIEZAS'} ]
+              </span>
+              <span className="text-[10px] text-[#8A8A92]/70 mt-0.5">
+                Producción bajo pedido
+              </span>
+            </div>
+          </div>
+
+          {/* 2. MINIMALIST TYPOGRAPHIC FILTERS & DISCRETE SEARCH */}
+          <div className="pt-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            
+            {/* Typographic Navigation Filter Tabs */}
+            <nav
+              className="flex items-center gap-6 sm:gap-10 overflow-x-auto pb-2 scrollbar-none text-xs uppercase font-sans tracking-[0.2em]"
+              aria-label="Filtro de colecciones"
+            >
+              {EDITORIAL_FILTERS.map((f) => {
+                const isActive = activeCategory === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    type="button"
+                    onClick={() => setActiveCategory(f.id)}
+                    className={`relative py-2 transition-colors duration-300 cursor-pointer whitespace-nowrap ${
+                      isActive
+                        ? 'text-[#F4F1EA] font-semibold'
+                        : 'text-[#8A8A92] hover:text-[#F4F1EA]'
+                    }`}
+                  >
+                    <span>{f.label}</span>
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#C8A96E]" />
+                    )}
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* Discrete Minimalist Search Input */}
+            <div className="relative w-full md:w-64">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Buscar pieza o material..."
+                className="w-full bg-transparent border-b border-white/20 focus:border-[#C8A96E] text-[#F4F1EA] pl-6 pr-6 py-1.5 font-sans text-xs outline-none transition-colors placeholder:text-[#8A8A92]/50"
+              />
+              <svg
+                className="w-3.5 h-3.5 text-[#8A8A92] absolute left-0 top-1/2 -translate-y-1/2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 text-[#8A8A92] hover:text-white text-xs cursor-pointer font-sans"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* 3. EDITORIAL LOOKBOOK MASONRY COMPOSITION */}
+        <section className="wrap">
+          {filteredProducts.length === 0 ? (
+            <div className="py-24 text-center border-t border-b border-white/10 flex flex-col items-center justify-center">
+              <span className="font-serif italic text-2xl text-[#8A8A92] mb-2">
+                No se encontraron piezas registradas
+              </span>
+              <p className="font-sans text-xs uppercase tracking-[0.18em] text-[#8A8A92]/70 mb-6 max-w-sm">
+                Prueba con otro término de búsqueda o restablece la colección.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  setActiveCategory('todos');
+                }}
+                className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] hover:underline cursor-pointer"
+              >
+                Ver toda la colección ↺
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-10 gap-y-16 sm:gap-y-24 items-start">
+              {filteredProducts.map((product, idx) => {
+                // Editorial Masonry Pacing Logic
+                // Alternate spans and aspect ratios for magazine lookbook rhythm
+                const patternIdx = idx % 6;
+                let colSpan = 'lg:col-span-4';
+                let aspect: 'portrait' | 'tall' | 'wide' | 'classic' = 'portrait';
+
+                if (patternIdx === 0) {
+                  colSpan = 'lg:col-span-7';
+                  aspect = 'portrait';
+                } else if (patternIdx === 1) {
+                  colSpan = 'lg:col-span-5';
+                  aspect = 'tall';
+                } else if (patternIdx === 2) {
+                  colSpan = 'lg:col-span-4';
+                  aspect = 'portrait';
+                } else if (patternIdx === 3) {
+                  colSpan = 'lg:col-span-4';
+                  aspect = 'tall';
+                } else if (patternIdx === 4) {
+                  colSpan = 'lg:col-span-4';
+                  aspect = 'portrait';
+                } else if (patternIdx === 5) {
+                  colSpan = 'lg:col-span-12';
+                  aspect = 'wide';
+                }
+
+                return (
+                  <div key={product.id} className={`${colSpan} w-full`}>
+                    <EditorialProductItem
+                      product={product}
+                      aspect={aspect}
+                      priority={idx < 2}
+                      onQuickView={(p) => setSelectedProduct(p)}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+
+        {/* 4. FOOTER NOTE & BESPOKE PRODUCTION */}
+        <section className="wrap mt-28 sm:mt-40 pt-12 border-t border-white/10">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 text-xs font-sans text-[#8A8A92]">
+            <div className="flex flex-col gap-1 max-w-md">
+              <span className="uppercase tracking-[0.2em] text-[#C8A96E] font-medium">
+                Atelier Textil & Personalización
+              </span>
+              <p className="font-light leading-relaxed">
+                Todas las piezas son producidas bajo demanda con curado térmico de 160 °C y bordado matricial Wilcom en nuestro taller de Valledupar.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-6 uppercase tracking-[0.16em]">
+              <Link
+                href="/servicios"
+                className="text-[#F4F1EA] hover:text-[#C8A96E] transition-colors"
+              >
+                ¿Prendas Propias? Ver Maquila →
+              </Link>
+              <Link
+                href="/cotizar"
+                className="text-[#C8A96E] hover:underline transition-colors"
+              >
+                Cotización Formal →
+              </Link>
+            </div>
           </div>
         </section>
-      </div>
-    </div>
+
+      </main>
+      <Footer />
+      <QuoteDrawer />
+      <AdminModal />
+
+      {/* Quick View Modal with Size Guide in CM */}
+      <ProductQuickViewModal
+        product={selectedProduct}
+        isOpen={Boolean(selectedProduct)}
+        onClose={() => setSelectedProduct(null)}
+      />
+    </>
   );
 }

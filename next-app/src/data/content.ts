@@ -1,53 +1,31 @@
-import { Technique, ProcessStep } from '@/types';
-
-export const TECHNIQUES: Technique[] = [
-  {
-    id: 'tech-1',
-    title: 'Sublimación',
-    description: 'Ideal para poliéster blanco o tonos claros. Se fusiona directamente con la fibra, no se siente al tacto ni se cae con las lavadas.',
-    iconSvg: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'
-  },
-  {
-    id: 'tech-2',
-    title: 'DTF Textil',
-    description: 'Impresión digital directa a film. Perfecta para algodón de cualquier color (negro, oscuro), con acabados nítidos y elásticos.',
-    iconSvg: 'M3 9h18M9 21V9'
-  },
-  {
-    id: 'tech-3',
-    title: 'Bordado',
-    description: 'Textura elegante y resistencia superior para uniformes, gorras y chaquetas corporativas con acabados tridimensionales.',
-    iconSvg: 'm10 15 5-3-5-3v6z'
-  },
-  {
-    id: 'tech-4',
-    title: 'Transfer & Vinilo',
-    description: 'Excelente para números deportivos, logotipos unicolor y aplicaciones especiales como metalizados o reflectivos.',
-    iconSvg: 'M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9z'
-  }
-];
+import { ProcessStep, FAQItem } from '@/types';
+export { TECHNIQUES } from './techniques';
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     num: '01',
-    title: 'Diseño o Idea',
-    description: 'Nos envías tu logo, foto o idea. Si no la tienes vectorizada, nosotros te ayudamos a prepararla.'
+    title: 'Idea, Logo o Vector',
+    description:
+      'Nos envías tu diseño, logo o boceto. Si no lo tienes vectorizado, en nuestro taller digitalizamos y preparamos los ponchados para bordado o archivos DTF a 300 DPI.',
   },
   {
     num: '02',
-    title: 'Selección de Prenda',
-    description: 'Escoges el tipo de suéter, gorra o mug y la tela adecuada para el acabado deseado.'
+    title: 'Selección de Prenda & Tejido',
+    description:
+      'Eliges la silueta deseada: piel de durazno 220g para suavidad, piqué heavy para polos institucionales o poliéster Qatar para rendimiento deportivo.',
   },
   {
     num: '03',
-    title: 'Prensa & Estampado',
-    description: 'Imprimimos o bordamos tu pedido con calibración de temperatura y presión exacta en nuestro taller.'
+    title: 'Curado, Bordado o Fusión 4K',
+    description:
+      'Procesamos tus prendas en Valledupar con parámetros térmicos calibrados: DTF a 160 °C, calandrado 4K a 200 °C o bordado Wilcom de alta densidad.',
   },
   {
     num: '04',
-    title: 'Entrega Inmediata',
-    description: 'Recoges en nuestro punto físico en Valledupar o te lo enviamos directamente a tu domicilio.'
-  }
+    title: 'Control de Calidad & Entrega',
+    description:
+      'Inspeccionamos cada costura, puntada y acabado. Recoges directamente en nuestro punto físico en Valledupar o enviamos a todo el Cesar y Colombia.',
+  },
 ];
 
 export const GALLERY_IMAGES = [
@@ -56,13 +34,37 @@ export const GALLERY_IMAGES = [
   '/assets/telas/qatar/qatar-1.jpg',
   '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
   '/assets/telas/ajustadas/ajustada-2.jpg',
-  '/assets/telas/cuello_tejido/cuello-2.jpg'
+  '/assets/telas/cuello_tejido/cuello-2.jpg',
 ];
 
 export const MARQUEE_ITEMS = [
-  'SUBLIMACIÓN DE ALTA DEFINICIÓN',
-  'DTF TEXTIL PREMIUM',
-  'BORDADO COMPUTARIZADO',
-  'MUGS Y GORRAS PERSONALIZADAS',
-  'ENVÍOS A TODO EL CESAR'
+  'PIEL DE DURAZNO SPANDEX 220G',
+  'DTF REFLECTIVO CURADO A 160 °C',
+  'BORDADO 3D WILCOM',
+  'SUBLIMACIÓN FOTOGRÁFICA 4K 200 °C',
+  'DOTACIONES EMPRESARIALES EN VALLEDUPAR',
+  'DESPACHOS A TODO EL CESAR',
+];
+
+export const FAQS: FAQItem[] = [
+  {
+    question: '¿Puedo llevar mis propias prendas para bordar o estampar?',
+    answer:
+      'Sí, contamos con servicio de maquila para prendas proporcionadas por el cliente. Realizamos ponchados Wilcom y bordado computarizado o DTF desde 6 unidades.',
+  },
+  {
+    question: '¿Cuál es la cantidad mínima para solicitar una cotización?',
+    answer:
+      'En prendas individuales de catálogo y artículos de sublimación atendemos desde 1 unidad. Para bordado 3D Wilcom y dotaciones corporativas el mínimo sugerido es de 6 unidades.',
+  },
+  {
+    question: '¿Cómo funciona la distribución de tallas?',
+    answer:
+      'En nuestro configurador puedes indicar exactamente cuántas unidades necesitas de cada talla (S, M, L, XL, etc.) y nuestro sistema validará automáticamente que la suma coincida con la cantidad total.',
+  },
+  {
+    question: '¿Hacen envíos fuera de Valledupar?',
+    answer:
+      'Sí, realizamos envíos a todos los municipios del Cesar (Aguachica, Codazzi, Bosconia, La Paz) y a nivel nacional a través de empresas de transporte certificadas.',
+  },
 ];

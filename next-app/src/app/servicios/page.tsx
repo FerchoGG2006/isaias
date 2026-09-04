@@ -1,66 +1,101 @@
 import React from 'react';
 import Link from 'next/link';
-import { TECHNIQUES } from '@/data/services';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
+import { AdminModal } from '@/components/admin/AdminModal';
+import { SERVICES } from '@/data/services';
+import { ServiceCard } from '@/components/services/ServiceCard';
 
-export const metadata = {
-  title: 'Servicios de Personalización — Variedades Isaías',
-  description: 'Servicios de producción textil bajo pedido: Estampado DTF, Bordado 3D computarizado y Sublimación 4K para tus prendas o materiales.',
-};
-
-export default function ServicesPage() {
+export default function ServiciosPage() {
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 pt-24 pb-16">
-      <div className="wrap space-y-10">
-        {/* Header */}
-        <div className="border-b border-neutral-800 pb-8 space-y-3">
-          <div className="inline-flex items-center space-x-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400">
-            <span>Servicios de Producción</span>
+    <>
+      <Header />
+      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-24">
+        
+        {/* Breadcrumbs & Header */}
+        <div className="wrap mb-12">
+          <nav className="flex items-center gap-2 font-mono text-xs text-[#A0A0A5] mb-4">
+            <Link href="/" className="hover:text-[#F4F1EA] transition-colors">
+              Inicio
+            </Link>
+            <span>/</span>
+            <span className="text-[#C8A96E]">Servicios de Personalización</span>
+          </nav>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-semibold block mb-2">
+                TALLER & MAQUILA · VALLEDUPAR
+              </span>
+              <h1 className="font-sans font-bold text-3xl sm:text-5xl text-[#F4F1EA] tracking-tight">
+                Servicios de Estampación & Bordado
+              </h1>
+              <p className="text-sm sm:text-base text-[#A0A0A5] max-w-2xl leading-relaxed mt-2 font-light">
+                ¿Tienes tus propias prendas o necesitas producción por volumen? Atendemos talleres de confección, diseñadores, empresas e instituciones con maquinaria industrial.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                href="/catalogo"
+                className="font-mono text-xs text-[#F4F1EA] hover:text-[#C8A96E] bg-[#141419] border border-white/15 px-4 py-2.5 rounded-xs transition-colors"
+              >
+                Ver Catálogo de Prendas →
+              </Link>
+            </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black uppercase text-white tracking-tight">
-            Servicios en Prendas Propias
-          </h1>
-          <p className="max-w-2xl text-base text-neutral-400">
-            ¿Ya tienes tus propias prendas o sustratos? Cotiza nuestros servicios de impresión DTF, bordado computarizado Wilcom o sublimación de alto rendimiento sin necesidad de comprar el textil.
-          </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {TECHNIQUES.map((tech) => (
-            <div
-              key={tech.id}
-              className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">
-                    {tech.id}
-                  </span>
-                  {tech.specification && (
-                    <span className="text-[10px] bg-amber-950/80 text-amber-300 border border-amber-800/60 px-2 py-0.5 rounded font-mono">
-                      {tech.specification}
-                    </span>
-                  )}
-                </div>
-                <h2 className="text-2xl font-bold text-white">{tech.name}</h2>
-                <p className="text-xs text-neutral-400 leading-relaxed">
-                  {tech.description}
+        <div className="wrap">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {SERVICES.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </div>
+
+          {/* How it works info banner */}
+          <div className="mt-20 bg-[#141419] border border-white/10 rounded-sm p-8 sm:p-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-2xl font-bold text-[#C8A96E]">01.</span>
+                <h4 className="font-sans font-bold text-lg text-[#F4F1EA]">
+                  Recepción de Archivos
+                </h4>
+                <p className="text-xs text-[#A0A0A5] leading-relaxed">
+                  Envía tus vectores (PDF, SVG, AI) o imágenes en 300 DPI. Si necesitas vectorización o ponchado Wilcom, nosotros te asistimos.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-neutral-800/60 flex items-center justify-between">
-                <span className="text-xs text-neutral-500">Producción por volumen</span>
-                <Link
-                  href={`/servicios/${tech.id}`}
-                  className="rounded-lg bg-amber-500 px-4 py-2 text-xs font-bold text-black hover:bg-amber-400 transition"
-                >
-                  Cotizar Servicio →
-                </Link>
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-2xl font-bold text-[#C8A96E]">02.</span>
+                <h4 className="font-sans font-bold text-lg text-[#F4F1EA]">
+                  Recepción de Prendas o Suministro
+                </h4>
+                <p className="text-xs text-[#A0A0A5] leading-relaxed">
+                  Trae tus prendas a nuestro punto físico en Valledupar o nosotros te suministramos las bases textiles desde nuestro stock.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-2xl font-bold text-[#C8A96E]">03.</span>
+                <h4 className="font-sans font-bold text-lg text-[#F4F1EA]">
+                  Procesamiento & Entrega
+                </h4>
+                <p className="text-xs text-[#A0A0A5] leading-relaxed">
+                  Bordado multicabezal o curado DTF a 160 °C con tiempos de entrega de 24 a 72 horas para maquilas ágiles.
+                </p>
               </div>
             </div>
-          ))}
+          </div>
+
         </div>
-      </div>
-    </div>
+
+      </main>
+      <Footer />
+      <QuoteDrawer />
+      <AdminModal />
+    </>
   );
 }

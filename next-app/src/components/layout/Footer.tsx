@@ -2,42 +2,97 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useCart } from '@/context/CartContext';
+import Link from 'next/link';
+import { useQuote } from '@/context/QuoteContext';
 
 export const Footer: React.FC = () => {
-  const { setIsAdminOpen } = useCart();
+  const { setIsAdminOpen, business } = useQuote();
+
+  const formattedPhone = business.whatsappPhone
+    ? `+${business.whatsappPhone.slice(0, 2)} ${business.whatsappPhone.slice(2, 5)} ${business.whatsappPhone.slice(5, 8)} ${business.whatsappPhone.slice(8)}`
+    : 'Disponible vía chat';
 
   return (
-    <footer>
-      <div className="wrap">
-        <div className="foot-grid">
-          <div>
-            <div className="foot-brand">
-              <Image src="/assets/logo-isaias.png" alt="Logo Isaías" width={48} height={48} />
-              <span>Variedades Isaías</span>
+    <footer className="bg-[#0E1016] border-t border-[#94A3B8]/15 pt-16 pb-12 text-[#94A3B8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[#94A3B8]/15">
+          
+          {/* Brand Column */}
+          <div className="md:col-span-2 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#3B82F6]/40">
+                <Image src={business.logoUrl || '/assets/logo-isaias.png'} alt={`Logo ${business.name}`} fill className="object-cover" />
+              </div>
+              <span className="font-mono font-bold text-base text-[#FFFFFF] uppercase tracking-wider">
+                {business.name}
+              </span>
             </div>
-            <p>
-              Taller de sublimación, DTF y bordados en Valledupar. Estampados duraderos y diseño personalizado para eventos y empresas.
+            <p className="text-xs text-[#94A3B8] leading-relaxed max-w-md font-sans">
+              {business.description}
             </p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {business.specialties.map((spec) => (
+                <span key={spec} className="font-mono text-[10px] bg-[#181D26] text-[#00D2FF] px-2.5 py-1 border border-[#94A3B8]/20 rounded-xs">
+                  {spec}
+                </span>
+              ))}
+            </div>
           </div>
-          <div>
-            <h5>Navegación</h5>
-            <a href="#tecnicas">Técnicas</a>
-            <a href="#galeria">Galería</a>
-            <a href="#catalogo">Catálogo</a>
-            <a href="#nosotros">Nosotros</a>
+
+          {/* Navigation Column */}
+          <div className="flex flex-col gap-3 font-mono text-xs">
+            <h5 className="font-bold text-[#FFFFFF] uppercase tracking-[0.2em] mb-1">
+              Catálogo & Taller
+            </h5>
+            <Link href="/catalogo" className="hover:text-[#3B82F6] transition-colors">
+              Catálogo de Prendas
+            </Link>
+            <Link href="/personaliza" className="hover:text-[#3B82F6] transition-colors">
+              Personaliza tu Pieza
+            </Link>
+            <Link href="/servicios" className="hover:text-[#3B82F6] transition-colors">
+              Servicios de Maquila
+            </Link>
+            <Link href="/cotizar" className="hover:text-[#3B82F6] transition-colors">
+              Solicitud de Cotización
+            </Link>
+            <Link href="/#materiales" className="hover:text-[#3B82F6] transition-colors">
+              Explorador de Materiales (10X)
+            </Link>
+            <Link href="/#galeria" className="hover:text-[#3B82F6] transition-colors">
+              Archivo de Proyectos
+            </Link>
+            <Link href="/#taller" className="hover:text-[#3B82F6] transition-colors">
+              Sobre Nuestro Taller
+            </Link>
           </div>
-          <div>
-            <h5>Contacto</h5>
-            <p>Valledupar, Cesar - Colombia</p>
-            <p>Atención: Lunes a Sábado</p>
-            <p>WhatsApp: +57 300 000 0000</p>
+
+          {/* Contact Column */}
+          <div className="flex flex-col gap-3 font-mono text-xs">
+            <h5 className="font-bold text-[#FFFFFF] uppercase tracking-[0.2em] mb-1">
+              Ubicación & Atención
+            </h5>
+            <p className="text-[#94A3B8]">Valledupar, Cesar · Colombia</p>
+            <p className="text-[#94A3B8]">Atención: Lunes a Sábado</p>
+            {business.whatsappPhone ? (
+              <p className="text-[#E5A910] font-bold">
+                WhatsApp: {formattedPhone}
+              </p>
+            ) : (
+              <p className="text-[#94A3B8]">Cotizaciones directas vía web y punto físico</p>
+            )}
           </div>
+
         </div>
-        <div className="foot-bottom">
-          <span>&copy; 2026 Variedades Isaías. Todos los derechos reservados.</span>
-          <button className="admin-link" onClick={() => setIsAdminOpen(true)}>
-            Acceso Admin
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#94A3B8]">
+          <span>&copy; {new Date().getFullYear()} {business.name}. Todos los derechos reservados.</span>
+          <button
+            className="hover:text-[#3B82F6] underline cursor-pointer text-[11px]"
+            onClick={() => setIsAdminOpen(true)}
+          >
+            Acceso Taller / Admin
           </button>
         </div>
       </div>

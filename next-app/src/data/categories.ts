@@ -1,52 +1,73 @@
-import { CatalogCategory } from '@/domain/catalog';
+import { Category } from '@/domain';
 
-export const CATALOG_CATEGORIES: CatalogCategory[] = [
+export const CATEGORIES: Category[] = [
   {
     id: 'ropa',
-    businessId: 'variedades-isaias',
     slug: 'ropa',
-    name: 'Ropa & Moda',
-    description: 'Camisetas, hoodies, suéteres y camisas personalizables en algodón peinado y piel de durazno.',
+    businessId: 'isaias',
+    name: 'Ropa & Confección',
+    subtitle: 'COLECCIÓN TEXTIL & SILUETAS',
+    description:
+      'Prendas con patrones cuidados: camisetas ajustadas en piel de durazno 220g, polos con cuello tejido y bordado 3D, suéteres y prendas deportivas en poliéster Qatar.',
     image: '/assets/telas/ajustadas/ajustada-1.jpg',
-    active: true,
-  },
-  {
-    id: 'cuello-tejido',
-    businessId: 'variedades-isaias',
-    slug: 'cuello-tejido',
-    name: 'Cuello Tejido & Polos',
-    description: 'Camisetas polo empresariales con pechera peinada y bordado 3D computarizado Wilcom.',
-    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
-    active: true,
-  },
-  {
-    id: 'sublimacion',
-    businessId: 'palacio-sublimacion',
-    slug: 'sublimacion',
-    name: 'Sublimación & Mementos',
-    description: 'Mugs de cerámica, termos de aluminio 600ml y prendas 100% poliéster Qatar DryFit.',
-    image: '/assets/mug.png',
-    active: true,
-  },
-  {
-    id: 'dotaciones',
-    businessId: 'variedades-isaias',
-    slug: 'dotaciones',
-    name: 'Dotaciones & Uniformes',
-    description: 'Uniformes corporativos e industriales de alta durabilidad para empresas y equipos.',
-    image: '/assets/telas/cuello_tejido/cuello-2.jpg',
-    active: true,
+    tag: 'SPANDEX & ALGODÓN',
+    order: 1,
+    featured: true,
   },
   {
     id: 'accesorios',
-    businessId: 'variedades-isaias',
     slug: 'accesorios',
-    name: 'Gorras & Accesorios',
-    description: 'Gorras trucker de malla, gorras dril personalizables con vinilo o bordado.',
+    businessId: 'isaias',
+    name: 'Accesorios & Gorras',
+    subtitle: 'GORRAS TRUCKER & MEMENTOS',
+    description:
+      'Gorras de visera curva o plana en dril y malla, preparadas para bordado computarizado 3D de alta definición y sublimación frontal.',
     image: '/assets/img-31.jpg',
-    active: true,
+    tag: 'BORDADO TRIDIMENSIONAL',
+    order: 2,
+    featured: true,
+  },
+  {
+    id: 'sublimacion',
+    slug: 'sublimacion',
+    businessId: 'isaias',
+    name: 'Sublimación & Rígidos',
+    subtitle: 'MUGS, TERMOS & SUPERFICIES',
+    description:
+      'Artículos cerámicos, mugs mágicos y termos de aluminio sublimados a 200 °C con resolución fotográfica 4K de alta durabilidad.',
+    image: '/assets/mug.png',
+    tag: 'SUBLIMACIÓN 4K 200°C',
+    order: 3,
+    featured: true,
+  },
+  {
+    id: 'dotaciones',
+    slug: 'dotaciones',
+    businessId: 'isaias',
+    name: 'Dotaciones & Uniformes',
+    subtitle: 'INDUMENTARIA CORPORATIVA',
+    description:
+      'Polos corporativas en piqué pesado, uniformes empresariales y camisetas con bordado institucional o estampación de alta resistencia.',
+    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
+    tag: 'DOTACIÓN EMPRESARIAL',
+    order: 4,
+    featured: true,
+  },
+  {
+    id: 'merchandising',
+    slug: 'merchandising',
+    businessId: 'isaias',
+    name: 'Merchandising & Eventos',
+    subtitle: 'ARTÍCULOS PROMOCIONALES',
+    description:
+      'Llaveros, gorras de campaña, botellas deportivas y suvenires de marca producidos con tiempos de entrega ágiles.',
+    image: '/assets/bottle.png',
+    tag: 'PRODUCCIÓN POR VOLUMEN',
+    order: 5,
+    featured: false,
   },
 ];
 
-export const getCategoryBySlug = (slug: string) =>
-  CATALOG_CATEGORIES.find((cat) => cat.slug === slug);
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return CATEGORIES.find((c) => c.slug === slug);
+}

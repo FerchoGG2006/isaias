@@ -1,83 +1,242 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
-interface GalleryItemData {
-  src: string;
+interface LookbookProject {
+  id: string;
+  tag: string;
   title: string;
-  category: string;
-  aspect: 'portrait' | 'landscape' | 'square';
+  productType: string;
+  technique: string;
+  context: string;
+  aspect: string;
+  image: string;
 }
 
-const RICH_GALLERY_ITEMS: GalleryItemData[] = [
-  { src: '/assets/telas/ajustadas/ajustada-2.jpg', title: 'Camiseta Spandex Negra', category: 'Ajustadas', aspect: 'portrait' },
-  { src: '/assets/telas/cuello_tejido/cuello-2.jpg', title: 'Polo Blanco Cuello Tejido', category: 'Cuello Tejido', aspect: 'landscape' },
-  { src: '/assets/telas/reflectivos_ninos/reflectivo-12.jpg', title: 'DTF Infantil Personaje', category: 'Niños & Reflectivos', aspect: 'square' },
-  { src: '/assets/telas/qatar/qatar-3.jpg', title: 'Textura Qatar Transpirable', category: 'Poliéster Qatar', aspect: 'portrait' },
-  { src: '/assets/telas/ajustadas/ajustada-4.jpg', title: 'Estampado DTF en Taller', category: 'Proceso Directo', aspect: 'landscape' },
-  { src: '/assets/telas/reflectivos_ninos/reflectivo-4.jpg', title: 'Reflectivo Nocturno Alta Visibilidad', category: 'Niños & Reflectivos', aspect: 'square' },
-  { src: '/assets/telas/cuello_tejido/cuello-6.jpg', title: 'Bordado Corporativo Verde', category: 'Cuello Tejido', aspect: 'portrait' },
-  { src: '/assets/img-12.jpg', title: 'Detalle de Sublimación Full Color', category: 'Sublimación', aspect: 'portrait' },
-  { src: '/assets/telas/reflectivos_ninos/reflectivo-28.jpg', title: 'Seguridad Vial Reflectiva', category: 'Reflectivos', aspect: 'landscape' },
+const LOOKBOOK_PROJECTS: LookbookProject[] = [
+  {
+    id: 'project-01',
+    tag: 'PROJECT 01',
+    title: 'Silueta Ajustada Negra',
+    productType: 'Camiseta Piel de Durazno 220g',
+    technique: 'DTF Reflectivo a 160 °C',
+    context: 'Línea de moda personal · Valledupar',
+    aspect: 'aspect-[3/4]',
+    image: '/assets/telas/ajustadas/ajustada-2.jpg',
+  },
+  {
+    id: 'project-02',
+    tag: 'PROJECT 02',
+    title: 'Polo Blanco Cuello Tejido',
+    productType: 'Algodón Piqué Pesado',
+    technique: 'Bordado Computarizado 3D Wilcom',
+    context: 'Dotación institucional de estudio',
+    aspect: 'aspect-[16/11]',
+    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
+  },
+  {
+    id: 'project-03',
+    tag: 'PROJECT 03',
+    title: 'Prenda Deportiva Transpirable',
+    productType: 'Poliéster Microfibra Qatar',
+    technique: 'Sublimación Fotográfica 4K a 200 °C',
+    context: 'Equipamiento deportivo y eventos',
+    aspect: 'aspect-[16/11]',
+    image: '/assets/telas/qatar/qatar-1.jpg',
+  },
+  {
+    id: 'project-04',
+    tag: 'PROJECT 04',
+    title: 'Grafismo Reflectivo Cápsula',
+    productType: 'Fijación Térmica Curada',
+    technique: 'DTF Alta Visibilidad',
+    context: 'Colección cápsula de taller',
+    aspect: 'aspect-[3/4]',
+    image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
+  },
 ];
 
 export const GallerySection: React.FC = () => {
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
-
   return (
-    <section id="galeria" className="wrap">
-      <div className="section-head">
-        <span className="eyebrow">Muestrario de Diseños</span>
-        <h2>Galería de Diseños y Acabados</h2>
-        <p>Explora la variedad de formatos, estampados y bordados entregados a nuestros clientes.</p>
+    <section id="galeria" className="wrap py-24 sm:py-32 border-t border-white/10 scroll-mt-24">
+      
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col gap-2.5 max-w-2xl">
+          <div className="flex items-baseline gap-4 mb-1">
+            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
+              PRODUCCIÓN REAL
+            </span>
+          </div>
+          <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
+            Proyectos del Atelier.
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
+            Piezas y trabajos reales confeccionados en nuestro taller de Valledupar.
+          </p>
+        </div>
+
+        <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest self-start md:self-auto font-medium">
+          [ PRODUCCIÓN PROPIA ]
+        </span>
       </div>
 
-      <div className="rich-gallery-grid">
-        {RICH_GALLERY_ITEMS.map((item, idx) => (
-          <div
-            key={idx}
-            className={`gallery-card aspect-${item.aspect}`}
-            onClick={() => setLightboxSrc(item.src)}
-            role="button"
-            tabIndex={0}
-            aria-label={`Ver ${item.title}`}
-          >
-            <Image
-              src={item.src}
-              alt={item.title}
-              width={item.aspect === 'landscape' ? 600 : 400}
-              height={item.aspect === 'portrait' ? 500 : 350}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            />
-            <div className="gallery-card-overlay">
-              <span className="cat-pill">{item.category}</span>
-              <h4>{item.title}</h4>
-              <span className="zoom-hint">🔍 Clic para ampliar</span>
+      {/* Asymmetric Project Layouts */}
+      <div className="flex flex-col gap-12 sm:gap-16">
+        
+        {/* Pair 1: Project 01 (Portrait 5 Cols) + Project 02 (Wide Landscape 7 Cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Project 01 */}
+          <div className="lg:col-span-5 flex flex-col gap-3 group">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[0].image}
+                alt={LOOKBOOK_PROJECTS[0].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
+
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
+                  {LOOKBOOK_PROJECTS[0].tag}
+                </span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
+              </div>
+
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[0].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Alta Definición</span>
+              </div>
+            </div>
+
+            <div className="flex items-start justify-between gap-4 text-xs pt-1">
+              <div className="flex flex-col gap-0.5">
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[0].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[0].productType} · {LOOKBOOK_PROJECTS[0].technique}</span>
+              </div>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[0].context}</span>
             </div>
           </div>
-        ))}
+
+          {/* Project 02 */}
+          <div className="lg:col-span-7 flex flex-col gap-3 group lg:pl-4">
+            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[1].image}
+                alt={LOOKBOOK_PROJECTS[1].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
+
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
+                  {LOOKBOOK_PROJECTS[1].tag}
+                </span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
+              </div>
+
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[1].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Dotación Empresarial</span>
+              </div>
+            </div>
+
+            <div className="flex items-start justify-between gap-4 text-xs pt-1">
+              <div className="flex flex-col gap-0.5">
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[1].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[1].productType} · {LOOKBOOK_PROJECTS[1].technique}</span>
+              </div>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[1].context}</span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Pair 2: Inverted Layout (Project 03 Wide 7 Cols + Project 04 Portrait 5 Cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Project 03 */}
+          <div className="lg:col-span-7 flex flex-col gap-3 group lg:pr-4">
+            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[2].image}
+                alt={LOOKBOOK_PROJECTS[2].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
+
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
+                  {LOOKBOOK_PROJECTS[2].tag}
+                </span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
+              </div>
+
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[2].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Sublimación 4K</span>
+              </div>
+            </div>
+
+            <div className="flex items-start justify-between gap-4 text-xs pt-1">
+              <div className="flex flex-col gap-0.5">
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[2].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[2].productType} · {LOOKBOOK_PROJECTS[2].technique}</span>
+              </div>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[2].context}</span>
+            </div>
+          </div>
+
+          {/* Project 04 */}
+          <div className="lg:col-span-5 flex flex-col gap-3 group">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs border border-white/10 bg-[#141419] group-hover:border-[#C8A96E]/60 transition-all duration-500 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+              
+              <Image
+                src={LOOKBOOK_PROJECTS[3].image}
+                alt={LOOKBOOK_PROJECTS[3].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/30 to-[#0C0D10]/60" />
+
+              <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
+                <span className="text-[#C8A96E] font-medium uppercase bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
+                  {LOOKBOOK_PROJECTS[3].tag}
+                </span>
+                <span className="bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 text-[#F4F1EA]">Valledupar</span>
+              </div>
+
+              <div className="relative z-10 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[#8A8A92] bg-black/70 px-4 py-2 rounded-xs font-mono">
+                <span className="text-[#F4F1EA]">{LOOKBOOK_PROJECTS[3].productType}</span>
+                <span className="text-[#C8A96E] font-semibold">Cápsula Reflectiva</span>
+              </div>
+            </div>
+
+            <div className="flex items-start justify-between gap-4 text-xs pt-1">
+              <div className="flex flex-col gap-0.5">
+                <span className="font-serif font-normal text-lg text-[#F4F1EA]">{LOOKBOOK_PROJECTS[3].title}</span>
+                <span className="text-[#8A8A92] text-xs font-sans">{LOOKBOOK_PROJECTS[3].productType} · {LOOKBOOK_PROJECTS[3].technique}</span>
+              </div>
+              <span className="text-[#8A8A92] text-xs shrink-0 text-right font-mono">{LOOKBOOK_PROJECTS[3].context}</span>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
-      {lightboxSrc && (
-        <div className="lightbox-overlay" onClick={() => setLightboxSrc(null)}>
-          <div className="lightbox-backdrop" />
-          <button className="lightbox-close" onClick={() => setLightboxSrc(null)} aria-label="Cerrar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <Image
-              src={lightboxSrc}
-              alt="Proyecto ampliado"
-              width={900}
-              height={1100}
-              style={{ objectFit: 'contain', maxHeight: '85vh', width: 'auto' }}
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 };

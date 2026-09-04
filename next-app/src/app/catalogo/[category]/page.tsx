@@ -1,18 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getCategoryBySlug, CATALOG_CATEGORIES } from '@/data/categories';
-import { getDomainProductsByCategory } from '@/data/catalogProducts';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
+import { AdminModal } from '@/components/admin/AdminModal';
+import { CATEGORIES, getCategoryBySlug } from '@/data/categories';
+import { getProductsByCategory } from '@/data/products';
+import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 
 interface CategoryPageProps {
-  params: Promise<{
-    category: string;
-  }>;
+  params: Promise<{ category: string }>;
 }
 
 export async function generateStaticParams() {
-  return CATALOG_CATEGORIES.map((cat) => ({
+  return CATEGORIES.map((cat) => ({
     category: cat.slug,
   }));
 }
@@ -25,103 +27,146 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const products = getDomainProductsByCategory(category.id);
+  const products = getProductsByCategory(categorySlug);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 pt-24 pb-16">
-      <div className="wrap space-y-8">
-        {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-xs text-neutral-400">
-          <Link href="/" className="hover:text-white transition">
-            Inicio
-          </Link>
-          <span>/</span>
-          <Link href="/catalogo" className="hover:text-white transition">
-            Catálogo
-          </Link>
-          <span>/</span>
-          <span className="text-amber-400 font-semibold">{category.name}</span>
-        </nav>
-
-        {/* Category Header */}
-        <div className="border-b border-neutral-800 pb-6 space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight">
-            {category.name}
-          </h1>
-          {category.description && (
-            <p className="max-w-2xl text-sm text-neutral-400">
-              {category.description}
-            </p>
-          )}
-        </div>
-
-        {/* Product Grid */}
-        {products.length === 0 ? (
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-12 text-center space-y-4">
-            <p className="text-sm text-neutral-400">
-              No hay productos registrados en esta categoría aún.
-            </p>
-            <Link
-              href="/catalogo"
-              className="inline-block rounded-lg bg-amber-500 px-4 py-2 text-xs font-bold text-black hover:bg-amber-400 transition"
-            >
-              Volver al catálogo completo
+    <>
+      <Header />
+      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-12 pb-32">
+        
+        {/* 1. MAISON CATEGORY HEADER */}
+        <section className="wrap mb-16 sm:mb-24">
+          
+          {/* Minimal breadcrumb */}
+          <div className="flex items-center justify-between font-sans text-[11px] uppercase tracking-[0.25em] text-[#8A8A92] mb-8 sm:mb-12">
+            <div className="flex items-center gap-2">
+              <Link href="/catalogo" className="hover:text-[#F4F1EA] transition-colors">
+                Colección
+              </Link>
+              <span>/</span>
+              <span className="text-[#C8A96E]">{category.name}</span>
+            </div>
+            <Link href="/catalogo" className="hover:text-[#F4F1EA] transition-colors hidden sm:block">
+              ← Ver Todas las Líneas
             </Link>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => {
-              const mainImage = product.images[0] || '/assets/telas/ajustadas/ajustada-1.jpg';
 
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-white/10">
+            <div>
+              <div className="flex items-baseline gap-4 mb-3">
+                <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
+                  LÍNEA · {category.tag}
+                </span>
+                <span className="font-serif italic text-sm text-[#8A8A92]">2026</span>
+              </div>
+
+              <h1 className="font-serif font-normal text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tight leading-[1.05]">
+                {category.name}
+              </h1>
+
+              <p className="font-sans text-sm sm:text-base text-[#8A8A92] max-w-2xl leading-relaxed mt-4 font-light">
+                {category.description}
+              </p>
+            </div>
+
+            {/* Piece counter */}
+            <div className="flex flex-col lg:items-end text-left lg:text-right font-sans text-xs uppercase tracking-[0.2em] text-[#8A8A92]">
+              <span className="text-[#C8A96E] font-medium">
+                [ {products.length} {products.length === 1 ? 'PIEZA' : 'PIEZAS'} ]
+              </span>
+              <span className="text-[10px] text-[#8A8A92]/70 mt-0.5">
+                Valledupar Atelier
+              </span>
+            </div>
+          </div>
+
+          {/* Quick Categories Switcher */}
+          <div className="pt-8 flex items-center gap-6 sm:gap-10 overflow-x-auto pb-2 scrollbar-none text-xs uppercase font-sans tracking-[0.2em]">
+            <Link
+              href="/catalogo"
+              className="text-[#8A8A92] hover:text-[#F4F1EA] whitespace-nowrap transition-colors"
+            >
+              TODAS
+            </Link>
+            {CATEGORIES.map((cat) => {
+              const isActive = cat.slug === categorySlug;
               return (
-                <div
-                  key={product.id}
-                  className="group rounded-xl border border-neutral-800 bg-neutral-900/60 overflow-hidden flex flex-col justify-between transition hover:border-neutral-700"
+                <Link
+                  key={cat.id}
+                  href={`/catalogo/${cat.slug}`}
+                  className={`relative py-2 transition-colors duration-300 whitespace-nowrap ${
+                    isActive
+                      ? 'text-[#F4F1EA] font-semibold'
+                      : 'text-[#8A8A92] hover:text-[#F4F1EA]'
+                  }`}
                 >
-                  <div>
-                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-900">
-                      <Image
-                        src={mainImage}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute top-3 left-3 bg-neutral-950/80 backdrop-blur-md border border-neutral-700 px-2.5 py-1 rounded text-[10px] font-bold text-amber-400">
-                        {product.code}
-                      </div>
-                    </div>
-                    <div className="p-4 space-y-2">
-                      <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-xs text-neutral-400 line-clamp-2">
-                        {product.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-4 pt-0 border-t border-neutral-800/60 mt-3 flex items-center justify-between">
-                    <div>
-                      <span className="block text-[10px] uppercase text-neutral-500 font-semibold">
-                        Precio
-                      </span>
-                      <span className="text-sm font-bold text-amber-400">
-                        ${product.pricing.amount?.toLocaleString('es-CO')} COP
-                      </span>
-                    </div>
-                    <Link
-                      href={`/catalogo/${category.slug}/${product.slug}`}
-                      className="rounded-lg bg-neutral-800 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-500 hover:text-black transition"
-                    >
-                      Configurar
-                    </Link>
-                  </div>
-                </div>
+                  <span>{cat.name.toUpperCase()}</span>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#C8A96E]" />
+                  )}
+                </Link>
               );
             })}
           </div>
-        )}
-      </div>
-    </div>
+
+        </section>
+
+        {/* 2. EDITORIAL MASONRY GRID */}
+        <section className="wrap">
+          {products.length === 0 ? (
+            <div className="py-24 text-center border-t border-b border-white/10 flex flex-col items-center justify-center">
+              <span className="font-serif italic text-2xl text-[#8A8A92] mb-2">
+                Piezas en proceso de producción
+              </span>
+              <p className="font-sans text-xs uppercase tracking-[0.18em] text-[#8A8A92]/70 mb-6 max-w-sm">
+                Estamos registrando nuevas prendas de esta línea.
+              </p>
+              <Link
+                href="/catalogo"
+                className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] hover:underline"
+              >
+                Ver otras líneas de confección ↺
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-10 gap-y-16 sm:gap-y-24 items-start">
+              {products.map((product, idx) => {
+                const patternIdx = idx % 4;
+                let colSpan = 'lg:col-span-6';
+                let aspect: 'portrait' | 'tall' | 'wide' | 'classic' = 'portrait';
+
+                if (patternIdx === 0) {
+                  colSpan = 'lg:col-span-7';
+                  aspect = 'portrait';
+                } else if (patternIdx === 1) {
+                  colSpan = 'lg:col-span-5';
+                  aspect = 'tall';
+                } else if (patternIdx === 2) {
+                  colSpan = 'lg:col-span-5';
+                  aspect = 'tall';
+                } else {
+                  colSpan = 'lg:col-span-7';
+                  aspect = 'portrait';
+                }
+
+                return (
+                  <div key={product.id} className={`${colSpan} w-full`}>
+                    <EditorialProductItem
+                      product={product}
+                      aspect={aspect}
+                      priority={idx < 2}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+
+      </main>
+      <Footer />
+      <QuoteDrawer />
+      <AdminModal />
+    </>
   );
 }

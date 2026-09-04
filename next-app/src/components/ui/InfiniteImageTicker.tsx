@@ -94,7 +94,6 @@ export const InfiniteImageTicker: React.FC = () => {
             {[...ROW_1_IMAGES, ...ROW_1_IMAGES].map((src, i) => (
               <div key={i} className="ticker-item item-portrait">
                 <Image src={src} alt={`Muestra ${i}`} fill style={{ objectFit: 'cover' }} sizes="300px" />
-                <div className="ticker-badge">VALLEDUPAR</div>
               </div>
             ))}
           </div>
@@ -106,7 +105,6 @@ export const InfiniteImageTicker: React.FC = () => {
             {[...ROW_2_IMAGES, ...ROW_2_IMAGES].map((src, i) => (
               <div key={i} className="ticker-item item-landscape">
                 <Image src={src} alt={`Muestra ${i}`} fill style={{ objectFit: 'cover' }} sizes="360px" />
-                <div className="ticker-badge cyan">EDICIÓN PREMIUM</div>
               </div>
             ))}
           </div>

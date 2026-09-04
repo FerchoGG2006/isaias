@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 interface TiltedCardProps {
@@ -82,10 +83,12 @@ export default function TiltedCard({
         }}
       >
         {/* Card Background Image */}
-        <img
+        <Image
           src={imageSrc}
           alt={altText}
-          className="w-full h-full object-cover pointer-events-none"
+          fill
+          sizes="(max-width: 768px) 100vw, 400px"
+          className="object-cover pointer-events-none"
         />
 
         {/* Overlay Content */}

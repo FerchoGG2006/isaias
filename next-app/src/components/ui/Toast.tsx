@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useCart } from '@/context/CartContext';
+import { useQuote } from '@/context/QuoteContext';
 
 interface ToastProps {
   message?: string;
@@ -11,28 +11,33 @@ interface ToastProps {
 }
 
 export const Toast: React.FC<ToastProps> = (props) => {
-  const cartContext = useCart();
+  const quoteContext = useQuote();
 
-  const message = props.message ?? cartContext.toastMessage ?? '';
-  const visible = props.visible ?? Boolean(cartContext.toastMessage);
-  const onClose = props.onClose ?? (() => {});
+  const message = props.message ?? quoteContext.toastMessage ?? '';
+  const visible = props.visible ?? Boolean(quoteContext.toastMessage);
   const duration = props.duration ?? 2500;
+  const propOnClose = props.onClose;
 
   useEffect(() => {
-    if (!visible || !onClose) return;
-    const timer = setTimeout(onClose, duration);
+    if (!visible) return;
+    const timer = setTimeout(() => {
+      if (propOnClose) {
+        propOnClose();
+      }
+    }, duration);
     return () => clearTimeout(timer);
-  }, [visible, duration, onClose]);
+  }, [visible, duration, propOnClose]);
 
-  if (!visible) return null;
+  if (!visible || !message) return null;
 
   return (
-    <div className={`toast-snackbar ${visible ? 'show' : ''}`} role="status" aria-live="polite">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-        <path d="M20 6L9 17l-5-5" />
-      </svg>
+    <div
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#141419] border border-[#C8A96E] text-[#F4F1EA] px-5 py-3.5 rounded-sm shadow-2xl font-mono text-xs animate-in slide-in-from-bottom duration-300"
+      role="status"
+      aria-live="polite"
+    >
+      <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
       <span>{message}</span>
     </div>
   );
 };
-
