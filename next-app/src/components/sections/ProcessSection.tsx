@@ -31,10 +31,10 @@ const STORY_STEPS = [
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section id="proceso" className="wrap py-24 sm:py-32 border-t border-white/10 scroll-mt-24">
+    <section id="proceso" className="wrap py-10 sm:py-14 border-t border-white/10 scroll-mt-24">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
         <div className="flex flex-col gap-2.5 max-w-2xl">
           <div className="flex items-baseline gap-4 mb-1">
             <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">

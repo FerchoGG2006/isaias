@@ -113,10 +113,10 @@ export const CatalogSection: React.FC = () => {
   };
 
   return (
-    <section id="catalogo" className="w-full bg-[#070708] text-[#F4F1EA] py-20 sm:py-28 border-t border-white/10 scroll-mt-20">
+    <section id="catalogo" className="w-full bg-[#070708] text-[#F4F1EA] py-10 sm:py-14 border-t border-white/10 scroll-mt-20">
       
       {/* SECTION 1: EXPLORAR POR CATEGORÍA (INTERACTIVE HORIZONTAL CAROUSEL) */}
-      <div className="wrap max-w-7xl mx-auto mb-20 sm:mb-28">
+      <div className="wrap max-w-7xl mx-auto mb-10 sm:mb-14">
         
         {/* Header with Title and Scroll Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
@@ -216,7 +216,7 @@ export const CatalogSection: React.FC = () => {
       </div>
 
       {/* SECTION 2: 3 LARGE EDITORIAL FEATURED CARDS */}
-      <div className="wrap max-w-7xl mx-auto mb-20 sm:mb-28">
+      <div className="wrap max-w-7xl mx-auto mb-10 sm:mb-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {EDITORIAL_COLLECTIONS.map((col) => (
             <div

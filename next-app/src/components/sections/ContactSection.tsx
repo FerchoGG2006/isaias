@@ -9,8 +9,8 @@ export const ContactSection: React.FC = () => {
   const { url, isConfigured } = getWhatsAppUrl();
 
   return (
-    <section id="contacto" className="wrap py-28 sm:py-36 border-t border-white/10 scroll-mt-24">
-      <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-8">
+    <section id="contacto" className="wrap py-10 sm:py-14 border-t border-white/10 scroll-mt-24">
+      <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
         
         {/* Headline */}
         <h2 className="font-serif font-normal text-4xl sm:text-6xl md:text-7xl text-[#F4F1EA] tracking-tight leading-none">

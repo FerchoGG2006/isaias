@@ -15,7 +15,7 @@ export const HeroSection: React.FC = () => {
   const isIsaias = businessId === 'isaias';
 
   return (
-    <section id="inicio" className="relative w-full min-h-[85vh] bg-[#0C0D10] overflow-hidden text-[#F4F1EA] flex items-center justify-center py-20 sm:py-28">
+    <section id="inicio" className="relative w-full min-h-[75vh] bg-[#0C0D10] overflow-hidden text-[#F4F1EA] flex items-center justify-center py-10 sm:py-14">
       
       {/* 1. WORKSHOP BACKGROUND PHOTO */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

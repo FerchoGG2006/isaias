@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="taller" className="wrap py-28 sm:py-36 border-t border-[#94A3B8]/15 scroll-mt-24">
+    <section id="taller" className="wrap py-10 sm:py-14 border-t border-[#94A3B8]/15 scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         
         {/* Workshop Atelier Showcase with Real Photo (7 Cols) */}
