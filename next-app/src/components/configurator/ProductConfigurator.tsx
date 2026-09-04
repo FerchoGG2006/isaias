@@ -515,10 +515,10 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             <div className="text-left sm:text-right">
               {product.pricing.type === 'fixed' && estimatedSubtotal !== undefined ? (
                 <>
-                  <span className="font-mono text-[10px] text-[#8A8A92] block">
+                  <span suppressHydrationWarning className="font-mono text-[10px] text-[#8A8A92] block">
                     ${(effectiveUnitPrice || 0).toLocaleString('es-CO')} c/u (ref.)
                   </span>
-                  <span className="font-mono font-bold text-xl text-[#C8A96E]">
+                  <span suppressHydrationWarning className="font-mono font-bold text-xl text-[#C8A96E]">
                     ${estimatedSubtotal.toLocaleString('es-CO')} COP
                   </span>
                 </>
@@ -589,7 +589,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           <div className="flex items-center gap-3 shrink-0">
             {product.pricing.type === 'fixed' && estimatedSubtotal !== undefined ? (
               <div className="text-right hidden xs:block">
-                <span className="font-mono font-bold text-sm sm:text-base text-[#C8A96E]">
+                <span suppressHydrationWarning className="font-mono font-bold text-sm sm:text-base text-[#C8A96E]">
                   ${estimatedSubtotal.toLocaleString('es-CO')} COP
                 </span>
               </div>
