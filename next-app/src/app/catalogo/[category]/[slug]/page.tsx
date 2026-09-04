@@ -77,7 +77,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-24">
+      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-36 sm:pb-44">
         
         {/* Breadcrumbs */}
         <div className="wrap mb-8">
