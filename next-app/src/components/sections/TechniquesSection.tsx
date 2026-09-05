@@ -22,7 +22,7 @@ const TECHNIQUES_DATA: TechniqueProcess[] = [
     id: 'dtf',
     name: 'Estampado DTF Textil',
     badge: 'ALTA DEFINICIÓN & ELASTICIDAD',
-    thermalFact: 'Fijación duradera · Curado a 160 °C',
+    thermalFact: 'Fijación duradera · No se quiebra ni se cae',
     headline: 'Colores Vivos y Detalles Nítidos en Cualquier Prenda',
     description: 'Permite estampar desde logotipos pequeños hasta ilustraciones complejas a todo color. El estampado se integra con la tela, resistiendo estiramientos y múltiples lavadas sin perder intensidad.',
     compatibleProducts: ['Camisetas Ajustadas', 'Baby Tees', 'Buzos & Hoodies', 'Dotaciones'],
@@ -33,18 +33,18 @@ const TECHNIQUES_DATA: TechniqueProcess[] = [
     id: 'sublimacion',
     name: 'Sublimación Fotográfica',
     badge: 'TACTO CERO & CALIDAD FOTOGRÁFICA',
-    thermalFact: 'Fusionado 4K · Curado a 200 °C',
+    thermalFact: 'Tacto imperceptible · 100% transpirable',
     headline: 'Impresión que No se Siente al Tacto y No se Cae',
     description: 'La tinta se fusiona directamente con la fibra sintética y artículos promocionales. La prenda queda 100% transpirable, suave y el color nunca se borra con el lavado.',
     compatibleProducts: ['Prendas Deportivas', 'Mugs & Pocillos', 'Termos Metálicos', 'Accesorios'],
-    serviceSlug: 'sublimacion-fotografica-maquila',
+    serviceSlug: 'sublimacion-fotografica-promocionales',
     image: '/assets/telas/qatar/qatar-1.jpg',
   },
   {
     id: 'bordado',
     name: 'Bordado Computarizado 3D',
     badge: 'RELIEVE ELEGANTE & MÁXIMA DURACIÓN',
-    thermalFact: 'Matriz Wilcom · Algodón Piqué',
+    thermalFact: 'Puntadas de alta densidad · Elegancia formal',
     headline: 'Elegancia y Prestigio para tu Marca o Empresa',
     description: 'Bordados con puntadas precisas y opción de relieve 3D para darle presencia institucional y sofisticación a camisas polo, gorras y uniformes corporativos.',
     compatibleProducts: ['Polos Cuello Tejido', 'Gorras', 'Camisas Ejecutivas', 'Chalecos'],
@@ -55,7 +55,7 @@ const TECHNIQUES_DATA: TechniqueProcess[] = [
     id: 'vinil',
     name: 'Vinilo Textil Especial',
     badge: 'ACABADOS METALIZADOS & REFLECTIVOS',
-    thermalFact: 'Corte limpio de alta precisión',
+    thermalFact: 'Efectos dorados, brillantes y reflectivos',
     headline: 'Efectos Brillantes, Dorados y Reflectivos de Noche',
     description: 'Ideal para números de camisetas deportivas, nombres personalizados y logotipos que requieran acabados brillantes, dorados o reflectivos de alta visibilidad.',
     compatibleProducts: ['Uniformes Deportivos', 'Prendas de Noche', 'Gorras', 'Bolsos'],
@@ -69,21 +69,21 @@ export const TechniquesSection: React.FC = () => {
   const activeTech = TECHNIQUES_DATA[activeIdx] || TECHNIQUES_DATA[0];
 
   return (
-    <section id="tecnicas" className="wrap py-10 sm:py-14 border-t border-white/10 scroll-mt-24">
+    <section id="tecnicas" className="w-full bg-[#0C0D10] text-[#F4F1EA] py-24 sm:py-32 wrap border-t border-white/10 scroll-mt-20">
       
-      {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
-        <div className="flex flex-col gap-2.5 max-w-2xl">
-          <div className="flex items-baseline gap-4 mb-1">
-            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
-              TÉCNICAS & MAQUILA
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="max-w-xl">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-medium">
+              ESTUDIO TEXTIL · PERSONALIZACIÓN
             </span>
           </div>
           <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
             Técnicas de Personalización.
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
-            Procesos de estampación térmica y bordado industrial para acabados de alta costura.
+            Personaliza tus prendas con estampados vivos y bordados duraderos de excelente calidad.
           </p>
         </div>
 

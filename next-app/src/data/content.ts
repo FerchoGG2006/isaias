@@ -4,21 +4,21 @@ export { TECHNIQUES } from './techniques';
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     num: '01',
-    title: 'Idea, Logo o Vector',
+    title: 'Idea, Logo o Foto',
     description:
-      'Nos envías tu diseño, logo o boceto. Si no lo tienes vectorizado, en nuestro taller digitalizamos y preparamos los ponchados para bordado o archivos DTF a 300 DPI.',
+      'Nos envías tu diseño, logo o foto desde el celular. En nuestro taller nos encargamos de prepararlo y adaptarlo para que tu prenda quede impecable.',
   },
   {
     num: '02',
-    title: 'Selección de Prenda & Tejido',
+    title: 'Selección de Prenda & Tela',
     description:
-      'Eliges la silueta deseada: piel de durazno 220g para suavidad, piqué heavy para polos institucionales o poliéster Qatar para rendimiento deportivo.',
+      'Eliges la prenda ideal: tela fresca piel de durazno, polo en piqué para uniformes o poliéster deportivo transpirable.',
   },
   {
     num: '03',
-    title: 'Curado, Bordado o Fusión 4K',
+    title: 'Bordado, Estampado & Confección',
     description:
-      'Procesamos tus prendas en Valledupar con parámetros térmicos calibrados: DTF a 160 °C, calandrado 4K a 200 °C o bordado Wilcom de alta densidad.',
+      'Procesamos tus prendas en Valledupar con acabados finos y duraderos: estampados suaves al tacto, colores vivos y bordados computarizados de alta definición.',
   },
   {
     num: '04',
@@ -38,10 +38,10 @@ export const GALLERY_IMAGES = [
 ];
 
 export const MARQUEE_ITEMS = [
-  'PIEL DE DURAZNO SPANDEX 220G',
-  'DTF REFLECTIVO CURADO A 160 °C',
-  'BORDADO 3D WILCOM',
-  'SUBLIMACIÓN FOTOGRÁFICA 4K 200 °C',
+  'CONFECCIÓN EN TELAS FRESCAS',
+  'ESTAMPADOS SUAVES Y DURADEROS',
+  'BORDADOS COMPUTARIZADOS FINOS',
+  'ESTAMPADOS FOTOGRÁFICOS A COLOR',
   'DOTACIONES EMPRESARIALES EN VALLEDUPAR',
   'DESPACHOS A TODO EL CESAR',
 ];
@@ -50,12 +50,12 @@ export const FAQS: FAQItem[] = [
   {
     question: '¿Puedo llevar mis propias prendas para bordar o estampar?',
     answer:
-      'Sí, contamos con servicio de maquila para prendas proporcionadas por el cliente. Realizamos ponchados Wilcom y bordado computarizado o DTF desde 6 unidades.',
+      'Sí, puedes traer tus propias prendas, uniformes o camisetas compradas. Te realizamos el bordado computarizado o estampado de tu logo o escudo desde 6 unidades.',
   },
   {
     question: '¿Cuál es la cantidad mínima para solicitar una cotización?',
     answer:
-      'En prendas individuales de catálogo y artículos de sublimación atendemos desde 1 unidad. Para bordado 3D Wilcom y dotaciones corporativas el mínimo sugerido es de 6 unidades.',
+      'En prendas individuales de catálogo y artículos como mugs o termos atendemos desde 1 unidad. Para bordados institucionales y dotaciones corporativas el mínimo sugerido es de 6 unidades.',
   },
   {
     question: '¿Cómo funciona la distribución de tallas?',

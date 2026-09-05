@@ -105,6 +105,8 @@ export function buildQuoteMessage(quote: QuoteRequest, business?: Business): str
     .join('\n\n');
 }
 
+export const DEFAULT_WHATSAPP_PHONE = '573105634509';
+
 /**
  * Obtiene la URL directa de WhatsApp validando la configuración del teléfono.
  */
@@ -115,16 +117,8 @@ export function getWhatsAppQuoteUrl(
   const biz = business || getBusiness(quote.businessId);
   const message = buildQuoteMessage(quote, biz);
 
-  const rawPhone = biz.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '';
-  const cleanPhone = rawPhone.replace(/\D/g, '');
-
-  if (!cleanPhone) {
-    return {
-      url: '#contacto',
-      isConfigured: false,
-      message,
-    };
-  }
+  const rawPhone = biz.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || DEFAULT_WHATSAPP_PHONE;
+  const cleanPhone = rawPhone.replace(/\D/g, '') || DEFAULT_WHATSAPP_PHONE;
 
   return {
     url: `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`,

@@ -3,12 +3,11 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuotePageContent } from '@/components/quote/QuotePageContent';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
-import { AdminModal } from '@/components/admin/AdminModal';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Cotización en Línea | Variedades Isaías · Valledupar',
-  description: 'Revisa y envía tu solicitud de cotización personalizada para prendas, estampados DTF y bordados directamente a nuestro taller en Valledupar por WhatsApp.',
+  description: 'Revisa y envía tu solicitud de cotización personalizada para prendas, estampados y bordados directamente a nuestro taller en Valledupar por WhatsApp.',
 };
 
 export default function CotizarPage() {
@@ -20,7 +19,6 @@ export default function CotizarPage() {
       </main>
       <Footer />
       <QuoteDrawer />
-      <AdminModal />
     </>
   );
 }

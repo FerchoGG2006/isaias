@@ -8,63 +8,53 @@ import Image from 'next/image';
 const CATEGORY_CARDS = [
   {
     id: 'cat-ropa',
-    name: 'ROPA & CAMISETAS',
+    name: 'CAMISETAS & ROPA',
     shortName: 'ROPA',
-    subtitle: 'Siluetas entalladas & Piel de Durazno 220g',
+    subtitle: 'Telas suaves, frescas y de excelente horma',
     image: '/assets/telas/ajustadas/ajustada-1.jpg',
     href: '/catalogo/ropa',
-    itemCount: '12 siluetas registradas',
-    tag: 'SPANDEX 220 G/M²',
+    itemCount: 'Camisetas y tops',
+    tag: 'TELA FRESCA',
   },
   {
     id: 'cat-sublimacion',
-    name: 'SUBLIMACIÓN 4K',
+    name: 'MUGS & SUBLIMACIÓN',
     shortName: 'SUBLIMACIÓN',
-    subtitle: 'Mugs, Termos de Aluminio & Full Print',
+    subtitle: 'Pocillos, termos y detalles que no se borran',
     image: '/assets/telas/qatar/qatar-1.jpg',
     href: '/catalogo/sublimacion',
-    itemCount: '8 artículos disponibles',
-    tag: 'CURADO A 200 °C',
+    itemCount: 'Regalos y empresas',
+    tag: 'COLOR PERMANENTE',
   },
   {
     id: 'cat-bordados',
-    name: 'BORDADOS WILCOM 3D',
+    name: 'POLOS & BORDADOS',
     shortName: 'BORDADOS',
-    subtitle: 'Polos Algodón Piqué 230g & Alta Densidad',
+    subtitle: 'Camisas polo con bordado fino y elegante',
     image: '/assets/telas/cuello_tejido/cuello-1.jpg',
     href: '/catalogo/ropa',
-    itemCount: 'Matricial Wilcom',
-    tag: 'WILCOM MULTICABEZAL',
+    itemCount: 'Puntada de precisión',
+    tag: 'ACABADO ELEGANTE',
   },
   {
     id: 'cat-dotaciones',
-    name: 'DOTACIONES CORPORATIVAS',
+    name: 'DOTACIONES & UNIFORMES',
     shortName: 'DOTACIONES',
-    subtitle: 'Uniformes Empresariales & Equipos',
+    subtitle: 'Uniformes resistentes para empresas y negocios',
     image: '/assets/telas/cuello_tejido/cuello-2.jpg',
     href: '/catalogo/dotaciones',
-    itemCount: 'Lafayette & Piqué',
-    tag: 'SOLIDEZ INDUSTRIAL',
+    itemCount: 'Venta por docena',
+    tag: 'ALTA DURABILIDAD',
   },
   {
     id: 'cat-accesorios',
     name: 'ACCESORIOS & GORRAS',
     shortName: 'ACCESORIOS',
-    subtitle: 'Gorras Trucker Snapback & Merch',
+    subtitle: 'Gorras bordadas o estampadas a tu gusto',
     image: '/assets/img-31.jpg',
     href: '/catalogo/accesorios',
-    itemCount: 'Gorras & Merchandising',
-    tag: 'SNAPBACK AJUSTABLE',
-  },
-  {
-    id: 'cat-materiales',
-    name: 'TELAS & MATERIALES',
-    shortName: 'MATERIALES',
-    subtitle: 'Materia Prima Inspeccionada en Taller',
-    image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
-    href: '/#materiales',
-    itemCount: 'Taller Valledupar',
-    tag: 'INSPECCIÓN 10X',
+    itemCount: 'Ajustables y cómodas',
+    tag: 'PERSONALIZABLE',
   },
 ];
 
@@ -73,8 +63,8 @@ const EDITORIAL_COLLECTIONS = [
   {
     id: 'new-arrivals',
     title: 'Novedades & Siluetas',
-    subtitle: 'Piel de Durazno Spandex 220g',
-    buttonText: 'VER ÚLTIMAS SILUETAS',
+    subtitle: 'Prendas suaves listas para estampar',
+    buttonText: 'VER PRENDAS',
     href: '/catalogo/ropa',
     image: '/assets/telas/ajustadas/ajustada-2.jpg',
     overlayBg: 'from-black/80 via-black/40 to-black/70',
@@ -83,7 +73,7 @@ const EDITORIAL_COLLECTIONS = [
   {
     id: 'best-sellers',
     title: 'Los Más Vendidos',
-    subtitle: 'Polos Algodón Piqué & Bordado Wilcom',
+    subtitle: 'Polos en algodón con bordado fino',
     buttonText: 'EXPLORAR FAVORITOS',
     href: '/catalogo',
     image: '/assets/telas/cuello_tejido/cuello-1.jpg',
@@ -93,7 +83,7 @@ const EDITORIAL_COLLECTIONS = [
   {
     id: 'special-collections',
     title: 'Colecciones & Dotaciones',
-    subtitle: 'Dotaciones Empresariales & Sublimación 4K',
+    subtitle: 'Uniformes y dotaciones empresariales',
     buttonText: 'COTIZAR SERVICIOS',
     href: '/servicios',
     image: '/assets/telas/qatar/qatar-2.jpg',
@@ -121,8 +111,8 @@ export const CatalogSection: React.FC = () => {
         {/* Header with Title and Scroll Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#C8A96E] font-semibold block mb-2">
-              COLECCIÓN ATELIER 2026
+            <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold block mb-2">
+              VARIEDADES ISAÍAS · LÍNEAS DE PRODUCCIÓN
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#F4F1EA] tracking-tight">
               Explorar por Categoría

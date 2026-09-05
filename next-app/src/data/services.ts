@@ -9,8 +9,8 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Impresión digital DTF de 60 cm de ancho por metros lineales para estampadores, marcas y talleres.',
     fullDescription:
-      'Servicio de maquila e impresión directa a film en plotter industrial de alta resolución. Entregamos el film impreso, engomado con poliamida premium y termofijado, listo para aplicar con calor a 160 °C en cualquier tipo de tela.',
-    tag: 'MAQUILA DTF 60CM',
+      'Servicio de impresión de estampados por metros continuos para aplicar en prendas. Entregamos el transfer listo para aplicar con plancha de calor en camisetas, buzos, gorras o cualquier tela.',
+    tag: 'ESTAMPADOS POR METRO',
     iconSvg:
       'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
     image: '/assets/telas/ajustadas/ajustada-2.jpg',
@@ -30,7 +30,7 @@ export const SERVICES: Service[] = [
       'Ancho útil de 58 cm en film premium mate',
       'Tinta blanca de alta opacidad con excelente elasticidad',
       'Poliamida termofusible de grano fino libre de estática',
-      'Listo para estampar a 160 °C durante 12 segundos',
+      'Listo para estampar con plancha térmica de forma rápida',
     ],
     requirements: [
       'Archivo en formato PDF, PNG (fondo transparente) o AI/SVG',
@@ -42,11 +42,11 @@ export const SERVICES: Service[] = [
     id: 'bordado-prendas-cliente',
     slug: 'bordado-computarizado-prendas',
     businessId: 'isaias',
-    title: 'Bordado 3D sobre Prendas del Cliente',
+    title: 'Bordado sobre Prendas Propias',
     shortDescription:
-      'Trae tus propias camisas, polos, gorras o chaquetas y nosotros bordamos tu logotipo con matrices Wilcom.',
+      'Trae tus propias camisas, polos, gorras o chalecos y nosotros bordamos tu logotipo con la máxima definición.',
     fullDescription:
-      'Si ya cuentas con tus prendas o uniformes comprados, realizamos el servicio de digitalización (ponchado) y bordado computarizado en máquina industrial de alta densidad con relieve 3D opcional.',
+      'Si ya compraste tus prendas o uniformes, te hacemos el bordado computarizado de tu logo o escudo con acabados duraderos y relieve fino opcional.',
     tag: 'PRENDAS PROPIAS',
     iconSvg:
       'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
@@ -60,7 +60,7 @@ export const SERVICES: Service[] = [
     turnaroundTime: '3 a 5 días hábiles',
     minUnits: 6,
     features: [
-      'Digitalización y ponchado en software Wilcom profesional',
+      'Digitalización precisa de tu logotipo puntada a puntada',
       'Hilos de poliéster de alta resistencia y brillo sobrio',
       'Opción de bordado plano de alta densidad o relieve 3D',
       'Muestreo previo de aprobación antes de producción masiva',
@@ -72,15 +72,15 @@ export const SERVICES: Service[] = [
     ],
   },
   {
-    id: 'sublimacion-maquila',
-    slug: 'sublimacion-fotografica-maquila',
+    id: 'sublimacion-promocionales',
+    slug: 'sublimacion-fotografica-promocionales',
     businessId: 'isaias',
     title: 'Sublimación Textil y Rígidos en Gran Formato',
     shortDescription:
-      'Estampación por transferencia térmica continua a 200 °C para cortes deportivos, frentes textiles y promocionales.',
+      'Estampado fotográfico y nítido para ropa deportiva, termos, mugs, cojines y artículos promocionales.',
     fullDescription:
-      'Servicio de impresión y calandrado para talleres de confección deportiva, banderas, manteles publicitarios, cojines y artículos rígidos como tazas y termos.',
-    tag: 'CALANDRA & PRENSA 200°C',
+      'Servicio de impresión para talleres deportivos, uniformes de fútbol, banderas, manteles publicitarios y artículos como mugs y termos.',
+    tag: 'ESTAMPADO & PROMOCIONALES',
     iconSvg:
       'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
     image: '/media/embroidery-workstation.jpeg',

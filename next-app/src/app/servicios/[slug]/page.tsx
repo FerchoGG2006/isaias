@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
-import { AdminModal } from '@/components/admin/AdminModal';
 import { SERVICES, getServiceBySlug } from '@/data/services';
 import { ServiceConfigurator } from '@/components/services/ServiceConfigurator';
 
@@ -169,7 +168,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       </main>
       <Footer />
       <QuoteDrawer />
-      <AdminModal />
     </>
   );
 }

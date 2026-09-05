@@ -124,9 +124,9 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
         {/* Barra superior de control */}
         <div className="flex items-center justify-between px-5 sm:px-8 py-3.5 border-b border-white/10 bg-[#0C0D10]/95">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#C8A96E] animate-pulse" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E]">
-              Hotspot Atelier · Ficha Técnica de Confección
+            <span className="w-2 h-2 rounded-full bg-[#C8A96E]" />
+            <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold">
+              Guía de Tallas y Medidas de la Prenda
             </span>
           </div>
 
@@ -135,9 +135,9 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
             <button
               type="button"
               onClick={() => setShowHotspots(!showHotspots)}
-              className="text-[10px] font-mono uppercase tracking-wider text-[#9E9EA4] hover:text-[#F4F1EA] px-3 py-1 rounded-full border border-white/10 hover:border-white/20 transition-colors hidden sm:inline-flex items-center gap-1.5"
+              className="text-xs font-sans text-[#9E9EA4] hover:text-[#F4F1EA] px-3 py-1 rounded-full border border-white/10 hover:border-white/20 transition-colors hidden sm:inline-flex items-center gap-1.5"
             >
-              <span>{showHotspots ? 'Ocultar Puntos' : 'Mostrar Puntos'}</span>
+              <span>{showHotspots ? 'Ocultar Medidas' : 'Mostrar Medidas'}</span>
               <span className="text-[#C8A96E] font-bold">{showHotspots ? '◉' : '○'}</span>
             </button>
 
@@ -266,11 +266,11 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
               {/* Encabezado del Producto */}
               <div>
                 <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] font-semibold">
-                    {product.tag || 'VALLEDUPAR ATELIER'}
+                  <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold">
+                    {product.tag || 'VALLEDUPAR, CESAR'}
                   </span>
-                  <span className="font-mono text-[10px] text-[#8A8A92]">
-                    REF: {product.code}
+                  <span className="font-sans text-xs text-[#8A8A92]">
+                    Ref: {product.code}
                   </span>
                 </div>
 

@@ -20,7 +20,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     tag: 'PROJECT 01',
     title: 'Silueta Ajustada Negra',
     productType: 'Camiseta Piel de Durazno 220g',
-    technique: 'DTF Reflectivo a 160 °C',
+    technique: 'Estampado Reflectivo de Alta Durabilidad',
     context: 'Línea de moda personal · Valledupar',
     aspect: 'aspect-[3/4]',
     image: '/assets/telas/ajustadas/ajustada-2.jpg',
@@ -30,7 +30,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     tag: 'PROJECT 02',
     title: 'Polo Blanco Cuello Tejido',
     productType: 'Algodón Piqué Pesado',
-    technique: 'Bordado Computarizado 3D Wilcom',
+    technique: 'Bordado Computarizado en Relieve',
     context: 'Dotación institucional de estudio',
     aspect: 'aspect-[16/11]',
     image: '/assets/telas/cuello_tejido/cuello-1.jpg',
@@ -40,7 +40,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     tag: 'PROJECT 03',
     title: 'Prenda Deportiva Transpirable',
     productType: 'Poliéster Microfibra Qatar',
-    technique: 'Sublimación Fotográfica 4K a 200 °C',
+    technique: 'Estampado Fotográfico sin Tacto',
     context: 'Equipamiento deportivo y eventos',
     aspect: 'aspect-[16/11]',
     image: '/assets/telas/qatar/qatar-1.jpg',
@@ -49,9 +49,9 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
     id: 'project-04',
     tag: 'PROJECT 04',
     title: 'Grafismo Reflectivo Cápsula',
-    productType: 'Fijación Térmica Curada',
-    technique: 'DTF Alta Visibilidad',
-    context: 'Colección cápsula de taller',
+    productType: 'Tela Suave Hipoalergénica',
+    technique: 'Estampado Reflectivo Alta Visibilidad',
+    context: 'Prendas personalizadas para niños',
     aspect: 'aspect-[3/4]',
     image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
   },
@@ -70,15 +70,15 @@ export const GallerySection: React.FC = () => {
             </span>
           </div>
           <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
-            Proyectos del Atelier.
+            Trabajos y Proyectos Reales.
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
             Piezas y trabajos reales confeccionados en nuestro taller de Valledupar.
           </p>
         </div>
 
-        <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest self-start md:self-auto font-medium">
-          [ PRODUCCIÓN PROPIA ]
+        <span className="font-sans text-xs text-[#C8A96E] uppercase tracking-wider self-start md:self-auto font-medium">
+          Fotos Reales de Taller
         </span>
       </div>
 

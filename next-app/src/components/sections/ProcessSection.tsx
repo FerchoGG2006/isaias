@@ -5,27 +5,27 @@ import React from 'react';
 const STORY_STEPS = [
   {
     num: '01',
-    title: 'IDEA',
-    subtitle: 'Concepto & Archivo',
-    narrative: 'Envías tu logotipo, ilustración o concepto gráfico en cualquier formato vectorial o digital. Nosotros analizamos compatibilidad de color y trazado.',
+    title: 'ELIGES TU PRENDA',
+    subtitle: 'Modelo & Color',
+    narrative: 'Exploras nuestro catálogo y seleccionas la camiseta, polo, gorra o accesorio que necesitas para ti, tu negocio o tu familia.',
   },
   {
     num: '02',
-    title: 'CONFIGURACIÓN',
-    subtitle: 'Materia & Silueta',
-    narrative: 'Seleccionas el corte (ajustada, polo, hoodie) y la materia prima (Piel de durazno 220g, Piqué, Qatar) definiendo técnica y distribución de tallas.',
+    title: 'NOS ENVÍAS TU IDEA',
+    subtitle: 'Foto o Logotipo',
+    narrative: 'Nos envías tu foto, imagen o logo directamente por WhatsApp. Si tienes dudas con el diseño, te ayudamos a cuadrarlo sin costo.',
   },
   {
     num: '03',
-    title: 'PRODUCCIÓN',
-    subtitle: 'Oficio en Taller',
-    narrative: 'Curado térmico DTF a 160 °C, ponchado matricial Wilcom 3D o sublimación 4K a 200 °C ejecutados bajo estricto control de calidad en Valledupar.',
+    title: 'CONFECCIÓN Y ESTAMPADO',
+    subtitle: 'Trabajo en Taller',
+    narrative: 'Estampamos o bordamos tus prendas en nuestro taller de Valledupar con acabados de alta duración que resisten múltiples lavadas.',
   },
   {
     num: '04',
-    title: 'ENTREGA',
-    subtitle: 'Prenda en Mano',
-    narrative: 'Retiro presencial en nuestro taller físico o despacho nacional con empaque individual y guía asegurada. Lista para vestir o comercializar.',
+    title: 'ENTREGA RÁPIDA',
+    subtitle: 'En tus Manos',
+    narrative: 'Puedes retirar en nuestro taller en Valledupar o te lo enviamos a tu casa o empresa a cualquier parte de Colombia.',
   },
 ];
 
@@ -37,20 +37,20 @@ export const ProcessSection: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
         <div className="flex flex-col gap-2.5 max-w-2xl">
           <div className="flex items-baseline gap-4 mb-1">
-            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E]">
-              ETAPAS DE TRABAJO
+            <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
+              PASO A PASO
             </span>
           </div>
           <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
             Cómo Trabajamos.
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
-            Cuatro pasos sencillos desde tu idea hasta la prenda terminada en tus manos.
+            Cuatro pasos sencillos desde tu idea hasta la prenda lista en tus manos.
           </p>
         </div>
 
-        <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest self-start md:self-auto font-medium">
-          [ PROCESO EN TALLER ]
+        <span className="font-sans text-xs text-[#C8A96E] uppercase tracking-wider self-start md:self-auto font-medium">
+          Atención Directa & Rápida
         </span>
       </div>
 

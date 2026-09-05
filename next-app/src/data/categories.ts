@@ -34,9 +34,9 @@ export const CATEGORIES: Category[] = [
     name: 'Sublimación & Rígidos',
     subtitle: 'MUGS, TERMOS & SUPERFICIES',
     description:
-      'Artículos cerámicos, mugs mágicos y termos de aluminio sublimados a 200 °C con resolución fotográfica 4K de alta durabilidad.',
+      'Artículos cerámicos, mugs mágicos y termos de aluminio con estampación fotográfica a todo color y gran durabilidad.',
     image: '/assets/mug.png',
-    tag: 'SUBLIMACIÓN 4K 200°C',
+    tag: 'COLOR PERMANENTE',
     order: 3,
     featured: true,
   },
@@ -52,19 +52,6 @@ export const CATEGORIES: Category[] = [
     tag: 'DOTACIÓN EMPRESARIAL',
     order: 4,
     featured: true,
-  },
-  {
-    id: 'merchandising',
-    slug: 'merchandising',
-    businessId: 'isaias',
-    name: 'Merchandising & Eventos',
-    subtitle: 'ARTÍCULOS PROMOCIONALES',
-    description:
-      'Llaveros, gorras de campaña, botellas deportivas y suvenires de marca producidos con tiempos de entrega ágiles.',
-    image: '/assets/bottle.png',
-    tag: 'PRODUCCIÓN POR VOLUMEN',
-    order: 5,
-    featured: false,
   },
 ];
 

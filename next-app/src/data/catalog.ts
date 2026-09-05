@@ -75,7 +75,7 @@ export const editorialProducts: EditorialProduct[] = [
     image: '/assets/telas/cuello_tejido/cuello-1.jpg',
     alt: 'Prendas con cuello tejido plegadas sobre un mostrador',
     material: 'Algodón piqué',
-    technique: 'Bordado 3D computarizado Wilcom',
+    technique: 'Bordado computarizado en relieve',
     specifications: [],
     colors: ['Marfil', 'Azul Rey', 'Rosa Pastel'],
   },
@@ -85,8 +85,8 @@ export const editorialProducts: EditorialProduct[] = [
     category: 'mugs',
     image: '/media/embroidery-workstation.jpeg',
     alt: 'Estación de trabajo real con mugs y materiales de taller',
-    technique: 'Sublimación fotográfica',
-    specifications: ['4K', '200°C'],
+    technique: 'Estampado fotográfico permanente',
+    specifications: ['Alta definición', 'Color permanente'],
     colors: ['Marfil'],
   },
   {
@@ -95,8 +95,8 @@ export const editorialProducts: EditorialProduct[] = [
     category: 'termos',
     image: null,
     alt: 'Termos personalizados',
-    technique: 'Sublimación fotográfica',
-    specifications: ['4K', '200°C'],
+    technique: 'Estampado fotográfico',
+    specifications: ['Alta definición', 'Color permanente'],
     colors: [],
   },
 ];
@@ -104,14 +104,14 @@ export const editorialProducts: EditorialProduct[] = [
 export const galleryEntries: GalleryEntry[] = [
   {
     id: 'dtf-reflectivo',
-    title: 'DTF reflectivo',
+    title: 'Estampado reflectivo',
     category: 'dtf',
     image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
     alt: 'Niño usando una camiseta negra con gráfica personalizada',
     caption: 'Gráfica, contraste y presencia.',
     size: 'portrait',
-    technique: 'DTF reflectivo',
-    specifications: ['Curado a 160°C'],
+    technique: 'Estampado reflectivo',
+    specifications: ['Alta durabilidad'],
   },
   {
     id: 'textile-palette',
@@ -131,7 +131,7 @@ export const galleryEntries: GalleryEntry[] = [
     alt: 'Máquina de bordado computarizado en el taller',
     caption: 'La preparación también es parte de la pieza.',
     size: 'tall',
-    technique: 'Bordado 3D computarizado Wilcom',
+    technique: 'Bordado computarizado fino',
     specifications: [],
   },
   {
@@ -143,7 +143,7 @@ export const galleryEntries: GalleryEntry[] = [
     caption: 'Una silueta, un gráfico, una intención.',
     size: 'portrait',
     material: 'Piel de durazno spandex',
-    specifications: ['220 g'],
+    specifications: ['Tela fresca y suave'],
   },
   {
     id: 'sublimacion-workshop',
@@ -153,8 +153,8 @@ export const galleryEntries: GalleryEntry[] = [
     alt: 'Operario en una estación real de personalización con materiales de taller',
     caption: 'Del archivo a la superficie.',
     size: 'tall',
-    technique: 'Sublimación fotográfica',
-    specifications: ['4K', '200°C'],
+    technique: 'Estampado fotográfico',
+    specifications: ['Alta resolución', 'Cero tacto'],
   },
 ];
 

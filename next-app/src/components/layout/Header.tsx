@@ -16,14 +16,12 @@ export const Header: React.FC = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const rawPhone = business.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '';
-  const cleanPhone = rawPhone.replace(/\D/g, '');
+  const rawPhone = business.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '573105634509';
+  const cleanPhone = rawPhone.replace(/\D/g, '') || '573105634509';
 
-  const waUrl = cleanPhone
-    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-        `¡Hola ${business.name}! Me gustaría solicitar información y cotización.`
-      )}`
-    : '#contacto';
+  const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+    `¡Hola ${business.name}! Me gustaría solicitar información y cotización.`
+  )}`;
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -49,22 +47,19 @@ export const Header: React.FC = () => {
             <span className="font-sans font-extrabold text-sm sm:text-base text-[#F4F1EA] tracking-wider uppercase leading-none group-hover:text-[#C8A96E] transition-colors">
               {business.name}
             </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C8A96E] mt-1 font-medium">
-              Valledupar Atelier
+            <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#C8A96E] mt-0.5 font-medium">
+              Valledupar, Cesar
             </span>
           </div>
         </Link>
 
-        {/* Center: Exact Navigation Links from Screenshot */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs uppercase tracking-[0.16em] font-sans font-medium text-[#D0CFC9]">
+        {/* Center: Clean & Spaced Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
           <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
             Catálogo
           </Link>
           <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
             Servicios
-          </Link>
-          <Link href="/#tecnicas" className="hover:text-[#C8A96E] transition-colors">
-            Técnicas
           </Link>
           <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
             Galería
@@ -78,10 +73,10 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* Right: Tenant Switcher & Circular Action Icons */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
           
           {/* Dual-Tenant Switcher Pill */}
-          <div className="hidden sm:flex items-center bg-[#141419] border border-white/15 rounded-full p-1 font-mono text-[10px] tracking-wider uppercase">
+          <div className="hidden xl:flex items-center bg-[#141419] border border-white/15 rounded-full p-1 font-mono text-[10px] tracking-wider uppercase">
             <button
               type="button"
               onClick={() => setBusinessId('isaias')}
@@ -120,18 +115,21 @@ export const Header: React.FC = () => {
             </svg>
           </a>
 
-          {/* Cart / Quote Drawer Circular Button */}
+          {/* Cart / Quote Drawer Button */}
           <button
             onClick={() => setIsQuoteDrawerOpen(true)}
-            className="relative w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-[#F4F1EA] hover:text-[#C8A96E] transition-all cursor-pointer shadow-md"
-            aria-label="Ver cotización"
-            title="Ver resumen de cotización"
+            className="relative h-10 px-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center gap-1.5 text-[#F4F1EA] hover:text-[#C8A96E] transition-all cursor-pointer shadow-md"
+            aria-label="Ver lista de cotización"
+            title="Ver lista de cotización"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
+            <span className="hidden sm:inline font-sans text-xs tracking-normal font-medium">
+              Cotización{totalUnits > 0 ? ` (${totalUnits})` : ''}
+            </span>
             {totalUnits > 0 && (
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#C8A96E] text-[#0C0D10] text-[10px] font-bold rounded-full flex items-center justify-center font-mono shadow-sm">
+              <span className="sm:hidden absolute -top-1 -right-1 w-5 h-5 bg-[#C8A96E] text-[#0C0D10] text-[10px] font-bold rounded-full flex items-center justify-center font-mono shadow-sm">
                 {totalUnits}
               </span>
             )}
@@ -162,7 +160,7 @@ export const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-[#141419]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4">
           <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs text-[#8A8A92]">
-            <span>MARCA / TENANT:</span>
+            <span>TALLER / LÍNEA:</span>
             <button
               onClick={toggleTenant}
               className="text-[#C8A96E] font-bold uppercase tracking-wider underline cursor-pointer"
@@ -177,9 +175,6 @@ export const Header: React.FC = () => {
             </Link>
             <Link href="/servicios" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Servicios
-            </Link>
-            <Link href="/#tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Técnicas
             </Link>
             <Link href="/#galeria" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Galería

@@ -3,14 +3,12 @@ import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { CatalogSection } from '@/components/sections/CatalogSection';
 import { TechniquesSection } from '@/components/sections/TechniquesSection';
-import { MaterialExplorer } from '@/components/sections/MaterialExplorer';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ForTeamsSection } from '@/components/sections/ForTeamsSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
-import { AdminModal } from '@/components/admin/AdminModal';
 
 export default function Home() {
   return (
@@ -26,13 +24,10 @@ export default function Home() {
         {/* 03 · TECHNIQUES (PROCESOS TEXTILES) */}
         <TechniquesSection />
 
-        {/* 04 · MATERIALS (TELAS & MATERIALES) */}
-        <MaterialExplorer />
-
-        {/* 05 · LOOKBOOK / PROJECTS (PROYECTOS REALIZADOS) */}
+        {/* 04 · LOOKBOOK / PROJECTS (PROYECTOS REALIZADOS) */}
         <GallerySection />
 
-        {/* 06 · ATELIER (HECHO EN VALLEDUPAR) */}
+        {/* 06 · TALLER (HECHO EN VALLEDUPAR) */}
         <AboutSection />
 
         {/* 07 · FOR TEAMS (PRODUCCIÓN EMPRESARIAL) */}
@@ -46,7 +41,6 @@ export default function Home() {
       </main>
       <Footer />
       <QuoteDrawer />
-      <AdminModal />
     </>
   );
 }

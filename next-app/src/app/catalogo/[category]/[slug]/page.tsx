@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
-import { AdminModal } from '@/components/admin/AdminModal';
 import { PRODUCTS, getProductBySlug } from '@/data/products';
 import { getCategoryBySlug } from '@/data/categories';
 import { getMaterialById } from '@/data/materials';
@@ -119,11 +118,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               {/* Technical Specifications Table */}
               {product.specifications.length > 0 && (
                 <div className="bg-[#0e0e11] border border-white/10 rounded-sm p-6 flex flex-col gap-4">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
-                    ESPECIFICACIONES TÉCNICAS
+                  <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold">
+                    Detalles y Cuidado de la Prenda
                   </span>
 
-                  <dl className="flex flex-col divide-y divide-white/5 font-mono text-xs">
+                  <dl className="flex flex-col divide-y divide-white/5 font-sans text-xs">
                     {product.specifications.map((spec, idx) => (
                       <div key={idx} className="py-2.5 flex items-center justify-between gap-4">
                         <dt className="text-[#A0A0A5]">{spec.label}</dt>
@@ -138,8 +137,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               {material && (
                 <div className="bg-[#141419] border border-[#C8A96E]/30 rounded-sm p-6 flex flex-col gap-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C8A96E] font-bold">
-                      MATERIA PRIMA · {material.weight}
+                    <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-bold">
+                      Tela & Composición
                     </span>
                     <span className="w-2 h-2 rounded-full bg-[#C8A96E]" />
                   </div>
@@ -152,7 +151,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                     {material.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5 font-mono text-[10px] text-[#C8A96E]">
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5 font-sans text-xs text-[#C8A96E]">
                     {material.points.map((pt) => (
                       <span key={pt} className="bg-black/50 px-2 py-0.5 border border-white/10 rounded-xs">
                         ✓ {pt}
@@ -169,12 +168,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               {/* Product Info Header */}
               <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-semibold">
+                  <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
                     {product.tag}
                   </span>
                   <span className="text-white/20">|</span>
-                  <span className="font-mono text-xs text-[#A0A0A5]">
-                    CÓDIGO: <strong className="text-[#F4F1EA]">{product.code}</strong>
+                  <span className="font-sans text-xs text-[#A0A0A5]">
+                    Ref: <strong className="text-[#F4F1EA]">{product.code}</strong>
                   </span>
                 </div>
 
@@ -182,13 +181,36 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   {product.title}
                 </h1>
 
+                {/* Precio destacado y visible de inmediato para clientes */}
+                <div className="flex flex-wrap items-baseline gap-3 pt-1">
+                  {product.pricing.type === 'fixed' && product.pricing.basePrice ? (
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-mono font-bold text-2xl sm:text-3xl text-[#C8A96E]">
+                        ${product.pricing.basePrice.toLocaleString('es-CO')} COP
+                      </span>
+                      <span className="text-xs text-[#A0A0A5] font-sans">
+                        / unidad
+                      </span>
+                    </div>
+                  ) : (
+                    <span className="font-mono text-base text-[#C8A96E] font-semibold">
+                      Precio de taller bajo cotización
+                    </span>
+                  )}
+                  {product.pricing.bulkDiscounts && product.pricing.bulkDiscounts.length > 0 && (
+                    <span className="text-xs text-[#25D366] font-sans font-medium bg-[#25D366]/10 px-2.5 py-0.5 rounded-full border border-[#25D366]/30">
+                      ✓ Descuento a partir de {product.pricing.bulkDiscounts[0].minQty} prendas
+                    </span>
+                  )}
+                </div>
+
                 {product.subtitle && (
                   <span className="font-mono text-xs text-[#A0A0A5] tracking-wider">
                     {product.subtitle}
                   </span>
                 )}
 
-                <p className="text-sm text-[#D0CFC9] leading-relaxed mt-2 font-light">
+                <p className="text-sm text-[#D0CFC9] leading-relaxed mt-1 font-light">
                   {product.description}
                 </p>
               </div>
@@ -234,7 +256,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       </main>
       <Footer />
       <QuoteDrawer />
-      <AdminModal />
     </>
   );
 }

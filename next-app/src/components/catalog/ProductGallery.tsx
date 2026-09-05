@@ -21,7 +21,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
   const activeImage = displayImages[selectedIndex] || displayImages[0];
 
   return (
-    <div className="flex flex-col gap-4 sticky top-24">
+    <div className="flex flex-col gap-4">
       {/* Main Image Stage */}
       <div className="relative aspect-[4/5] w-full bg-[#141419] border border-white/10 rounded-sm overflow-hidden shadow-2xl">
         {tag && (

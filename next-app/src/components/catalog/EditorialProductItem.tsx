@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/domain';
-import { TECHNIQUES } from '@/data/techniques';
 
 interface EditorialProductItemProps {
   product: Product;
@@ -32,23 +31,6 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
       ? 'aspect-[4/3]'
       : 'aspect-[3/4]';
 
-  // Formato de técnicas autorizadas (e.g., "DTF · BORDADO 3D")
-  const techniqueNames = product.customCapabilities.allowedTechniques
-    .map((techId) => {
-      const found = TECHNIQUES.find((t) => t.id === techId || t.slug === techId);
-      return found ? found.name.replace('Estampado ', '').replace(' Textil', '').replace(' Computarizado', '') : techId;
-    })
-    .slice(0, 3)
-    .join(' · ');
-
-  // Resumen de composición y material verídico
-  const materialSummary = [
-    product.materialName ? product.materialName.toUpperCase() : '',
-    product.materialSpecs && product.materialSpecs.length > 0 ? product.materialSpecs[0].toUpperCase() : '',
-  ]
-    .filter(Boolean)
-    .join(' · ');
-
   const image1 = product.featuredImage || product.images[0] || '/assets/hero-main.jpg';
   const image2 = product.images.length > 1 ? product.images[1] : null;
 
@@ -58,66 +40,53 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 1. Protagonist Fashion Image Frame (Abre el Product Hotspot Modal al hacer clic) */}
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => {
-          if (onQuickView) onQuickView(product);
-        }}
-        onKeyDown={(e) => {
-          if ((e.key === 'Enter' || e.key === ' ') && onQuickView) {
-            e.preventDefault();
-            onQuickView(product);
-          }
-        }}
-        className={`relative w-full ${aspectClass} overflow-hidden bg-[#141419] block cursor-pointer select-none group/frame`}
-        aria-label={`Ver ficha técnica y hotspots de ${product.title}`}
-      >
-        {/* Primary Image */}
-        <Image
-          src={image1}
-          alt={product.title}
-          fill
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className={`object-cover object-center transition-all duration-700 ease-out ${
-            image2 && isHovered ? 'opacity-0 scale-[1.03]' : 'opacity-100 group-hover/frame:scale-[1.03]'
-          }`}
-        />
-
-        {/* Secondary Image on Hover if available */}
-        {image2 && (
+      {/* 1. Protagonist Fashion Image Frame (Clic navega directamente a la ficha/configurador) */}
+      <div className={`relative w-full ${aspectClass} overflow-hidden bg-[#141419] block select-none group/frame`}>
+        {/* Full card link to product customizer */}
+        <Link
+          href={productHref}
+          className="absolute inset-0 z-10"
+          aria-label={`Personalizar ${product.title}`}
+        >
+          {/* Primary Image */}
           <Image
-            src={image2}
-            alt={`${product.title} vista alterna`}
+            src={image1}
+            alt={product.title}
             fill
+            priority={priority}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={`object-cover object-center transition-all duration-700 ease-out ${
-              isHovered ? 'opacity-100 scale-[1.03]' : 'opacity-0 scale-100'
+              image2 && isHovered ? 'opacity-0 scale-[1.03]' : 'opacity-100 group-hover/frame:scale-[1.03]'
             }`}
           />
-        )}
 
-        {/* Discreet Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/80 via-transparent to-transparent opacity-60 group-hover/frame:opacity-40 transition-opacity duration-500" />
+          {/* Secondary Image on Hover if available */}
+          {image2 && (
+            <Image
+              src={image2}
+              alt={`${product.title} vista alterna`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className={`object-cover object-center transition-all duration-700 ease-out ${
+                isHovered ? 'opacity-100 scale-[1.03]' : 'opacity-0 scale-100'
+              }`}
+            />
+          )}
 
-        {/* Badge superior: Indicador de Hotspots */}
-        <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-[#C8A96E]/40 text-[#C8A96E] text-[10px] font-mono tracking-wider shadow-lg">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E] animate-pulse" />
-          <span>Hotspots</span>
-        </div>
+          {/* Discreet Vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/80 via-transparent to-transparent opacity-60 group-hover/frame:opacity-40 transition-opacity duration-500" />
 
-        {/* Overlay interactivo en Hover: Invita a explorar los puntos técnicos */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/95 via-black/20 to-transparent opacity-0 group-hover/frame:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-5 z-10">
-          <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.2em] font-medium text-[#F4F1EA] bg-[#0C0D10]/85 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 shadow-xl">
-            <span className="flex items-center gap-2">
-              <span className="text-[#C8A96E] font-bold">⊕</span>
-              <span>Ver Hotspots</span>
-            </span>
-            <span className="text-[#C8A96E]">Ficha →</span>
+          {/* Overlay interactivo en Hover: Invita a personalizar */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/95 via-black/20 to-transparent opacity-0 group-hover/frame:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-5">
+            <div className="flex items-center justify-between font-sans text-xs font-medium text-[#F4F1EA] bg-[#0C0D10]/85 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 shadow-xl">
+              <span className="flex items-center gap-2">
+                <span className="text-[#C8A96E] font-bold">✦</span>
+                <span>Ver prenda</span>
+              </span>
+              <span className="text-[#C8A96E] font-semibold">Pedir o Cotizar →</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
 
       {/* 2. Editorial Product Caption */}
@@ -137,27 +106,42 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
           </h3>
         </Link>
 
-        {/* Material Specs */}
-        {materialSummary && (
-          <p className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#9E9EA4] font-light">
-            {materialSummary}
-          </p>
-        )}
+        {/* Precio visible y transparente para clientes adultos */}
+        <div className="flex items-baseline gap-2 pt-0.5">
+          {product.pricing.type === 'fixed' && product.pricing.basePrice ? (
+            <span className="font-mono font-bold text-sm sm:text-base text-[#C8A96E]">
+              ${product.pricing.basePrice.toLocaleString('es-CO')} COP
+            </span>
+          ) : (
+            <span className="font-mono text-xs text-[#C8A96E] font-medium">
+              Precio bajo cotización
+            </span>
+          )}
+          {product.pricing.bulkDiscounts && product.pricing.bulkDiscounts.length > 0 && (
+            <span className="text-[11px] text-[#A0A0A5] font-sans">
+              (precio especial por docena)
+            </span>
+          )}
+        </div>
 
-        {/* Allowed Techniques */}
-        {techniqueNames && (
-          <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-[#C8A96E]/90 font-medium">
-            {techniqueNames}
-          </p>
-        )}
+        {/* Material en lenguaje claro y fresco */}
+        <p className="font-sans text-xs text-[#B5B5BC]">
+          {product.materialName ? `Tela: ${product.materialName}` : 'Confección suave y resistente'}
+        </p>
 
-        {/* Enlace de acción rápida: Personalizar y Hotspot */}
+        {/* Técnica en lenguaje claro */}
+        <p className="font-sans text-[11px] text-[#C8A96E] flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E]" />
+          <span>Personalizable con estampado o bordado</span>
+        </p>
+
+        {/* Enlace de acción rápida: Personalizar y Medidas */}
         <div className="pt-2 flex items-center justify-between text-xs border-t border-white/10 mt-1">
           <Link
             href={productHref}
-            className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#F4F1EA] hover:text-[#C8A96E] transition-colors flex items-center gap-1.5 group-hover:underline"
+            className="font-sans text-xs font-semibold text-[#F4F1EA] hover:text-[#C8A96E] transition-colors flex items-center gap-1.5 group-hover:underline"
           >
-            <span>Personalizar Prenda</span>
+            <span>Elegir Talla y Cotizar</span>
             <span className="text-[#C8A96E]">→</span>
           </Link>
 
@@ -168,9 +152,10 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
                 e.stopPropagation();
                 onQuickView(product);
               }}
-              className="font-mono text-[10px] uppercase tracking-wider text-[#8A8A92] hover:text-[#C8A96E] transition-colors cursor-pointer"
+              className="font-sans text-xs text-[#A0A0A5] hover:text-[#C8A96E] transition-colors cursor-pointer underline underline-offset-2"
+              aria-label={`Ver guía de medidas de ${product.title}`}
             >
-              [ Hotspots ]
+              Guía de medidas
             </button>
           )}
         </div>

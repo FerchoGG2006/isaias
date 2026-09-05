@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
     specifications: [
       { label: 'Gramaje', value: '220 g/m²' },
       { label: 'Composición', value: '92% Poliéster microfibra, 8% Spandex' },
-      { label: 'Técnica recomendada', value: 'DTF Textil curado a 160 °C' },
+      { label: 'Personalización', value: 'Estampado suave de alta durabilidad' },
       { label: 'Acabado', value: 'Costuras reforzadas, tacto ultra suave' },
     ],
     featured: true,
@@ -120,11 +120,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Polo Cuello Tejido',
-    subtitle: 'Algodón Piqué 230g · Bordado 3D Wilcom',
+    subtitle: 'Algodón Piqué Resistente · Bordado Fino Computarizado',
     description:
       'Clásico sofisticado con cuello y puños tejidos en jacquard de alto gramaje. Pechera estructurada con dos botones al tono y base de piqué pesada optimizada para bordado computarizado de alta densidad.',
     code: 'POL-CT-001',
-    tag: 'BORDADO 3D WILCOM',
+    tag: 'BORDADO FINO COMPUTARIZADO',
     pricing: {
       type: 'fixed',
       basePrice: 48000,
@@ -165,7 +165,7 @@ export const PRODUCTS: Product[] = [
     specifications: [
       { label: 'Tejido', value: 'Algodón piqué 230 g/m²' },
       { label: 'Detalles', value: 'Cuello tejido jacquard y refuerzo en hombros' },
-      { label: 'Personalización', value: 'Bordado 3D o plano en software Wilcom' },
+      { label: 'Personalización', value: 'Bordado fino en relieve o plano de tu logotipo' },
     ],
     featured: true,
     inStock: true,
@@ -229,11 +229,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Poliéster Qatar DryFit',
-    subtitle: 'Sublimación Fotográfica 4K · Curado a 200 °C',
+    subtitle: 'Estampado Fotográfico Nítido · Cero Tacto',
     description:
-      'Tejido microporoso técnico de secado ultra rápido. Estampación por sublimación molecular que se integra con las fibras sin crear una capa plástica, asegurando frescura absoluta en climas cálidos.',
+      'Tejido microporoso técnico de secado ultra rápido. Estampación por sublimación que se integra con las fibras sin crear una capa plástica, asegurando frescura absoluta en climas cálidos.',
     code: 'DEP-QT-001',
-    tag: 'SUBLIMACIÓN 4K 200°C',
+    tag: 'TELA DEPORTIVA FRESCA',
     pricing: {
       type: 'fixed',
       basePrice: 35000,
@@ -251,7 +251,7 @@ export const PRODUCTS: Product[] = [
     featuredImage: '/assets/telas/qatar/qatar-1.jpg',
     materialId: 'poliester-qatar-dryfit',
     materialName: 'Poliéster Qatar DryFit',
-    materialSpecs: ['160 g', 'Curado a 200 °C', 'Sublimación 4K'],
+    materialSpecs: ['160 g', 'Fresca y Transpirable', 'Colores Vivos'],
     customCapabilities: {
       allowedTechniques: ['sublimacion-4k', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -275,7 +275,7 @@ export const PRODUCTS: Product[] = [
     specifications: [
       { label: 'Gramaje', value: '160 g/m²' },
       { label: 'Secado', value: 'Tecnología DryFit de evacuación rápida de sudor' },
-      { label: 'Fijación', value: 'Curado térmico a 200 °C de por vida' },
+      { label: 'Durabilidad', value: 'El estampado no se borra ni se destiñe con los lavados' },
     ],
     featured: true,
     inStock: true,
@@ -337,11 +337,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Infantil DTF Reflectivo',
-    subtitle: 'Curado a 160 °C · Algodón Suave Hipoalergénico',
+    subtitle: 'Algodón Suave Hipoalergénico · Estampado Suave',
     description:
       'Prenda confeccionada pensando en la piel sensible de los niños. Gráficos de caricaturas, nombres y motivos personalizados con estampación flexible que no raspa ni pierde color.',
     code: 'INF-RF-001',
-    tag: 'DTF INFANTIL 160°C',
+    tag: 'LÍNEA INFANTIL SUAVE',
     pricing: {
       type: 'fixed',
       basePrice: 28000,
@@ -387,9 +387,9 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Estampado Reflectivo Nocturno',
-    subtitle: 'Alta Visibilidad · DTF Reflectivo Curado a 160 °C',
+    subtitle: 'Alta Visibilidad · Estampado Reflectivo de Seguridad',
     description:
-      'Vinilo y DTF reflectivo de microesferas que destella intensamente ante faroles de autos y luces de la ciudad. Indispensable para ciclistas, motociclistas y corredores nocturnos.',
+      'Estampado reflectivo de alta luminosidad que destella intensamente ante faroles de autos y luces de la ciudad. Indispensable para ciclistas, motociclistas y corredores nocturnos.',
     code: 'REF-NC-002',
     tag: 'REFLECTIVO NOCTURNO',
     pricing: {
@@ -404,7 +404,7 @@ export const PRODUCTS: Product[] = [
     featuredImage: '/assets/telas/reflectivos_ninos/reflectivo-4.jpg',
     materialId: 'algodon-peinado-100',
     materialName: 'Algodón Heavyweight 200g',
-    materialSpecs: ['200 g', 'DTF Reflectivo 160 °C'],
+    materialSpecs: ['200 g', 'Reflectivo de Seguridad'],
     customCapabilities: {
       allowedTechniques: ['dtf-reflectivo'],
       allowedPlacements: [
@@ -423,7 +423,7 @@ export const PRODUCTS: Product[] = [
     },
     specifications: [
       { label: 'Reflectancia', value: 'Norma de alta visibilidad retro-reflectiva' },
-      { label: 'Curado', value: '160 °C con presión neumática continua' },
+      { label: 'Acabado', value: 'Fijación de alta resistencia al uso y lavado continuo' },
     ],
     featured: false,
     inStock: true,
@@ -435,7 +435,7 @@ export const PRODUCTS: Product[] = [
     categoryId: 'accesorios',
     categorySlug: 'accesorios',
     title: 'Gorra Trucker Malla Personalizada',
-    subtitle: 'Bordado 3D Wilcom o Sublimación Frontal',
+    subtitle: 'Bordado en Relieve o Estampado Frontal',
     description:
       'Frente acolchado de alta densidad con visera curva y malla trasera transpirable. Soporta bordado en relieve 3D, parche sublimado o aplicación DTF.',
     code: 'ACC-GR-001',
@@ -485,11 +485,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'sublimacion',
     categorySlug: 'sublimacion',
     title: 'Mug Cerámico 11oz Sublimado',
-    subtitle: 'Sublimación Fotográfica 4K · Curado a 200 °C',
+    subtitle: 'Estampado Fotográfico Nítido · Alta Duración',
     description:
-      'Cerámica blanca de grado A con polímero especial para sublimación de alta fidelidad. Apto para microondas y lavavajillas sin pérdida de brillo ni definición.',
+      'Cerámica blanca de grado A con polímero especial para estampado de alta fidelidad. Apto para microondas y lavavajillas sin pérdida de brillo ni definición.',
     code: 'SUB-MG-001',
-    tag: 'SUBLIMACIÓN 4K 200°C',
+    tag: 'COLOR PERMANENTE',
     pricing: {
       type: 'fixed',
       basePrice: 18000,
@@ -584,9 +584,9 @@ export const PRODUCTS: Product[] = [
     categoryId: 'dotaciones',
     categorySlug: 'dotaciones',
     title: 'Conjunto Dotación Empresarial',
-    subtitle: 'Polo + Pantalón o Camisa con Bordado Wilcom',
+    subtitle: 'Polo + Pantalón o Camisa con Bordado de tu Logo',
     description:
-      'Solución integral para empresas que requieren uniformar a sus equipos de trabajo. Confección en telas de alto rendimiento, bordado computarizado 3D de logotipo y tallas exactas.',
+      'Solución integral para empresas que requieren uniformar a sus equipos de trabajo. Confección en telas de alto rendimiento, bordado computarizado de logotipo y tallas exactas.',
     code: 'DOT-EMP-001',
     tag: 'BAJO COTIZACIÓN',
     pricing: {
@@ -622,7 +622,7 @@ export const PRODUCTS: Product[] = [
     },
     specifications: [
       { label: 'Mínimo de pedido', value: '12 conjuntos' },
-      { label: 'Bordado', value: 'Wilcom multicabezal incluido' },
+      { label: 'Bordado', value: 'Bordado de logotipo de alta definición incluido' },
       { label: 'Entrega', value: 'Valledupar y despachos a todo el Cesar' },
     ],
     featured: true,

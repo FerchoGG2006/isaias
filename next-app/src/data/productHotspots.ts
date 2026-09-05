@@ -39,11 +39,11 @@ export const SILHOUETTE_HOTSPOTS: Record<string, ProductHotspot[]> = {
       number: 2,
       x: 50,
       y: 37,
-      label: 'Estampado DTF',
-      title: 'DTF Textil Curado a 160 °C',
+      label: 'Estampado Suave',
+      title: 'Estampado Digital de Alta Fidelidad',
       description:
-        'Transferencia digital textil termofijada a 160 °C con poliamida ultrafina. Acabado elástico que se estira con la prenda sin agrietarse ni perder intensidad de color.',
-      badge: 'DTF 160 °C',
+        'Estampación suave fijada con calor que se estira con la prenda sin agrietarse ni perder intensidad de color con los lavados.',
+      badge: 'ESTAMPADO SUAVE',
       category: 'technique',
     },
     {
@@ -67,7 +67,7 @@ export const SILHOUETTE_HOTSPOTS: Record<string, ProductHotspot[]> = {
       title: 'Remate Doble Aguja Calibre 40/2',
       description:
         'Costura perimetral reforzada con hilo de alta resistencia a la tracción que asegura estabilidad dimensional tras múltiples lavados en agua fría.',
-      badge: 'ACABADO ATELIER',
+      badge: 'CONFECCIÓN FINA',
       category: 'finish',
     },
   ],
@@ -94,7 +94,7 @@ export const SILHOUETTE_HOTSPOTS: Record<string, ProductHotspot[]> = {
       title: 'Estampación DTF Full Color',
       description:
         'Impresión de alta resolución fotográfica con tintas ecológicas y curado térmico de precisión para colores vivos y bordes nítidos.',
-      badge: 'DTF 160 °C',
+      badge: 'FULL COLOR',
       category: 'technique',
     },
     {
@@ -125,15 +125,15 @@ export const SILHOUETTE_HOTSPOTS: Record<string, ProductHotspot[]> = {
       category: 'finish',
     },
     {
-      id: 'bordado-wilcom',
+      id: 'bordado-fino',
       number: 2,
       x: 40,
       y: 33,
       label: 'Bordado Institucional',
-      title: 'Bordado 3D Computarizado Wilcom',
+      title: 'Bordado Computarizado en Relieve',
       description:
-        'Matricería digital de alta precisión programada en software Wilcom con hilo de rayón satinado y relieve tridimensional de hasta 3 mm de grosor.',
-      badge: 'WILCOM 3D',
+        'Bordado de alta definición programado puntada a puntada con hilo satinado y acabado fino de gran durabilidad.',
+      badge: 'BORDADO EN RELIEVE',
       category: 'technique',
     },
     {
@@ -180,11 +180,11 @@ export const SILHOUETTE_HOTSPOTS: Record<string, ProductHotspot[]> = {
       number: 2,
       x: 50,
       y: 44,
-      label: 'Estampado Molecular',
-      title: 'Sublimación Fotográfica 4K a 200 °C',
+      label: 'Estampado Transpirable',
+      title: 'Estampado Fotográfico sin Tacto',
       description:
-        'Pigmentos transferidos en fase gaseosa directamente a la molécula de poliéster a 200 °C. Cero tacto plástico: la prenda respira al 100%.',
-      badge: 'SUBLIMACIÓN 200 °C',
+        'El color penetra directamente en las fibras de la tela sin dejar capas plásticas: la prenda se siente fresca, ligera y respira al 100%.',
+      badge: 'CERO TACTO',
       category: 'technique',
     },
     {
@@ -247,10 +247,10 @@ export const SILHOUETTE_HOTSPOTS: Record<string, ProductHotspot[]> = {
       x: 50,
       y: 45,
       label: 'Impresión Panorámica',
-      title: 'Sublimación 4K a 200 °C',
+      title: 'Estampado Fotográfico de Alta Nitidez',
       description:
-        'Curado molecular térmico a 200 °C que funde los pigmentos dentro del barniz cerámico. Brillo fotográfico resistente a más de 1.000 ciclos de lavado.',
-      badge: 'SUBLIMACIÓN 4K',
+        'Colores vivos integrados al brillo de la cerámica, resistentes al microondas y a más de 1.000 lavadas sin desgastarse.',
+      badge: 'COLOR PERMANENTE',
       category: 'technique',
     },
     {

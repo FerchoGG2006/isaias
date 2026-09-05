@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
-import { AdminModal } from '@/components/admin/AdminModal';
 import { SERVICES } from '@/data/services';
 import { ServiceCard } from '@/components/services/ServiceCard';
 
@@ -25,8 +24,8 @@ export default function ServiciosPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-semibold block mb-2">
-                TALLER & MAQUILA · VALLEDUPAR
+              <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold block mb-2">
+                TALLER PROPIO · VALLEDUPAR, CESAR
               </span>
               <h1 className="font-sans font-bold text-3xl sm:text-5xl text-[#F4F1EA] tracking-tight">
                 Servicios de Estampación & Bordado
@@ -39,7 +38,7 @@ export default function ServiciosPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/catalogo"
-                className="font-mono text-xs text-[#F4F1EA] hover:text-[#C8A96E] bg-[#141419] border border-white/15 px-4 py-2.5 rounded-xs transition-colors"
+                className="font-sans text-xs text-[#F4F1EA] hover:text-[#C8A96E] bg-[#141419] border border-white/15 px-4 py-2.5 rounded-lg transition-colors font-medium"
               >
                 Ver Catálogo de Prendas →
               </Link>
@@ -64,7 +63,7 @@ export default function ServiciosPage() {
                   Recepción de Archivos
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">
-                  Envía tus vectores (PDF, SVG, AI) o imágenes en 300 DPI. Si necesitas vectorización o ponchado Wilcom, nosotros te asistimos.
+                  Envía tu logo, imagen o foto desde tu celular o computador. Si necesitas ayuda organizando el diseño, nosotros te asesoramos con gusto.
                 </p>
               </div>
 
@@ -84,7 +83,7 @@ export default function ServiciosPage() {
                   Procesamiento & Entrega
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">
-                  Bordado multicabezal o curado DTF a 160 °C con tiempos de entrega de 24 a 72 horas para maquilas ágiles.
+                  Bordado computarizado o estampado fino con tiempos de entrega de 24 a 72 horas para pedidos ágiles.
                 </p>
               </div>
             </div>
@@ -95,7 +94,6 @@ export default function ServiciosPage() {
       </main>
       <Footer />
       <QuoteDrawer />
-      <AdminModal />
     </>
   );
 }

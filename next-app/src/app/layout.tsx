@@ -32,12 +32,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Variedades Isaías — Confección, DTF y Bordado en Valledupar',
+  title: 'Variedades Isaías — Confección, Bordados & Estampados en Valledupar',
   description:
-    'Taller especializado de confección y personalización textil en Valledupar, Cesar: Estampado DTF curado a 160 °C, bordado computarizado 3D Wilcom, sublimación 4K y prendas en piel de durazno spandex 220g.',
+    'Taller especializado de confección y personalización textil en Valledupar, Cesar: Estampados suaves y duraderos, bordado computarizado fino y prendas en telas frescas de alta calidad.',
   keywords: [
     'confección valledupar',
-    'estampado dtf valledupar',
+    'estampados valledupar',
     'bordados computarizados cesar',
     'camisetas personalizadas valledupar',
     'sublimacion valledupar',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Variedades Isaías — Confección, DTF y Bordado en Valledupar',
+    title: 'Variedades Isaías — Confección, Bordados & Estampados en Valledupar',
     description:
       'Catálogo editorial de confección y personalización textil bajo pedido. Despachos locales en Valledupar y envíos nacionales asegurados.',
     url: 'https://variedadesisaias.com',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Variedades Isaías — Confección y Personalización en Valledupar',
     description:
-      'Taller textil especializado: DTF, Bordado Wilcom 3D y Sublimación fotográfica con envíos a todo Colombia.',
+      'Taller textil especializado: Confección, bordados de alta definición y estampados fotográficos con envíos a todo Colombia.',
   },
 };
 
@@ -73,7 +73,7 @@ const jsonLd = {
   '@type': 'LocalBusiness',
   name: 'Variedades Isaías',
   description:
-    'Taller y estudio de confección y personalización textil en Valledupar, Cesar. Especialistas en estampado DTF térmico, bordado computarizado Wilcom y sublimación.',
+    'Taller y estudio de confección y personalización textil en Valledupar, Cesar. Especialistas en estampados duraderos, bordados finos y dotaciones empresariales.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Valledupar',

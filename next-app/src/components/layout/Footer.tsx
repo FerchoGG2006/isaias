@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
 
 export const Footer: React.FC = () => {
-  const { setIsAdminOpen, business } = useQuote();
+  const { business } = useQuote();
 
   const formattedPhone = business.whatsappPhone
     ? `+${business.whatsappPhone.slice(0, 2)} ${business.whatsappPhone.slice(2, 5)} ${business.whatsappPhone.slice(5, 8)} ${business.whatsappPhone.slice(8)}`
@@ -40,42 +40,39 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Column */}
-          <div className="flex flex-col gap-3 font-mono text-xs">
-            <h5 className="font-bold text-[#FFFFFF] uppercase tracking-[0.2em] mb-1">
+          <div className="flex flex-col gap-3 font-sans text-xs">
+            <h5 className="font-bold text-[#FFFFFF] uppercase tracking-[0.16em] mb-1">
               Catálogo & Taller
             </h5>
-            <Link href="/catalogo" className="hover:text-[#3B82F6] transition-colors">
+            <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
               Catálogo de Prendas
             </Link>
-            <Link href="/personaliza" className="hover:text-[#3B82F6] transition-colors">
-              Personaliza tu Pieza
+            <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
+              ¿Cómo hacer tu pedido?
             </Link>
-            <Link href="/servicios" className="hover:text-[#3B82F6] transition-colors">
-              Servicios de Maquila
+            <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
+              Bordados & Estampados
             </Link>
-            <Link href="/cotizar" className="hover:text-[#3B82F6] transition-colors">
+            <Link href="/cotizar" className="hover:text-[#C8A96E] transition-colors">
               Solicitud de Cotización
             </Link>
-            <Link href="/#materiales" className="hover:text-[#3B82F6] transition-colors">
-              Explorador de Materiales (10X)
+            <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
+              Trabajos Realizados
             </Link>
-            <Link href="/#galeria" className="hover:text-[#3B82F6] transition-colors">
-              Archivo de Proyectos
-            </Link>
-            <Link href="/#taller" className="hover:text-[#3B82F6] transition-colors">
+            <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
               Sobre Nuestro Taller
             </Link>
           </div>
 
           {/* Contact Column */}
-          <div className="flex flex-col gap-3 font-mono text-xs">
-            <h5 className="font-bold text-[#FFFFFF] uppercase tracking-[0.2em] mb-1">
+          <div className="flex flex-col gap-3 font-sans text-xs">
+            <h5 className="font-bold text-[#FFFFFF] uppercase tracking-[0.16em] mb-1">
               Ubicación & Atención
             </h5>
             <p className="text-[#94A3B8]">Valledupar, Cesar · Colombia</p>
             <p className="text-[#94A3B8]">Atención: Lunes a Sábado</p>
             {business.whatsappPhone ? (
-              <p className="text-[#E5A910] font-bold">
+              <p className="text-[#C8A96E] font-bold">
                 WhatsApp: {formattedPhone}
               </p>
             ) : (
@@ -86,14 +83,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#94A3B8]">
-          <span>&copy; {new Date().getFullYear()} {business.name}. Todos los derechos reservados.</span>
-          <button
-            className="hover:text-[#3B82F6] underline cursor-pointer text-[11px]"
-            onClick={() => setIsAdminOpen(true)}
-          >
-            Acceso Taller / Admin
-          </button>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-[#94A3B8]">
+          <span>&copy; {new Date().getFullYear()} {business.name}. Valledupar, Cesar · Envíos a toda Colombia.</span>
+          <span>Atención de lunes a sábado</span>
         </div>
       </div>
     </footer>

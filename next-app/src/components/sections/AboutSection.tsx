@@ -35,7 +35,7 @@ export const AboutSection: React.FC = () => {
               CONFECCIÓN & ESTAMPACIÓN TEXTIL
             </span>
             <h3 className="font-serif text-3xl sm:text-4xl text-[#FFFFFF] font-bold mt-1">
-              Atelier Variedades Isaías
+              Taller Variedades Isaías
             </h3>
             <p className="font-sans text-xs sm:text-sm text-[#94A3B8] max-w-md mt-2 font-light">
               Taller físico en Valledupar con maquinaria propia para confeccionar, bordar y estampar tus pedidos con la mejor calidad.
@@ -64,7 +64,7 @@ export const AboutSection: React.FC = () => {
           </p>
 
           <p className="font-sans text-sm text-[#94A3B8] leading-relaxed font-light">
-            En nuestro taller textil unificamos bordado computarizado 3D y estampado DTF con acabados limpios y resistentes. Desde una sola prenda personalizada hasta dotaciones completas para empresas y eventos.
+            En nuestro taller textil unificamos bordado fino en relieve y estampados suaves a todo color con acabados limpios y duraderos. Desde una sola prenda personalizada hasta dotaciones completas para empresas y eventos.
           </p>
 
           {/* 3 Metrics */}

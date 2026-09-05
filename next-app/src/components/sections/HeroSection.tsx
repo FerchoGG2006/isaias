@@ -55,6 +55,13 @@ export const HeroSection: React.FC = () => {
           )}
         </motion.div>
 
+        {/* Accessible H1 heading (WCAG 2.2 / SEO) */}
+        <h1 className="sr-only">
+          {isIsaias
+            ? 'Variedades Isaías — Estudio de Personalización Textil, Bordados Computarizados y Sublimación en Valledupar'
+            : 'El Palacio de la Sublimación — Especialistas en Sublimación Fotográfica 4K y Merchandising en Valledupar'}
+        </h1>
+
         {/* Sub-hero Pill Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -62,10 +69,10 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mb-10"
         >
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-medium bg-black/70 backdrop-blur-md border border-[#C8A96E]/50 px-6 sm:px-8 py-2.5 rounded-full shadow-2xl">
-            <span>VALLEDUPAR</span>
+          <div className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold bg-black/70 backdrop-blur-md border border-[#C8A96E]/50 px-6 sm:px-8 py-2 rounded-full shadow-2xl">
+            <span>Valledupar</span>
             <span className="text-white/40">·</span>
-            <span>{isIsaias ? 'ESTUDIO DE PERSONALIZACIÓN TEXTIL & BORDADOS' : 'ESPECIALISTAS EN SUBLIMACIÓN 4K & MERCHANDISING'}</span>
+            <span>{isIsaias ? 'Confección, Bordados & Estampados' : 'Estampación de Mugs, Camisetas y Detalles'}</span>
           </div>
         </motion.div>
 
@@ -74,11 +81,11 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 w-full font-mono text-xs uppercase tracking-[0.2em]"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 w-full font-sans text-xs font-semibold uppercase tracking-[0.16em]"
         >
           {/* Button 1: Gold Filled WhatsApp CTA */}
           <a
-            href={waUrl && waUrl !== '#' ? waUrl : '#contacto'}
+            href={waUrl && waUrl !== '#' && waUrl !== '#contacto' ? waUrl : 'https://wa.me/573105634509'}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10] font-bold px-9 py-4.5 rounded-xs transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 text-center shrink-0 hover:scale-105"

@@ -31,7 +31,7 @@ export const MATERIALS: Material[] = [
     name: 'Algodón Piqué Premium',
     slug: 'algodon-pique',
     description:
-      'Estructura de nido de abeja tejida en hilo peinado de alto gramaje. La base predilecta para bordados computarizados Wilcom 3D gracias a su firmeza estructural.',
+      'Estructura de nido de abeja tejida en hilo peinado resistente. La base predilecta para bordados computarizados en relieve gracias a su firmeza estructural.',
     weight: '230 g',
     composition: '100% Algodón peinado o 65/35 Polialgodón',
     suitableTechniques: ['bordado-3d', 'dtf-full-color'],
@@ -45,27 +45,27 @@ export const MATERIALS: Material[] = [
     name: 'Poliéster Qatar DryFit',
     slug: 'poliester-qatar',
     description:
-      'Malla técnica microporosa de absorción y secado rápido. Diseñada para soportar la penetración molecular de la sublimación 4K a 200 °C sin perder transpirabilidad.',
+      'Malla técnica microporosa de absorción y secado rápido. Diseñada para estampados fotográficos nítidos sin perder su ligereza ni transpirabilidad.',
     weight: '160 g',
     composition: '100% Poliéster técnico microporoso',
     suitableTechniques: ['sublimacion-4k', 'dtf-reflectivo'],
     image: '/assets/telas/qatar/qatar-1.jpg',
     alt: 'Textura de poliéster Qatar deportivo con sublimación',
-    points: ['Secado rápido', 'Cero tacto con sublimación 4K', 'Microporos transpirables', 'Ligereza'],
-    technicalSpecs: ['Gramaje: 160 g/m²', 'Curado térmico a 200 °C', 'Tratamiento dry fit'],
+    points: ['Secado rápido', 'Cero tacto, tela fresca', 'Microporos transpirables', 'Ligereza'],
+    technicalSpecs: ['Gramaje: 160 g/m²', 'Color permanente al lavado', 'Tratamiento dry fit'],
   },
   {
     id: 'algodon-peinado-100',
     name: 'Algodón Peinado Heavyweight',
     slug: 'algodon-peinado',
     description:
-      'Algodón hilado en anillo de tacto compacto y superficie lisa libre de impurezas. Asegura una transferencia térmica perfecta para DTF reflectivo a 160 °C.',
+      'Algodón hilado en anillo de tacto compacto y superficie suave libre de impurezas. Asegura un acabado perfecto para estampados reflectivos y a color.',
     weight: '200 g',
     composition: '100% Algodón hilado en anillo',
     suitableTechniques: ['dtf-reflectivo', 'dtf-full-color', 'bordado-3d'],
     image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
     alt: 'Prenda en algodón peinado con estampado reflectivo',
-    points: ['Superficie ultra lisa', 'Hipoalergénico suave', 'Curado DTF a 160 °C', 'Confort'],
+    points: ['Superficie ultra lisa', 'Hipoalergénico suave', 'Estampado resistente', 'Confort'],
     technicalSpecs: ['Gramaje: 200 g/m²', 'Hilos compactados', 'Preencogido'],
   },
 ];
@@ -79,7 +79,7 @@ export const materialStories: MaterialStory[] = [
     image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
     alt: 'Camiseta negra infantil con estampado gráfico reflectivo personalizado',
     points: ['Textura', 'Definición', 'Acabado', 'Reflejo nocturno'],
-    technical: ['DTF reflectivo', 'Curado a 160 °C', 'Elasticidad alta'],
+    technical: ['Estampado reflectivo', 'Alta durabilidad', 'Elasticidad alta'],
   },
   {
     id: 'piel-durazno',
@@ -94,12 +94,12 @@ export const materialStories: MaterialStory[] = [
   {
     id: 'bordado',
     index: '03',
-    title: 'Bordado 3D Wilcom',
+    title: 'Bordado Computarizado',
     eyebrow: 'Construcción de puntada',
     image: '/media/embroidery-machine.jpeg',
     alt: 'Máquina de bordado computarizado en el taller de confección',
     points: ['Volumen tridimensional', 'Relieve táctil', 'Puntadas de alta densidad'],
-    technical: ['Bordado 3D computarizado', 'Wilcom ES', 'Sobre algodón piqué'],
+    technical: ['Bordado computarizado', 'Relieve fino', 'Sobre algodón piqué'],
   },
 ];
 

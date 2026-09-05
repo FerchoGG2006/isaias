@@ -6,7 +6,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'dtf-reflectivo',
     name: 'DTF Reflectivo',
     shortDescription:
-      'Estampado directo a film con acabado de alta reflectividad lumínica, curado a 160 °C.',
+      'Estampado reflectivo que brilla en la oscuridad ante las luces, ideal para noche y seguridad.',
     fullDescription:
       'Impresión digital con microesferas retrorreflectivas integradas que reaccionan a la luz directa. Ideal para prendas urbanas, ciclistas, línea infantil y marcas con identidad nocturna.',
     curingTemperature: '160 °C',
@@ -17,7 +17,7 @@ export const TECHNIQUES: Technique[] = [
     image: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
     advantages: [
       'Reflejo intenso ante faros y flashes nocturnos',
-      'Curado técnico uniforme a 160 °C',
+      'Fijación térmica de alta resistencia a las lavadas',
       'Excelente elasticidad en mezclas spandex y algodón',
       'Resistencia a lavados repetidos',
     ],
@@ -50,7 +50,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'bordado-3d',
     name: 'Bordado 3D Computarizado',
     shortDescription:
-      'Bordado tridimensional de alta densidad programado en Wilcom sobre algodón piqué o dril.',
+      'Bordado con relieve elegante y duradero sobre camisas polo, gorras o chalecos.',
     fullDescription:
       'Puntadas de altísima densidad con inserción de espuma de microcélulas para lograr relieve visual y táctil sobrio. La técnica insignia para dotaciones ejecutivas y gorras estructuradas.',
     resolution: 'Digitalización Wilcom ES',
@@ -72,9 +72,9 @@ export const TECHNIQUES: Technique[] = [
     slug: 'sublimacion-4k',
     name: 'Sublimación Fotográfica 4K',
     shortDescription:
-      'Fusión molecular de color a 200 °C directa en la fibra sin tacto ni peso.',
+      'Estampado de colores vivos integrado directamente en la tela sin tacto ni peso.',
     fullDescription:
-      'Transferencia térmica donde la tinta se convierte en gas a 200 °C y penetra directamente la fibra del poliéster o el recubrimiento polimérico de tazas y termos. Cero sensación al tacto.',
+      'El estampado se integra directamente con las fibras de la tela o el acabado de tazas y termos. Cero sensación al tacto: la prenda no se siente acalorada ni pesada.',
     curingTemperature: '200 °C',
     resolution: '4K Ultra HD',
     machinery: 'Calandra térmica continua & prensas para cilindros',

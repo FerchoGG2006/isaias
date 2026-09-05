@@ -160,8 +160,8 @@ export const ServiceConfigurator: React.FC<ServiceConfiguratorProps> = ({ servic
 
       {/* 4. DESIGN FILE */}
       <div className="flex flex-col gap-2.5 pt-3 border-t border-white/10">
-        <label className="font-mono text-xs uppercase tracking-wider text-[#F4F1EA] font-semibold">
-          4. LOGOTIPO O VECTOR A BORDAR / ESTAMPAR:
+        <label className="font-sans text-xs uppercase tracking-wider text-[#F4F1EA] font-semibold">
+          4. TU FOTO, LOGO O DISEÑO:
         </label>
         <FileUploader
           attachment={attachment}
@@ -206,8 +206,8 @@ export const ServiceConfigurator: React.FC<ServiceConfiguratorProps> = ({ servic
                 </span>
               </>
             ) : (
-              <span className="font-mono text-xs text-[#C8A96E] bg-black/40 px-2.5 py-1 border border-[#C8A96E]/20 rounded-xs">
-                Precio sujeto a confirmación de puntadas
+              <span className="font-sans text-xs text-[#C8A96E] bg-black/40 px-2.5 py-1 border border-[#C8A96E]/20 rounded-xs">
+                Precio se confirma con tu logo
               </span>
             )}
           </div>

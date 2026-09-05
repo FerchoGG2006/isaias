@@ -16,23 +16,23 @@ const TEAM_TIERS: TeamTier[] = [
   {
     title: 'Dotaciones & Empresas',
     volume: '10 A 500+ PIEZAS',
-    description: 'Polos piqué pesados con bordado 3D Wilcom, camisas corporativas y chalecos de alta durabilidad.',
-    examples: ['Bordado de alta densidad Wilcom', 'Curvas de tallas S a XXL', 'Facturación formal y despacho ágil'],
+    description: 'Polos en tela piqué resistente con bordado fino computarizado, camisas corporativas y chalecos duraderos.',
+    examples: ['Bordado de alta definición y relieve', 'Curvas de tallas S a XXL', 'Facturación formal y despacho ágil'],
     serviceSlug: 'dotaciones-empresariales-confeccion',
   },
   {
     title: 'Marcas & Colecciones Cápsula',
     volume: 'DESDE 20 PIEZAS',
-    description: 'Camisetas en piel de durazno spandex 220g con DTF reflectivo o full color de alta fidelidad.',
-    examples: ['Fijación térmica exacta a 160 °C', 'Etiquetas personalizadas', 'Empaque individual listo para retail'],
+    description: 'Camisetas en tela piel de durazno suave y fresca con estampado reflectivo o a todo color que no se cuartea.',
+    examples: ['Estampado de máxima durabilidad al lavado', 'Etiquetas personalizadas', 'Empaque individual listo para entrega'],
     serviceSlug: 'impresion-dtf-por-metro',
   },
   {
     title: 'Eventos, Congresos & Merch',
     volume: '50 A 1000+ PIEZAS',
-    description: 'Prendas transpirables Qatar, mugs térmicos, termos metálicos y accesorios con sublimación 4K.',
-    examples: ['Sublimación 4K a 200 °C', 'Tiempos ágiles de despacho', 'Control de color fotográfico estricto'],
-    serviceSlug: 'sublimacion-fotografica-maquila',
+    description: 'Prendas transpirables deportivas, mugs térmicos, termos metálicos y recordatorios con estampado nítido.',
+    examples: ['Colores vivos permanentes que no se caen', 'Tiempos ágiles de despacho', 'Control riguroso de diseño y logos'],
+    serviceSlug: 'sublimacion-fotografica-promocionales',
   },
 ];
 
@@ -90,8 +90,8 @@ export const ForTeamsSection: React.FC = () => {
                   <span className="font-serif text-sm text-[#F4F1EA] font-normal mt-2">Producción por Mayor</span>
                 </div>
 
-                <div className="relative z-10 font-mono text-[10px] text-[#8A8A92] text-right">
-                  Valledupar Atelier
+                <div className="relative z-10 font-sans text-[11px] text-[#8A8A92] text-right">
+                  Taller Valledupar
                 </div>
               </div>
 
