@@ -84,7 +84,7 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
 
   const waUrl = cleanPhone
     ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-        `¡Hola Variedades Isaías! Me interesa cotizar y consultar especificaciones técnicas de la prenda: ${product.title} (${product.code}).`
+        `¡Hola ${business?.name || 'Variedades Isaías'}! Me interesa cotizar y consultar especificaciones técnicas de la prenda: ${product.title} (${product.code}).`
       )}`
     : '#contacto';
 
@@ -107,8 +107,8 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      aria-labelledby="hotspot-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+      aria-label={`Detalles técnicos de ${product.title}`}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-y-auto"
     >
       {/* Telón de fondo editorial */}
       <div
@@ -119,7 +119,7 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
       {/* Contenedor del Modal */}
       <div
         ref={modalContentRef}
-        className="relative w-full max-w-5xl bg-[#0F1015] border border-white/15 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl z-10 animate-in zoom-in-95 duration-300 my-auto flex flex-col max-h-[92vh]"
+        className="relative w-full max-w-5xl bg-[#0F1015] border border-white/15 rounded-xs overflow-hidden shadow-2xl z-10 animate-in zoom-in-95 duration-300 my-auto flex flex-col max-h-[92vh]"
       >
         {/* Barra superior de control */}
         <div className="flex items-center justify-between px-5 sm:px-8 py-3.5 border-b border-white/10 bg-[#0C0D10]/95">

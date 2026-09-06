@@ -86,7 +86,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             <div className="lg:col-span-5 flex flex-col gap-6">
               
               {/* Media Container */}
-              <div className="relative aspect-[16/11] w-full bg-[#141419] border border-white/10 rounded-sm overflow-hidden shadow-2xl">
+              <div className="relative aspect-[16/11] w-full bg-[#141419] border border-white/10 rounded-xs overflow-hidden shadow-2xl">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -102,7 +102,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               </div>
 
               {/* Service Features */}
-              <div className="bg-[#0e0e11] border border-white/10 rounded-sm p-6 flex flex-col gap-4">
+              <div className="bg-[#0e0e11] border border-white/10 rounded-xs p-6 flex flex-col gap-4">
                 <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
                   CARACTERÍSTICAS DEL SERVICIO
                 </span>
@@ -117,7 +117,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               </div>
 
               {/* Requirements & Guidelines */}
-              <div className="bg-[#141419] border border-white/10 rounded-sm p-6 flex flex-col gap-3">
+              <div className="bg-[#141419] border border-white/10 rounded-xs p-6 flex flex-col gap-3">
                 <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#A0A0A5] font-semibold">
                   REQUISITOS DE LOS ARCHIVOS
                 </span>
@@ -148,7 +148,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                   </span>
                 </div>
 
-                <h1 className="font-sans font-bold text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight leading-tight">
+                <h1 className="font-serif font-normal text-3xl sm:text-5xl text-[#F4F1EA] tracking-tight leading-tight">
                   {service.title}
                 </h1>
 

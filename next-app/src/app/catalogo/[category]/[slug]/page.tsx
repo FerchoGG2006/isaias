@@ -9,7 +9,7 @@ import { getCategoryBySlug } from '@/data/categories';
 import { getMaterialById } from '@/data/materials';
 import { ProductGallery } from '@/components/catalog/ProductGallery';
 import { ProductConfigurator } from '@/components/configurator/ProductConfigurator';
-import { ProductCard } from '@/components/ui/ProductCard';
+import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 
 import { getBusiness } from '@/data/businesses';
 import { Metadata } from 'next';
@@ -117,7 +117,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
               {/* Technical Specifications Table */}
               {product.specifications.length > 0 && (
-                <div className="bg-[#0e0e11] border border-white/10 rounded-sm p-6 flex flex-col gap-4">
+                <div className="bg-[#0e0e11] border border-white/10 rounded-xs p-6 flex flex-col gap-4">
                   <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold">
                     Detalles y Cuidado de la Prenda
                   </span>
@@ -135,7 +135,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
               {/* Authorized Material Fact Card */}
               {material && (
-                <div className="bg-[#141419] border border-[#C8A96E]/30 rounded-sm p-6 flex flex-col gap-3">
+                <div className="bg-[#141419] border border-[#C8A96E]/30 rounded-xs p-6 flex flex-col gap-3">
                   <div className="flex items-center justify-between">
                     <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-bold">
                       Tela & Composición
@@ -177,7 +177,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   </span>
                 </div>
 
-                <h1 className="font-sans font-bold text-3xl sm:text-4xl text-[#F4F1EA] tracking-tight leading-tight">
+                <h1 className="font-serif font-normal text-3xl sm:text-5xl text-[#F4F1EA] tracking-tight leading-tight">
                   {product.title}
                 </h1>
 
@@ -230,7 +230,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-semibold block mb-1">
                     MÁS EN ESTA CATEGORÍA
                   </span>
-                  <h3 className="font-sans font-bold text-2xl text-[#F4F1EA] tracking-tight">
+                  <h3 className="font-serif font-normal text-2xl text-[#F4F1EA] tracking-tight">
                     Prendas Relacionadas
                   </h3>
                 </div>
@@ -245,7 +245,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {relatedProducts.map((relProduct) => (
-                  <ProductCard key={relProduct.id} product={relProduct} />
+                  <EditorialProductItem key={relProduct.id} product={relProduct} />
                 ))}
               </div>
             </div>

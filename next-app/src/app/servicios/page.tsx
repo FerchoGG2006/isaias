@@ -24,10 +24,10 @@ export default function ServiciosPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
-              <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold block mb-2">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold block mb-2">
                 TALLER PROPIO · VALLEDUPAR, CESAR
               </span>
-              <h1 className="font-sans font-bold text-3xl sm:text-5xl text-[#F4F1EA] tracking-tight">
+              <h1 className="font-serif font-normal text-3xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.1]">
                 Servicios de Estampación & Bordado
               </h1>
               <p className="text-sm sm:text-base text-[#A0A0A5] max-w-2xl leading-relaxed mt-2 font-light">
@@ -38,7 +38,7 @@ export default function ServiciosPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/catalogo"
-                className="font-sans text-xs text-[#F4F1EA] hover:text-[#C8A96E] bg-[#141419] border border-white/15 px-4 py-2.5 rounded-lg transition-colors font-medium"
+                className="font-mono text-xs uppercase tracking-wider text-[#F4F1EA] hover:text-[#C8A96E] bg-[#141419] border border-white/15 px-5 py-3 rounded-xs transition-colors font-medium"
               >
                 Ver Catálogo de Prendas →
               </Link>
@@ -55,11 +55,11 @@ export default function ServiciosPage() {
           </div>
 
           {/* How it works info banner */}
-          <div className="mt-20 bg-[#141419] border border-white/10 rounded-sm p-8 sm:p-10">
+          <div className="mt-20 bg-[#141419] border border-white/10 rounded-xs p-8 sm:p-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-2xl font-bold text-[#C8A96E]">01.</span>
-                <h4 className="font-sans font-bold text-lg text-[#F4F1EA]">
+                <h4 className="font-serif font-normal text-lg text-[#F4F1EA]">
                   Recepción de Archivos
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">
@@ -69,7 +69,7 @@ export default function ServiciosPage() {
 
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-2xl font-bold text-[#C8A96E]">02.</span>
-                <h4 className="font-sans font-bold text-lg text-[#F4F1EA]">
+                <h4 className="font-serif font-normal text-lg text-[#F4F1EA]">
                   Recepción de Prendas o Suministro
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">
@@ -79,7 +79,7 @@ export default function ServiciosPage() {
 
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-2xl font-bold text-[#C8A96E]">03.</span>
-                <h4 className="font-sans font-bold text-lg text-[#F4F1EA]">
+                <h4 className="font-serif font-normal text-lg text-[#F4F1EA]">
                   Procesamiento & Entrega
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">

@@ -1,19 +1,8 @@
 import type { Metadata } from 'next';
-import { Anton, Work_Sans, Space_Mono, Playfair_Display, Inter } from 'next/font/google';
+import { Space_Mono, Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { QuoteProvider } from '@/context/QuoteContext';
 import { Toast } from '@/components/ui/Toast';
-
-const anton = Anton({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-anton',
-});
-
-const workSans = Work_Sans({
-  subsets: ['latin'],
-  variable: '--font-work-sans',
-});
 
 const spaceMono = Space_Mono({
   weight: ['400', '700'],
@@ -114,7 +103,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${anton.variable} ${workSans.variable} ${spaceMono.variable} ${playfair.variable} ${inter.variable}`}>
+    <html lang="es" className={`${spaceMono.variable} ${playfair.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"

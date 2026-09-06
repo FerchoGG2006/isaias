@@ -177,7 +177,7 @@ export default function CatalogoPage() {
 
           {/* Banner de Subsección Activa (Aporta contexto editorial cuando se filtra) */}
           {activeCategoryData && (
-            <div className="mt-8 p-5 sm:p-6 bg-[#111218] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in duration-300">
+            <div className="mt-8 p-5 sm:p-6 bg-[#111218] border border-white/10 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in duration-300">
               <div className="flex flex-col gap-1 max-w-2xl">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-[10px] uppercase tracking-wider text-[#C8A96E]">

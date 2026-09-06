@@ -22,7 +22,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   product,
   onVariantChange,
 }) => {
-  const { addItem, setIsQuoteDrawerOpen, businessId } = useQuote();
+  const { addItem, setIsQuoteDrawerOpen, businessId, business } = useQuote();
   const capabilities = product.customCapabilities;
 
   // 1. Color / Tono
@@ -189,8 +189,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     if (isConfigured && url && url !== '#contacto') {
       window.open(url, '_blank', 'noopener,noreferrer');
     } else {
-      const fallbackUrl = `https://wa.me/573105634509?text=${encodeURIComponent(
-        `¡Hola Variedades Isaías! Me gustaría solicitar información y cotización para: ${currentQuoteItem.title} (${currentQuoteItem.totalQuantity} und, Talla ${quickSize}, Color ${selectedVariant.colorName}).`
+      const cleanPhone = (business?.whatsappPhone || '573105634509').replace(/\D/g, '');
+      const fallbackUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+        `¡Hola ${business?.name || 'Variedades Isaías'}! Me gustaría solicitar información y cotización para: ${currentQuoteItem.title} (${currentQuoteItem.totalQuantity} und, Talla ${quickSize}, Color ${selectedVariant.colorName}).`
       )}`;
       window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
     }

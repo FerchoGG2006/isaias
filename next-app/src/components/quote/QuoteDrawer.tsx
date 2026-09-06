@@ -19,6 +19,7 @@ export const QuoteDrawer: React.FC = () => {
     generalNotes,
     setGeneralNotes,
     getWhatsAppUrl,
+    business,
   } = useQuote();
 
   const [showContactForm, setShowContactForm] = useState(false);
@@ -55,8 +56,9 @@ export const QuoteDrawer: React.FC = () => {
       const fullUrl = `${url}${encodeURIComponent(artText)}`;
       window.open(fullUrl, '_blank', 'noopener,noreferrer');
     } else {
-      const fallbackUrl = `https://wa.me/573105634509?text=${encodeURIComponent(
-        `¡Hola Variedades Isaías! Me gustaría solicitar cotización para mis productos seleccionados.${artText}`
+      const cleanPhone = (business?.whatsappPhone || '573105634509').replace(/\D/g, '');
+      const fallbackUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+        `¡Hola ${business?.name || 'Variedades Isaías'}! Me gustaría solicitar cotización para mis productos seleccionados.${artText}`
       )}`;
       window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
     }
@@ -70,9 +72,9 @@ export const QuoteDrawer: React.FC = () => {
         onClick={() => setIsQuoteDrawerOpen(false)}
       />
 
-      {/* Slide-in Drawer (Apple Style Rounded Corners on mobile/tablet) */}
+      {/* Slide-in Drawer */}
       <div
-        className="fixed top-0 right-0 bottom-0 w-full max-w-lg bg-[#12151C] border-l border-white/15 z-50 flex flex-col shadow-2xl overflow-hidden animate-in slide-in-from-right duration-300"
+        className="fixed top-0 right-0 bottom-0 w-full max-w-lg bg-[#0C0D10] border-l border-white/15 z-50 flex flex-col shadow-2xl overflow-hidden animate-in slide-in-from-right duration-300"
         role="dialog"
         aria-modal="true"
         aria-labelledby="quote-drawer-title"
@@ -131,11 +133,11 @@ export const QuoteDrawer: React.FC = () => {
               {quoteItems.map((item) => (
                 <div
                   key={item.id}
-                  className="p-4 bg-[#14151C] border border-white/10 rounded-2xl flex flex-col gap-3 relative shadow-sm"
+                  className="p-4 bg-[#14151C] border border-white/10 rounded-xs flex flex-col gap-3 relative shadow-sm"
                 >
                   <div className="flex items-start gap-3.5">
                     {item.image && (
-                      <div className="relative w-16 h-20 bg-[#0E1015] border border-white/10 rounded-xl overflow-hidden shrink-0">
+                      <div className="relative w-16 h-20 bg-[#0E1015] border border-white/10 rounded-xs overflow-hidden shrink-0">
                         <Image
                           src={item.image}
                           alt={item.title}
@@ -220,13 +222,13 @@ export const QuoteDrawer: React.FC = () => {
               ))}
 
               {/* Artwork Status Selector */}
-              <div className="p-4 bg-[#14151C] border border-white/10 rounded-2xl flex flex-col gap-2.5 shadow-sm mt-1">
+              <div className="p-4 bg-[#14151C] border border-white/10 rounded-xs flex flex-col gap-2.5 shadow-sm mt-1">
                 <span className="text-xs font-semibold text-white">¿Tienes listo tu logo o foto?</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <button
                     type="button"
                     onClick={() => setArtworkStatus('ready')}
-                    className={`p-2.5 rounded-xl border text-left flex items-center gap-2 transition-all cursor-pointer ${
+                    className={`p-2.5 rounded-xs border text-left flex items-center gap-2 transition-all cursor-pointer ${
                       artworkStatus === 'ready'
                         ? 'bg-[#C8A96E]/15 border-[#C8A96E] text-white font-medium'
                         : 'bg-[#0E1015] border-white/10 text-[#A0A0A5] hover:text-white'
@@ -238,7 +240,7 @@ export const QuoteDrawer: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setArtworkStatus('needs_design')}
-                    className={`p-2.5 rounded-xl border text-left flex items-center gap-2 transition-all cursor-pointer ${
+                    className={`p-2.5 rounded-xs border text-left flex items-center gap-2 transition-all cursor-pointer ${
                       artworkStatus === 'needs_design'
                         ? 'bg-[#C8A96E]/15 border-[#C8A96E] text-white font-medium'
                         : 'bg-[#0E1015] border-white/10 text-[#A0A0A5] hover:text-white'
@@ -251,7 +253,7 @@ export const QuoteDrawer: React.FC = () => {
               </div>
 
               {/* Optional Contact Fields */}
-              <div className="border border-white/10 rounded-2xl bg-[#14151C] overflow-hidden">
+              <div className="border border-white/10 rounded-xs bg-[#14151C] overflow-hidden">
                 <button
                   type="button"
                   onClick={() => setShowContactForm(!showContactForm)}
