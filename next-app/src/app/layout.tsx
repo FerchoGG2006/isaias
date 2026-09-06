@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Anton, Work_Sans, Space_Mono, Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
-import { CartProvider } from '@/context/CartContext';
+import { QuoteProvider } from '@/context/QuoteContext';
 import { Toast } from '@/components/ui/Toast';
 
 const anton = Anton({
@@ -121,11 +121,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#12151C] text-[#FFFFFF] antialiased selection:bg-[#3B82F6] selection:text-[#FFFFFF]">
-        <CartProvider>
+      <body className="bg-[#0C0D10] text-[#F4F1EA] antialiased selection:bg-[#C8A96E] selection:text-[#0C0D10]">
+        <QuoteProvider>
           {children}
           <Toast />
-        </CartProvider>
+        </QuoteProvider>
       </body>
     </html>
   );
