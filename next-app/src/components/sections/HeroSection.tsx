@@ -19,14 +19,25 @@ export const HeroSection: React.FC = () => {
       
       {/* 1. WORKSHOP BACKGROUND PHOTO */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <Image
-          src="/assets/hero-main.jpg"
-          alt="Taller de confección y personalización en Valledupar"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-50 brightness-90 contrast-[1.05]"
-        />
+        {isIsaias ? (
+          <Image
+            src="/assets/hero-main.jpg"
+            alt="Taller de confección y personalización en Valledupar"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-50 brightness-90 contrast-[1.05]"
+          />
+        ) : (
+          <video
+            src="/assets/palacio-hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-60 brightness-90 contrast-[1.05]"
+          />
+        )}
 
         {/* Capa de difuminado sutil para legibilidad del texto */}
         <div className="absolute inset-0 bg-black/55 bg-gradient-to-t from-[#0C0D10]/70 via-transparent to-[#0C0D10]/30" />

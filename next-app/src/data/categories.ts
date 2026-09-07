@@ -9,7 +9,7 @@ export const CATEGORIES: Category[] = [
     subtitle: 'COLECCIÓN TEXTIL & SILUETAS',
     description:
       'Prendas con patrones cuidados: camisetas ajustadas en piel de durazno 220g, polos con cuello tejido y bordado 3D, suéteres y prendas deportivas en poliéster Qatar.',
-    image: '/assets/telas/ajustadas/ajustada-1.jpg',
+    image: '/assets/img-21.jpg',
     tag: 'SPANDEX & ALGODÓN',
     order: 1,
     featured: true,
@@ -22,7 +22,7 @@ export const CATEGORIES: Category[] = [
     subtitle: 'GORRAS TRUCKER & MEMENTOS',
     description:
       'Gorras de visera curva o plana en dril y malla, preparadas para bordado computarizado 3D de alta definición y sublimación frontal.',
-    image: '/assets/img-31.jpg',
+    image: '/assets/img-3.jpg',
     tag: 'BORDADO TRIDIMENSIONAL',
     order: 2,
     featured: true,
@@ -48,7 +48,7 @@ export const CATEGORIES: Category[] = [
     subtitle: 'INDUMENTARIA CORPORATIVA',
     description:
       'Polos corporativas en piqué pesado, uniformes empresariales y camisetas con bordado institucional o estampación de alta resistencia.',
-    image: '/assets/telas/cuello_tejido/cuello-1.jpg',
+    image: '/assets/img-4.jpg',
     tag: 'DOTACIÓN EMPRESARIAL',
     order: 4,
     featured: true,
