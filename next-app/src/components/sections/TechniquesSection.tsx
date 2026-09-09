@@ -74,12 +74,7 @@ export const TechniquesSection: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
         <div className="max-w-xl">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-medium">
-              ESTUDIO TEXTIL · PERSONALIZACIÓN
-            </span>
-          </div>
-          <h2 className="font-serif font-normal text-4xl sm:text-6xl text-[#F4F1EA] tracking-tight">
+          <h2 className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#F4F1EA] tracking-tight">
             Técnicas de Personalización.
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
@@ -100,7 +95,7 @@ export const TechniquesSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
         {/* Left Column: Technique Stage (7 Cols) */}
-        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-xs overflow-hidden border border-white/10 bg-[#141419] shadow-2xl p-6 sm:p-8 flex flex-col justify-between group">
+        <div className="lg:col-span-7 relative aspect-[4/3] sm:aspect-[16/11] rounded-xs overflow-hidden border border-white/10 bg-[#141419] shadow-2xl p-6 sm:p-8 flex flex-col justify-end group">
           
           {/* Background Real Technique Sample Photo */}
           <AnimatePresence mode="wait">
@@ -119,47 +114,39 @@ export const TechniquesSection: React.FC = () => {
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-[#0C0D10]/50 to-[#0C0D10]/70" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
             </motion.div>
           </AnimatePresence>
 
-          {/* Top Stage Bar */}
-          <div className="relative z-10 flex items-center justify-between text-xs text-[#8A8A92] font-mono">
-            <span className="uppercase tracking-widest text-[#C8A96E] font-medium bg-black/70 px-3.5 py-1 rounded-xs border border-white/10">
-              {activeTech.badge}
-            </span>
-            <span className="text-[#F4F1EA] bg-black/70 px-3.5 py-1 rounded-xs border border-white/10 font-light">
-              {activeTech.thermalFact}
-            </span>
-          </div>
+          {/* Stage Bottom Information */}
+          <div className="relative z-10 flex flex-col gap-3">
+            <div>
+              <h3 className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight">
+                {activeTech.name}
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-[#D0CFC9] mt-1 font-light max-w-lg leading-relaxed">
+                {activeTech.headline}
+              </p>
+            </div>
 
-          {/* Center Title overlay */}
-          <div className="relative z-10 my-auto py-6 text-center max-w-md mx-auto bg-black/60 backdrop-blur-md p-6 rounded-xs border border-white/10">
-            <h3 className="font-serif font-normal text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight">
-              {activeTech.name}
-            </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#8A8A92] mt-2 font-light">
-              {activeTech.headline}
-            </p>
-          </div>
-
-          {/* Compatible items strip */}
-          <div className="relative z-10 pt-3 border-t border-white/15 flex flex-wrap items-center gap-2 font-sans text-xs">
-            <span className="text-[#8A8A92] font-light">Ideal para:</span>
-            {activeTech.compatibleProducts.map((prod) => (
-              <span
-                key={prod}
-                className="font-mono text-[10px] uppercase tracking-wider bg-black/60 text-[#C8A96E] px-3 py-1 rounded-xs border border-white/10"
-              >
-                {prod}
-              </span>
-            ))}
+            {/* Compatible items strip */}
+            <div className="pt-3 border-t border-white/15 flex flex-wrap items-center gap-2 font-sans text-xs">
+              <span className="text-[#8A8A92] font-light">Ideal para:</span>
+              {activeTech.compatibleProducts.map((prod) => (
+                <span
+                  key={prod}
+                  className="font-sans text-[11px] bg-black/70 text-[#C8A96E] px-2.5 py-0.5 rounded-xs border border-[#C8A96E]/30"
+                >
+                  {prod}
+                </span>
+              ))}
+            </div>
           </div>
 
         </div>
 
         {/* Right Column: Interactive Technique Switcher (5 Cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
+        <div className="lg:col-span-5 flex flex-col gap-3">
           {TECHNIQUES_DATA.map((tech, idx) => {
             const isActive = idx === activeIdx;
             return (
@@ -167,19 +154,17 @@ export const TechniquesSection: React.FC = () => {
                 key={tech.id}
                 type="button"
                 onClick={() => setActiveIdx(idx)}
-                className={`w-full text-left p-5 rounded-xs border transition-all duration-300 flex flex-col gap-2 cursor-pointer ${
+                className={`w-full text-left p-4 sm:p-5 rounded-xs border transition-all duration-300 flex flex-col gap-1.5 cursor-pointer ${
                   isActive
                     ? 'bg-[#141419] border-[#C8A96E] shadow-xl'
                     : 'bg-[#0b0b0e] hover:bg-[#141419] border-white/10 hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className={`font-serif font-normal text-lg sm:text-xl ${isActive ? 'text-[#C8A96E]' : 'text-[#F4F1EA]'}`}>
+                  <span className={`font-sans font-bold text-base sm:text-lg ${isActive ? 'text-[#C8A96E]' : 'text-[#F4F1EA]'}`}>
                     {tech.name}
                   </span>
-                  <span className={`font-mono text-xs uppercase tracking-widest ${isActive ? 'text-[#C8A96E]' : 'text-[#8A8A92]'}`}>
-                    0{idx + 1}
-                  </span>
+                  {isActive && <span className="text-[#C8A96E] text-xs">● Activo</span>}
                 </div>
 
                 <p className="font-sans text-xs text-[#8A8A92] leading-relaxed font-light line-clamp-2">
@@ -192,9 +177,9 @@ export const TechniquesSection: React.FC = () => {
           <div className="pt-2">
             <Link
               href={`/servicios/${activeTech.serviceSlug}`}
-              className="w-full bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10] font-mono text-xs uppercase tracking-[0.2em] font-bold py-4 px-6 rounded-xs text-center block transition-all shadow-lg"
+              className="w-full bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10] font-sans text-xs uppercase tracking-wider font-bold py-3.5 px-6 rounded-xs text-center block transition-all shadow-md"
             >
-              Cotizar Servicio de {activeTech.name} →
+              Ver servicio de {activeTech.name} →
             </Link>
           </div>
         </div>

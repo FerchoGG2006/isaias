@@ -24,10 +24,7 @@ export default function ServiciosPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold block mb-2">
-                TALLER PROPIO · VALLEDUPAR, CESAR
-              </span>
-              <h1 className="font-serif font-normal text-3xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.1]">
+              <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
                 Servicios de Estampación & Bordado
               </h1>
               <p className="text-sm sm:text-base text-[#A0A0A5] max-w-2xl leading-relaxed mt-2 font-light">
@@ -59,7 +56,7 @@ export default function ServiciosPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-2xl font-bold text-[#C8A96E]">01.</span>
-                <h4 className="font-serif font-normal text-lg text-[#F4F1EA]">
+                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
                   Recepción de Archivos
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">
@@ -69,7 +66,7 @@ export default function ServiciosPage() {
 
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-2xl font-bold text-[#C8A96E]">02.</span>
-                <h4 className="font-serif font-normal text-lg text-[#F4F1EA]">
+                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
                   Recepción de Prendas o Suministro
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">
@@ -79,7 +76,7 @@ export default function ServiciosPage() {
 
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-2xl font-bold text-[#C8A96E]">03.</span>
-                <h4 className="font-serif font-normal text-lg text-[#F4F1EA]">
+                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
                   Procesamiento & Entrega
                 </h4>
                 <p className="text-xs text-[#A0A0A5] leading-relaxed">

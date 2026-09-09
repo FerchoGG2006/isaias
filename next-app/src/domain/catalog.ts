@@ -156,6 +156,7 @@ export interface DesignFileAttachment {
   size: number;
   type: string;
   previewUrl?: string;
+  fileUrl?: string;
 }
 
 export interface QuoteItem {

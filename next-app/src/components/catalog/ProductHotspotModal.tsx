@@ -49,7 +49,7 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
   const { business } = useQuote();
   const [selectedHotspotId, setSelectedHotspotId] = useState<string | null>(null);
   const [showHotspots, setShowHotspots] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'hotspots' | 'medidas' | 'cuidados'>('hotspots');
+  const [activeTab, setActiveTab] = useState<'hotspots' | 'medidas' | 'cuidados'>('medidas');
   const modalContentRef = useRef<HTMLDivElement>(null);
 
   const hotspots: ProductHotspot[] = product ? getProductHotspots(product) : [];
@@ -57,6 +57,13 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
   // Hotspot activo derivado: seleccionado por el usuario o el primero por defecto
   const activeHotspotId = selectedHotspotId || (hotspots.length > 0 ? hotspots[0].id : null);
   const setActiveHotspotId = (id: string | null) => setSelectedHotspotId(id);
+
+  // Al abrir el modal por "Guía de medidas", asegurar pestaña 'medidas'
+  useEffect(() => {
+    if (isOpen) {
+      setActiveTab('medidas');
+    }
+  }, [isOpen]);
 
   // Bloqueo de scroll y cierre con tecla ESC
   useEffect(() => {
@@ -230,11 +237,8 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
                             <span className="font-mono text-[9px] uppercase tracking-wider text-[#C8A96E] font-semibold">
                               {h.badge}
                             </span>
-                            <span className="font-mono text-[9px] text-[#8A8A92]">
-                              PUNTO #{h.number}
-                            </span>
                           </div>
-                          <h4 className="font-serif text-xs font-semibold text-[#F4F1EA] mb-1">
+                          <h4 className="font-sans text-xs font-bold text-[#F4F1EA] mb-1">
                             {h.title}
                           </h4>
                           <p className="font-sans text-[11px] text-[#9E9EA4] leading-snug line-clamp-3">
@@ -247,15 +251,6 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
                 })}
             </div>
 
-            {/* Micro leyenda inferior de la imagen */}
-            <div className="mt-4 flex items-center justify-between w-full max-w-md text-[10px] font-mono uppercase tracking-wider text-[#8A8A92]/80">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E]" />
-                Pines interactivos
-              </span>
-              <span>Clic o posar para enfocar</span>
-            </div>
-
           </div>
 
           {/* COLUMNA DERECHA: Ficha de Especificaciones, Hotspots & CTAs (5 Cols en Desktop) */}
@@ -265,18 +260,9 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
               
               {/* Encabezado del Producto */}
               <div>
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="font-sans text-xs uppercase tracking-[0.16em] text-[#C8A96E] font-semibold">
-                    {product.tag || 'VALLEDUPAR, CESAR'}
-                  </span>
-                  <span className="font-sans text-xs text-[#8A8A92]">
-                    Ref: {product.code}
-                  </span>
-                </div>
-
                 <h3
                   id="hotspot-modal-title"
-                  className="font-serif font-normal text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight"
+                  className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA] tracking-tight"
                 >
                   {product.title}
                 </h3>

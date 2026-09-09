@@ -66,53 +66,13 @@ export const HeroSection: React.FC = () => {
           )}
         </motion.div>
 
-        {/* Visible Editorial H1 Heading */}
-        <motion.h1
-          key={`h1-${businessId}`}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#F4F1EA] tracking-tight leading-[1.08] max-w-4xl mx-auto mb-4"
-        >
-          {isIsaias ? (
-            <>
-              Confección & personalización textil <br className="hidden sm:inline" />
-              <span className="italic text-[#C8A96E]">de alta fidelidad en Valledupar.</span>
-            </>
-          ) : (
-            <>
-              Sublimación fotográfica 4K & <br className="hidden sm:inline" />
-              <span className="italic text-[#C8A96E]">merchandising exclusivo.</span>
-            </>
-          )}
-        </motion.h1>
-
-        {/* Value proposition subtitle */}
-        <motion.p
-          key={`sub-${businessId}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.18 }}
-          className="font-sans text-xs sm:text-sm md:text-base text-[#D0CFC9] max-w-2xl mx-auto mb-8 font-light leading-relaxed"
-        >
+        {/* Accessible H1 for SEO & Screen Readers */}
+        <h1 className="sr-only">
           {isIsaias
-            ? 'Prendas confeccionadas en telas frescas, bordado fino computarizado en relieve y estampados suaves al tacto. Producción directa en taller.'
-            : 'Artículos promocionales, mugs cerámicos, termos metálicos y dotaciones con colores vibrantes que no se borran.'}
-        </motion.p>
+            ? 'Variedades Isaías — Confección y personalización textil en Valledupar'
+            : 'El Palacio de la Sublimación — Sublimación fotográfica 4K y merchandising'}
+        </h1>
 
-        {/* Sub-hero Pill Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.22 }}
-          className="mb-8"
-        >
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#C8A96E] bg-black/70 backdrop-blur-md border border-[#C8A96E]/40 px-5 sm:px-7 py-2 rounded-xs shadow-2xl">
-            <span>Taller Valledupar</span>
-            <span className="text-white/30">·</span>
-            <span>{isIsaias ? 'Piel de Durazno · Piqué · DTF · Bordado' : 'Sublimación 4K · Rígidos · Textil'}</span>
-          </div>
-        </motion.div>
 
         {/* Action Buttons (Horizontal Layout on Same Line with Generous Spacing) */}
         <motion.div

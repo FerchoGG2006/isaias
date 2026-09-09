@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -10,6 +10,7 @@ import { CATEGORIES } from '@/data/categories';
 import { ProductHotspotModal } from '@/components/catalog/ProductHotspotModal';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 import { Product } from '@/domain';
+import { useQuote } from '@/context/QuoteContext';
 
 const EDITORIAL_FILTERS = [
   { id: 'todos', label: 'Todas las Prendas' },
@@ -20,9 +21,25 @@ const EDITORIAL_FILTERS = [
 ];
 
 export default function CatalogoPage() {
+  const { businessId, setBusinessId, business } = useQuote();
+  const [activeBrand, setActiveBrand] = useState<string>('todos');
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  // Sincronizar filtro cuando el usuario cambia de empresa en el Header
+  useEffect(() => {
+    if (businessId && activeBrand !== 'todos') {
+      setActiveBrand(businessId);
+    }
+  }, [businessId]);
+
+  const handleBrandChange = (brand: string) => {
+    setActiveBrand(brand);
+    if (brand === 'isaias' || brand === 'palacio') {
+      setBusinessId(brand);
+    }
+  };
 
   // Contador de productos por categoría para las pestañas
   const categoryCounts = useMemo(() => {
@@ -31,13 +48,15 @@ export default function CatalogoPage() {
     };
     EDITORIAL_FILTERS.forEach((f) => {
       if (f.id !== 'todos') {
-        counts[f.id] = PRODUCTS.filter(
-          (p) => p.categorySlug === f.id || p.categoryId === f.id
-        ).length;
+        counts[f.id] = PRODUCTS.filter((p) => {
+          const matchesBrand = activeBrand === 'todos' || p.businessId === activeBrand;
+          const matchesCat = p.categorySlug === f.id || p.categoryId === f.id;
+          return matchesBrand && matchesCat;
+        }).length;
       }
     });
     return counts;
-  }, []);
+  }, [activeBrand]);
 
   const activeCategoryData = useMemo(() => {
     if (activeCategory === 'todos') return null;
@@ -46,6 +65,11 @@ export default function CatalogoPage() {
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
+      // Filtrar por marca/empresa
+      if (activeBrand !== 'todos' && product.businessId !== activeBrand) {
+        return false;
+      }
+
       // Filtrar por categoría
       if (activeCategory !== 'todos') {
         const matchesCat =
@@ -67,7 +91,7 @@ export default function CatalogoPage() {
 
       return true;
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeBrand, activeCategory, searchQuery]);
 
   return (
     <>
@@ -78,15 +102,7 @@ export default function CatalogoPage() {
         <section className="wrap mb-10 sm:mb-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
-                  Catálogo de Prendas
-                </span>
-                <span className="text-white/20">·</span>
-                <span className="font-sans text-xs text-[#A0A0A5]">Venta directa y personalización</span>
-              </div>
-
-              <h1 className="font-serif font-normal text-3xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.1]">
+              <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
                 Elige tu prenda y cotiza en minutos.
               </h1>
               <p className="font-sans text-sm text-[#A0A0A5] mt-2 max-w-xl">
@@ -105,8 +121,48 @@ export default function CatalogoPage() {
             </div>
           </div>
 
+          {/* Selector de Marca / Taller Multiempresa */}
+          <div className="pt-6 pb-2 flex items-center gap-2 overflow-x-auto text-xs font-mono scrollbar-none">
+            <span className="text-[#8A8A92] uppercase tracking-wider text-[11px] mr-1 shrink-0">Taller:</span>
+            <button
+              type="button"
+              onClick={() => handleBrandChange('todos')}
+              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer shrink-0 ${
+                activeBrand === 'todos'
+                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold border-[#C8A96E] shadow-sm'
+                  : 'bg-[#141419] text-[#8A8A92] border-white/10 hover:border-white/30 hover:text-[#F4F1EA]'
+              }`}
+            >
+              Todo el Catálogo
+            </button>
+            <button
+              type="button"
+              onClick={() => handleBrandChange('isaias')}
+              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                activeBrand === 'isaias'
+                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold border-[#C8A96E] shadow-sm'
+                  : 'bg-[#141419] text-[#8A8A92] border-white/10 hover:border-white/30 hover:text-[#F4F1EA]'
+              }`}
+            >
+              <span>Variedades Isaías</span>
+              <span className="text-[10px] opacity-75">(Textil & Bordado)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleBrandChange('palacio')}
+              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                activeBrand === 'palacio'
+                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold border-[#C8A96E] shadow-sm'
+                  : 'bg-[#141419] text-[#8A8A92] border-white/10 hover:border-white/30 hover:text-[#F4F1EA]'
+              }`}
+            >
+              <span>El Palacio</span>
+              <span className="text-[10px] opacity-75">(Sublimación & Merch)</span>
+            </button>
+          </div>
+
           {/* 2. NAVEGACIÓN Y FILTROS POR SUBSECCIÓN CON CONTADORES */}
-          <div className="pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+          <div className="pt-4 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
             
             {/* Pestañas de Subsecciones */}
             <nav
@@ -174,41 +230,13 @@ export default function CatalogoPage() {
             </div>
 
           </div>
-
-          {/* Banner de Subsección Activa (Aporta contexto editorial cuando se filtra) */}
-          {activeCategoryData && (
-            <div className="mt-8 p-5 sm:p-6 bg-[#111218] border border-white/10 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in duration-300">
-              <div className="flex flex-col gap-1 max-w-2xl">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#C8A96E]">
-                    LÍNEA · {activeCategoryData.tag}
-                  </span>
-                  <span className="text-[#8A8A92] text-xs">/</span>
-                  <span className="font-serif italic text-xs text-[#F4F1EA]">
-                    {activeCategoryData.name}
-                  </span>
-                </div>
-                <p className="font-sans text-xs text-[#9E9EA4] font-light leading-relaxed">
-                  {activeCategoryData.description}
-                </p>
-              </div>
-
-              <Link
-                href={`/catalogo/${activeCategoryData.slug}`}
-                className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#C8A96E] hover:underline whitespace-nowrap self-start sm:self-auto"
-              >
-                Ver Página de Línea Completa →
-              </Link>
-            </div>
-          )}
-
         </section>
 
         {/* 3. RETÍCULA EDITORIAL EQUILIBRADA DE 3 COLUMNAS */}
         <section className="wrap">
           {filteredProducts.length === 0 ? (
             <div className="py-24 text-center border-t border-b border-white/10 flex flex-col items-center justify-center">
-              <span className="font-serif italic text-2xl text-[#8A8A92] mb-2">
+              <span className="font-sans font-medium text-xl text-[#8A8A92] mb-2">
                 No se encontraron piezas registradas
               </span>
               <p className="font-sans text-xs uppercase tracking-[0.18em] text-[#8A8A92]/70 mb-6 max-w-sm">

@@ -19,9 +19,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const processFile = (file: File) => {
+  const processFile = async (file: File) => {
     setError(null);
 
     // Validar tamaño
@@ -43,12 +44,42 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       previewUrl = URL.createObjectURL(file);
     }
 
-    onAttachmentChange({
-      name: file.name,
-      size: file.size,
-      type: file.type || ext,
-      previewUrl,
-    });
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Error al subir el archivo');
+      }
+
+      const data = await res.json();
+      onAttachmentChange({
+        name: data.originalName || file.name,
+        size: data.size || file.size,
+        type: data.type || file.type || ext,
+        previewUrl,
+        fileUrl: data.url,
+      });
+    } catch (err: any) {
+      console.warn('Fallo al subir a servidor, usando referencia local:', err);
+      // Fallback a referencia local para no bloquear la experiencia de cotización
+      onAttachmentChange({
+        name: file.name,
+        size: file.size,
+        type: file.type || ext,
+        previewUrl,
+      });
+      setError(err?.message || 'Se usó referencia local. Podrás enviarlo directamente por el chat de WhatsApp.');
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -129,6 +160,16 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
           </button>
+        </div>
+      ) : isUploading ? (
+        <div className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-[#C8A96E]/60 bg-[#C8A96E]/5 rounded-xs animate-pulse">
+          <div className="w-10 h-10 rounded-full border-2 border-[#C8A96E] border-t-transparent animate-spin mb-3" />
+          <span className="font-mono text-xs font-bold text-[#F4F1EA] mb-1">
+            Subiendo archivo al servidor...
+          </span>
+          <span className="font-mono text-[11px] text-[#C8A96E]">
+            Generando enlace seguro para cotización
+          </span>
         </div>
       ) : (
         <div

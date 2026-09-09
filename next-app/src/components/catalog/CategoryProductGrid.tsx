@@ -20,7 +20,7 @@ export const CategoryProductGrid: React.FC<CategoryProductGridProps> = ({
   if (products.length === 0) {
     return (
       <div className="py-24 text-center border-t border-b border-white/10 flex flex-col items-center justify-center">
-        <span className="font-serif italic text-2xl text-[#8A8A92] mb-2">
+        <span className="font-sans font-bold text-xl text-[#8A8A92] mb-2">
           Piezas en proceso de producción
         </span>
         <p className="font-sans text-xs uppercase tracking-[0.18em] text-[#8A8A92]/70 mb-6 max-w-sm">

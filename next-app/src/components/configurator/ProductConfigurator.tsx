@@ -596,9 +596,6 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         <div className="pt-4 border-t border-white/15 flex flex-col gap-4 bg-[#14151C] p-4 sm:p-5 rounded-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[#C8A96E] font-semibold block mb-0.5">
-                RESUMEN DE TU SELECCIÓN
-              </span>
               <span className="text-sm font-semibold text-[#F4F1EA]">
                 {effectiveTotalQuantity} {effectiveTotalQuantity === 1 ? 'prenda' : 'prendas'}
                 {orderMode === 'quick' ? ` · Talla ${quickSize}` : ''} · {selectedVariant.colorName} ·{' '}

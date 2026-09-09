@@ -167,17 +167,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               
               {/* Product Info Header */}
               <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
+                {product.tag && (
+                  <span className="font-sans text-xs uppercase tracking-wider text-[#C8A96E] font-semibold">
                     {product.tag}
                   </span>
-                  <span className="text-white/20">|</span>
-                  <span className="font-sans text-xs text-[#A0A0A5]">
-                    Ref: <strong className="text-[#F4F1EA]">{product.code}</strong>
-                  </span>
-                </div>
+                )}
 
-                <h1 className="font-serif font-normal text-3xl sm:text-5xl text-[#F4F1EA] tracking-tight leading-tight">
+                <h1 className="font-sans font-bold text-2xl sm:text-4xl text-[#F4F1EA] tracking-tight leading-tight">
                   {product.title}
                 </h1>
 
@@ -227,10 +223,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <div className="mt-24 pt-16 border-t border-white/10">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#C8A96E] font-semibold block mb-1">
-                    MÁS EN ESTA CATEGORÍA
-                  </span>
-                  <h3 className="font-serif font-normal text-2xl text-[#F4F1EA] tracking-tight">
+                  <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#F4F1EA] tracking-tight">
                     Prendas Relacionadas
                   </h3>
                 </div>

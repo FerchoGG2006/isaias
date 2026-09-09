@@ -92,16 +92,10 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
       {/* 2. Editorial Product Caption */}
       <div className="pt-4 pb-2 flex flex-col gap-1.5">
         
-        {/* Tag de colección / procedencia */}
-        {product.tag && (
-          <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#C8A96E] font-medium">
-            {product.tag}
-          </span>
-        )}
 
         {/* Title con enlace directo a la ficha del producto */}
         <Link href={productHref} className="block group-hover:text-[#C8A96E] transition-colors">
-          <h3 className="font-serif font-normal text-xl sm:text-2xl text-[#F4F1EA] tracking-tight leading-snug">
+          <h3 className="font-sans font-bold text-lg sm:text-xl text-[#F4F1EA] tracking-tight leading-snug">
             {product.title}
           </h3>
         </Link>

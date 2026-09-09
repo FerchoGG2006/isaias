@@ -39,7 +39,11 @@ export function formatQuoteItemText(item: QuoteItem, index?: number): string {
   }
 
   if (item.attachment) {
-    parts.push(`• *Archivo de diseño:* Adjunto (${item.attachment.name}, ${(item.attachment.size / 1024).toFixed(1)} KB)`);
+    if (item.attachment.fileUrl) {
+      parts.push(`• *Archivo de diseño:* ${item.attachment.name} (${(item.attachment.size / 1024).toFixed(1)} KB)\n  🔗 Enlace de descarga: ${item.attachment.fileUrl}`);
+    } else {
+      parts.push(`• *Archivo de diseño:* Adjunto (${item.attachment.name}, ${(item.attachment.size / 1024).toFixed(1)} KB)`);
+    }
   }
 
   if (item.notes && item.notes.trim()) {

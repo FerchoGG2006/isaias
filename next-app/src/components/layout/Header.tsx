@@ -61,6 +61,9 @@ export const Header: React.FC = () => {
           <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
             Servicios
           </Link>
+          <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+            Técnicas
+          </Link>
           <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
             Galería
           </Link>
@@ -175,6 +178,9 @@ export const Header: React.FC = () => {
             </Link>
             <Link href="/servicios" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Servicios
+            </Link>
+            <Link href="/tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+              Técnicas
             </Link>
             <Link href="/#galeria" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Galería

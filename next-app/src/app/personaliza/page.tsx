@@ -34,12 +34,9 @@ export default function PersonalizaPage() {
 
           {/* Page Header */}
           <div className="flex flex-col gap-4 max-w-3xl mb-12 sm:mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#C8A96E] font-semibold">
-              GUÍA DE PEDIDO · TALLER EN VALLEDUPAR
-            </span>
-            <h1 className="font-serif font-normal text-3xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.1]">
+            <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
               ¿Cómo te gustaría <br />
-              <span className="text-[#C8A96E] italic">hacer tu pedido?</span>
+              <span className="text-[#C8A96E]">hacer tu pedido?</span>
             </h1>
             <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
               Selecciona una de estas tres alternativas de producción según tus necesidades de confección o maquila:
@@ -55,7 +52,7 @@ export default function PersonalizaPage() {
                 </svg>
               </div>
               <div>
-                <h2 className="font-serif font-normal text-base sm:text-lg text-[#F4F1EA]">
+                <h2 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
                   ¿Prefieres que te asesoremos directamente?
                 </h2>
                 <p className="font-sans text-xs text-[#8A8A92] leading-relaxed font-light">
@@ -89,14 +86,10 @@ export default function PersonalizaPage() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-wider text-[#C8A96E] bg-black/80 backdrop-blur-md px-2.5 py-1 border border-[#C8A96E]/30 rounded-xs font-semibold">
-                    OPCIÓN 01
-                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#C8A96E]">NUESTRAS BASES</span>
-                  <h3 className="font-serif font-normal text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                  <h3 className="font-sans font-bold text-lg sm:text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
                     Prendas Listas para Personalizar
                   </h3>
                   <p className="text-xs text-[#8A8A92] leading-relaxed font-light">
@@ -139,14 +132,10 @@ export default function PersonalizaPage() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-wider text-[#C8A96E] bg-black/80 backdrop-blur-md px-2.5 py-1 border border-[#C8A96E]/30 rounded-xs font-semibold">
-                    OPCIÓN 02
-                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#C8A96E]">MAQUILA Y TALLER</span>
-                  <h3 className="font-serif font-normal text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                  <h3 className="font-sans font-bold text-lg sm:text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
                     Trae tus Propias Prendas
                   </h3>
                   <p className="text-xs text-[#8A8A92] leading-relaxed font-light">
@@ -189,14 +178,10 @@ export default function PersonalizaPage() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-wider text-[#C8A96E] bg-black/80 backdrop-blur-md px-2.5 py-1 border border-[#C8A96E]/30 rounded-xs font-semibold">
-                    OPCIÓN 03
-                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#C8A96E]">VENTAS AL POR MAYOR</span>
-                  <h3 className="font-serif font-normal text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                  <h3 className="font-sans font-bold text-lg sm:text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
                     Dotaciones y Empresas
                   </h3>
                   <p className="text-xs text-[#8A8A92] leading-relaxed font-light">

@@ -49,10 +49,7 @@ export const QuotePageContent: React.FC = () => {
       {/* Page Title */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 border-b border-white/10 pb-8">
         <div className="flex flex-col gap-3 max-w-2xl">
-          <span className="font-mono text-xs uppercase tracking-[0.32em] text-[#C8A96E] font-semibold">
-            {business.name.toUpperCase()} · VALLEDUPAR
-          </span>
-          <h1 className="font-serif font-normal text-4xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight">
+          <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
             Solicitud de Cotización
           </h1>
           <p className="text-sm sm:text-base text-[#D0CFC9] leading-relaxed font-light">
@@ -63,9 +60,9 @@ export const QuotePageContent: React.FC = () => {
         {quoteItems.length > 0 && (
           <button
             onClick={clearQuote}
-            className="font-mono text-xs uppercase tracking-wider text-[#A0A0A5] hover:text-red-400 self-start md:self-auto transition-colors cursor-pointer"
+            className="font-sans text-xs uppercase tracking-wider text-[#A0A0A5] hover:text-red-400 self-start md:self-auto transition-colors cursor-pointer"
           >
-            [ Vaciar lista de cotización ]
+            Vaciar lista de cotización
           </button>
         )}
       </div>
@@ -79,7 +76,7 @@ export const QuotePageContent: React.FC = () => {
             </svg>
           </div>
           <div className="flex flex-col gap-2 max-w-md">
-            <h2 className="font-serif font-normal text-2xl sm:text-3xl text-[#F4F1EA]">Tu lista de cotización está vacía</h2>
+            <h2 className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA]">Tu lista de cotización está vacía</h2>
             <p className="text-sm text-[#A0A0A5] font-light">
               Explora nuestras prendas y servicios de taller para agregar tu primer producto.
             </p>
@@ -186,7 +183,19 @@ export const QuotePageContent: React.FC = () => {
                       {item.attachment && (
                         <div className="pt-1 font-mono text-[11px] text-[#A0A0A5] flex items-center gap-2">
                           <span>📎 Arte adjunto:</span>
-                          <span className="text-[#F4F1EA] underline truncate max-w-xs">{item.attachment.name}</span>
+                          {item.attachment.fileUrl ? (
+                            <a
+                              href={item.attachment.fileUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[#C8A96E] hover:text-[#F4F1EA] underline truncate max-w-xs transition-colors flex items-center gap-1"
+                            >
+                              <span>{item.attachment.name}</span>
+                              <span className="text-[10px]">↗</span>
+                            </a>
+                          ) : (
+                            <span className="text-[#F4F1EA] underline truncate max-w-xs">{item.attachment.name}</span>
+                          )}
                         </div>
                       )}
 
@@ -223,10 +232,7 @@ export const QuotePageContent: React.FC = () => {
           {/* Right Column: Customer Info & WhatsApp Dispatch Form (5 Cols) */}
           <div className="lg:col-span-5 bg-[#0b0b0e] border border-white/10 rounded-xs p-6 sm:p-8 flex flex-col gap-6 sticky top-24 shadow-2xl">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C8A96E] font-semibold block mb-1">
-                FINALIZAR PEDIDO
-              </span>
-              <h2 className="font-serif font-normal text-2xl text-[#F4F1EA]">
+              <h2 className="font-sans font-bold text-xl sm:text-2xl text-[#F4F1EA]">
                 Enviar a WhatsApp
               </h2>
               <p className="font-sans text-xs text-[#A0A0A5] font-light mt-1">

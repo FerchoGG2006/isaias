@@ -1,23 +1,19 @@
 import type { Metadata } from 'next';
-import { Space_Mono, Playfair_Display, Inter } from 'next/font/google';
+import { Roboto_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { QuoteProvider } from '@/context/QuoteContext';
 import { Toast } from '@/components/ui/Toast';
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+const robotoMono = Roboto_Mono({
+  weight: ['400', '500', '600'],
   subsets: ['latin'],
-  variable: '--font-space-mono',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-mono',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-sans',
 });
 
 export const metadata: Metadata = {
@@ -103,7 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${spaceMono.variable} ${playfair.variable} ${inter.variable}`}>
+    <html lang="es" className={`${robotoMono.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"

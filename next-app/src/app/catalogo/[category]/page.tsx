@@ -56,15 +56,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
-                  Categoría
-                </span>
-                <span className="text-white/20">·</span>
-                <span className="font-sans text-xs text-[#A0A0A5]">Variedades Isaías</span>
-              </div>
-
-              <h1 className="font-serif font-normal text-3xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.1]">
+              <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
                 {category.name}
               </h1>
 
