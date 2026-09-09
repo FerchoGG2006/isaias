@@ -24,6 +24,11 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
     <div className="flex flex-col gap-4">
       {/* Main Image Stage */}
       <div className="relative aspect-[4/5] w-full bg-[#141419] border border-white/10 rounded-sm overflow-hidden shadow-2xl">
+        {tag && (
+          <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-wider text-[#0C0D10] bg-[#C8A96E] px-2.5 py-1 font-bold rounded-xs shadow-md">
+            {tag}
+          </div>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div

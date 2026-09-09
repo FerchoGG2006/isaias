@@ -19,6 +19,19 @@ const ALLOWED_MIME_TYPES = [
   'application/octet-stream', // Fallback for specialized design files (.cdr, .ai)
 ];
 
+const SAFE_EXTENSIONS = new Set([
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.webp',
+  '.pdf',
+  '.ai',
+  '.eps',
+  '.psd',
+  '.cdr',
+  '.svg',
+]);
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
@@ -38,15 +51,56 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Sanitize and create unique filename
     const originalName = file.name || 'archivo-diseno';
-    const ext = path.extname(originalName) || '.png';
+    const ext = path.extname(originalName).toLowerCase();
+
+    // 1. Validar extensión permitida
+    if (!SAFE_EXTENSIONS.has(ext)) {
+      return NextResponse.json(
+        { error: `Tipo de archivo no permitido (${ext || 'desconocido'}). Formatos admitidos: PNG, JPG, WEBP, PDF, SVG, AI, EPS, PSD, CDR.` },
+        { status: 400 }
+      );
+    }
+
+    // 2. Validar tipo MIME
+    const mime = (file.type || '').toLowerCase();
+    const isAllowedMime = ALLOWED_MIME_TYPES.some((allowed) => mime === allowed || mime === '');
+    if (!isAllowedMime && !['.ai', '.eps', '.psd', '.cdr'].includes(ext)) {
+      return NextResponse.json(
+        { error: `Formato MIME no válido (${mime}).` },
+        { status: 400 }
+      );
+    }
+
+    // 3. Inspección de seguridad para SVG contra Stored XSS
+    if (ext === '.svg' || mime === 'image/svg+xml') {
+      const text = await file.text();
+      const dangerousPatterns = [
+        /<script/i,
+        /javascript:/i,
+        /onload\s*=/i,
+        /onerror\s*=/i,
+        /onclick\s*=/i,
+        /<iframe/i,
+        /<object/i,
+        /<embed/i,
+      ];
+      const hasDangerousContent = dangerousPatterns.some((pattern) => pattern.test(text));
+      if (hasDangerousContent) {
+        return NextResponse.json(
+          { error: 'El archivo SVG contiene scripts o elementos no permitidos por seguridad.' },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Sanitize and create unique filename
     const cleanBase = path
       .basename(originalName, ext)
       .toLowerCase()
-      .replace(/[^a-z0-9]/g, '-')
+      .replace(/[^a-z0-9_-]/g, '-')
       .replace(/-+/g, '-')
-      .slice(0, 30);
+      .slice(0, 30) || 'diseno';
 
     const timestamp = Date.now();
     const randomSuffix = Math.random().toString(36).substring(2, 7);

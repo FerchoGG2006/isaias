@@ -23,7 +23,7 @@ export const LogoPalacio: React.FC<LogoPalacioProps> = ({ className = '', size =
       {/* Standalone LOGOS PALACIO PNG with Transparent Background */}
       <div className={`relative ${containerSize} flex items-center justify-center`}>
         <Image
-          src="/assets/logo-palacio.png?v=3"
+          src="/assets/logo-palacio.png"
           alt="El Palacio de la Sublimación Logo"
           fill
           priority

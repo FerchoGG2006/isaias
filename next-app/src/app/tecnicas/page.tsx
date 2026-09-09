@@ -59,7 +59,7 @@ export default function TecnicasPage() {
 
                   {/* Number index */}
                   <div className="absolute bottom-4 left-6 font-mono text-xs text-[#C8A96E] uppercase tracking-wider font-bold">
-                    0{idx + 1} // TÉCNICA TEXTIL
+                    0{idx + 1} · TÉCNICA TEXTIL
                   </div>
                 </div>
 

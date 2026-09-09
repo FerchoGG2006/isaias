@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/domain';
@@ -59,19 +59,18 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
   const activeHotspotId = selectedHotspotId || (hotspots.length > 0 ? hotspots[0].id : null);
   const setActiveHotspotId = (id: string | null) => setSelectedHotspotId(id);
 
-  // Al abrir el modal por "Guía de medidas", asegurar pestaña 'medidas'
-  useEffect(() => {
-    if (isOpen) {
-      setActiveTab('medidas');
-    }
-  }, [isOpen]);
+  const handleClose = useCallback(() => {
+    setActiveTab('medidas');
+    setSelectedHotspotId(null);
+    onClose();
+  }, [onClose]);
 
   // Bloqueo de scroll y cierre con tecla ESC
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
     };
 
     const originalOverflow = document.body.style.overflow;
@@ -82,7 +81,7 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
       document.body.style.overflow = originalOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, handleClose]);
 
   if (!isOpen || !product) return null;
 
@@ -115,7 +114,7 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
     >
       {/* Telón de fondo editorial */}
       <div
-        onClick={onClose}
+        onClick={handleClose}
         className="fixed inset-0 bg-[#070709]/85 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
       />
 
@@ -146,7 +145,7 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
 
             {/* Botón cerrar */}
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-[#9E9EA4] hover:text-white flex items-center justify-center border border-white/10 transition-colors cursor-pointer"
               aria-label="Cerrar modal"
             >

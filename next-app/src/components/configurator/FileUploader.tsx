@@ -67,8 +67,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         previewUrl,
         fileUrl: data.url,
       });
-    } catch (err: any) {
-      console.warn('Fallo al subir a servidor, usando referencia local:', err);
+    } catch (err: unknown) {
       // Fallback a referencia local para no bloquear la experiencia de cotización
       onAttachmentChange({
         name: file.name,
@@ -76,7 +75,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         type: file.type || ext,
         previewUrl,
       });
-      setError(err?.message || 'Se usó referencia local. Podrás enviarlo directamente por el chat de WhatsApp.');
+      const errorMsg = err instanceof Error ? err.message : 'Se usó referencia local. Podrás enviarlo directamente por el chat de WhatsApp.';
+      setError(errorMsg);
     } finally {
       setIsUploading(false);
     }

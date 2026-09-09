@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { PRODUCTS } from '@/data/products';
-import { CATEGORIES } from '@/data/categories';
 import { ProductHotspotModal } from '@/components/catalog/ProductHotspotModal';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 import { Product } from '@/domain';
@@ -21,18 +20,11 @@ const EDITORIAL_FILTERS = [
 ];
 
 export default function CatalogoPage() {
-  const { businessId, setBusinessId, business } = useQuote();
+  const { setBusinessId } = useQuote();
   const [activeBrand, setActiveBrand] = useState<string>('todos');
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
-  // Sincronizar filtro cuando el usuario cambia de empresa en el Header
-  useEffect(() => {
-    if (businessId && activeBrand !== 'todos') {
-      setActiveBrand(businessId);
-    }
-  }, [businessId]);
 
   const handleBrandChange = (brand: string) => {
     setActiveBrand(brand);
@@ -57,11 +49,6 @@ export default function CatalogoPage() {
     });
     return counts;
   }, [activeBrand]);
-
-  const activeCategoryData = useMemo(() => {
-    if (activeCategory === 'todos') return null;
-    return CATEGORIES.find((c) => c.slug === activeCategory || c.id === activeCategory);
-  }, [activeCategory]);
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
