@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { TECHNIQUES } from '@/data/techniques';
+import { DEFAULT_WHATSAPP_PHONE, getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
   title: 'Técnicas de Personalización Textil | DTF, Bordado 3D & Sublimación · Valledupar',
@@ -144,7 +145,10 @@ export default function TecnicasPage() {
               </p>
             </div>
             <a
-              href="https://wa.me/573105634509?text=Hola%20Variedades%20Isa%C3%ADas,%20tengo%20un%20dise%C3%B1o%20y%20quiero%20asesor%C3%ADa%20sobre%20qu%C3%A9%20t%C3%A9cnica%20es%20mejor."
+              href={getWhatsAppChatUrl(
+                DEFAULT_WHATSAPP_PHONE,
+                'Hola Variedades Isaías, tengo un diseño y quiero asesoría sobre qué técnica es mejor.'
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-sans font-bold text-sm px-8 py-4 rounded-xl shadow-xl transition-transform hover:scale-105 shrink-0"

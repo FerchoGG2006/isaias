@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Product } from '@/domain';
 import { useQuote } from '@/context/QuoteContext';
 import { getProductHotspots, ProductHotspot } from '@/data/productHotspots';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 interface ProductHotspotModalProps {
   product: Product | null;
@@ -85,15 +86,10 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
 
   if (!isOpen || !product) return null;
 
-  // Teléfono verificado oficial: nunca placeholders
-  const rawPhone = business?.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+573105634509';
-  const cleanPhone = rawPhone.replace(/\D/g, '');
-
-  const waUrl = cleanPhone
-    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-        `¡Hola ${business?.name || 'Variedades Isaías'}! Me interesa cotizar y consultar especificaciones técnicas de la prenda: ${product.title} (${product.code}).`
-      )}`
-    : '#contacto';
+  const waUrl = getWhatsAppChatUrl(
+    business?.whatsappPhone,
+    `¡Hola ${business?.name || 'Variedades Isaías'}! Me interesa cotizar y consultar especificaciones técnicas de la prenda: ${product.title} (${product.code}).`
+  );
 
   const productHref = `/catalogo/${product.categorySlug || 'ropa'}/${product.slug}`;
 
@@ -487,8 +483,8 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
               {/* Botón Secundario: Cotización en WhatsApp con datos reales */}
               <a
                 href={waUrl}
-                target={cleanPhone ? '_blank' : undefined}
-                rel={cleanPhone ? 'noopener noreferrer' : undefined}
+                target={waUrl !== '#contacto' ? '_blank' : undefined}
+                rel={waUrl !== '#contacto' ? 'noopener noreferrer' : undefined}
                 className="flex-1 bg-[#14151C] hover:bg-[#1C1E26] text-[#F4F1EA] border border-white/15 hover:border-[#C8A96E]/50 font-sans font-medium text-xs uppercase tracking-[0.14em] py-3.5 px-4 rounded-full text-center transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
               >
                 <span className="text-[#25D366]">●</span>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export const QuoteDrawer: React.FC = () => {
   const {
@@ -56,10 +57,10 @@ export const QuoteDrawer: React.FC = () => {
       const fullUrl = `${url}${encodeURIComponent(artText)}`;
       window.open(fullUrl, '_blank', 'noopener,noreferrer');
     } else {
-      const cleanPhone = (business?.whatsappPhone || '573105634509').replace(/\D/g, '');
-      const fallbackUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+      const fallbackUrl = getWhatsAppChatUrl(
+        business?.whatsappPhone,
         `¡Hola ${business?.name || 'Variedades Isaías'}! Me gustaría solicitar cotización para mis productos seleccionados.${artText}`
-      )}`;
+      );
       window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
     }
   };

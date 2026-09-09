@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export const Header: React.FC = () => {
   const {
@@ -16,12 +17,10 @@ export const Header: React.FC = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const rawPhone = business.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '573105634509';
-  const cleanPhone = rawPhone.replace(/\D/g, '') || '573105634509';
-
-  const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+  const waUrl = getWhatsAppChatUrl(
+    business.whatsappPhone,
     `¡Hola ${business.name}! Me gustaría solicitar información y cotización.`
-  )}`;
+  );
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -37,7 +36,7 @@ export const Header: React.FC = () => {
         <Link href="/" className="flex items-center gap-3 group shrink-0">
           <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0 group-hover:scale-105 transition-transform bg-[#141419] shadow-md flex items-center justify-center p-0.5">
             <Image
-              src={business.logoUrl || '/assets/logo-isaias.png'}
+              src={business.logoUrl || '/assets/logo-isaias-3.png'}
               alt={business.name}
               fill
               className="object-contain p-1"
@@ -107,8 +106,8 @@ export const Header: React.FC = () => {
           {/* WhatsApp Circular Icon Button */}
           <a
             href={waUrl}
-            target={cleanPhone ? '_blank' : undefined}
-            rel={cleanPhone ? 'noopener noreferrer' : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-[#F4F1EA] hover:text-[#C8A96E] transition-all cursor-pointer shadow-md"
             title="Escribir por WhatsApp"
             aria-label="Contactar por WhatsApp"

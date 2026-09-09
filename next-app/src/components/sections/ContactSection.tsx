@@ -3,15 +3,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export const ContactSection: React.FC = () => {
   const { getWhatsAppUrl, business, quoteItems } = useQuote();
-  const rawPhone = business?.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '573105634509';
-  const cleanPhone = rawPhone.replace(/\D/g, '') || '573105634509';
 
-  const defaultWaUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+  const defaultWaUrl = getWhatsAppChatUrl(
+    business?.whatsappPhone,
     `¡Hola ${business?.name || 'Variedades Isaías'}! Me gustaría solicitar información y asesoría para unas prendas personalizadas.`
-  )}`;
+  );
 
   const { url: quoteUrl } = getWhatsAppUrl();
   const finalWaUrl = quoteItems.length > 0 && quoteUrl && quoteUrl !== '#contacto' ? quoteUrl : defaultWaUrl;

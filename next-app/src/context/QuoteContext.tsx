@@ -33,13 +33,6 @@ interface QuoteContextType {
   getWhatsAppUrl: () => { url: string; isConfigured: boolean; message: string };
   customPhone: string;
   setCustomPhone: (phone: string) => void;
-  // Compatibilidad legacy
-  cart: QuoteItem[];
-  isCartOpen: boolean;
-  setIsCartOpen: (open: boolean) => void;
-  totalItems: number;
-  subtotal: number;
-  whatsappPhone: string;
 }
 
 
@@ -203,13 +196,6 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         getWhatsAppUrl,
         customPhone,
         setCustomPhone,
-        // Compatibilidad legacy
-        cart: quoteItems,
-        isCartOpen: isQuoteDrawerOpen,
-        setIsCartOpen: setIsQuoteDrawerOpen,
-        totalItems: totalUnits,
-        subtotal: estimatedTotal || 0,
-        whatsappPhone: business.whatsappPhone,
       }}
     >
       {children}
@@ -223,9 +209,4 @@ export const useQuote = () => {
     throw new Error('useQuote debe utilizarse dentro de un QuoteProvider');
   }
   return context;
-};
-
-// Hook de compatibilidad para evitar romper referencias previas
-export const useCart = () => {
-  return useQuote();
 };

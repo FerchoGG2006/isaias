@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { getBusiness } from '@/data/businesses';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,10 +15,10 @@ export const metadata: Metadata = {
 
 export default function PersonalizaPage() {
   const business = getBusiness('isaias');
-  const cleanPhone = (business.whatsappPhone || '573105634509').replace(/\D/g, '');
-  const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+  const waUrl = getWhatsAppChatUrl(
+    business.whatsappPhone,
     `¡Hola ${business.name}! Me gustaría recibir asesoría directa para un pedido personalizado.`
-  )}`;
+  );
 
   return (
     <>

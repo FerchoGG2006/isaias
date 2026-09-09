@@ -11,7 +11,7 @@ import {
   validateSizeDistribution,
 } from '@/lib/quoteBuilder';
 import { useQuote } from '@/context/QuoteContext';
-import { getSingleItemWhatsAppUrl } from '@/lib/whatsapp';
+import { getSingleItemWhatsAppUrl, getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export interface ProductConfiguratorProps {
   product: Product;
@@ -189,10 +189,10 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     if (isConfigured && url && url !== '#contacto') {
       window.open(url, '_blank', 'noopener,noreferrer');
     } else {
-      const cleanPhone = (business?.whatsappPhone || '573105634509').replace(/\D/g, '');
-      const fallbackUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+      const fallbackUrl = getWhatsAppChatUrl(
+        business?.whatsappPhone,
         `¡Hola ${business?.name || 'Variedades Isaías'}! Me gustaría solicitar información y cotización para: ${currentQuoteItem.title} (${currentQuoteItem.totalQuantity} und, Talla ${quickSize}, Color ${selectedVariant.colorName}).`
-      )}`;
+      );
       window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
     }
   };

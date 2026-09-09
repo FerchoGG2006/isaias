@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useQuote } from '@/context/QuoteContext';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 interface TeamTier {
   title: string;
@@ -47,12 +48,11 @@ const TEAM_TIERS: TeamTier[] = [
 
 export const ForTeamsSection: React.FC = () => {
   const { business } = useQuote();
-  const rawPhone = business?.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '573105634509';
-  const cleanPhone = rawPhone.replace(/\D/g, '') || '573105634509';
 
-  const wholesaleWaUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+  const wholesaleWaUrl = getWhatsAppChatUrl(
+    business?.whatsappPhone,
     `¡Hola ${business?.name || 'Variedades Isaías'}! Me gustaría solicitar cotización al por mayor para dotaciones / uniformes de mi empresa o equipo.`
-  )}`;
+  );
 
   return (
     <section id="equipos" className="wrap py-14 sm:py-20 border-t border-white/10 scroll-mt-24">

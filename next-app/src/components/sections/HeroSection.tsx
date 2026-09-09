@@ -7,9 +7,10 @@ import { motion } from 'framer-motion';
 import { useQuote } from '@/context/QuoteContext';
 import { LogoIsaias } from '@/components/ui/LogoIsaias';
 import { LogoPalacio } from '@/components/ui/LogoPalacio';
+import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export const HeroSection: React.FC = () => {
-  const { businessId, getWhatsAppUrl } = useQuote();
+  const { businessId, business, getWhatsAppUrl } = useQuote();
   const { url: waUrl } = getWhatsAppUrl();
 
   const isIsaias = businessId === 'isaias';
@@ -83,7 +84,7 @@ export const HeroSection: React.FC = () => {
         >
           {/* Button 1: Gold Filled WhatsApp CTA */}
           <a
-            href={waUrl && waUrl !== '#' && waUrl !== '#contacto' ? waUrl : 'https://wa.me/573105634509'}
+            href={waUrl && waUrl !== '#' && waUrl !== '#contacto' ? waUrl : getWhatsAppChatUrl(business.whatsappPhone)}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10] font-bold px-9 py-4.5 rounded-xs transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 text-center shrink-0 hover:scale-105"

@@ -109,7 +109,16 @@ export function buildQuoteMessage(quote: QuoteRequest, business?: Business): str
     .join('\n\n');
 }
 
-export const DEFAULT_WHATSAPP_PHONE = '573105634509';
+export const DEFAULT_WHATSAPP_PHONE =
+  process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '573105634509';
+
+/**
+ * Genera un enlace directo a WhatsApp con sanitización y mensaje opcional.
+ */
+export function getWhatsAppChatUrl(phone?: string, message = 'Hola, quiero más información.'): string {
+  const cleanPhone = (phone || DEFAULT_WHATSAPP_PHONE).replace(/\D/g, '') || DEFAULT_WHATSAPP_PHONE;
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+}
 
 /**
  * Obtiene la URL directa de WhatsApp validando la configuración del teléfono.
@@ -121,11 +130,10 @@ export function getWhatsAppQuoteUrl(
   const biz = business || getBusiness(quote.businessId);
   const message = buildQuoteMessage(quote, biz);
 
-  const rawPhone = biz.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || DEFAULT_WHATSAPP_PHONE;
-  const cleanPhone = rawPhone.replace(/\D/g, '') || DEFAULT_WHATSAPP_PHONE;
+  const cleanPhone = (biz.whatsappPhone || DEFAULT_WHATSAPP_PHONE).replace(/\D/g, '') || DEFAULT_WHATSAPP_PHONE;
 
   return {
-    url: `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`,
+    url: getWhatsAppChatUrl(cleanPhone, message),
     isConfigured: true,
     message,
   };

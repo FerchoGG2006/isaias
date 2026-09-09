@@ -9,6 +9,7 @@ import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { TECHNIQUES, getTechniqueById } from '@/data/techniques';
 import { PRODUCTS } from '@/data/products';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
+import { DEFAULT_WHATSAPP_PHONE, getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -49,10 +50,10 @@ export default async function TecnicaDetailPage({ params }: Props) {
     )
   );
 
-  const cleanPhone = '573105634509';
-  const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+  const waUrl = getWhatsAppChatUrl(
+    DEFAULT_WHATSAPP_PHONE,
     `¡Hola Variedades Isaías! Me interesa cotizar una producción con la técnica: ${technique.name}.`
-  )}`;
+  );
 
   return (
     <>

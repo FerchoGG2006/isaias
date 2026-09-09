@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#C8A96E]/40">
-                <Image src={business.logoUrl || '/assets/logo-isaias.png'} alt={`Logo ${business.name}`} fill className="object-cover" />
+                <Image src={business.logoUrl || '/assets/logo-isaias-3.png'} alt={`Logo ${business.name}`} fill className="object-cover" />
               </div>
               <span className="font-mono font-bold text-base text-[#F4F1EA] uppercase tracking-wider">
                 {business.name}
