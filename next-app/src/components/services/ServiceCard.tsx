@@ -56,11 +56,16 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       <div className="p-6 flex flex-col flex-1 justify-between gap-5">
         <div className="flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
-            <Link href={serviceHref} className="group-hover:text-[#C8A96E] transition-colors">
-              <h3 className="font-sans font-bold text-xl text-[#F4F1EA] tracking-tight">
-                {service.title}
-              </h3>
-            </Link>
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-[10px] text-[#C8A96E] uppercase tracking-wider font-semibold">
+                {service.businessId === 'palacio' ? 'Línea El Palacio de la Sublimación' : 'Taller Variedades Isaías'}
+              </span>
+              <Link href={serviceHref} className="group-hover:text-[#C8A96E] transition-colors">
+                <h3 className="font-sans font-bold text-xl text-[#F4F1EA] tracking-tight">
+                  {service.title}
+                </h3>
+              </Link>
+            </div>
             {renderPricing()}
           </div>
 

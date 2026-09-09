@@ -66,8 +66,30 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const [isQuoteDrawerOpen, setIsQuoteDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [businessId, setBusinessIdState] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('vi_business_id');
+        if (saved === 'palacio' || saved === 'isaias') {
+          return saved;
+        }
+      } catch {
+        // Ignorar
+      }
+    }
+    return DEFAULT_BUSINESS_ID;
+  });
+
+  const setBusinessId = (id: string) => {
+    setBusinessIdState(id);
+    try {
+      localStorage.setItem('vi_business_id', id);
+    } catch {
+      // Ignorar
+    }
+  };
+
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [businessId, setBusinessId] = useState<string>(DEFAULT_BUSINESS_ID);
   const [customer, setCustomer] = useState<QuoteCustomer>({});
   const [generalNotes, setGeneralNotes] = useState<string>('');
 

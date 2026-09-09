@@ -76,6 +76,13 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
           {/* Discreet Vignette */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/80 via-transparent to-transparent opacity-60 group-hover/frame:opacity-40 transition-opacity duration-500" />
 
+          {/* Brand Tag Top Left */}
+          {product.businessId === 'palacio' && (
+            <div className="absolute top-3 left-3 z-20 font-mono text-[9px] uppercase tracking-wider text-[#0C0D10] bg-[#C8A96E] px-2 py-0.5 font-bold rounded-xs shadow-md">
+              El Palacio
+            </div>
+          )}
+
           {/* Overlay interactivo en Hover: Invita a personalizar */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/95 via-black/20 to-transparent opacity-0 group-hover/frame:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-5">
             <div className="flex items-center justify-between font-sans text-xs font-medium text-[#F4F1EA] bg-[#0C0D10]/85 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 shadow-xl">

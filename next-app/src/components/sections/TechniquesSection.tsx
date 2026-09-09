@@ -64,8 +64,13 @@ const TECHNIQUES_DATA: TechniqueProcess[] = [
   },
 ];
 
+import { useQuote } from '@/context/QuoteContext';
+
 export const TechniquesSection: React.FC = () => {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const { businessId } = useQuote();
+  const defaultIdx = businessId === 'palacio' ? 1 : 0;
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const activeIdx = selectedIdx ?? defaultIdx;
   const activeTech = TECHNIQUES_DATA[activeIdx] || TECHNIQUES_DATA[0];
 
   return (
@@ -153,7 +158,7 @@ export const TechniquesSection: React.FC = () => {
               <button
                 key={tech.id}
                 type="button"
-                onClick={() => setActiveIdx(idx)}
+                onClick={() => setSelectedIdx(idx)}
                 className={`w-full text-left p-4 sm:p-5 rounded-xs border transition-all duration-300 flex flex-col gap-1.5 cursor-pointer ${
                   isActive
                     ? 'bg-[#141419] border-[#C8A96E] shadow-xl'

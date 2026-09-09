@@ -20,14 +20,15 @@ const EDITORIAL_FILTERS = [
 ];
 
 export default function CatalogoPage() {
-  const { setBusinessId } = useQuote();
-  const [activeBrand, setActiveBrand] = useState<string>('todos');
+  const { businessId, setBusinessId } = useQuote();
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const activeBrand = selectedBrand ?? businessId;
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const handleBrandChange = (brand: string) => {
-    setActiveBrand(brand);
+    setSelectedBrand(brand);
     if (brand === 'isaias' || brand === 'palacio') {
       setBusinessId(brand);
     }
@@ -90,10 +91,14 @@ export default function CatalogoPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
-                Elige tu prenda y cotiza en minutos.
+                {activeBrand === 'palacio'
+                  ? 'Catálogo El Palacio de la Sublimación'
+                  : 'Elige tu prenda y cotiza en minutos.'}
               </h1>
               <p className="font-sans text-sm text-[#A0A0A5] mt-2 max-w-xl">
-                Ropa y accesorios de excelente horma y confección local, listos para estampar o bordar a tu gusto.
+                {activeBrand === 'palacio'
+                  ? 'Mugs cerámicos y mágicos, termos de aluminio, indumentaria deportiva full print y accesorios con estampado fotográfico permanente.'
+                  : 'Ropa y accesorios de excelente horma y confección local, listos para estampar o bordar a tu gusto.'}
               </p>
             </div>
 

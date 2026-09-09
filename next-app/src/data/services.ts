@@ -74,7 +74,7 @@ export const SERVICES: Service[] = [
   {
     id: 'sublimacion-promocionales',
     slug: 'sublimacion-fotografica-promocionales',
-    businessId: 'isaias',
+    businessId: 'palacio',
     title: 'Sublimación Textil y Rígidos en Gran Formato',
     shortDescription:
       'Estampado fotográfico y nítido para ropa deportiva, termos, mugs, cojines y artículos promocionales.',
@@ -83,7 +83,7 @@ export const SERVICES: Service[] = [
     tag: 'ESTAMPADO & PROMOCIONALES',
     iconSvg:
       'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
-    image: '/media/embroidery-workstation.jpeg',
+    image: '/assets/mug.png',
     techniques: ['sublimacion-4k'],
     pricing: {
       type: 'from',

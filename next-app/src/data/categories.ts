@@ -30,7 +30,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'sublimacion',
     slug: 'sublimacion',
-    businessId: 'isaias',
+    businessId: 'palacio',
     name: 'Sublimación & Rígidos',
     subtitle: 'MUGS, TERMOS & SUPERFICIES',
     description:

@@ -545,6 +545,57 @@ export const PRODUCTS: Product[] = [
     inStock: true,
   },
   {
+    id: 'mug-magico',
+    slug: 'mug-magico-termosensible',
+    businessId: 'palacio',
+    categoryId: 'sublimacion',
+    categorySlug: 'sublimacion',
+    title: 'Mug Mágico Termosensible 11oz',
+    subtitle: 'Efecto Térmico Revelador · Sublimación 4K',
+    description:
+      'Pocillo cerámico negro mate que al verter café o líquido caliente se torna blanco y revela tu fotografía, diseño o frase oculta. Ideal para sorpresas y regalos corporativos memorables.',
+    code: 'SUB-MG-002',
+    tag: 'EFECTO TÉRMICO',
+    pricing: {
+      type: 'fixed',
+      basePrice: 24000,
+      unit: 'unidad',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 20000 },
+        { minQty: 36, pricePerUnit: 18000 },
+      ],
+    },
+    images: [
+      '/assets/mug.png',
+    ],
+    featuredImage: '/assets/mug.png',
+    customCapabilities: {
+      allowedTechniques: ['sublimacion-4k'],
+      allowedPlacements: [
+        { id: 'panoramico', label: 'Impresión panorámica envolvente', maxDimensions: '20x9 cm' },
+      ],
+      allowsDesignUpload: true,
+      allowsNotes: true,
+      sizingMode: 'single_quantity',
+      availableSizes: ['11 oz (325 ml)'],
+      availableColors: [
+        { id: 'negro-magico', colorName: 'Negro Mate Termosensible', colorHex: '#18181b', inStock: true },
+        { id: 'azul-magico', colorName: 'Azul Termosensible', colorHex: '#1e3a8a', inStock: true },
+        { id: 'rojo-magico', colorName: 'Rojo Termosensible', colorHex: '#991b1b', inStock: true },
+      ],
+      minQuantity: 1,
+      defaultQuantity: 1,
+    },
+    specifications: [
+      { label: 'Efecto', value: 'Sensible al calor (35 °C o superior)' },
+      { label: 'Capacidad', value: '11 onzas (325 ml)' },
+      { label: 'Acabado', value: 'Negro mate en frío / Blanco con diseño en calor' },
+      { label: 'Lavado', value: 'Lavar con esponja suave para cuidar polímero' },
+    ],
+    featured: true,
+    inStock: true,
+  },
+  {
     id: 'termo-aluminio',
     slug: 'termo-aluminio-deportivo-600ml',
     businessId: 'palacio',

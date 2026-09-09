@@ -24,10 +24,6 @@ export const Header: React.FC = () => {
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const toggleTenant = () => {
-    setBusinessId(businessId === 'isaias' ? 'palacio' : 'isaias');
-  };
-
   return (
     <header className="sticky top-0 z-40 bg-[#0C0D10]/90 backdrop-blur-xl border-b border-white/10 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
@@ -78,11 +74,11 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
           
           {/* Dual-Tenant Switcher Pill */}
-          <div className="hidden xl:flex items-center bg-[#141419] border border-white/15 rounded-full p-1 font-mono text-[10px] tracking-wider uppercase">
+          <div className="flex items-center bg-[#141419] border border-white/15 rounded-full p-0.5 sm:p-1 font-mono text-[9px] sm:text-[10px] tracking-wider uppercase">
             <button
               type="button"
               onClick={() => setBusinessId('isaias')}
-              className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1 rounded-full transition-all cursor-pointer ${
                 businessId === 'isaias'
                   ? 'bg-[#C8A96E] text-[#0C0D10] font-bold shadow-md'
                   : 'text-[#8A8A92] hover:text-[#F4F1EA]'
@@ -93,7 +89,7 @@ export const Header: React.FC = () => {
             <button
               type="button"
               onClick={() => setBusinessId('palacio')}
-              className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1 rounded-full transition-all cursor-pointer ${
                 businessId === 'palacio'
                   ? 'bg-[#C8A96E] text-[#0C0D10] font-bold shadow-md'
                   : 'text-[#8A8A92] hover:text-[#F4F1EA]'
@@ -162,13 +158,27 @@ export const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-[#141419]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4">
           <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs text-[#8A8A92]">
-            <span>TALLER / LÍNEA:</span>
-            <button
-              onClick={toggleTenant}
-              className="text-[#C8A96E] font-bold uppercase tracking-wider underline cursor-pointer"
-            >
-              {business.name} (Cambiar ↺)
-            </button>
+            <span>TALLER / MARCA:</span>
+            <div className="flex items-center bg-[#0C0D10] p-1 rounded-full border border-white/10">
+              <button
+                type="button"
+                onClick={() => setBusinessId('isaias')}
+                className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all ${
+                  businessId === 'isaias' ? 'bg-[#C8A96E] text-[#0C0D10] font-bold' : 'text-[#8A8A92]'
+                }`}
+              >
+                Isaías
+              </button>
+              <button
+                type="button"
+                onClick={() => setBusinessId('palacio')}
+                className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all ${
+                  businessId === 'palacio' ? 'bg-[#C8A96E] text-[#0C0D10] font-bold' : 'text-[#8A8A92]'
+                }`}
+              >
+                El Palacio
+              </button>
+            </div>
           </div>
 
           <nav className="flex flex-col gap-3 font-sans text-xs uppercase tracking-[0.16em] text-[#F4F1EA]">

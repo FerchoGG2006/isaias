@@ -4,6 +4,8 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { useQuote } from '@/context/QuoteContext';
+
 // Category Cards for the Interactive Horizontal Carousel
 const CATEGORY_CARDS = [
   {
@@ -58,9 +60,64 @@ const CATEGORY_CARDS = [
   },
 ];
 
+const PALACIO_CATEGORY_CARDS = [
+  {
+    id: 'cat-sublimacion',
+    name: 'MUGS & POCILLOS',
+    shortName: 'MUGS',
+    subtitle: 'Cerámicos, mágicos termosensibles y personalizados',
+    image: '/assets/mug.png',
+    href: '/catalogo/sublimacion',
+    itemCount: 'Estampado 4K',
+    tag: 'COLOR PERMANENTE',
+  },
+  {
+    id: 'cat-termos',
+    name: 'TERMOS & HIDRATACIÓN',
+    shortName: 'TERMOS',
+    subtitle: 'Botellas de aluminio herméticas con mosquetón',
+    image: '/assets/bottle.png',
+    href: '/catalogo/sublimacion',
+    itemCount: 'Deportivos 600ml',
+    tag: 'ALUMINIO ANODIZADO',
+  },
+  {
+    id: 'cat-deportiva',
+    name: 'INDUMENTARIA DEPORTIVA',
+    shortName: 'FULL PRINT',
+    subtitle: 'Camisetas deportivas con sublimación total 100%',
+    image: '/assets/telas/qatar/qatar-1.jpg',
+    href: '/catalogo/ropa',
+    itemCount: 'Ciclismo & Fútbol',
+    tag: 'SUBLIMACIÓN TOTAL',
+  },
+  {
+    id: 'cat-gorras',
+    name: 'GORRAS TRUCKER',
+    shortName: 'GORRAS',
+    subtitle: 'Frente blanco sublimable y visera curva con broche',
+    image: '/assets/img-3.jpg',
+    href: '/catalogo/accesorios',
+    itemCount: 'Ajustables',
+    tag: 'PERSONALIZABLES',
+  },
+  {
+    id: 'cat-merch',
+    name: 'MERCHANDISING CORPORATIVO',
+    shortName: 'EMPRESAS',
+    subtitle: 'Kits y regalos empresariales para eventos y marcas',
+    image: '/assets/img-4.jpg',
+    href: '/catalogo/dotaciones',
+    itemCount: 'Precios por volumen',
+    tag: 'ALTA FIDELIDAD',
+  },
+];
 
 export const CatalogSection: React.FC = () => {
+  const { businessId } = useQuote();
   const carouselRef = useRef<HTMLDivElement>(null);
+  const isPalacio = businessId === 'palacio';
+  const cards = isPalacio ? PALACIO_CATEGORY_CARDS : CATEGORY_CARDS;
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -79,10 +136,12 @@ export const CatalogSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F4F1EA] tracking-tight">
-              Explorar por Categoría
+              {isPalacio ? 'Colección El Palacio de la Sublimación' : 'Explorar por Categoría'}
             </h2>
             <p className="font-sans text-sm text-[#8A8A92] font-light mt-2 max-w-md">
-              Selecciona una categoría para ver modelos, telas y opciones de personalización.
+              {isPalacio
+                ? 'Mugs, botellas térmicas, uniformes deportivos full print y artículos promocionales con impresión fotográfica que nunca se borra.'
+                : 'Selecciona una categoría para ver modelos, telas y opciones de personalización.'}
             </p>
           </div>
 
@@ -125,7 +184,7 @@ export const CatalogSection: React.FC = () => {
           className="flex items-stretch gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-2 -mx-2 px-2"
           style={{ scrollBehavior: 'smooth' }}
         >
-          {CATEGORY_CARDS.map((cat) => (
+          {cards.map((cat) => (
             <Link
               key={cat.id}
               href={cat.href}
