@@ -38,9 +38,27 @@ export const Header: React.FC = () => {
               className="object-contain p-1"
             />
           </div>
-          <span className="font-sans font-extrabold text-sm sm:text-base text-[#F4F1EA] tracking-wider uppercase leading-none group-hover:text-[#C8A96E] transition-colors">
-            {business.name}
-          </span>
+          <div className="flex flex-col uppercase font-sans font-extrabold tracking-wider leading-none">
+            {business.id === 'palacio' ? (
+              <>
+                <span className="text-xs sm:text-[13px] text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                  El Palacio
+                </span>
+                <span className="text-[10px] sm:text-[11px] text-[#C8A96E] tracking-widest mt-0.5">
+                  Sublimación
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                  Variedades
+                </span>
+                <span className="text-xs sm:text-sm text-[#C8A96E] mt-0.5">
+                  Isaías
+                </span>
+              </>
+            )}
+          </div>
         </Link>
 
         {/* Center: Clean & Spaced Navigation Links */}
