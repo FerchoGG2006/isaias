@@ -38,14 +38,9 @@ export const Header: React.FC = () => {
               className="object-contain p-1"
             />
           </div>
-          <div className="flex flex-col">
-            <span className="font-sans font-extrabold text-sm sm:text-base text-[#F4F1EA] tracking-wider uppercase leading-none group-hover:text-[#C8A96E] transition-colors">
-              {business.name}
-            </span>
-            <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#C8A96E] mt-0.5 font-medium">
-              Valledupar, Cesar
-            </span>
-          </div>
+          <span className="font-sans font-extrabold text-sm sm:text-base text-[#F4F1EA] tracking-wider uppercase leading-none group-hover:text-[#C8A96E] transition-colors">
+            {business.name}
+          </span>
         </Link>
 
         {/* Center: Clean & Spaced Navigation Links */}
