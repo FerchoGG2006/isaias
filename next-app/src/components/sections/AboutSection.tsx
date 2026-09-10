@@ -113,7 +113,7 @@ export const AboutSection: React.FC = () => {
                   ? 'Producción en vivo · Maquinaria de Taller'
                   : activeMedia === 'embroidery'
                   ? 'Bordadora Industrial Wilcom Multicabezal'
-                  : 'Taller de Confección y Corte en Valledupar'}
+                  : 'Mesa de Corte y Confección Directa'}
               </span>
               <span className="text-[#A0A0A5] text-[11px] hidden sm:inline">
                 Producción directa sin intermediarios
@@ -165,7 +165,7 @@ export const AboutSection: React.FC = () => {
         <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest">
-              Taller Propio en Valledupar
+              Taller Propio de Confección
             </span>
             <h2 className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#F4F1EA] tracking-tight">
               Confección directa y maquinaria industrial.
@@ -173,25 +173,25 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <p className="font-sans text-sm text-[#D0CFC9] leading-relaxed font-light">
-            En <strong>Variedades Isaías</strong> unificamos confección de prendas y producción en taller propio. Contamos con maquinaria industrial de bordado computarizado Wilcom y calandras de sublimación 4K (unidad de producción El Palacio de la Sublimación), asegurando acabados limpios, resistentes y entregas puntuales tanto para una sola prenda como para dotaciones masivas.
+            En <strong>Variedades Isaías</strong> combinamos confección textil de alta costura con maquinaria industrial propia. Contamos con tecnología de bordado computarizado Wilcom multicabezal, estampado DTF de alta elasticidad y sublimación fotográfica 4K, garantizando acabados impecables tanto para prendas individuales como para dotaciones empresariales masivas.
           </p>
 
           <div className="flex flex-col gap-3 text-xs font-sans text-[#D0CFC9] pt-2 border-t border-white/10">
             <div className="flex items-center gap-2.5">
               <span className="text-[#C8A96E] font-bold">✓</span>
-              <span><strong>Precios de taller:</strong> Sin intermediarios, directo de máquina a tus manos.</span>
+              <span><strong>Precios directos de taller:</strong> Sin intermediarios, de la máquina a tus manos.</span>
             </div>
             <div className="flex items-center gap-2.5">
               <span className="text-[#C8A96E] font-bold">✓</span>
-              <span><strong>Bordado y Sublimación 4K:</strong> Relieves finos Wilcom y estampado molecular indeleble.</span>
+              <span><strong>Bordado y Estampado de Alta Definición:</strong> Relieves precisos Wilcom y fijación permanente.</span>
             </div>
             <div className="flex items-center gap-2.5">
               <span className="text-[#C8A96E] font-bold">✓</span>
-              <span><strong>Telas seleccionadas:</strong> Piel de durazno spandex 220g, piqué y telas dry-fit transpirables.</span>
+              <span><strong>Telas seleccionadas:</strong> Piel de durazno spandex 220g, piqué y dry-fit deportivo.</span>
             </div>
             <div className="flex items-center gap-2.5">
               <span className="text-[#C8A96E] font-bold">✓</span>
-              <span><strong>Envíos locales y nacionales:</strong> Atención directa en Valledupar y despachos a toda Colombia.</span>
+              <span><strong>Envíos nacionales:</strong> Despachos ágiles y asegurados a cualquier destino de Colombia.</span>
             </div>
           </div>
 
@@ -200,7 +200,7 @@ export const AboutSection: React.FC = () => {
               href="/#contacto"
               className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#C8A96E] hover:underline font-semibold transition-colors"
             >
-              <span>Escríbenos o visítanos en Valledupar</span>
+              <span>Escríbenos o solicita asesoría personalizada</span>
               <span>→</span>
             </Link>
           </div>
@@ -217,7 +217,7 @@ export const AboutSection: React.FC = () => {
             {/* Header Modal Bar */}
             <div className="w-full bg-[#14151C] border-b border-white/10 px-4 py-3 flex items-center justify-between text-xs font-sans">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-[#F4F1EA]">Producción en Vivo · Taller Valledupar</span>
+                <span className="font-bold text-[#F4F1EA]">Producción en Vivo · Taller Textil</span>
                 <span className="font-mono text-[9px] text-[#0C0D10] bg-[#C8A96E] font-bold px-2 py-0.5 rounded">
                   4K Ultra HD
                 </span>

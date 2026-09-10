@@ -6,7 +6,6 @@ import { TechniquesSection } from '@/components/sections/TechniquesSection';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ForTeamsSection } from '@/components/sections/ForTeamsSection';
-import { ProcessSection } from '@/components/sections/ProcessSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 
@@ -27,16 +26,13 @@ export default function Home() {
         {/* 04 · LOOKBOOK / PROJECTS (PROYECTOS REALIZADOS) */}
         <GallerySection />
 
-        {/* 06 · TALLER (HECHO EN VALLEDUPAR) */}
+        {/* 05 · TALLER & MAQUINARIA INDUSTRIAL (4K HD VIDEO + BORDADO WILCOM) */}
         <AboutSection />
 
-        {/* 07 · FOR TEAMS (PRODUCCIÓN EMPRESARIAL) */}
+        {/* 06 · FOR TEAMS (PRODUCCIÓN & DOTACIONES EMPRESARIALES) */}
         <ForTeamsSection />
 
-        {/* 08 · PROCESS (CÓMO TRABAJAMOS) */}
-        <ProcessSection />
-
-        {/* 09 · FINAL CTA (¿QUÉ VAMOS A CREAR?) */}
+        {/* 07 · FINAL CTA (COTIZACIÓN & ASESORÍA DIRECTA) */}
         <ContactSection />
       </main>
       <Footer />

@@ -66,24 +66,7 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const [isQuoteDrawerOpen, setIsQuoteDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [businessId, setBusinessIdState] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const urlTenant = params.get('empresa') || params.get('tenant');
-        if (urlTenant === 'palacio' || urlTenant === 'isaias') {
-          return urlTenant;
-        }
-        const saved = localStorage.getItem('vi_business_id');
-        if (saved === 'palacio' || saved === 'isaias') {
-          return saved;
-        }
-      } catch {
-        // Ignorar
-      }
-    }
-    return DEFAULT_BUSINESS_ID;
-  });
+  const [businessId, setBusinessIdState] = useState<string>(DEFAULT_BUSINESS_ID);
 
   const setBusinessId = (id: string) => {
     setBusinessIdState(id);

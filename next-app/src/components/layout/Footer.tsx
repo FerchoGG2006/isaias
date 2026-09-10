@@ -69,14 +69,14 @@ export const Footer: React.FC = () => {
             <h5 className="font-bold text-[#F4F1EA] uppercase tracking-[0.16em] mb-1">
               Ubicación & Atención
             </h5>
-            <p className="text-[#8A8A92] font-light">Valledupar, Cesar · Colombia</p>
+            <p className="text-[#8A8A92] font-light">Taller de Confección Propia · Colombia</p>
             <p className="text-[#8A8A92] font-light">Atención: Lunes a Sábado</p>
             {business.whatsappPhone ? (
               <p className="text-[#C8A96E] font-medium font-mono text-xs">
                 WhatsApp: {formattedPhone}
               </p>
             ) : (
-              <p className="text-[#8A8A92]">Cotizaciones directas vía web y punto físico</p>
+              <p className="text-[#8A8A92]">Cotizaciones directas vía web y chat directo</p>
             )}
           </div>
 
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-[#8A8A92] font-light">
-          <span>&copy; {new Date().getFullYear()} {business.name}. Valledupar, Cesar · Envíos a toda Colombia.</span>
+          <span>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil · Envíos a toda Colombia.</span>
           <span>Atención de lunes a sábado</span>
         </div>
       </div>

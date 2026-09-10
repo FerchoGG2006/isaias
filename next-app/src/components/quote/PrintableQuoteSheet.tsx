@@ -24,7 +24,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
   estimatedTotal,
   business,
   quoteNumber,
-  currentDate = 'Valledupar, Cesar',
+  currentDate = new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'short', day: 'numeric' }),
   onClose,
 }) => {
   const customerDigits = (customer.phone || customer.name || 'VAL').replace(/\D/g, '');
@@ -82,7 +82,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
                 Taller de Confección & Personalización Textil
               </span>
               <span className="font-sans text-xs text-gray-500">
-                Valledupar, Cesar · WhatsApp: +{business.whatsappPhone}
+                Taller de Confección Directa · WhatsApp: +{business.whatsappPhone}
               </span>
             </div>
           </div>
@@ -107,7 +107,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
           </div>
           <div>
             <span className="text-gray-500 block uppercase font-mono text-[10px]">Destino / Entrega:</span>
-            <strong className="text-sm text-gray-900">{customer.city || 'Valledupar, Cesar'}</strong>
+            <strong className="text-sm text-gray-900">{customer.city || 'Entrega en taller / Envíos'}</strong>
             <span className="text-gray-600 block">Estado: Cotización Preliminar para Aprobación</span>
           </div>
         </div>
@@ -218,7 +218,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
         <div className="grid grid-cols-2 gap-12 pt-14 text-center text-xs font-sans text-gray-500">
           <div className="border-t border-gray-300 pt-2">
             <strong className="text-gray-800 block">Taller {business.name}</strong>
-            <span>Valledupar, Cesar</span>
+            <span>Taller de Confección Propia</span>
           </div>
           <div className="border-t border-gray-300 pt-2">
             <strong className="text-gray-800 block">Aprobación Cliente / Compras</strong>

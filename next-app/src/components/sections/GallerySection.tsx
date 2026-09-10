@@ -39,7 +39,7 @@ const LOOKBOOK_PROJECTS: LookbookProject[] = [
   {
     id: 'project-04',
     title: 'Mug Cerámico 11oz y Mágico',
-    productType: 'Cerámica polimerizada · El Palacio',
+    productType: 'Cerámica polimerizada · Sublimación 4K',
     technique: 'Sublimación fotográfica 4K',
     href: '/catalogo/sublimacion/mug-ceramico-11oz-sublimado',
     image: '/assets/mug.png',
@@ -73,7 +73,7 @@ export const GallerySection: React.FC = () => {
             Trabajos y Proyectos Reales.
           </h2>
           <p className="font-sans text-sm text-[#8A8A92] leading-relaxed font-light mt-1">
-            Prendas confeccionadas y personalizadas en nuestro taller de Valledupar.
+            Prendas confeccionadas y personalizadas directamente en nuestro taller propio.
           </p>
         </div>
 

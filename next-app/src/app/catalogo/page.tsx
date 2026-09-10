@@ -9,7 +9,6 @@ import { PRODUCTS } from '@/data/products';
 import { ProductHotspotModal } from '@/components/catalog/ProductHotspotModal';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 import { Product } from '@/domain';
-import { useQuote } from '@/context/QuoteContext';
 
 const EDITORIAL_FILTERS = [
   { id: 'todos', label: 'Todas las Prendas' },
@@ -20,35 +19,30 @@ const EDITORIAL_FILTERS = [
 ];
 
 export default function CatalogoPage() {
-  const { businessId } = useQuote();
-  const isPalacio = businessId === 'palacio';
-
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // Filtro de productos pertenecientes a la empresa activa
-  const tenantProducts = useMemo(() => {
-    return PRODUCTS.filter((p) => p.businessId === businessId);
-  }, [businessId]);
+  // Todos los productos confirmados del catálogo
+  const allProducts = PRODUCTS;
 
   // Contador de productos por categoría para las pestañas
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {
-      todos: tenantProducts.length,
+      todos: allProducts.length,
     };
     EDITORIAL_FILTERS.forEach((f) => {
       if (f.id !== 'todos') {
-        counts[f.id] = tenantProducts.filter((p) => {
+        counts[f.id] = allProducts.filter((p) => {
           return p.categorySlug === f.id || p.categoryId === f.id;
         }).length;
       }
     });
     return counts;
-  }, [tenantProducts]);
+  }, [allProducts]);
 
   const filteredProducts = useMemo(() => {
-    return tenantProducts.filter((product) => {
+    return allProducts.filter((product) => {
       // Filtrar por categoría
       if (activeCategory !== 'todos') {
         const matchesCat =
@@ -70,7 +64,7 @@ export default function CatalogoPage() {
 
       return true;
     });
-  }, [tenantProducts, activeCategory, searchQuery]);
+  }, [allProducts, activeCategory, searchQuery]);
 
   return (
     <>
@@ -82,20 +76,16 @@ export default function CatalogoPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
-                {isPalacio
-                  ? 'Catálogo El Palacio de la Sublimación'
-                  : 'Catálogo Variedades Isaías'}
+                Catálogo de Prendas & Dotaciones
               </h1>
               <p className="font-sans text-sm text-[#A0A0A5] mt-2 max-w-xl">
-                {isPalacio
-                  ? 'Mugs cerámicos y mágicos, termos de aluminio, indumentaria deportiva full print y artículos con estampado fotográfico permanente 4K.'
-                  : 'Ropa, polos en piqué Wilcom, baby tees y dotaciones de excelente confección local en Valledupar.'}
+                Prendas confeccionadas con telas de alto rendimiento, estampados duraderos y bordado fino Wilcom para uso diario y dotaciones empresariales.
               </p>
             </div>
 
             {/* Contador y garantía de servicio */}
             <div className="flex flex-col lg:items-end text-left lg:text-right font-sans text-xs text-[#8A8A92]">
-              <span className={`font-semibold text-sm ${isPalacio ? 'text-[#FF6B00]' : 'text-[#C8A96E]'}`}>
+              <span className="font-semibold text-sm text-[#C8A96E]">
                 {filteredProducts.length} {filteredProducts.length === 1 ? 'modelo disponible' : 'modelos disponibles'}
               </span>
               <span className="text-xs text-[#A0A0A5] mt-1">
@@ -129,15 +119,13 @@ export default function CatalogoPage() {
                     <span>{f.label}</span>
                     <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium transition-colors ${
                       isActive
-                        ? isPalacio
-                          ? 'bg-[#FF6B00]/25 text-[#FF6B00]'
-                          : 'bg-[#C8A96E]/25 text-[#C8A96E]'
+                        ? 'bg-[#C8A96E]/25 text-[#C8A96E]'
                         : 'bg-white/5 text-[#8A8A92]'
                     }`}>
                       {count}
                     </span>
                     {isActive && (
-                      <span className={`absolute bottom-0 left-0 right-0 h-[2px] ${isPalacio ? 'bg-[#FF6B00]' : 'bg-[#C8A96E]'}`} />
+                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C8A96E]" />
                     )}
                   </button>
                 );
@@ -151,9 +139,7 @@ export default function CatalogoPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Buscar por nombre o material..."
-                className={`w-full bg-[#141419] border border-white/15 text-[#F4F1EA] pl-9 pr-4 py-2 rounded-lg font-sans text-xs outline-none transition-colors placeholder:text-[#8A8A92] ${
-                  isPalacio ? 'focus:border-[#FF6B00]' : 'focus:border-[#C8A96E]'
-                }`}
+                className="w-full bg-[#141419] border border-white/15 text-[#F4F1EA] pl-9 pr-4 py-2 rounded-lg font-sans text-xs outline-none transition-colors placeholder:text-[#8A8A92] focus:border-[#C8A96E]"
               />
               <svg
                 className="w-4 h-4 text-[#8A8A92] absolute left-3 top-1/2 -translate-y-1/2"
