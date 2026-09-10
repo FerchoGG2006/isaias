@@ -13,10 +13,10 @@ export const LogoIsaias: React.FC<LogoIsaiasProps> = ({ className = '', size = '
   const isSm = size === 'sm';
 
   const containerSize = isLg
-    ? 'w-72 h-48 sm:w-[480px] sm:h-[260px]'
+    ? 'w-56 h-36 sm:w-72 sm:h-44'
     : isSm
     ? 'w-10 h-10'
-    : 'w-48 h-32 sm:w-64 sm:h-40';
+    : 'w-44 h-28 sm:w-56 sm:h-36';
 
   return (
     <div className={`flex flex-col items-center justify-center text-center ${className}`}>
@@ -27,7 +27,7 @@ export const LogoIsaias: React.FC<LogoIsaiasProps> = ({ className = '', size = '
           alt="Variedades Isaías Logo"
           fill
           priority
-          className="object-contain drop-shadow-[0_0_30px_rgba(0,210,255,0.3)]"
+          className="object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
         />
       </div>
     </div>

@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Center: Clean & Spaced Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
+        <nav className="hidden lg:flex items-center gap-7 xl:gap-9 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
           <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
             Catálogo
           </Link>
@@ -57,11 +57,8 @@ export const Header: React.FC = () => {
           <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
             Técnicas
           </Link>
-          <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
-            Galería
-          </Link>
           <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
-            Nosotros
+            Taller
           </Link>
           <Link href="/#contacto" className="hover:text-[#C8A96E] transition-colors">
             Contacto
@@ -139,11 +136,8 @@ export const Header: React.FC = () => {
             <Link href="/tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Técnicas
             </Link>
-            <Link href="/#galeria" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Galería
-            </Link>
             <Link href="/#taller" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Nosotros
+              Taller
             </Link>
             <Link href="/#contacto" onClick={closeMobileMenu} className="py-2 hover:text-[#C8A96E]">
               Contacto

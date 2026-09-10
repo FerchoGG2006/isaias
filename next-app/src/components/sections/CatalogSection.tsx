@@ -121,21 +121,21 @@ export const CatalogSection: React.FC = () => {
         {/* Horizontal Carousel Track */}
         <div
           ref={carouselRef}
-          className="flex items-stretch gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-2 -mx-2 px-2"
+          className="flex items-stretch gap-5 overflow-x-auto scrollbar-none snap-x snap-mandatory py-2 -mx-2 px-2"
           style={{ scrollBehavior: 'smooth' }}
         >
           {CATEGORY_CARDS.map((cat) => (
             <Link
               key={cat.id}
               href={cat.href}
-              className="group relative w-[280px] sm:w-[320px] md:w-[340px] aspect-[3/4] shrink-0 snap-start rounded-xs overflow-hidden border border-white/10 hover:border-[#C8A96E] transition-all duration-500 shadow-xl flex flex-col justify-end p-6 sm:p-7 cursor-pointer bg-[#0e0e11]"
+              className="group relative w-[220px] sm:w-[250px] md:w-[270px] aspect-[4/5] shrink-0 snap-start rounded-xs overflow-hidden border border-white/10 hover:border-[#C8A96E]/80 transition-all duration-300 shadow-lg flex flex-col justify-end p-5 cursor-pointer bg-[#0e0e11]"
             >
               {/* Background Image */}
               <Image
                 src={cat.image}
                 alt={cat.name}
                 fill
-                sizes="(max-width: 768px) 280px, 340px"
+                sizes="(max-width: 768px) 220px, 270px"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
               />
 
@@ -144,18 +144,25 @@ export const CatalogSection: React.FC = () => {
 
               {/* Card Bottom Content */}
               <div className="relative z-10 flex flex-col justify-end w-full">
-                <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#F4F1EA] tracking-tight leading-tight group-hover:text-[#C8A96E] transition-colors">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-[#C8A96E] mb-1">
+                  {cat.tag}
+                </span>
+
+                <h3 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA] tracking-tight leading-tight group-hover:text-[#C8A96E] transition-colors">
                   {cat.name}
                 </h3>
 
-                <p className="font-sans text-xs text-[#D0CFC9] leading-relaxed font-light mt-1.5 mb-4">
+                <p className="font-sans text-[11px] text-[#A0A0A5] leading-relaxed font-light mt-1 mb-3 line-clamp-2">
                   {cat.subtitle}
                 </p>
 
                 {/* Direct Action */}
-                <div className="pt-2 border-t border-white/10">
-                  <span className="font-sans text-xs uppercase tracking-wider bg-[#C8A96E] group-hover:bg-[#B8985D] text-[#0C0D10] font-bold px-4 py-2.5 rounded-xs transition-colors block text-center shadow-md">
-                    Ver prendas →
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-sans">
+                  <span className="uppercase tracking-wider text-[#C8A96E] group-hover:underline font-semibold inline-flex items-center gap-1">
+                    Ver colección →
+                  </span>
+                  <span className="text-[#8A8A92] text-[10px] hidden sm:inline">
+                    {cat.itemCount}
                   </span>
                 </div>
               </div>
@@ -164,19 +171,19 @@ export const CatalogSection: React.FC = () => {
         </div>
 
         {/* Clean Direct Access to Full Catalog */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl font-bold text-[#F4F1EA] tracking-tight">
-              ¿Buscas una prenda o corte en específico?
+            <h3 className="font-sans text-lg sm:text-xl font-bold text-[#F4F1EA] tracking-tight">
+              ¿Buscas una prenda o modelo en específico?
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#8A8A92] font-light mt-1">
-              Explora nuestro catálogo completo con filtros por categoría, colores y especificaciones técnicas.
+            <p className="font-sans text-xs text-[#8A8A92] font-light mt-0.5">
+              Explora nuestro catálogo completo con filtros por prenda, colores y especificaciones técnicas.
             </p>
           </div>
 
           <Link
             href="/catalogo"
-            className="font-sans text-xs uppercase tracking-[0.16em] font-bold px-7 py-3.5 rounded-xs shadow-lg transition-all self-start sm:self-auto shrink-0 text-center bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10]"
+            className="font-sans text-xs uppercase tracking-[0.14em] font-bold px-6 py-3 rounded-xs shadow-md transition-all self-start sm:self-auto shrink-0 text-center bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10]"
           >
             Ver Catálogo Completo →
           </Link>
