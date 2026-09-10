@@ -9,7 +9,6 @@ import { PRODUCTS } from '@/data/products';
 import { ProductHotspotModal } from '@/components/catalog/ProductHotspotModal';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 import { Product } from '@/domain';
-import { useQuote } from '@/context/QuoteContext';
 
 const EDITORIAL_FILTERS = [
   { id: 'todos', label: 'Todas las Prendas' },
@@ -20,19 +19,9 @@ const EDITORIAL_FILTERS = [
 ];
 
 export default function CatalogoPage() {
-  const { businessId, setBusinessId } = useQuote();
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const activeBrand = selectedBrand ?? businessId;
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
-  const handleBrandChange = (brand: string) => {
-    setSelectedBrand(brand);
-    if (brand === 'isaias' || brand === 'palacio') {
-      setBusinessId(brand);
-    }
-  };
 
   // Contador de productos por categoría para las pestañas
   const categoryCounts = useMemo(() => {
@@ -42,22 +31,15 @@ export default function CatalogoPage() {
     EDITORIAL_FILTERS.forEach((f) => {
       if (f.id !== 'todos') {
         counts[f.id] = PRODUCTS.filter((p) => {
-          const matchesBrand = activeBrand === 'todos' || p.businessId === activeBrand;
-          const matchesCat = p.categorySlug === f.id || p.categoryId === f.id;
-          return matchesBrand && matchesCat;
+          return p.categorySlug === f.id || p.categoryId === f.id;
         }).length;
       }
     });
     return counts;
-  }, [activeBrand]);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
-      // Filtrar por marca/empresa
-      if (activeBrand !== 'todos' && product.businessId !== activeBrand) {
-        return false;
-      }
-
       // Filtrar por categoría
       if (activeCategory !== 'todos') {
         const matchesCat =
@@ -79,7 +61,7 @@ export default function CatalogoPage() {
 
       return true;
     });
-  }, [activeBrand, activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery]);
 
   return (
     <>
@@ -91,14 +73,10 @@ export default function CatalogoPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
-                {activeBrand === 'palacio'
-                  ? 'Catálogo El Palacio de la Sublimación'
-                  : 'Elige tu prenda y cotiza en minutos.'}
+                Elige tu prenda y cotiza en minutos.
               </h1>
               <p className="font-sans text-sm text-[#A0A0A5] mt-2 max-w-xl">
-                {activeBrand === 'palacio'
-                  ? 'Mugs cerámicos y mágicos, termos de aluminio, indumentaria deportiva full print y accesorios con estampado fotográfico permanente.'
-                  : 'Ropa y accesorios de excelente horma y confección local, listos para estampar o bordar a tu gusto.'}
+                Ropa y accesorios de excelente horma y confección local en Valledupar, listos para estampar o bordar a tu gusto.
               </p>
             </div>
 
@@ -111,46 +89,6 @@ export default function CatalogoPage() {
                 ✓ Pedidos individuales y al por mayor · Envíos a todo el país
               </span>
             </div>
-          </div>
-
-          {/* Selector de Marca / Taller Multiempresa */}
-          <div className="pt-6 pb-2 flex items-center gap-2 overflow-x-auto text-xs font-mono scrollbar-none">
-            <span className="text-[#8A8A92] uppercase tracking-wider text-[11px] mr-1 shrink-0">Taller:</span>
-            <button
-              type="button"
-              onClick={() => handleBrandChange('todos')}
-              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer shrink-0 ${
-                activeBrand === 'todos'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold border-[#C8A96E] shadow-sm'
-                  : 'bg-[#141419] text-[#8A8A92] border-white/10 hover:border-white/30 hover:text-[#F4F1EA]'
-              }`}
-            >
-              Todo el Catálogo
-            </button>
-            <button
-              type="button"
-              onClick={() => handleBrandChange('isaias')}
-              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                activeBrand === 'isaias'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold border-[#C8A96E] shadow-sm'
-                  : 'bg-[#141419] text-[#8A8A92] border-white/10 hover:border-white/30 hover:text-[#F4F1EA]'
-              }`}
-            >
-              <span>Variedades Isaías</span>
-              <span className="text-[10px] opacity-75">(Textil & Bordado)</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleBrandChange('palacio')}
-              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                activeBrand === 'palacio'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold border-[#C8A96E] shadow-sm'
-                  : 'bg-[#141419] text-[#8A8A92] border-white/10 hover:border-white/30 hover:text-[#F4F1EA]'
-              }`}
-            >
-              <span>El Palacio</span>
-              <span className="text-[10px] opacity-75">(Sublimación & Merch)</span>
-            </button>
           </div>
 
           {/* 2. NAVEGACIÓN Y FILTROS POR SUBSECCIÓN CON CONTADORES */}

@@ -6,39 +6,25 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useQuote } from '@/context/QuoteContext';
 import { LogoIsaias } from '@/components/ui/LogoIsaias';
-import { LogoPalacio } from '@/components/ui/LogoPalacio';
 import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 
 export const HeroSection: React.FC = () => {
-  const { businessId, business, getWhatsAppUrl } = useQuote();
+  const { business, getWhatsAppUrl } = useQuote();
   const { url: waUrl } = getWhatsAppUrl();
-
-  const isIsaias = businessId === 'isaias';
 
   return (
     <section id="inicio" className="relative w-full min-h-[75vh] bg-[#0C0D10] overflow-hidden text-[#F4F1EA] flex items-center justify-center py-10 sm:py-14">
       
       {/* 1. WORKSHOP BACKGROUND PHOTO */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {isIsaias ? (
-          <Image
-            src="/assets/hero-main.jpg"
-            alt="Taller de confección y personalización en Valledupar"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center opacity-50 brightness-90 contrast-[1.05]"
-          />
-        ) : (
-          <video
-            src="/assets/palacio-hero.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-60 brightness-90 contrast-[1.05]"
-          />
-        )}
+        <Image
+          src="/assets/hero-main.jpg"
+          alt="Taller de confección y personalización en Valledupar"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-50 brightness-90 contrast-[1.05]"
+        />
 
         {/* Capa de difuminado sutil para legibilidad del texto */}
         <div className="absolute inset-0 bg-black/55 bg-gradient-to-t from-[#0C0D10]/70 via-transparent to-[#0C0D10]/30" />
@@ -47,31 +33,21 @@ export const HeroSection: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-b from-[#C8A96E]/10 via-transparent to-transparent rounded-full blur-[140px]" />
       </div>
 
-      {/* 2. SINGLE STANDALONE LOGO PER TENANT */}
+      {/* 2. STANDALONE LOGO VARIEDADES ISAÍAS */}
       <div className="wrap relative z-10 w-full flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
         
-        {/* Standalone Logo Display (1 Logo per Tenant View) */}
         <motion.div
-          key={businessId}
           initial={{ opacity: 0, scale: 0.94, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8 flex flex-col items-center justify-center"
         >
-          {isIsaias ? (
-            /* TENANT 1: VARIEDADES ISAÍAS STANDALONE LOGO */
-            <LogoIsaias size="lg" />
-          ) : (
-            /* TENANT 2: EL PALACIO DE LA SUBLIMACIÓN STANDALONE LOGO */
-            <LogoPalacio size="lg" />
-          )}
+          <LogoIsaias size="lg" />
         </motion.div>
 
         {/* Accessible H1 for SEO & Screen Readers */}
         <h1 className="sr-only">
-          {isIsaias
-            ? 'Variedades Isaías — Confección y personalización textil en Valledupar'
-            : 'El Palacio de la Sublimación — Sublimación fotográfica 4K y merchandising'}
+          Variedades Isaías — Confección y personalización textil en Valledupar
         </h1>
 
 

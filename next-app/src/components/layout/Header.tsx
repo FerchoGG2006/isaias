@@ -11,8 +11,6 @@ export const Header: React.FC = () => {
     setIsQuoteDrawerOpen,
     totalUnits,
     business,
-    businessId,
-    setBusinessId,
   } = useQuote();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,32 +30,19 @@ export const Header: React.FC = () => {
         <Link href="/" className="flex items-center gap-3 group shrink-0">
           <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0 group-hover:scale-105 transition-transform bg-[#141419] shadow-md flex items-center justify-center p-0.5">
             <Image
-              src={business.logoUrl || '/assets/logo-isaias-3.png'}
-              alt={business.name}
+              src="/assets/logo-isaias-3.png"
+              alt="Variedades Isaías"
               fill
               className="object-contain p-1"
             />
           </div>
           <div className="flex flex-col uppercase font-sans font-extrabold tracking-wider leading-none">
-            {business.id === 'palacio' ? (
-              <>
-                <span className="text-xs sm:text-[13px] text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
-                  El Palacio
-                </span>
-                <span className="text-[10px] sm:text-[11px] text-[#C8A96E] tracking-widest mt-0.5">
-                  Sublimación
-                </span>
-              </>
-            ) : (
-              <>
-                <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
-                  Variedades
-                </span>
-                <span className="text-xs sm:text-sm text-[#C8A96E] mt-0.5">
-                  Isaías
-                </span>
-              </>
-            )}
+            <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+              Variedades
+            </span>
+            <span className="text-xs sm:text-sm text-[#C8A96E] mt-0.5">
+              Isaías
+            </span>
           </div>
         </Link>
 
@@ -83,34 +68,8 @@ export const Header: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Right: Tenant Switcher & Circular Action Icons */}
+        {/* Right: Circular Action Icons */}
         <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          
-          {/* Dual-Tenant Switcher Pill */}
-          <div className="flex items-center bg-[#141419] border border-white/15 rounded-full p-0.5 sm:p-1 font-mono text-[9px] sm:text-[10px] tracking-wider uppercase">
-            <button
-              type="button"
-              onClick={() => setBusinessId('isaias')}
-              className={`px-2.5 sm:px-3 py-1 rounded-full transition-all cursor-pointer ${
-                businessId === 'isaias'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold shadow-md'
-                  : 'text-[#8A8A92] hover:text-[#F4F1EA]'
-              }`}
-            >
-              Isaías
-            </button>
-            <button
-              type="button"
-              onClick={() => setBusinessId('palacio')}
-              className={`px-2.5 sm:px-3 py-1 rounded-full transition-all cursor-pointer ${
-                businessId === 'palacio'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-bold shadow-md'
-                  : 'text-[#8A8A92] hover:text-[#F4F1EA]'
-              }`}
-            >
-              El Palacio
-            </button>
-          </div>
 
           {/* WhatsApp Circular Icon Button */}
           <a
@@ -170,30 +129,6 @@ export const Header: React.FC = () => {
       {/* Mobile Navigation Dropdown */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-[#141419]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs text-[#8A8A92]">
-            <span>TALLER / MARCA:</span>
-            <div className="flex items-center bg-[#0C0D10] p-1 rounded-full border border-white/10">
-              <button
-                type="button"
-                onClick={() => setBusinessId('isaias')}
-                className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all ${
-                  businessId === 'isaias' ? 'bg-[#C8A96E] text-[#0C0D10] font-bold' : 'text-[#8A8A92]'
-                }`}
-              >
-                Isaías
-              </button>
-              <button
-                type="button"
-                onClick={() => setBusinessId('palacio')}
-                className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all ${
-                  businessId === 'palacio' ? 'bg-[#C8A96E] text-[#0C0D10] font-bold' : 'text-[#8A8A92]'
-                }`}
-              >
-                El Palacio
-              </button>
-            </div>
-          </div>
-
           <nav className="flex flex-col gap-3 font-sans text-xs uppercase tracking-[0.16em] text-[#F4F1EA]">
             <Link href="/catalogo" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Catálogo
