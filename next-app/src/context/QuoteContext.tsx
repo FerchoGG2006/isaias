@@ -66,7 +66,24 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const [isQuoteDrawerOpen, setIsQuoteDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [businessId, setBusinessIdState] = useState<string>(DEFAULT_BUSINESS_ID);
+  const [businessId, setBusinessIdState] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const urlTenant = params.get('empresa') || params.get('tenant');
+        if (urlTenant === 'palacio' || urlTenant === 'isaias') {
+          return urlTenant;
+        }
+        const saved = localStorage.getItem('vi_business_id');
+        if (saved === 'palacio' || saved === 'isaias') {
+          return saved;
+        }
+      } catch {
+        // Ignorar
+      }
+    }
+    return DEFAULT_BUSINESS_ID;
+  });
 
   const setBusinessId = (id: string) => {
     setBusinessIdState(id);
@@ -86,6 +103,15 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     ...baseBusiness,
     whatsappPhone: customPhone || baseBusiness.whatsappPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '',
   };
+
+  // Sincronizar colores dinámicos del tenant
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-tenant', business.id);
+      document.documentElement.style.setProperty('--brand-accent', business.primaryColor);
+      document.documentElement.style.setProperty('--brand-hover', business.accentHoverColor);
+    }
+  }, [business.id, business.primaryColor, business.accentHoverColor]);
 
   const setCustomPhone = (phone: string) => {
     const clean = phone.replace(/\D/g, '');

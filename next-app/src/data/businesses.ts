@@ -15,6 +15,8 @@ export const BUSINESSES: Record<string, Business> = {
     whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '573105634509',
     email: 'contacto@variedadesisaias.com',
     logoUrl: '/assets/logo-isaias-3.png',
+    primaryColor: '#C8A96E',
+    accentHoverColor: '#dbbe82',
     specialties: [
       'Confección en tela fresca piel de durazno',
       'Estampado reflectivo de alta visibilidad',
@@ -38,6 +40,8 @@ export const BUSINESSES: Record<string, Business> = {
     whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '573105634509',
     email: 'contacto@elpalaciodelasublimacion.com',
     logoUrl: '/assets/logo-palacio.png',
+    primaryColor: '#FF6B00',
+    accentHoverColor: '#ea580c',
     specialties: [
       'Sublimación fotográfica 4K',
       'Mugs cerámicos y mágicos',

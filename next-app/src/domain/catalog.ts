@@ -16,6 +16,8 @@ export interface Business {
   whatsappPhone: string;
   email?: string;
   logoUrl: string;
+  primaryColor: string;
+  accentHoverColor: string;
   specialties: string[];
   defaultCurrency: 'COP';
 }

@@ -11,7 +11,11 @@ export const Header: React.FC = () => {
     setIsQuoteDrawerOpen,
     totalUnits,
     business,
+    businessId,
+    setBusinessId,
   } = useQuote();
+
+  const isPalacio = businessId === 'palacio';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,47 +27,89 @@ export const Header: React.FC = () => {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0C0D10]/90 backdrop-blur-xl border-b border-white/10 transition-all">
+    <header className="sticky top-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-b border-white/10 transition-all">
+      
+      {/* Multi-Tenant Top Bar: Identidad Clara y Conmutador de Empresa */}
+      <div className="bg-[#08080A] border-b border-white/10 py-1.5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between text-[11px] font-mono">
+          <div className="flex items-center gap-2">
+            <span className="text-[#8A8A92] uppercase tracking-wider text-[10px]">Catálogo Activo:</span>
+            <span className="font-bold text-[#F4F1EA] flex items-center gap-1.5">
+              <span className={`w-2 h-2 rounded-full ${isPalacio ? 'bg-[#FF6B00]' : 'bg-[#C8A96E]'}`} />
+              {business.name}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setBusinessId(isPalacio ? 'isaias' : 'palacio')}
+            className={`flex items-center gap-1.5 px-3 py-0.5 rounded-full border transition-all cursor-pointer font-sans text-[11px] ${
+              isPalacio
+                ? 'border-[#C8A96E]/40 text-[#C8A96E] hover:bg-[#C8A96E]/10'
+                : 'border-[#FF6B00]/40 text-[#FF6B00] hover:bg-[#FF6B00]/10'
+            }`}
+          >
+            <span>Ver {isPalacio ? 'Variedades Isaías (Confección Textil)' : 'El Palacio de la Sublimación (Naranja)'}</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         
         {/* Left: Brand Logo & Name */}
         <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0 group-hover:scale-105 transition-transform bg-[#141419] shadow-md flex items-center justify-center p-0.5">
+          <div className={`relative w-10 h-10 rounded-full overflow-hidden border shrink-0 group-hover:scale-105 transition-transform bg-[#141419] shadow-md flex items-center justify-center p-0.5 ${
+            isPalacio ? 'border-[#FF6B00]/50' : 'border-white/20'
+          }`}>
             <Image
-              src="/assets/logo-isaias-3.png"
-              alt="Variedades Isaías"
+              src={business.logoUrl || (isPalacio ? '/assets/logo-palacio.png' : '/assets/logo-isaias-3.png')}
+              alt={business.name}
               fill
               className="object-contain p-1"
             />
           </div>
           <div className="flex flex-col uppercase font-sans font-extrabold tracking-wider leading-none">
-            <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
-              Variedades
-            </span>
-            <span className="text-xs sm:text-sm text-[#C8A96E] mt-0.5">
-              Isaías
-            </span>
+            {isPalacio ? (
+              <>
+                <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#FF6B00] transition-colors">
+                  El Palacio
+                </span>
+                <span className="text-xs sm:text-sm text-[#FF6B00] mt-0.5">
+                  Sublimación
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                  Variedades
+                </span>
+                <span className="text-xs sm:text-sm text-[#C8A96E] mt-0.5">
+                  Isaías
+                </span>
+              </>
+            )}
           </div>
         </Link>
 
         {/* Center: Clean & Spaced Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
-          <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/catalogo" className={`transition-colors ${isPalacio ? 'hover:text-[#FF6B00]' : 'hover:text-[#C8A96E]'}`}>
             Catálogo
           </Link>
-          <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/servicios" className={`transition-colors ${isPalacio ? 'hover:text-[#FF6B00]' : 'hover:text-[#C8A96E]'}`}>
             Servicios
           </Link>
-          <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/tecnicas" className={`transition-colors ${isPalacio ? 'hover:text-[#FF6B00]' : 'hover:text-[#C8A96E]'}`}>
             Técnicas
           </Link>
-          <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/#galeria" className={`transition-colors ${isPalacio ? 'hover:text-[#FF6B00]' : 'hover:text-[#C8A96E]'}`}>
             Galería
           </Link>
-          <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/#taller" className={`transition-colors ${isPalacio ? 'hover:text-[#FF6B00]' : 'hover:text-[#C8A96E]'}`}>
             Nosotros
           </Link>
-          <Link href="/#contacto" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/#contacto" className={`transition-colors ${isPalacio ? 'hover:text-[#FF6B00]' : 'hover:text-[#C8A96E]'}`}>
             Contacto
           </Link>
         </nav>

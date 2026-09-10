@@ -149,7 +149,9 @@ export const CatalogSection: React.FC = () => {
           <div className="flex items-center gap-4">
             <Link
               href="/catalogo"
-              className="hidden sm:inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#C8A96E] hover:underline font-semibold"
+              className={`hidden sm:inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider hover:underline font-semibold ${
+                isPalacio ? 'text-[#FF6B00]' : 'text-[#C8A96E]'
+              }`}
             >
               <span>Ver todo el catálogo</span>
               <span>→</span>
@@ -159,7 +161,9 @@ export const CatalogSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => scrollCarousel('left')}
-                className="w-10 h-10 rounded-full bg-[#141419] border border-white/15 hover:border-[#C8A96E] text-[#F4F1EA] hover:text-[#C8A96E] flex items-center justify-center transition-all shadow-md cursor-pointer"
+                className={`w-10 h-10 rounded-full bg-[#141419] border border-white/15 text-[#F4F1EA] flex items-center justify-center transition-all shadow-md cursor-pointer ${
+                  isPalacio ? 'hover:border-[#FF6B00] hover:text-[#FF6B00]' : 'hover:border-[#C8A96E] hover:text-[#C8A96E]'
+                }`}
                 title="Anterior"
                 aria-label="Categoría anterior"
               >
@@ -168,7 +172,9 @@ export const CatalogSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => scrollCarousel('right')}
-                className="w-10 h-10 rounded-full bg-[#141419] border border-white/15 hover:border-[#C8A96E] text-[#F4F1EA] hover:text-[#C8A96E] flex items-center justify-center transition-all shadow-md cursor-pointer"
+                className={`w-10 h-10 rounded-full bg-[#141419] border border-white/15 text-[#F4F1EA] flex items-center justify-center transition-all shadow-md cursor-pointer ${
+                  isPalacio ? 'hover:border-[#FF6B00] hover:text-[#FF6B00]' : 'hover:border-[#C8A96E] hover:text-[#C8A96E]'
+                }`}
                 title="Siguiente"
                 aria-label="Siguiente categoría"
               >
@@ -237,7 +243,11 @@ export const CatalogSection: React.FC = () => {
 
           <Link
             href="/catalogo"
-            className="font-sans text-xs uppercase tracking-[0.16em] bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10] font-bold px-7 py-3.5 rounded-xs shadow-lg transition-all self-start sm:self-auto shrink-0 text-center"
+            className={`font-sans text-xs uppercase tracking-[0.16em] font-bold px-7 py-3.5 rounded-xs shadow-lg transition-all self-start sm:self-auto shrink-0 text-center ${
+              isPalacio
+                ? 'bg-[#FF6B00] hover:bg-[#ea580c] text-white'
+                : 'bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10]'
+            }`}
           >
             Ver Catálogo Completo →
           </Link>
