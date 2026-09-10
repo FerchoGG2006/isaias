@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useQuote } from '@/context/QuoteContext';
+import { PrintableQuoteSheet } from './PrintableQuoteSheet';
 
 export const QuotePageContent: React.FC = () => {
   const {
@@ -22,6 +23,7 @@ export const QuotePageContent: React.FC = () => {
   } = useQuote();
 
   const [copied, setCopied] = useState(false);
+  const [isPrintSheetOpen, setIsPrintSheetOpen] = useState(false);
 
   const { url, message, isConfigured } = getWhatsAppUrl();
 
@@ -351,6 +353,17 @@ export const QuotePageContent: React.FC = () => {
 
                 <button
                   type="button"
+                  onClick={() => setIsPrintSheetOpen(true)}
+                  className="w-full font-sans text-xs uppercase tracking-wider bg-[#1C1E26] hover:bg-[#252833] border border-[#C8A96E]/40 text-[#F4F1EA] py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                >
+                  <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                  </svg>
+                  <span>Hoja de Cotización Formal (PDF / Imprimir)</span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={handleCopy}
                   className="w-full font-sans text-xs uppercase tracking-wider bg-[#141419] hover:bg-[#1a1a22] border border-white/15 text-[#D0CFC9] hover:text-[#F4F1EA] py-3 rounded-xl transition-colors cursor-pointer"
                 >
@@ -365,6 +378,19 @@ export const QuotePageContent: React.FC = () => {
           </div>
 
         </div>
+      )}
+
+      {/* Modal Imprimible de Cotización Formal */}
+      {isPrintSheetOpen && (
+        <PrintableQuoteSheet
+          quoteItems={quoteItems}
+          customer={customer}
+          generalNotes={generalNotes}
+          totalUnits={totalUnits}
+          estimatedTotal={estimatedTotal}
+          business={business}
+          onClose={() => setIsPrintSheetOpen(false)}
+        />
       )}
 
     </div>

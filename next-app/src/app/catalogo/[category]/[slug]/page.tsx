@@ -73,8 +73,47 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     (p) => (p.categorySlug === categorySlug || p.categoryId === product.categoryId) && p.id !== product.id
   ).slice(0, 3);
 
+  const business = getBusiness(product.businessId);
+
+  // Schema.org Product Rich Snippet
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    image: product.images.map((img) =>
+      img.startsWith('http') ? img : `https://variedadesisaias.com${img}`
+    ),
+    description: product.description,
+    sku: product.code || product.id,
+    mpn: product.code || product.id,
+    brand: {
+      '@type': 'Brand',
+      name: business.name,
+    },
+    category: category?.name || 'Prendas y Personalización',
+    offers: {
+      '@type': 'Offer',
+      url: `https://variedadesisaias.com/catalogo/${categorySlug}/${productSlug}`,
+      priceCurrency: 'COP',
+      price: product.pricing.basePrice || 0,
+      priceValidUntil: '2026-12-31',
+      availability: product.inStock
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/PreOrder',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: {
+        '@type': 'Organization',
+        name: business.name,
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <Header />
       <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-36 sm:pb-44">
         

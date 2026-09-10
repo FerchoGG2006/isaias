@@ -5,6 +5,7 @@ import { Product, ProductVariant, DesignFileAttachment } from '@/domain';
 import { TECHNIQUES } from '@/data/techniques';
 import { SizeDistributionSelector } from './SizeDistributionSelector';
 import { FileUploader } from './FileUploader';
+import { LiveMockupPreview } from './LiveMockupPreview';
 import {
   buildProductQuoteItem,
   calculateUnitPrice,
@@ -564,11 +565,21 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                   </div>
 
                   {designDeliveryMode === 'upload' && (
-                    <div className="mt-1">
+                    <div className="mt-1 flex flex-col gap-3">
                       <FileUploader
                         attachment={attachment}
                         onAttachmentChange={(att) => setAttachment(att)}
                       />
+
+                      {(attachment?.previewUrl || attachment?.fileUrl) && (
+                        <LiveMockupPreview
+                          productImage={selectedVariant?.image || product.featuredImage || product.images[0] || '/assets/hero-main.jpg'}
+                          productTitle={product.title}
+                          logoUrl={attachment.previewUrl || attachment.fileUrl}
+                          fileName={attachment.name}
+                          onRemoveLogo={() => setAttachment(undefined)}
+                        />
+                      )}
                     </div>
                   )}
                 </div>
