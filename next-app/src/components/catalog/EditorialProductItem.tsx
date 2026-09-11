@@ -97,68 +97,60 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
       </div>
 
       {/* 2. Editorial Product Caption */}
-      <div className="pt-4 pb-2 flex flex-col gap-1.5">
-        
-
+      <div className="pt-3 pb-1 flex flex-col gap-1">
         {/* Title con enlace directo a la ficha del producto */}
         <Link href={productHref} className="block group-hover:text-[#C8A96E] transition-colors">
-          <h3 className="font-sans font-bold text-lg sm:text-xl text-[#F4F1EA] tracking-tight leading-snug">
+          <h3 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA] tracking-tight leading-snug">
             {product.title}
           </h3>
         </Link>
 
-        {/* Precio visible y transparente para clientes adultos */}
-        <div className="flex items-baseline gap-2 pt-0.5">
-          {product.pricing.type === 'fixed' && product.pricing.basePrice ? (
-            <span className="font-mono font-bold text-sm sm:text-base text-[#C8A96E]">
-              ${product.pricing.basePrice.toLocaleString('es-CO')} COP
-            </span>
-          ) : (
-            <span className="font-mono text-xs text-[#C8A96E] font-medium">
-              Precio bajo cotización
-            </span>
-          )}
-          {product.pricing.bulkDiscounts && product.pricing.bulkDiscounts.length > 0 && (
-            <span className="text-[11px] text-[#A0A0A5] font-sans">
-              (precio especial por docena)
-            </span>
-          )}
-        </div>
-
-        {/* Material en lenguaje claro y fresco */}
-        <p className="font-sans text-xs text-[#B5B5BC]">
-          {product.materialName ? `Tela: ${product.materialName}` : 'Confección suave y resistente'}
+        {/* Material y acabado en una sola línea sutil */}
+        <p className="font-sans text-xs text-[#A0A0A5] line-clamp-1">
+          {product.materialName ? product.materialName : 'Confección en taller propio'}
         </p>
 
-        {/* Técnica en lenguaje claro */}
-        <p className="font-sans text-[11px] text-[#C8A96E] flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E]" />
-          <span>Personalizable con estampado o bordado</span>
-        </p>
+        {/* Precio visible + Descuento + Acción rápida compacta */}
+        <div className="flex items-center justify-between gap-2 pt-1.5 border-t border-white/10 mt-1">
+          <div className="flex items-baseline gap-1.5">
+            {product.pricing.type === 'fixed' && product.pricing.basePrice ? (
+              <span className="font-mono font-bold text-sm sm:text-base text-[#C8A96E]">
+                ${product.pricing.basePrice.toLocaleString('es-CO')}
+              </span>
+            ) : (
+              <span className="font-mono text-xs text-[#C8A96E] font-medium">
+                Bajo cotización
+              </span>
+            )}
+            {product.pricing.bulkDiscounts && product.pricing.bulkDiscounts.length > 0 && (
+              <span className="text-[10px] text-[#8A8A92] font-sans">
+                (x docena)
+              </span>
+            )}
+          </div>
 
-        {/* Enlace de acción rápida: Personalizar y Medidas */}
-        <div className="pt-2 flex items-center justify-between text-xs border-t border-white/10 mt-1">
-          <Link
-            href={productHref}
-            className="font-sans text-xs font-semibold text-[#F4F1EA] hover:text-[#C8A96E] transition-colors flex items-center gap-1.5 group-hover:underline"
-          >
-            <span>Elegir Talla y Cotizar</span>
-            <span className="text-[#C8A96E]">→</span>
-          </Link>
-
-          {onQuickView && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onQuickView(product);
-              }}
-              className="font-sans text-xs text-[#A0A0A5] hover:text-[#C8A96E] transition-colors cursor-pointer underline underline-offset-2"
-              aria-label={`Ver guía de medidas de ${product.title}`}
+          <div className="flex items-center gap-3 text-xs">
+            {onQuickView && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onQuickView(product);
+                }}
+                className="font-sans text-[11px] text-[#8A8A92] hover:text-[#C8A96E] transition-colors cursor-pointer"
+                aria-label={`Ver guía de medidas de ${product.title}`}
+              >
+                Medidas
+              </button>
+            )}
+            <Link
+              href={productHref}
+              className="font-sans text-xs font-semibold text-[#F4F1EA] hover:text-[#C8A96E] transition-colors flex items-center gap-1 group-hover:underline"
             >
-              Guía de medidas
-            </button>
-          )}
+              <span>Personalizar</span>
+              <span className="text-[#C8A96E]">→</span>
+            </Link>
+          </div>
         </div>
 
       </div>

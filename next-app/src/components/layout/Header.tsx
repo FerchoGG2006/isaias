@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-b border-white/10 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[68px] flex items-center justify-between gap-6">
         
         {/* Left: Brand Logo & Name */}
         <Link href="/" className="flex items-center gap-3 group shrink-0">
@@ -33,6 +33,7 @@ export const Header: React.FC = () => {
               src="/assets/logo-isaias-3.png"
               alt="Variedades Isaías"
               fill
+              sizes="40px"
               className="object-contain p-1"
             />
           </div>
@@ -54,8 +55,8 @@ export const Header: React.FC = () => {
           <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
             Servicios
           </Link>
-          <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
-            Técnicas
+          <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
+            ¿Cómo pedir?
           </Link>
           <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
             Taller
@@ -133,8 +134,8 @@ export const Header: React.FC = () => {
             <Link href="/servicios" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Servicios
             </Link>
-            <Link href="/tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Técnicas
+            <Link href="/personaliza" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+              ¿Cómo pedir?
             </Link>
             <Link href="/#taller" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
               Taller

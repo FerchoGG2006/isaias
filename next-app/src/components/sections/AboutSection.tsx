@@ -140,7 +140,7 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <p className="font-sans text-xs sm:text-sm text-[#D0CFC9] leading-relaxed font-light">
-            En <strong>Variedades Isaías</strong> producimos directamente cada prenda en nuestro taller propio. Contamos con tecnología de bordado computarizado Wilcom multicabezal, estampado DTF elástico y sublimación fotográfica 4K, garantizando acabados limpios y precios sin intermediarios.
+            En <strong>Variedades Isaías</strong> producimos y personalizamos directamente cada prenda en nuestro taller en Valledupar. Ofrecemos bordado computarizado de alta definición, estampado DTF suave que no se cuartea y sublimación nítida, garantizando acabados impecables y precios directos de taller.
           </p>
 
           {/* Minimal 3-item capability grid */}
@@ -150,7 +150,7 @@ export const AboutSection: React.FC = () => {
                 Bordado 3D
               </span>
               <p className="text-[#8A8A92] text-[11px] font-light leading-snug">
-                Puntada fina Wilcom para polos y dotaciones.
+                Puntada fina y duradera para polos y uniformes.
               </p>
             </div>
 
@@ -159,7 +159,7 @@ export const AboutSection: React.FC = () => {
                 Estampado DTF
               </span>
               <p className="text-[#8A8A92] text-[11px] font-light leading-snug">
-                Fijación molecular suave que no se cuartea.
+                Tacto suave que no se cuartea con las lavadas.
               </p>
             </div>
 
@@ -168,7 +168,7 @@ export const AboutSection: React.FC = () => {
                 Precios Directos
               </span>
               <p className="text-[#8A8A92] text-[11px] font-light leading-snug">
-                Desde 1 prenda hasta pedidos por volumen.
+                Desde 1 prenda hasta pedidos al por mayor.
               </p>
             </div>
           </div>

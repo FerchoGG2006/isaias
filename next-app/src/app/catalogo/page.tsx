@@ -69,11 +69,11 @@ export default function CatalogoPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-12 pb-32">
+      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-8 sm:pt-10 pb-16 sm:pb-20">
         
         {/* 1. FRESH EDITORIAL HEADER */}
-        <section className="wrap mb-10 sm:mb-12">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/10">
+        <section className="wrap mb-8 sm:mb-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
               <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
                 Catálogo de Prendas & Dotaciones
@@ -205,7 +205,7 @@ export default function CatalogoPage() {
         </section>
 
         {/* 4. FOOTER NOTE & BESPOKE PRODUCTION */}
-        <section className="wrap mt-28 sm:mt-36 pt-12 border-t border-white/10">
+        <section className="wrap mt-14 sm:mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 text-xs font-sans text-[#8A8A92]">
             <div className="flex flex-col gap-1 max-w-md">
               <span className="uppercase tracking-[0.16em] text-[#C8A96E] font-medium font-sans text-xs">

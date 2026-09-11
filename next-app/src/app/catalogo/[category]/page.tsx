@@ -31,10 +31,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-12 pb-32">
+      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-8 sm:pt-10 pb-16 sm:pb-20">
         
         {/* 1. ENCABEZADO DE LA SUBSECCIÓN */}
-        <section className="wrap mb-10 sm:mb-12">
+        <section className="wrap mb-8 sm:mb-10">
           
           {/* Breadcrumb refinado y legible */}
           <div className="flex items-center justify-between font-sans text-xs text-[#A0A0A5] mb-6 sm:mb-8">
@@ -113,7 +113,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </section>
 
         {/* 3. FOOTER NOTE */}
-        <section className="wrap mt-28 sm:mt-36 pt-12 border-t border-white/10">
+        <section className="wrap mt-14 sm:mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 text-xs font-sans text-[#8A8A92]">
             <div className="flex flex-col gap-1 max-w-md">
               <span className="uppercase tracking-[0.2em] text-[#C8A96E] font-medium font-mono">

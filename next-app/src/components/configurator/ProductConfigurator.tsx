@@ -212,7 +212,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   return (
     <>
       {/* CONTENEDOR PRINCIPAL: INTERFAZ LIGERA Y DIRECTA */}
-      <div className="flex flex-col gap-5 bg-[#0E1015] border border-white/10 rounded-2xl p-5 sm:p-7 shadow-2xl">
+      <div className="flex flex-col gap-4 sm:gap-5 bg-[#0E1015] border border-white/10 rounded-xl p-4 sm:p-5 shadow-2xl">
 
         {/* PASO 1: COLOR (BOTONES AMPLIOS Y CÓMODOS) */}
         {capabilities.availableColors.length > 0 && (
@@ -604,7 +604,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         </div>
 
         {/* RESUMEN Y BOTÓN PROTAGÓNICO DE WHATSAPP (SIN RODEOS) */}
-        <div className="pt-4 border-t border-white/15 flex flex-col gap-4 bg-[#14151C] p-4 sm:p-5 rounded-2xl">
+        <div className="pt-3.5 border-t border-white/15 flex flex-col gap-3.5 bg-[#14151C] p-4 rounded-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
               <span className="text-sm font-semibold text-[#F4F1EA]">
@@ -656,9 +656,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               <span>Pedir por WhatsApp — Te asesoramos gratis</span>
             </button>
 
-            {/* Microcopia tranquilizadora para adultos */}
-            <p className="text-center font-sans text-xs text-[#A0A0A5] leading-relaxed">
-              ✓ Un asesor humano de nuestro taller en Valledupar te atenderá directamente. Puedes enviarle fotos, logos y preguntas sin ningún compromiso.
+            {/* Microcopia tranquilizadora */}
+            <p className="text-center font-sans text-[11px] text-[#8A8A92] leading-snug">
+              ✓ Asesoría directa de taller en Valledupar. Puedes enviar fotos y resolver dudas sin compromiso.
             </p>
 
             {/* Botón secundario para guardar y seguir viendo */}
@@ -675,7 +675,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
       </div>
 
       {/* BARRA FLOTANTE FIJA INFERIOR (STICKY ACTION BAR) — SOLO MÓVIL */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-t border-[#C8A96E]/30 py-3 px-4 sm:px-8 shadow-2xl animate-in slide-in-from-bottom duration-300">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-t border-[#C8A96E]/30 py-2.5 px-4 sm:px-6 shadow-2xl animate-in slide-in-from-bottom duration-300">
         <div className="wrap flex items-center justify-between gap-4">
           
           {/* Lado izquierdo: Prenda + Talla + Total */}

@@ -115,7 +115,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <Header />
-      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-36 sm:pb-44">
+      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-6 sm:pt-8 pb-28 lg:pb-16">
         
         {/* Breadcrumbs */}
         <div className="wrap mb-8">
@@ -259,7 +259,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
           {/* RELATED PRODUCTS SECTION */}
           {relatedProducts.length > 0 && (
-            <div className="mt-24 pt-16 border-t border-white/10">
+            <div className="mt-14 sm:mt-16 pt-10 border-t border-white/10">
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#F4F1EA] tracking-tight">

@@ -223,25 +223,25 @@ export const QuoteDrawer: React.FC = () => {
               ))}
 
               {/* Artwork Status Selector */}
-              <div className="p-4 bg-[#14151C] border border-white/10 rounded-xs flex flex-col gap-2.5 shadow-sm mt-1">
-                <span className="text-xs font-semibold text-white">¿Tienes listo tu logo o foto?</span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div className="p-3 bg-[#14151C] border border-white/10 rounded-xs flex flex-col gap-2 shadow-sm mt-1">
+                <span className="text-[11px] font-semibold text-white">¿Tienes listo tu logo o foto?</span>
+                <div className="grid grid-cols-2 gap-2 text-[11px]">
                   <button
                     type="button"
                     onClick={() => setArtworkStatus('ready')}
-                    className={`p-2.5 rounded-xs border text-left flex items-center gap-2 transition-all cursor-pointer ${
+                    className={`p-2 rounded-xs border text-left flex items-center gap-1.5 transition-all cursor-pointer ${
                       artworkStatus === 'ready'
                         ? 'bg-[#C8A96E]/15 border-[#C8A96E] text-white font-medium'
                         : 'bg-[#0E1015] border-white/10 text-[#A0A0A5] hover:text-white'
                     }`}
                   >
                     <span>📁</span>
-                    <span>Tengo la foto o logo</span>
+                    <span>Tengo el logo listo</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setArtworkStatus('needs_design')}
-                    className={`p-2.5 rounded-xs border text-left flex items-center gap-2 transition-all cursor-pointer ${
+                    className={`p-2 rounded-xs border text-left flex items-center gap-1.5 transition-all cursor-pointer ${
                       artworkStatus === 'needs_design'
                         ? 'bg-[#C8A96E]/15 border-[#C8A96E] text-white font-medium'
                         : 'bg-[#0E1015] border-white/10 text-[#A0A0A5] hover:text-white'
@@ -309,7 +309,7 @@ export const QuoteDrawer: React.FC = () => {
 
         {/* Footer with totals & WhatsApp CTA */}
         {quoteItems.length > 0 && (
-          <div className="p-5 sm:p-6 bg-[#14151C] border-t border-white/15 flex flex-col gap-4">
+          <div className="p-4 sm:p-5 bg-[#14151C] border-t border-white/15 flex flex-col gap-3">
             <div className="flex flex-col gap-1 text-xs">
               <div className="flex items-center justify-between text-[#A0A0A5]">
                 <span>Total de piezas:</span>
@@ -318,7 +318,7 @@ export const QuoteDrawer: React.FC = () => {
 
               {estimatedTotal !== undefined && (
                 <div className="flex items-center justify-between pt-1 border-t border-white/5">
-                  <span className="text-[#A0A0A5]">Total estimado referencia:</span>
+                  <span className="text-[#A0A0A5]">Total estimado:</span>
                   <span className="font-bold text-base text-[#C8A96E] font-mono">
                     ${estimatedTotal.toLocaleString('es-CO')} COP
                   </span>
@@ -328,7 +328,7 @@ export const QuoteDrawer: React.FC = () => {
 
             <button
               onClick={handleSendWhatsApp}
-              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-xl transition-all shadow-lg shadow-[#25D366]/25 hover:scale-[1.01] flex items-center justify-center gap-2.5 cursor-pointer"
+              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-bold text-xs uppercase tracking-wider py-3.5 px-5 rounded-xl transition-all shadow-lg shadow-[#25D366]/25 hover:scale-[1.01] flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />
@@ -336,16 +336,14 @@ export const QuoteDrawer: React.FC = () => {
               <span>Enviar Pedido por WhatsApp</span>
             </button>
 
-            <Link
-              href="/cotizar"
-              onClick={() => setIsQuoteDrawerOpen(false)}
-              className="text-xs uppercase tracking-wider text-center text-[#C8A96E] hover:text-white py-1 transition-colors font-medium"
-            >
-              Ver página completa de cotización →
-            </Link>
-
             <div className="flex items-center justify-between text-[11px] text-[#A0A0A5]">
-              <span>* Te responderemos de inmediato por chat.</span>
+              <Link
+                href="/cotizar"
+                onClick={() => setIsQuoteDrawerOpen(false)}
+                className="text-[#C8A96E] hover:underline transition-colors font-medium"
+              >
+                Página completa de cotización →
+              </Link>
               <button
                 onClick={clearQuote}
                 className="hover:text-red-400 underline cursor-pointer"

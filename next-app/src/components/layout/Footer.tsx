@@ -56,8 +56,8 @@ export const Footer: React.FC = () => {
             <Link href="/cotizar" className="hover:text-[#C8A96E] transition-colors">
               Solicitud de Cotización
             </Link>
-            <Link href="/#galeria" className="hover:text-[#C8A96E] transition-colors">
-              Trabajos Realizados
+            <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+              Técnicas de Producción
             </Link>
             <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
               Sobre Nuestro Taller
@@ -69,8 +69,9 @@ export const Footer: React.FC = () => {
             <h5 className="font-bold text-[#F4F1EA] uppercase tracking-[0.16em] mb-1">
               Ubicación & Atención
             </h5>
-            <p className="text-[#8A8A92] font-light">Taller de Confección Propia · Colombia</p>
-            <p className="text-[#8A8A92] font-light">Atención: Lunes a Sábado</p>
+            <p className="text-[#8A8A92] font-light">Taller físico en Valledupar, Cesar · Colombia</p>
+            <p className="text-[#8A8A92] font-light">Envíos con guía asegurada a todo el país</p>
+            <p className="text-[#8A8A92] font-light">Atención directa: Lunes a Sábado</p>
             {business.whatsappPhone ? (
               <p className="text-[#C8A96E] font-medium font-mono text-xs">
                 WhatsApp: {formattedPhone}
