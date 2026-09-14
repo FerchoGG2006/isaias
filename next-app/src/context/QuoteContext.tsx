@@ -39,34 +39,35 @@ interface QuoteContextType {
 const QuoteContext = createContext<QuoteContextType | undefined>(undefined);
 
 export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [quoteItems, setQuoteItems] = useState<QuoteItem[]>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('vi_quote_items');
-        if (saved) {
-          return JSON.parse(saved);
-        }
-      } catch {
-        // Ignorar errores de SSR / storage
-      }
-    }
-    return [];
-  });
-
-  const [customPhone, setCustomPhoneState] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        return localStorage.getItem('vi_custom_phone') || '';
-      } catch {
-        return '';
-      }
-    }
-    return '';
-  });
+  const [quoteItems, setQuoteItems] = useState<QuoteItem[]>([]);
+  const [customPhone, setCustomPhoneState] = useState<string>('');
+  const [hasLoadedStorage, setHasLoadedStorage] = useState(false);
 
   const [isQuoteDrawerOpen, setIsQuoteDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [businessId, setBusinessIdState] = useState<string>(DEFAULT_BUSINESS_ID);
+
+  // Cargar estado persistido solo en el cliente tras el montaje (previene hydration mismatch)
+  useEffect(() => {
+    try {
+      const savedItems = localStorage.getItem('vi_quote_items');
+      if (savedItems) {
+        setQuoteItems(JSON.parse(savedItems));
+      }
+      const savedPhone = localStorage.getItem('vi_custom_phone');
+      if (savedPhone) {
+        setCustomPhoneState(savedPhone);
+      }
+      const savedBiz = localStorage.getItem('vi_business_id');
+      if (savedBiz) {
+        setBusinessIdState(savedBiz);
+      }
+    } catch {
+      // Ignorar errores de storage
+    } finally {
+      setHasLoadedStorage(true);
+    }
+  }, []);
 
   const setBusinessId = (id: string) => {
     setBusinessIdState(id);
@@ -110,14 +111,15 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   };
 
-  // Guardar en localStorage ante cambios
+  // Guardar en localStorage ante cambios (solo tras la carga inicial)
   useEffect(() => {
+    if (!hasLoadedStorage) return;
     try {
       localStorage.setItem('vi_quote_items', JSON.stringify(quoteItems));
     } catch {
       // Ignorar
     }
-  }, [quoteItems]);
+  }, [quoteItems, hasLoadedStorage]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);

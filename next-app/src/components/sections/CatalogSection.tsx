@@ -14,7 +14,6 @@ const CATEGORY_CARDS = [
     image: '/assets/img-21.jpg',
     href: '/catalogo/ropa',
     itemCount: 'Camisetas y tops',
-    tag: 'TELA FRESCA',
   },
   {
     id: 'cat-bordados',
@@ -24,7 +23,6 @@ const CATEGORY_CARDS = [
     image: '/assets/img-4.jpg',
     href: '/catalogo/ropa',
     itemCount: 'Puntada Wilcom 3D',
-    tag: 'ACABADO ELEGANTE',
   },
   {
     id: 'cat-sublimacion',
@@ -34,7 +32,6 @@ const CATEGORY_CARDS = [
     image: '/assets/mug.png',
     href: '/catalogo/sublimacion',
     itemCount: 'Fotográfico 4K',
-    tag: 'COLOR INDELEBLE',
   },
   {
     id: 'cat-dotaciones',
@@ -44,7 +41,6 @@ const CATEGORY_CARDS = [
     image: '/assets/img-22.jpg',
     href: '/catalogo/dotaciones',
     itemCount: 'Venta por docena y mayor',
-    tag: 'ALTA DURABILIDAD',
   },
   {
     id: 'cat-accesorios',
@@ -54,7 +50,6 @@ const CATEGORY_CARDS = [
     image: '/assets/img-3.jpg',
     href: '/catalogo/accesorios',
     itemCount: 'Ajustables y cómodas',
-    tag: 'PERSONALIZABLE',
   },
 ];
 

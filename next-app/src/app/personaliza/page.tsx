@@ -63,15 +63,15 @@ export default function PersonalizaPage() {
 
                 <ul className="flex flex-col gap-2 pt-3 border-t border-white/10 font-sans text-xs text-[#D0CFC9]">
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Tallas completas desde la XS hasta la XXL</span>
                   </li>
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Desde 1 unidad o por volumen con descuento</span>
                   </li>
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Muestra y prueba digital de diseño</span>
                   </li>
                 </ul>
@@ -109,15 +109,15 @@ export default function PersonalizaPage() {
 
                 <ul className="flex flex-col gap-2 pt-3 border-t border-white/10 font-sans text-xs text-[#D0CFC9]">
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Impresión DTF por metro lineal continuo</span>
                   </li>
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Bordado 3D computarizado de alta definición</span>
                   </li>
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Entrega ágil en taller de Valledupar</span>
                   </li>
                 </ul>
@@ -155,15 +155,15 @@ export default function PersonalizaPage() {
 
                 <ul className="flex flex-col gap-2 pt-3 border-t border-white/10 font-sans text-xs text-[#D0CFC9]">
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Precios escalonados por docena y centena</span>
                   </li>
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Asesoría personalizada con muestras físicas</span>
                   </li>
                   <li className="flex items-center gap-2 font-light">
-                    <span className="text-[#C8A96E] font-mono">✓</span>
+                    <span className="text-[#C8A96E] font-mono text-xs select-none">—</span>
                     <span>Envíos asegurados a todo el Cesar y Colombia</span>
                   </li>
                 </ul>

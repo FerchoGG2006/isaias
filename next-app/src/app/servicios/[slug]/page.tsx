@@ -106,7 +106,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                 <ul className="flex flex-col gap-2.5 font-sans text-xs text-[#D0CFC9]">
                   {service.features.map((feat, idx) => (
                     <li key={idx} className="flex items-start gap-2 leading-relaxed">
-                      <span className="text-[#C8A96E] shrink-0">✓</span>
+                      <span className="text-[#C8A96E] font-mono text-xs select-none shrink-0">—</span>
                       <span>{feat}</span>
                     </li>
                   ))}

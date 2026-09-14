@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#C8A96E]/40 bg-[#141419] flex items-center justify-center">
-                <Image src={business.logoUrl || '/assets/logo-isaias-3.png'} alt={`Logo ${business.name}`} fill className="object-contain p-1" />
+                <Image src={business.logoUrl || '/assets/logo-isaias-3.png'} alt={`Logo ${business.name}`} fill sizes="40px" className="object-contain p-1" />
               </div>
               <span className="font-mono font-bold text-base text-[#F4F1EA] uppercase tracking-wider">
                 {business.name}
@@ -86,7 +86,11 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-[#C8A96E] hover:underline mt-1 font-mono text-[11px]"
                 >
-                  <span>📍 Ver ubicación en Google Maps</span>
+                  <svg className="w-3.5 h-3.5 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>Ver ubicación en Google Maps</span>
                   <span>↗</span>
                 </a>
               )}

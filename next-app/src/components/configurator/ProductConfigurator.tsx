@@ -402,7 +402,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-base">👕</span>
+                <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 4V2h10v2m4 4l-4-3H7L3 8l3 3v11h12V11l3-3z" />
+                </svg>
                 <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
                   customType === 'print' ? 'border-[#C8A96E] bg-[#C8A96E]' : 'border-white/30'
                 }`}>
@@ -429,7 +431,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-base">🧵</span>
+                  <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
                   <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
                     customType === 'embroidery' ? 'border-[#C8A96E] bg-[#C8A96E]' : 'border-white/30'
                   }`}>
@@ -456,7 +460,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-base">✨</span>
+                <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
                 <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
                   customType === 'plain' ? 'border-[#C8A96E] bg-[#C8A96E]' : 'border-white/30'
                 }`}>
@@ -481,12 +487,16 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             className="w-full py-2.5 px-3.5 bg-[#14151C] hover:bg-[#1A1C24] border border-white/10 hover:border-white/20 rounded-xl text-left flex items-center justify-between text-xs text-[#A0A0A5] hover:text-[#F4F1EA] transition-all cursor-pointer"
           >
             <span className="flex items-center gap-2">
-              <span className="text-[#C8A96E]">✦</span>
+              <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
               <span className="font-medium">
                 {showAdvancedOptions ? 'Ocultar opciones adicionales' : '¿Quieres agregar tu logo, notas o elegir ubicación? (Opcional)'}
               </span>
             </span>
-            <span className="font-sans text-xs text-[#C8A96E]">{showAdvancedOptions ? '▲ Cerrar' : '▼ Ver'}</span>
+            <svg className={`w-4 h-4 text-[#C8A96E] transition-transform duration-200 ${showAdvancedOptions ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
 
           {/* CONTENIDO DEL PANEL AVANZADO */}
@@ -534,13 +544,15 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                     <button
                       type="button"
                       onClick={() => setDesignDeliveryMode('whatsapp')}
-                      className={`p-2.5 rounded-xl border text-left cursor-pointer transition-all flex items-center gap-2 ${
+                      className={`p-2.5 rounded-xl border text-left cursor-pointer transition-all flex items-center gap-2.5 ${
                         designDeliveryMode === 'whatsapp'
                           ? 'bg-[#141D17] border-[#25D366]/60 text-[#F4F1EA]'
                           : 'bg-[#0E1015] border-white/10 text-[#8A8A92]'
                       }`}
                     >
-                      <span className="text-[#25D366]">●</span>
+                      <svg className="w-4 h-4 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />
+                      </svg>
                       <div>
                         <span className="font-bold block">Por el chat de WhatsApp</span>
                         <span className="text-[10px] text-[#A0A0A5]">Nos envías la foto directamente (Más fácil)</span>
@@ -550,13 +562,15 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                     <button
                       type="button"
                       onClick={() => setDesignDeliveryMode('upload')}
-                      className={`p-2.5 rounded-xl border text-left cursor-pointer transition-all flex items-center gap-2 ${
+                      className={`p-2.5 rounded-xl border text-left cursor-pointer transition-all flex items-center gap-2.5 ${
                         designDeliveryMode === 'upload'
                           ? 'bg-[#181A22] border-[#C8A96E] text-[#F4F1EA]'
                           : 'bg-[#0E1015] border-white/10 text-[#8A8A92]'
                       }`}
                     >
-                      <span className="text-[#C8A96E]">📁</span>
+                      <svg className="w-4 h-4 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                      </svg>
                       <div>
                         <span className="font-bold block">Subir archivo aquí</span>
                         <span className="text-[10px] text-[#A0A0A5]">Foto o imagen de tu celular</span>
@@ -638,7 +652,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               role="alert"
               className="p-3 bg-red-950/80 border border-red-500/60 rounded-xl text-red-200 text-xs font-mono flex items-center gap-2.5 animate-in fade-in duration-200"
             >
-              <span className="text-red-400 font-bold text-sm shrink-0">⚠</span>
+              <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
               <span>{validationError}</span>
             </div>
           )}

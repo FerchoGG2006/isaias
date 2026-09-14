@@ -155,11 +155,13 @@ export const QuoteDrawer: React.FC = () => {
                         </h4>
                         <button
                           onClick={() => removeItem(item.id)}
-                          className="text-[#A0A0A5] hover:text-red-400 p-1 transition-colors"
+                          className="text-[#A0A0A5] hover:text-red-400 p-1 transition-colors cursor-pointer"
                           title="Eliminar"
                           aria-label={`Eliminar ${item.title}`}
                         >
-                          ✕
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
                         </button>
                       </div>
 
@@ -229,25 +231,29 @@ export const QuoteDrawer: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setArtworkStatus('ready')}
-                    className={`p-2 rounded-xs border text-left flex items-center gap-1.5 transition-all cursor-pointer ${
+                    className={`p-2 rounded-xs border text-left flex items-center gap-2 transition-all cursor-pointer ${
                       artworkStatus === 'ready'
                         ? 'bg-[#C8A96E]/15 border-[#C8A96E] text-white font-medium'
                         : 'bg-[#0E1015] border-white/10 text-[#A0A0A5] hover:text-white'
                     }`}
                   >
-                    <span>📁</span>
+                    <svg className="w-3.5 h-3.5 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                     <span>Tengo el logo listo</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setArtworkStatus('needs_design')}
-                    className={`p-2 rounded-xs border text-left flex items-center gap-1.5 transition-all cursor-pointer ${
+                    className={`p-2 rounded-xs border text-left flex items-center gap-2 transition-all cursor-pointer ${
                       artworkStatus === 'needs_design'
                         ? 'bg-[#C8A96E]/15 border-[#C8A96E] text-white font-medium'
                         : 'bg-[#0E1015] border-white/10 text-[#A0A0A5] hover:text-white'
                     }`}
                   >
-                    <span>🎨</span>
+                    <svg className="w-3.5 h-3.5 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
                     <span>Requiero asesoría</span>
                   </button>
                 </div>
@@ -261,9 +267,14 @@ export const QuoteDrawer: React.FC = () => {
                   className="w-full p-3.5 flex items-center justify-between text-xs text-white hover:bg-white/5 transition-colors cursor-pointer"
                 >
                   <span className="flex items-center gap-2 font-medium">
-                    <span className="text-[#C8A96E]">✦</span> Datos de Contacto (Opcional)
+                    <svg className="w-3.5 h-3.5 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span>Datos de Contacto (Opcional)</span>
                   </span>
-                  <span className="text-[#A0A0A5] text-xs">{showContactForm ? '▲' : '▼'}</span>
+                  <svg className={`w-3.5 h-3.5 text-[#A0A0A5] transition-transform duration-200 ${showContactForm ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
 
                 {showContactForm && (

@@ -137,10 +137,10 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
             <button
               type="button"
               onClick={() => setShowHotspots(!showHotspots)}
-              className="text-xs font-sans text-[#9E9EA4] hover:text-[#F4F1EA] px-3 py-1 rounded-full border border-white/10 hover:border-white/20 transition-colors hidden sm:inline-flex items-center gap-1.5"
+              className="text-xs font-sans text-[#9E9EA4] hover:text-[#F4F1EA] px-3 py-1 rounded-full border border-white/10 hover:border-white/20 transition-colors hidden sm:inline-flex items-center gap-1.5 cursor-pointer"
             >
               <span>{showHotspots ? 'Ocultar Medidas' : 'Mostrar Medidas'}</span>
-              <span className="text-[#C8A96E] font-bold">{showHotspots ? '◉' : '○'}</span>
+              <span className={`w-2 h-2 rounded-full ${showHotspots ? 'bg-[#C8A96E]' : 'border border-[#C8A96E]'}`} />
             </button>
 
             {/* Botón cerrar */}
@@ -149,7 +149,9 @@ export const ProductHotspotModal: React.FC<ProductHotspotModalProps> = ({
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-[#9E9EA4] hover:text-white flex items-center justify-center border border-white/10 transition-colors cursor-pointer"
               aria-label="Cerrar modal"
             >
-              ✕
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
           </div>
         </div>

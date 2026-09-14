@@ -30,7 +30,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'sublimacion',
     slug: 'sublimacion',
-    businessId: 'palacio',
+    businessId: 'isaias',
     name: 'Sublimación & Rígidos',
     subtitle: 'MUGS, TERMOS & SUPERFICIES',
     description:
@@ -51,6 +51,19 @@ export const CATEGORIES: Category[] = [
     image: '/assets/img-4.jpg',
     tag: 'DOTACIÓN EMPRESARIAL',
     order: 4,
+    featured: true,
+  },
+  {
+    id: 'merchandising',
+    slug: 'merchandising',
+    businessId: 'isaias',
+    name: 'Merchandising & Publicitarios',
+    subtitle: 'ARTÍCULOS PROMOCIONALES & MEMENTOS',
+    description:
+      'Artículos publicitarios y regalos corporativos personalizados con estampación fotográfica: termos de aluminio, botellas térmicas y souvenirs corporativos en Valledupar.',
+    image: '/assets/bottle.png',
+    tag: 'PROMOCIONALES & EVENTOS',
+    order: 5,
     featured: true,
   },
 ];

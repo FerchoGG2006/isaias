@@ -12,8 +12,9 @@ const EDITORIAL_FILTERS = [
   { id: 'todos', label: 'Todas las Prendas' },
   { id: 'ropa', label: 'Camisetas & Ropa' },
   { id: 'accesorios', label: 'Gorras & Accesorios' },
-  { id: 'sublimacion', label: 'Mugs & Sublimación' },
+  { id: 'sublimacion', label: 'Mugs & Cerámica' },
   { id: 'dotaciones', label: 'Dotaciones de Trabajo' },
+  { id: 'merchandising', label: 'Merchandising & Termos' },
 ];
 
 export const CatalogPageClient: React.FC = () => {

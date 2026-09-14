@@ -34,22 +34,23 @@ export const MobileStickyBar: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsQuoteDrawerOpen(true)}
-            className="relative flex flex-col items-center justify-center bg-[#14151C] hover:bg-[#1A1C26] border border-white/15 text-[#F4F1EA] px-3.5 py-2 rounded-lg text-[10px] font-mono shrink-0 transition-colors"
+            className="relative flex items-center justify-center gap-1.5 bg-[#14151C] hover:bg-[#1A1C26] border border-[#C8A96E]/40 text-[#F4F1EA] px-3.5 py-2.5 rounded-lg text-xs font-sans shrink-0 transition-colors"
             title="Ver lista de cotización"
           >
-            <span className="text-xs">📋</span>
-            <span className="font-semibold text-[#C8A96E]">{totalUnits}</span>
-            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#C8A96E] text-[#0C0D10] text-[10px] font-bold flex items-center justify-center">
-              {totalUnits}
-            </span>
+            <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span className="font-semibold text-xs text-[#C8A96E] font-mono">{totalUnits}</span>
           </button>
         ) : (
           <Link
             href="/catalogo"
-            className="flex flex-col items-center justify-center bg-[#14151C] hover:bg-[#1A1C26] border border-white/10 text-[#D0CFC9] px-3.5 py-2 rounded-lg text-[10px] font-mono shrink-0 transition-colors"
+            className="flex items-center justify-center gap-1.5 bg-[#14151C] hover:bg-[#1A1C26] border border-white/10 text-[#D0CFC9] px-3.5 py-2.5 rounded-lg text-xs font-sans shrink-0 transition-colors"
             title="Ver catálogo"
           >
-            <span className="text-xs">🧵</span>
+            <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
             <span>Catálogo</span>
           </Link>
         )}

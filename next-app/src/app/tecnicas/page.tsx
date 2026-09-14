@@ -52,6 +52,7 @@ export default function TecnicasPage() {
                     src={tech.image}
                     alt={tech.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#141419] via-[#141419]/30 to-transparent" />
