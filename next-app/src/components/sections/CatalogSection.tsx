@@ -133,7 +133,7 @@ export const CatalogSection: React.FC = () => {
               {/* Background Image */}
               <Image
                 src={cat.image}
-                alt={cat.name}
+                alt={`Prendas y confección textil en ${cat.name} - Variedades Isaías Valledupar`}
                 fill
                 sizes="(max-width: 768px) 220px, 270px"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
@@ -144,10 +144,6 @@ export const CatalogSection: React.FC = () => {
 
               {/* Card Bottom Content */}
               <div className="relative z-10 flex flex-col justify-end w-full">
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#C8A96E] mb-1">
-                  {cat.tag}
-                </span>
-
                 <h3 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA] tracking-tight leading-tight group-hover:text-[#C8A96E] transition-colors">
                   {cat.name}
                 </h3>
@@ -168,25 +164,6 @@ export const CatalogSection: React.FC = () => {
               </div>
             </Link>
           ))}
-        </div>
-
-        {/* Clean Direct Access to Full Catalog */}
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 className="font-sans text-lg sm:text-xl font-bold text-[#F4F1EA] tracking-tight">
-              ¿Buscas una prenda o modelo en específico?
-            </h3>
-            <p className="font-sans text-xs text-[#8A8A92] font-light mt-0.5">
-              Explora nuestro catálogo completo con filtros por prenda, colores y especificaciones técnicas.
-            </p>
-          </div>
-
-          <Link
-            href="/catalogo"
-            className="font-sans text-xs uppercase tracking-[0.14em] font-bold px-6 py-3 rounded-xs shadow-md transition-all self-start sm:self-auto shrink-0 text-center bg-[#C8A96E] hover:bg-[#B8985D] text-[#0C0D10]"
-          >
-            Ver Catálogo Completo →
-          </Link>
         </div>
 
       </div>

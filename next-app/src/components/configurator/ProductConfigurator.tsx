@@ -306,8 +306,8 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                       );
                     })}
                   </div>
-                  <p className="font-sans text-[11px] text-[#A0A0A5] pt-1 flex items-center gap-1.5">
-                    <span className="text-[#C8A96E]">✓</span> Horma clásica colombiana (cómoda, no apretada). En WhatsApp te confirmamos las medidas exactas si tienes dudas.
+                  <p className="font-sans text-[11px] text-[#8A8A92] pt-1">
+                    Horma clásica colombiana (cómoda, no apretada). Medidas exactas verificadas en tu cotización.
                   </p>
                 </div>
               )}
@@ -656,11 +656,6 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               <span>Pedir por WhatsApp — Te asesoramos gratis</span>
             </button>
 
-            {/* Microcopia tranquilizadora */}
-            <p className="text-center font-sans text-[11px] text-[#8A8A92] leading-snug">
-              ✓ Asesoría directa de taller en Valledupar. Puedes enviar fotos y resolver dudas sin compromiso.
-            </p>
-
             {/* Botón secundario para guardar y seguir viendo */}
             <button
               type="button"
@@ -672,65 +667,6 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           </div>
         </div>
 
-      </div>
-
-      {/* BARRA FLOTANTE FIJA INFERIOR (STICKY ACTION BAR) — SOLO MÓVIL */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-t border-[#C8A96E]/30 py-2.5 px-4 sm:px-6 shadow-2xl animate-in slide-in-from-bottom duration-300">
-        <div className="wrap flex items-center justify-between gap-4">
-          
-          {/* Lado izquierdo: Prenda + Talla + Total */}
-          <div className="flex items-center gap-3 min-w-0">
-            <span
-              className="w-4 h-4 rounded-full border border-white/30 shrink-0 hidden sm:block shadow-sm"
-              style={{ backgroundColor: selectedVariant.colorHex }}
-            />
-            <div className="truncate">
-              <div className="flex items-center gap-2">
-                <span className="font-sans font-bold text-xs sm:text-sm text-[#F4F1EA] truncate">
-                  {product.title}
-                </span>
-                <span className="font-mono text-[10px] text-[#C8A96E] bg-white/5 px-2 py-0.5 rounded-full shrink-0">
-                  {effectiveTotalQuantity} {effectiveTotalQuantity === 1 ? 'ud' : 'uds'}
-                  {orderMode === 'quick' ? ` · ${quickSize}` : ''}
-                </span>
-              </div>
-              <span className="font-sans text-[11px] text-[#8A8A92] truncate hidden sm:block">
-                Color {selectedVariant.colorName} · {readableTechnique}
-              </span>
-            </div>
-          </div>
-
-          {/* Lado derecho: Precio + Botón WhatsApp principal */}
-          <div className="flex items-center gap-3 shrink-0">
-            {product.pricing.type === 'fixed' && estimatedSubtotal !== undefined ? (
-              <div className="text-right hidden xs:block">
-                <span suppressHydrationWarning className="font-mono font-bold text-sm sm:text-base text-[#C8A96E]">
-                  ${estimatedSubtotal.toLocaleString('es-CO')} COP
-                </span>
-              </div>
-            ) : null}
-
-            <button
-              type="button"
-              onClick={handleDirectWhatsApp}
-              className="bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-sans font-bold text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-full shadow-lg shadow-[#25D366]/20 transition-all hover:scale-[1.02] flex items-center gap-2 cursor-pointer"
-            >
-              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
-                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />
-              </svg>
-              <span>Pedir por WhatsApp</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleAddToQuote}
-              className="bg-[#181A22] hover:bg-[#20222B] text-[#F4F1EA] border border-white/15 hover:border-[#C8A96E]/50 font-sans font-medium text-xs py-2.5 px-3.5 rounded-full transition-colors cursor-pointer hidden md:inline-block"
-            >
-              + Lista
-            </button>
-          </div>
-
-        </div>
       </div>
     </>
   );

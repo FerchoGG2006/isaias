@@ -11,16 +11,16 @@ export default function Home() {
     <>
       <Header />
       <main id="top" className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] selection:bg-[#C8A96E] selection:text-[#0C0D10]">
-        {/* 01 · HERO EDITORIAL */}
+        {/* 01 · HERO EDITORIAL (CTA & PROMESA ABOVE THE FOLD) */}
         <HeroSection />
 
         {/* 02 · CATÁLOGO DE COLECCIÓN */}
         <CatalogSection />
 
-        {/* 03 · TALLER & PRODUCCIÓN (VIDEO HD + BORDADO WILCOM) */}
+        {/* 03 · TALLER & PRODUCCIÓN TEXTIL (VIDEO & WILCOM) */}
         <AboutSection />
 
-        {/* 04 · ASESORÍA Y COTIZACIÓN */}
+        {/* 04 · ASESORÍA Y COTIZACIÓN FORMAL */}
         <ContactSection />
       </main>
       <Footer />

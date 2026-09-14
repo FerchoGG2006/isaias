@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useQuote } from '@/context/QuoteContext';
 import { PrintableQuoteSheet } from './PrintableQuoteSheet';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const QuotePageContent: React.FC = () => {
   const {
@@ -42,11 +43,9 @@ export const QuotePageContent: React.FC = () => {
     <div className="wrap max-w-7xl mx-auto">
       
       {/* Breadcrumbs */}
-      <nav className="font-mono text-xs text-[#A0A0A5] mb-8 flex items-center gap-2">
-        <Link href="/" className="hover:text-[#F4F1EA] transition-colors">INICIO</Link>
-        <span>/</span>
-        <span className="text-[#C8A96E]">SOLICITUD DE COTIZACIÓN</span>
-      </nav>
+      <div className="mb-8">
+        <Breadcrumbs items={[{ label: 'Solicitud de Cotización' }]} />
+      </div>
 
       {/* Page Title */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 border-b border-white/10 pb-8">
@@ -319,8 +318,8 @@ export const QuotePageContent: React.FC = () => {
                     </span>
                   </div>
                 )}
-                <span className="text-[11px] text-[#A0A0A5] pt-1 leading-relaxed">
-                  ✓ El valor final exacto se confirma directamente en el chat según tus detalles y diseño.
+                <span className="text-[11px] text-[#8A8A92] pt-1 leading-relaxed">
+                  El valor final exacto se confirma directamente en el chat según tus detalles y diseño.
                 </span>
               </div>
 
@@ -331,6 +330,15 @@ export const QuotePageContent: React.FC = () => {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      if (typeof window !== 'undefined') {
+                        // Analytics
+                        import('@/lib/analytics').then(({ trackQuoteSubmitted, trackWhatsAppClick }) => {
+                          trackQuoteSubmitted(totalUnits, estimatedTotal, business.id);
+                          trackWhatsAppClick('quote_page');
+                        });
+                      }
+                    }}
                     className="w-full flex items-center justify-center gap-2 font-sans text-xs uppercase tracking-wider bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-bold py-4 px-6 rounded-xl shadow-xl shadow-[#25D366]/20 transition-all text-center"
                   >
                     <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">

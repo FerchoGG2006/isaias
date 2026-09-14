@@ -40,27 +40,33 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Column */}
-          <div className="flex flex-col gap-3 font-sans text-xs">
+          <div className="flex flex-col gap-2.5 font-sans text-xs">
             <h5 className="font-bold text-[#F4F1EA] uppercase tracking-[0.16em] mb-1">
               Catálogo & Taller
             </h5>
             <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
-              Catálogo de Prendas
+              Catálogo de Colección
+            </Link>
+            <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
+              Servicios de Estampado & Bordado
+            </Link>
+            <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+              Técnicas (DTF, Wilcom, Sublimación)
             </Link>
             <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
               ¿Cómo hacer tu pedido?
             </Link>
-            <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
-              Bordados & Estampados
-            </Link>
             <Link href="/cotizar" className="hover:text-[#C8A96E] transition-colors">
-              Solicitud de Cotización
+              Solicitud de Cotización Formal
             </Link>
-            <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
-              Técnicas de Producción
+            <Link href="/casos" className="hover:text-[#C8A96E] transition-colors">
+              Casos de Éxito y Dotaciones
+            </Link>
+            <Link href="/personaliza#faq" className="hover:text-[#C8A96E] transition-colors">
+              Preguntas Frecuentes (FAQ)
             </Link>
             <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
-              Sobre Nuestro Taller
+              Maquinaria & Taller Propio
             </Link>
           </div>
 
@@ -69,15 +75,32 @@ export const Footer: React.FC = () => {
             <h5 className="font-bold text-[#F4F1EA] uppercase tracking-[0.16em] mb-1">
               Ubicación & Atención
             </h5>
-            <p className="text-[#8A8A92] font-light">Taller físico en Valledupar, Cesar · Colombia</p>
-            <p className="text-[#8A8A92] font-light">Envíos con guía asegurada a todo el país</p>
-            <p className="text-[#8A8A92] font-light">Atención directa: Lunes a Sábado</p>
-            {business.whatsappPhone ? (
-              <p className="text-[#C8A96E] font-medium font-mono text-xs">
-                WhatsApp: {formattedPhone}
+            <div className="flex flex-col gap-1 text-[#8A8A92] font-light">
+              <span className="text-[#F4F1EA] font-medium">Taller Textil y Estudio:</span>
+              <span>{business.streetAddress || 'Calle 16 # 19A - 45'}</span>
+              <span>{business.city}, {business.department} · {business.country}</span>
+              {business.googleMapsUrl && (
+                <a
+                  href={business.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[#C8A96E] hover:underline mt-1 font-mono text-[11px]"
+                >
+                  <span>📍 Ver ubicación en Google Maps</span>
+                  <span>↗</span>
+                </a>
+              )}
+            </div>
+
+            <div className="pt-1 border-t border-white/10 flex flex-col gap-1">
+              <span className="text-white/80 font-medium">Horario de Taller:</span>
+              <span className="text-[#8A8A92] font-light">{business.schedule || 'Lunes a Sábado: 8:00 AM – 6:00 PM'}</span>
+            </div>
+
+            {business.whatsappPhone && (
+              <p className="text-[#C8A96E] font-medium font-mono text-xs pt-1">
+                WhatsApp Directo: {formattedPhone}
               </p>
-            ) : (
-              <p className="text-[#8A8A92]">Cotizaciones directas vía web y chat directo</p>
             )}
           </div>
 
@@ -85,8 +108,14 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-[#8A8A92] font-light">
-          <span>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil · Envíos a toda Colombia.</span>
-          <span>Atención de lunes a sábado</span>
+          <span>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil en Valledupar · Envíos asegurados a toda Colombia.</span>
+          <div className="flex items-center gap-4">
+            <Link href="/politica-de-privacidad" className="hover:text-[#C8A96E] underline-offset-4 hover:underline transition-colors">
+              Política de Privacidad
+            </Link>
+            <span className="text-white/20">·</span>
+            <span>Habeas Data Ley 1581</span>
+          </div>
         </div>
       </div>
     </footer>

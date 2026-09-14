@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { TECHNIQUES } from '@/data/techniques';
 import { DEFAULT_WHATSAPP_PHONE, getWhatsAppChatUrl } from '@/lib/whatsapp';
 
@@ -18,9 +19,12 @@ export default function TecnicasPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-12 pb-32">
+      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-8 pb-32">
         {/* Editorial Header */}
-        <section className="wrap mb-16">
+        <section className="wrap mb-12">
+          <div className="mb-4">
+            <Breadcrumbs items={[{ label: 'Técnicas de Producción' }]} />
+          </div>
           <div className="pb-8 border-b border-white/10 max-w-4xl">
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A96E] block mb-3 font-semibold">
               Procesos Industriales & Artesanales · Valledupar
@@ -51,11 +55,6 @@ export default function TecnicasPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#141419] via-[#141419]/30 to-transparent" />
-
-                  {/* Badge top right */}
-                  <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 font-mono text-[11px] text-[#C8A96E] font-semibold">
-                    {tech.curingTemperature ? `Curado: ${tech.curingTemperature}` : tech.resolution || 'Proceso Calibrado'}
-                  </div>
 
                   {/* Number index */}
                   <div className="absolute bottom-4 left-6 font-mono text-xs text-[#C8A96E] uppercase tracking-wider font-bold">

@@ -56,16 +56,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       <div className="p-6 flex flex-col flex-1 justify-between gap-5">
         <div className="flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
-            <div className="flex flex-col gap-1">
-              <span className="font-mono text-[10px] text-[#C8A96E] uppercase tracking-wider font-semibold">
-                {service.businessId === 'palacio' ? 'Línea El Palacio de la Sublimación' : 'Taller Variedades Isaías'}
-              </span>
-              <Link href={serviceHref} className="group-hover:text-[#C8A96E] transition-colors">
-                <h3 className="font-sans font-bold text-xl text-[#F4F1EA] tracking-tight">
-                  {service.title}
-                </h3>
-              </Link>
-            </div>
+            <Link href={serviceHref} className="group-hover:text-[#C8A96E] transition-colors">
+              <h3 className="font-sans font-bold text-xl text-[#F4F1EA] tracking-tight">
+                {service.title}
+              </h3>
+            </Link>
             {renderPricing()}
           </div>
 
@@ -86,11 +81,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           </div>
         </div>
 
-        <div className="pt-3 border-t border-white/5 flex items-center justify-between">
-          <span className="font-mono text-[11px] text-[#C8A96E]">
-            {service.features.length} especificaciones técnicas
-          </span>
-
+        <div className="pt-3 border-t border-white/5 flex items-center justify-end">
           <Link
             href={serviceHref}
             className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest font-bold text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"

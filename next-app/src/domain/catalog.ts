@@ -13,6 +13,10 @@ export interface Business {
   department: string;
   country: string;
   address: string;
+  streetAddress?: string;
+  responseTimePromise?: string;
+  schedule?: string;
+  googleMapsUrl?: string;
   whatsappPhone: string;
   email?: string;
   logoUrl: string;

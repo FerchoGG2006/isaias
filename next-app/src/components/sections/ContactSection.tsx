@@ -52,15 +52,6 @@ export const ContactSection: React.FC = () => {
           </Link>
         </div>
 
-        {/* Footnote */}
-        <div className="pt-6 border-t border-white/10 w-full flex flex-wrap items-center justify-center gap-6 text-xs text-[#8A8A92] font-sans">
-          <span>Taller de Confección Propia</span>
-          <span className="text-[#C8A96E]">·</span>
-          <span>Envíos Nacionales con Guía Asegurada</span>
-          <span className="text-[#C8A96E]">·</span>
-          <span>Atención Directa de Lunes a Sábado</span>
-        </div>
-
       </div>
     </section>
   );

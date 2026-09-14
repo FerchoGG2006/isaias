@@ -48,12 +48,15 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Center: Clean & Spaced Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7 xl:gap-9 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
+        <nav className="hidden lg:flex items-center gap-7 xl:gap-8 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
           <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
             Catálogo
           </Link>
           <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
             Servicios
+          </Link>
+          <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+            Técnicas
           </Link>
           <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
             ¿Cómo pedir?
@@ -129,19 +132,22 @@ export const Header: React.FC = () => {
         <div className="lg:hidden bg-[#141419]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4">
           <nav className="flex flex-col gap-3 font-sans text-xs uppercase tracking-[0.16em] text-[#F4F1EA]">
             <Link href="/catalogo" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Catálogo
+              Catálogo de Prendas
             </Link>
             <Link href="/servicios" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Servicios
+              Servicios de Estampado & Bordado
+            </Link>
+            <Link href="/tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+              Técnicas de Producción (DTF, Wilcom)
             </Link>
             <Link href="/personaliza" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              ¿Cómo pedir?
+              ¿Cómo hacer tu pedido?
             </Link>
             <Link href="/#taller" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
-              Taller
+              Sobre el Taller Textil
             </Link>
             <Link href="/#contacto" onClick={closeMobileMenu} className="py-2 hover:text-[#C8A96E]">
-              Contacto
+              Contacto & Cotización
             </Link>
           </nav>
         </div>

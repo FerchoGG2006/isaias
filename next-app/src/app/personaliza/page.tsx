@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
-import { getBusiness } from '@/data/businesses';
-import { getWhatsAppChatUrl } from '@/lib/whatsapp';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { FaqSection } from '@/components/sections/FaqSection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,12 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default function PersonalizaPage() {
-  const business = getBusiness('isaias');
-  const waUrl = getWhatsAppChatUrl(
-    business.whatsappPhone,
-    `¡Hola ${business.name}! Me gustaría recibir asesoría directa para un pedido personalizado.`
-  );
-
   return (
     <>
       <Header />
@@ -27,11 +21,9 @@ export default function PersonalizaPage() {
         <div className="wrap max-w-7xl mx-auto">
           
           {/* Breadcrumbs */}
-          <nav className="font-mono text-xs text-[#8A8A92] mb-8 flex items-center gap-2">
-            <Link href="/" className="hover:text-[#F4F1EA] transition-colors">INICIO</Link>
-            <span>/</span>
-            <span className="text-[#C8A96E]">PERSONALIZA</span>
-          </nav>
+          <div className="mb-8">
+            <Breadcrumbs items={[{ label: '¿Cómo Hacer tu Pedido?' }]} />
+          </div>
 
           {/* Page Header */}
           <div className="flex flex-col gap-4 max-w-3xl mb-12 sm:mb-16">
@@ -42,35 +34,6 @@ export default function PersonalizaPage() {
             <p className="font-sans text-sm sm:text-base text-[#8A8A92] leading-relaxed font-light mt-1">
               Selecciona una de estas tres alternativas de producción según tus necesidades de confección o maquila:
             </p>
-          </div>
-
-          {/* Banner de Asesoría Directa por WhatsApp */}
-          <div className="mb-12 p-5 sm:p-6 bg-[#0E1015] border border-[#25D366]/40 rounded-xs flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xs bg-[#25D366]/15 border border-[#25D366]/40 flex items-center justify-center shrink-0 text-[#25D366]">
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
-                  ¿Prefieres que te asesoremos directamente?
-                </h2>
-                <p className="font-sans text-xs text-[#8A8A92] leading-relaxed font-light">
-                  Si tienes una foto en tu celular o dudas con las tallas, escríbenos a WhatsApp. Un asesor de taller te atiende de inmediato.
-                </p>
-              </div>
-            </div>
-
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whitespace-nowrap bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-mono text-xs uppercase tracking-wider font-bold py-3 px-5 rounded-xs shadow-md transition-all flex items-center gap-2 cursor-pointer shrink-0"
-            >
-              <span>Escribir por WhatsApp</span>
-              <span>→</span>
-            </a>
           </div>
 
           {/* 3 Caminos Editoriales */}
@@ -216,22 +179,9 @@ export default function PersonalizaPage() {
 
           </div>
 
-          {/* Sello de Confianza y Calidad Local */}
-          <div className="mt-16 p-6 sm:p-8 bg-[#0E1015] border border-white/10 rounded-xs flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-            <div className="flex flex-col gap-1">
-              <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.2em] font-semibold">
-                PRODUCCIÓN LOCAL · VALLEDUPAR
-              </span>
-              <p className="font-sans text-sm text-[#8A8A92] max-w-xl font-light leading-relaxed">
-                Estampado DTF de fijación térmica que no se cuartea, bordados finos y confección en telas frescas de primera calidad.
-              </p>
-            </div>
-            <Link
-              href="/#contacto"
-              className="font-mono text-xs uppercase tracking-wider text-[#F4F1EA] hover:text-[#C8A96E] shrink-0 transition-colors"
-            >
-              Conocer taller y ubicación →
-            </Link>
+          {/* 5 Preguntas Frecuentes Contextuales */}
+          <div className="mt-16">
+            <FaqSection />
           </div>
 
         </div>

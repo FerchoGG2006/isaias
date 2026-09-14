@@ -31,7 +31,7 @@ export const AboutSection: React.FC = () => {
                   loop
                   muted={isMuted}
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="max-h-full max-w-full object-contain mx-auto brightness-[1.02] contrast-[1.05]"
                 />
 
@@ -140,40 +140,10 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <p className="font-sans text-xs sm:text-sm text-[#D0CFC9] leading-relaxed font-light">
-            En <strong>Variedades Isaías</strong> producimos y personalizamos directamente cada prenda en nuestro taller en Valledupar. Ofrecemos bordado computarizado de alta definición, estampado DTF suave que no se cuartea y sublimación nítida, garantizando acabados impecables y precios directos de taller.
+            En <strong>Variedades Isaías</strong> producimos y personalizamos directamente cada prenda en nuestro taller en Valledupar. Ofrecemos bordado computarizado de alta definición, estampado DTF suave que no se cuartea y sublimación nítida, garantizando acabados impecables y precios directos de taller sin intermediarios.
           </p>
 
-          {/* Minimal 3-item capability grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-white/10 font-sans text-xs">
-            <div className="bg-[#141419] p-3 rounded-xs border border-white/5">
-              <span className="text-[#C8A96E] font-semibold block text-[11px] uppercase tracking-wider mb-0.5">
-                Bordado 3D
-              </span>
-              <p className="text-[#8A8A92] text-[11px] font-light leading-snug">
-                Puntada fina y duradera para polos y uniformes.
-              </p>
-            </div>
-
-            <div className="bg-[#141419] p-3 rounded-xs border border-white/5">
-              <span className="text-[#C8A96E] font-semibold block text-[11px] uppercase tracking-wider mb-0.5">
-                Estampado DTF
-              </span>
-              <p className="text-[#8A8A92] text-[11px] font-light leading-snug">
-                Tacto suave que no se cuartea con las lavadas.
-              </p>
-            </div>
-
-            <div className="bg-[#141419] p-3 rounded-xs border border-white/5">
-              <span className="text-[#C8A96E] font-semibold block text-[11px] uppercase tracking-wider mb-0.5">
-                Precios Directos
-              </span>
-              <p className="text-[#8A8A92] text-[11px] font-light leading-snug">
-                Desde 1 prenda hasta pedidos al por mayor.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-1">
+          <div className="pt-2">
             <a
               href={waUrl}
               target="_blank"

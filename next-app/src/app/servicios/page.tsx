@@ -6,6 +6,15 @@ import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { SERVICES } from '@/data/services';
 import { ServiceCard } from '@/components/services/ServiceCard';
 
+import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+
+export const metadata: Metadata = {
+  title: 'Servicios de Estampado & Bordado Computarizado en Valledupar | Variedades Isaías',
+  description:
+    'Maquila y servicios de producción textil en Valledupar: DTF textil de alta definición, bordado computarizado Wilcom y sublimación 4K para marcas, empresas y talleres.',
+};
+
 export default function ServiciosPage() {
   return (
     <>
@@ -14,13 +23,13 @@ export default function ServiciosPage() {
         
         {/* Breadcrumbs & Header */}
         <div className="wrap mb-12">
-          <nav className="flex items-center gap-2 font-mono text-xs text-[#A0A0A5] mb-4">
-            <Link href="/" className="hover:text-[#F4F1EA] transition-colors">
-              Inicio
-            </Link>
-            <span>/</span>
-            <span className="text-[#C8A96E]">Servicios de Personalización</span>
-          </nav>
+          <div className="mb-4">
+            <Breadcrumbs
+              items={[
+                { label: 'Servicios de Taller' },
+              ]}
+            />
+          </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
@@ -50,42 +59,6 @@ export default function ServiciosPage() {
               <ServiceCard key={service.id} service={service} />
             ))}
           </div>
-
-          {/* How it works info banner */}
-          <div className="mt-20 bg-[#141419] border border-white/10 rounded-xs p-8 sm:p-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col gap-2">
-                <span className="font-mono text-2xl font-bold text-[#C8A96E]">01.</span>
-                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
-                  Recepción de Archivos
-                </h4>
-                <p className="text-xs text-[#A0A0A5] leading-relaxed">
-                  Envía tu logo, imagen o foto desde tu celular o computador. Si necesitas ayuda organizando el diseño, nosotros te asesoramos con gusto.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <span className="font-mono text-2xl font-bold text-[#C8A96E]">02.</span>
-                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
-                  Recepción de Prendas o Suministro
-                </h4>
-                <p className="text-xs text-[#A0A0A5] leading-relaxed">
-                  Trae tus prendas a nuestro punto físico en Valledupar o nosotros te suministramos las bases textiles desde nuestro stock.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <span className="font-mono text-2xl font-bold text-[#C8A96E]">03.</span>
-                <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
-                  Procesamiento & Entrega
-                </h4>
-                <p className="text-xs text-[#A0A0A5] leading-relaxed">
-                  Bordado computarizado o estampado fino con tiempos de entrega de 24 a 72 horas para pedidos ágiles.
-                </p>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </main>

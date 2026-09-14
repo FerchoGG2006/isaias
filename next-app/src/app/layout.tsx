@@ -3,6 +3,10 @@ import { Roboto_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { QuoteProvider } from '@/context/QuoteContext';
 import { Toast } from '@/components/ui/Toast';
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
+import { MobileStickyBar } from '@/components/layout/MobileStickyBar';
+import { isaiasBusiness } from '@/config/brand';
+import { generateLocalBusinessSchema } from '@/lib/seo/schema';
 
 const robotoMono = Roboto_Mono({
   weight: ['400', '500', '600'],
@@ -17,16 +21,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Variedades Isaías — Confección, Bordados & Estampados en Valledupar',
+  title: {
+    default: 'Variedades Isaías — Confección, Bordados & Estampados en Valledupar',
+    template: '%s | Variedades Isaías',
+  },
   description:
-    'Taller especializado de confección y personalización textil en Valledupar, Cesar: Estampados suaves y duraderos, bordado computarizado fino y prendas en telas frescas de alta calidad.',
+    'Taller especializado de confección y personalización textil en Valledupar, Cesar: Estampados suaves y duraderos, bordado computarizado fino Wilcom y prendas en telas frescas de alta calidad. Envíos nacionales.',
   keywords: [
     'confección valledupar',
     'estampados valledupar',
     'bordados computarizados cesar',
     'camisetas personalizadas valledupar',
     'sublimacion valledupar',
-    'dotaciones empresariales',
+    'dotaciones empresariales valledupar',
+    'bordado wilcom 3d',
+    'estampado dtf textil',
     'variedades isaias',
   ],
   authors: [{ name: 'Variedades Isaías' }],
@@ -35,6 +44,17 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://variedadesisaias.com'),
   alternates: {
     canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'Variedades Isaías — Confección, Bordados & Estampados en Valledupar',
@@ -53,45 +73,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Variedades Isaías',
-  description:
-    'Taller y estudio de confección y personalización textil en Valledupar, Cesar. Especialistas en estampados duraderos, bordados finos y dotaciones empresariales.',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Valledupar',
-    addressRegion: 'Cesar',
-    addressCountry: 'CO',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 10.4631,
-    longitude: -73.2532,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '08:00',
-      closes: '18:00',
-    },
-  ],
-  priceRange: '$$',
-  currenciesAccepted: 'COP',
-  paymentAccepted: 'Efectivo, Transferencia Bancaria, Nequi, Daviplata',
-  areaServed: [
-    {
-      '@type': 'City',
-      name: 'Valledupar',
-    },
-    {
-      '@type': 'Country',
-      name: 'Colombia',
-    },
-  ],
-};
+const jsonLd = generateLocalBusinessSchema(isaiasBusiness);
 
 export default function RootLayout({
   children,
@@ -106,10 +88,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#0C0D10] text-[#F4F1EA] antialiased selection:bg-[#C8A96E] selection:text-[#0C0D10]">
+      <body className="bg-[#0C0D10] text-[#F4F1EA] antialiased selection:bg-[#C8A96E] selection:text-[#0C0D10] pb-16 md:pb-0">
+        <GoogleAnalytics />
         <QuoteProvider>
           {children}
           <Toast />
+          <MobileStickyBar />
         </QuoteProvider>
       </body>
     </html>

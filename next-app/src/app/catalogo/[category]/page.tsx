@@ -8,8 +8,27 @@ import { CATEGORIES, getCategoryBySlug } from '@/data/categories';
 import { getProductsByCategory } from '@/data/products';
 import { CategoryProductGrid } from '@/components/catalog/CategoryProductGrid';
 
+import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
+}
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { category: categorySlug } = await params;
+  const category = getCategoryBySlug(categorySlug);
+
+  if (!category) {
+    return {
+      title: 'Categoría no encontrada | Variedades Isaías',
+    };
+  }
+
+  return {
+    title: `${category.name} — Confección & Personalización en Valledupar | Variedades Isaías`,
+    description: `${category.description} Confección en telas frescas, bordado computarizado Wilcom y estampado DTF en Valledupar. Envíos nacionales.`,
+  };
 }
 
 export async function generateStaticParams() {
@@ -36,18 +55,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* 1. ENCABEZADO DE LA SUBSECCIÓN */}
         <section className="wrap mb-8 sm:mb-10">
           
-          {/* Breadcrumb refinado y legible */}
-          <div className="flex items-center justify-between font-sans text-xs text-[#A0A0A5] mb-6 sm:mb-8">
-            <div className="flex items-center gap-2">
-              <Link href="/catalogo" className="hover:text-[#F4F1EA] transition-colors">
-                Catálogo
-              </Link>
-              <span>/</span>
-              <span className="text-[#C8A96E] font-medium">{category.name}</span>
-            </div>
+          {/* Breadcrumbs */}
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <Breadcrumbs
+              items={[
+                { label: 'Catálogo', href: '/catalogo' },
+                { label: category.name },
+              ]}
+            />
             <Link
               href="/catalogo"
-              className="hover:text-[#C8A96E] transition-colors hidden sm:inline-flex items-center gap-1.5"
+              className="text-xs font-mono text-[#8A8A92] hover:text-[#C8A96E] transition-colors hidden sm:inline-flex items-center gap-1.5"
             >
               <span>←</span>
               <span>Ver todas las prendas</span>
@@ -71,7 +89,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 {products.length} {products.length === 1 ? 'modelo disponible' : 'modelos disponibles'}
               </span>
               <span className="text-xs text-[#A0A0A5] mt-1">
-                ✓ Personalización bajo pedido
+                Personalización bajo pedido
               </span>
             </div>
           </div>

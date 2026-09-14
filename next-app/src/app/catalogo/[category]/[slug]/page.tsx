@@ -12,6 +12,7 @@ import { ProductConfigurator } from '@/components/configurator/ProductConfigurat
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
 
 import { getBusiness } from '@/data/businesses';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Metadata } from 'next';
 
 interface ProductDetailPageProps {
@@ -119,27 +120,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         
         {/* Breadcrumbs */}
         <div className="wrap mb-8">
-          <nav className="flex items-center gap-2 font-mono text-xs text-[#A0A0A5]" aria-label="Ruta de navegación">
-            <Link href="/" className="hover:text-[#F4F1EA] transition-colors">
-              Inicio
-            </Link>
-            <span>/</span>
-            <Link href="/catalogo" className="hover:text-[#F4F1EA] transition-colors">
-              Catálogo
-            </Link>
-            <span>/</span>
-            {category && (
-              <>
-                <Link href={`/catalogo/${category.slug}`} className="hover:text-[#F4F1EA] transition-colors">
-                  {category.name}
-                </Link>
-                <span>/</span>
-              </>
-            )}
-            <span className="text-[#C8A96E] truncate max-w-[200px] sm:max-w-none">
-              {product.title}
-            </span>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { label: 'Catálogo', href: '/catalogo' },
+              ...(category ? [{ label: category.name, href: `/catalogo/${category.slug}` }] : []),
+              { label: product.title },
+            ]}
+          />
         </div>
 
         {/* Product Main Container */}
@@ -151,7 +138,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               <ProductGallery
                 images={product.images}
                 title={product.title}
-                tag={product.tag}
               />
 
               {/* Technical Specifications Table */}
@@ -192,8 +178,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
                   <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5 font-sans text-xs text-[#C8A96E]">
                     {material.points.map((pt) => (
-                      <span key={pt} className="bg-black/50 px-2 py-0.5 border border-white/10 rounded-xs">
-                        ✓ {pt}
+                      <span key={pt} className="bg-black/50 px-2.5 py-1 border border-white/10 rounded-xs text-[#D0CFC9]">
+                        {pt}
                       </span>
                     ))}
                   </div>
@@ -206,12 +192,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               
               {/* Product Info Header */}
               <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
-                {product.tag && (
-                  <span className="font-sans text-xs uppercase tracking-wider text-[#C8A96E] font-semibold">
-                    {product.tag}
-                  </span>
-                )}
-
                 <h1 className="font-sans font-bold text-2xl sm:text-4xl text-[#F4F1EA] tracking-tight leading-tight">
                   {product.title}
                 </h1>
@@ -230,11 +210,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   ) : (
                     <span className="font-mono text-base text-[#C8A96E] font-semibold">
                       Precio de taller bajo cotización
-                    </span>
-                  )}
-                  {product.pricing.bulkDiscounts && product.pricing.bulkDiscounts.length > 0 && (
-                    <span className="text-xs text-[#25D366] font-sans font-medium bg-[#25D366]/10 px-2.5 py-0.5 rounded-full border border-[#25D366]/30">
-                      ✓ Descuento a partir de {product.pricing.bulkDiscounts[0].minQty} prendas
                     </span>
                   )}
                 </div>
