@@ -26,10 +26,10 @@ const CATEGORY_CARDS = [
   },
   {
     id: 'cat-sublimacion',
-    name: 'MUGS & SUBLIMACIÓN',
+    name: 'PRENDAS & SUBLIMACIÓN',
     shortName: 'SUBLIMACIÓN',
-    subtitle: 'Pocillos, termos y artículos con estampado permanente',
-    image: '/assets/mug.png',
+    subtitle: 'Prendas técnicas deportivas y estampación fotográfica continua',
+    image: '/assets/telas/qatar/qatar-1.jpg',
     href: '/catalogo/sublimacion',
     itemCount: 'Fotográfico 4K',
   },
