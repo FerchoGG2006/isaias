@@ -215,3 +215,19 @@ En móvil no limitarse a escalar desktop: adaptar navegación, configurador, car
 - No tocar producción/main innecesariamente.
 - No eliminar funcionalidad existente sin comprobar dependencias.
 - Antes de agregar dependencias, comprobar si ya existe una capacidad equivalente.
+
+## Estado Reciente y Auditorías (Septiembre 2026)
+
+- **Higgsfield AI:** Integrado SDK `@higgsfield/client` en `next-app/src/lib/higgsfield.ts`, API Route en `src/app/api/higgsfield/generate/route.ts`, y SDK Python `higgsfield-client` con script en `imagenes-ia/higgsfield_generator.py`. Skills disponibles en `.agents/skills/higgsfield/SKILL.md`.
+- **Confianza Comercial y Atención al Cliente:**
+  - `SizeGuideModal.tsx` integrado en `ProductConfigurator.tsx` (guía de medidas en cm).
+  - `WorkshopStatusBadge.tsx` con horario dinámico de Valledupar/Colombia y tiempo de respuesta en tiempo real vía `useSyncExternalStore`.
+  - `FileUploader.tsx` con garantía de digitalización/vectorización gratuita de logotipos.
+  - `TrustGuaranteeCard.tsx` (garantía en 3 pasos: muestra virtual previa, revisión prenda por prenda, envíos asegurados).
+  - Enlaces de llamada directa `tel:+573105634509` en Header y Contacto.
+- **Calidad de Código:**
+  - ESLint: 0 errores, 0 warnings.
+  - TypeScript: 0 errores.
+  - Turbopack Build: 46 páginas estáticas pre-renderizadas (SSG).
+  - Dependencia `gsap` desinstalada por desuso. Duplicado `maniqui_sueter_isaias.jpg` eliminado.
+  - Documento de respaldo completo disponible en `SESSION_STATE_RESUME.md`.
