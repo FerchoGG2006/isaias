@@ -191,9 +191,13 @@ export const PRODUCTS: Product[] = [
     code: 'POL-CORP-002',
     tag: 'DOTACIÓN EMPRESARIAL',
     pricing: {
-      type: 'from',
-      basePrice: 52000,
-      unit: 'unidad (según volumen)',
+      type: 'fixed',
+      basePrice: 46000,
+      unit: 'unidad',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 40000 },
+        { minQty: 50, pricePerUnit: 36000 },
+      ],
     },
     images: [
       '/assets/img-4.jpg',
@@ -359,6 +363,10 @@ export const PRODUCTS: Product[] = [
       type: 'fixed',
       basePrice: 28000,
       unit: 'unidad',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 24000 },
+        { minQty: 50, pricePerUnit: 20000 },
+      ],
     },
     images: [
       '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
@@ -411,6 +419,10 @@ export const PRODUCTS: Product[] = [
       type: 'fixed',
       basePrice: 42000,
       unit: 'unidad',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 36000 },
+        { minQty: 50, pricePerUnit: 32000 },
+      ],
     },
     images: [
       '/assets/telas/reflectivos_ninos/reflectivo-4.jpg',
@@ -512,8 +524,13 @@ export const PRODUCTS: Product[] = [
     code: 'DOT-EMP-001',
     tag: 'BAJO COTIZACIÓN',
     pricing: {
-      type: 'on_quote',
-      unit: 'conjunto corporativo',
+      type: 'from',
+      basePrice: 85000,
+      unit: 'conjunto (polo + pantalón)',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 78000 },
+        { minQty: 50, pricePerUnit: 72000 },
+      ],
     },
     images: [
       '/assets/img-4.jpg',
@@ -806,6 +823,10 @@ export const PRODUCTS: Product[] = [
       type: 'fixed',
       basePrice: 28000,
       unit: 'unidad',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 24000 },
+        { minQty: 50, pricePerUnit: 20000 },
+      ],
     },
     images: [
       '/assets/mockups/nino_diseno13_jirafa.jpg',
@@ -858,6 +879,10 @@ export const PRODUCTS: Product[] = [
       type: 'fixed',
       basePrice: 26000,
       unit: 'unidad',
+      bulkDiscounts: [
+        { minQty: 12, pricePerUnit: 22000 },
+        { minQty: 50, pricePerUnit: 18000 },
+      ],
     },
     images: [
       '/assets/sueter_perro_durazno.jpg',

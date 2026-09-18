@@ -47,26 +47,30 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [businessId, setBusinessIdState] = useState<string>(DEFAULT_BUSINESS_ID);
 
-  // Cargar estado persistido solo en el cliente tras el montaje (previene hydration mismatch)
+  // Cargar estado persistido solo en el cliente tras el montaje (previene hydration mismatch y render en cascada)
   useEffect(() => {
-    try {
-      const savedItems = localStorage.getItem('vi_quote_items');
-      if (savedItems) {
-        setQuoteItems(JSON.parse(savedItems));
+    const timer = setTimeout(() => {
+      try {
+        const savedItems = localStorage.getItem('vi_quote_items');
+        if (savedItems) {
+          setQuoteItems(JSON.parse(savedItems));
+        }
+        const savedPhone = localStorage.getItem('vi_custom_phone');
+        if (savedPhone) {
+          setCustomPhoneState(savedPhone);
+        }
+        const savedBiz = localStorage.getItem('vi_business_id');
+        if (savedBiz) {
+          setBusinessIdState(savedBiz);
+        }
+      } catch {
+        // Ignorar errores de storage
+      } finally {
+        setHasLoadedStorage(true);
       }
-      const savedPhone = localStorage.getItem('vi_custom_phone');
-      if (savedPhone) {
-        setCustomPhoneState(savedPhone);
-      }
-      const savedBiz = localStorage.getItem('vi_business_id');
-      if (savedBiz) {
-        setBusinessIdState(savedBiz);
-      }
-    } catch {
-      // Ignorar errores de storage
-    } finally {
-      setHasLoadedStorage(true);
-    }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const setBusinessId = (id: string) => {
