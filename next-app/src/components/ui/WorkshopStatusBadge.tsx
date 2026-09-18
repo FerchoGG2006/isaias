@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore } from 'react';
 
 export interface WorkshopStatusBadgeProps {
   variant?: 'compact' | 'full' | 'inline';
@@ -34,7 +34,7 @@ function getColombiaWorkshopState(): WorkshopState {
       if (p.type === 'hour') hour = parseInt(p.value, 10);
     });
 
-    // Lunes a Sábado (Mon, Tue, Wed, Thu, Fri, Sat) entre 8 AM y 6 PM (18:00)
+    // Lunes a Sábado entre 8 AM y 6 PM (18:00)
     const isWorkday = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].includes(weekday);
     const isWorkHours = hour >= 8 && hour < 18;
     const isOpen = isWorkday && isWorkHours;
@@ -53,7 +53,6 @@ function getColombiaWorkshopState(): WorkshopState {
       };
     }
   } catch {
-    // Fallback seguro
     return {
       isOpen: true,
       label: 'Taller y asesores en línea',
@@ -62,27 +61,43 @@ function getColombiaWorkshopState(): WorkshopState {
   }
 }
 
+let cachedSnapshot = '';
+let cachedState: WorkshopState = {
+  isOpen: true,
+  label: 'Taller y asesores en línea',
+  sublabel: 'Respuesta promedio en < 15 min',
+};
+
+function getSnapshot(): WorkshopState {
+  const current = getColombiaWorkshopState();
+  const serialized = `${current.isOpen}-${current.label}-${current.sublabel}`;
+  if (serialized !== cachedSnapshot) {
+    cachedSnapshot = serialized;
+    cachedState = current;
+  }
+  return cachedState;
+}
+
+const SERVER_STATE: WorkshopState = {
+  isOpen: true,
+  label: 'Taller y asesores en línea',
+  sublabel: 'Respuesta promedio en < 15 min',
+};
+
+function getServerSnapshot(): WorkshopState {
+  return SERVER_STATE;
+}
+
+function subscribe(callback: () => void): () => void {
+  const interval = setInterval(callback, 60000);
+  return () => clearInterval(interval);
+}
+
 export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
   variant = 'compact',
   className = '',
 }) => {
-  const [status, setStatus] = useState<WorkshopState>({
-    isOpen: true,
-    label: 'Taller y asesores en línea',
-    sublabel: 'Respuesta promedio en < 15 min',
-  });
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setStatus(getColombiaWorkshopState());
-    setHasMounted(true);
-
-    const interval = setInterval(() => {
-      setStatus(getColombiaWorkshopState());
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const status = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   if (variant === 'inline') {
     return (

@@ -73,10 +73,11 @@ export async function POST(request: Request) {
       { error: "Acción no reconocida. Opciones: 'text-to-image', 'image-to-video', 'speak'." },
       { status: 400 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Error procesando la solicitud en Higgsfield";
     console.error("[Higgsfield API Error]:", error);
     return NextResponse.json(
-      { error: error?.message ?? "Error procesando la solicitud en Higgsfield" },
+      { error: errorMessage },
       { status: 500 }
     );
   }
