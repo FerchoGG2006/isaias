@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
 import { getWhatsAppChatUrl } from '@/lib/whatsapp';
 import { trackWhatsAppClick } from '@/lib/analytics';
+import { WorkshopStatusBadge } from '@/components/ui/WorkshopStatusBadge';
 
 export const MobileStickyBar: React.FC = () => {
   const { business, totalUnits, setIsQuoteDrawerOpen, getWhatsAppUrl } = useQuote();
@@ -27,7 +28,11 @@ export const MobileStickyBar: React.FC = () => {
       aria-label="Acciones rápidas de contacto"
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0B0E]/95 backdrop-blur-lg border-t border-[#C8A96E]/20 px-3 pt-2 pb-[max(0.6rem,env(safe-area-inset-bottom))] shadow-[0_-8px_25px_rgba(0,0,0,0.6)]"
     >
-      <div className="flex items-center gap-2 max-w-md mx-auto">
+      <div className="max-w-md mx-auto flex flex-col gap-1.5">
+        <div className="flex items-center justify-center">
+          <WorkshopStatusBadge variant="inline" />
+        </div>
+        <div className="flex items-center gap-2">
         
         {/* Secondary: Quote Drawer or Catalog */}
         {totalUnits > 0 ? (
@@ -69,6 +74,7 @@ export const MobileStickyBar: React.FC = () => {
           <span>Cotizar en WhatsApp</span>
         </a>
 
+        </div>
       </div>
     </aside>
   );

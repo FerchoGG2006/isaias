@@ -211,6 +211,22 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           {error}
         </span>
       )}
+
+      {/* Reductor de Ansiedad de Arte / Logo */}
+      <div className="p-3.5 bg-[#14151C] border border-[#C8A96E]/30 rounded-xl flex flex-col gap-1.5 shadow-sm">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <span className="font-sans font-bold text-xs text-[#F4F1EA] flex items-center gap-1.5">
+            <span>🎨</span>
+            <span>¿No tienes tu logo en alta calidad o vectorizado?</span>
+          </span>
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#C8A96E]/15 border border-[#C8A96E]/40 text-[#C8A96E] text-[10px] font-semibold">
+            ✨ Digitalización y ajuste de arte incluido
+          </span>
+        </div>
+        <p className="font-sans text-[11px] text-[#A0A0A5] leading-relaxed">
+          No te preocupes: nuestro equipo de diseño digitaliza, vectoriza y optimiza tu arte sin costo adicional para tu pedido.
+        </p>
+      </div>
     </div>
   );
 };

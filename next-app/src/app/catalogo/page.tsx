@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QuoteDrawer } from '@/components/quote/QuoteDrawer';
 import { CatalogPageClient } from '@/components/catalog/CatalogPageClient';
+import { PRODUCTS } from '@/data/products';
 
 export const metadata: Metadata = {
   title: 'Catálogo de Prendas, Dotaciones & Personalización Textil | Variedades Isaías · Valledupar',
@@ -15,7 +16,7 @@ export default function CatalogoPage() {
   return (
     <>
       <Header />
-      <CatalogPageClient />
+      <CatalogPageClient initialProducts={PRODUCTS} />
       <Footer />
       <QuoteDrawer />
     </>

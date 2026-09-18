@@ -10,6 +10,7 @@ import { getMaterialById } from '@/data/materials';
 import { ProductGallery } from '@/components/catalog/ProductGallery';
 import { ProductConfigurator } from '@/components/configurator/ProductConfigurator';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
+import { TrustGuaranteeCard } from '@/components/ui/TrustGuaranteeCard';
 
 import { getBusiness } from '@/data/businesses';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -227,6 +228,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
               {/* Central Interactive Configurator */}
               <ProductConfigurator product={product} />
+
+              {/* Bloque de Garantía y Confianza en 3 Pasos */}
+              <TrustGuaranteeCard className="mt-2" />
 
             </div>
 

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useQuote } from '@/context/QuoteContext';
 import { getWhatsAppChatUrl } from '@/lib/whatsapp';
+import { TrustGuaranteeCard } from '@/components/ui/TrustGuaranteeCard';
 
 export const QuoteDrawer: React.FC = () => {
   const {
@@ -314,6 +315,9 @@ export const QuoteDrawer: React.FC = () => {
                   </div>
                 )}
               </div>
+
+              {/* Tarjeta de Garantía y Confianza */}
+              <TrustGuaranteeCard compact={true} className="mt-2" />
             </>
           )}
         </div>

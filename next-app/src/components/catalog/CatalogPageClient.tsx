@@ -17,12 +17,18 @@ const EDITORIAL_FILTERS = [
   { id: 'merchandising', label: 'Merchandising & Termos' },
 ];
 
-export const CatalogPageClient: React.FC = () => {
+interface CatalogPageClientProps {
+  initialProducts?: Product[];
+}
+
+export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
+  initialProducts = PRODUCTS,
+}) => {
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const allProducts = PRODUCTS;
+  const allProducts = initialProducts;
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {

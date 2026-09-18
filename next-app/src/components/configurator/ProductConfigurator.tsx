@@ -6,6 +6,8 @@ import { TECHNIQUES } from '@/data/techniques';
 import { SizeDistributionSelector } from './SizeDistributionSelector';
 import { FileUploader } from './FileUploader';
 import { LiveMockupPreview } from './LiveMockupPreview';
+import { SizeGuideModal } from './SizeGuideModal';
+import { WorkshopStatusBadge } from '@/components/ui/WorkshopStatusBadge';
 import {
   buildProductQuoteItem,
   calculateUnitPrice,
@@ -77,6 +79,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 
   // Acordeón de opciones avanzadas (colapsado para adultos / abierto para empresas)
   const [showAdvancedOptions, setShowAdvancedOptions] = useState<boolean>(false);
+
+  // Modal de guía de medidas y tallas
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState<boolean>(false);
 
   // Carga de diseño y notas
   const [designDeliveryMode, setDesignDeliveryMode] = useState<'whatsapp' | 'upload'>('whatsapp');
@@ -281,12 +286,22 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           {orderMode === 'quick' ? (
             <div className="flex flex-col gap-4 p-4 bg-[#14151C] border border-white/10 rounded-xl">
               
-              {/* Selector de tallas con botones cómodos */}
+              {/* Selector de tallas con botones cómodos y acceso a guía de medidas */}
               {capabilities.availableSizes.length > 0 && (
                 <div className="flex flex-col gap-2">
-                  <span className="font-sans text-[11px] text-[#A0A0A5]">
-                    Toca tu talla:
-                  </span>
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <span className="font-sans text-[11px] text-[#A0A0A5]">
+                      Toca tu talla:
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setIsSizeGuideOpen(true)}
+                      className="text-[11px] text-[#C8A96E] hover:underline cursor-pointer flex items-center gap-1 font-medium transition-colors"
+                      aria-label="Ver guía de medidas en centímetros"
+                    >
+                      <span>📐 Ver guía de medidas (cm)</span>
+                    </button>
+                  </div>
                   <div className="flex flex-wrap items-center gap-2">
                     {capabilities.availableSizes.map((size) => {
                       const isSelected = quickSize === size;
@@ -370,6 +385,16 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           ) : (
             /* MATRIZ DE DISTRIBUCIÓN POR MAYOR (SOLO SI SE ACTIVA) */
             <div className="p-4 bg-[#14151C] border border-white/10 rounded-xl">
+              <div className="flex justify-end mb-2">
+                <button
+                  type="button"
+                  onClick={() => setIsSizeGuideOpen(true)}
+                  className="text-[11px] text-[#C8A96E] hover:underline cursor-pointer flex items-center gap-1 font-medium transition-colors"
+                  aria-label="Ver guía de medidas en centímetros"
+                >
+                  <span>📐 Ver guía de medidas (cm)</span>
+                </button>
+              </div>
               <SizeDistributionSelector
                 sizes={capabilities.availableSizes}
                 distribution={bulkSizeDistribution}
@@ -536,10 +561,25 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 
               {/* B. Subida de archivo vs WhatsApp */}
               {customType !== 'plain' && (
-                <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
-                  <span className="font-sans text-xs font-semibold text-[#F4F1EA]">
-                    ¿Cómo nos entregas tu diseño?
-                  </span>
+                <div className="flex flex-col gap-2.5 pt-2 border-t border-white/5">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <span className="font-sans text-xs font-semibold text-[#F4F1EA]">
+                      ¿Cómo nos entregas tu diseño?
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#C8A96E]/15 border border-[#C8A96E]/40 text-[#C8A96E] text-[10px] font-semibold">
+                      ✨ Digitalización y ajuste de arte incluido
+                    </span>
+                  </div>
+
+                  {/* Banner reductor de ansiedad sobre el archivo */}
+                  <div className="p-3 bg-[#161720] border border-[#C8A96E]/25 rounded-xl flex flex-col gap-1">
+                    <span className="font-sans font-semibold text-[11px] text-[#F4F1EA]">
+                      ¿No tienes tu logo en alta calidad o vectorizado?
+                    </span>
+                    <p className="font-sans text-[11px] text-[#A0A0A5] leading-relaxed">
+                      No te preocupes: nuestro equipo de diseño digitaliza, vectoriza y optimiza tu arte sin costo adicional para tu pedido.
+                    </p>
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     <button
                       type="button"
@@ -672,6 +712,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               <span>Pedir por WhatsApp — Te asesoramos gratis</span>
             </button>
 
+            {/* Micro-insignia dinámica de horario y tiempo de respuesta */}
+            <WorkshopStatusBadge variant="compact" className="w-full" />
+
             {/* Botón secundario para guardar y seguir viendo */}
             <button
               type="button"
@@ -684,6 +727,12 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         </div>
 
       </div>
+
+      {/* Modal accesible de Guía de Medidas (cm) */}
+      <SizeGuideModal
+        isOpen={isSizeGuideOpen}
+        onClose={() => setIsSizeGuideOpen(false)}
+      />
     </>
   );
 };

@@ -72,6 +72,19 @@ export const Header: React.FC = () => {
         {/* Right: Circular Action Icons */}
         <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
 
+          {/* Direct Phone Call Button (Desktop & Tablet) */}
+          <a
+            href="tel:+573105634509"
+            className="hidden sm:flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-white/5 hover:bg-[#C8A96E]/15 border border-white/10 hover:border-[#C8A96E]/40 text-[#D0CFC9] hover:text-[#C8A96E] text-xs font-sans transition-all cursor-pointer shadow-sm"
+            title="Llamar a taller: (310) 563-4509"
+            aria-label="Llamar directamente al taller"
+          >
+            <svg className="w-3.5 h-3.5 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <span className="font-mono text-[11px] font-semibold">(310) 563-4509</span>
+          </a>
+
           {/* WhatsApp Circular Icon Button */}
           <a
             href={waUrl}
@@ -149,6 +162,18 @@ export const Header: React.FC = () => {
             <Link href="/#contacto" onClick={closeMobileMenu} className="py-2 hover:text-[#C8A96E]">
               Contacto & Cotización
             </Link>
+
+            {/* Enlace de llamada directa en móvil */}
+            <a
+              href="tel:+573105634509"
+              onClick={closeMobileMenu}
+              className="mt-2 py-3 px-4 rounded-xl bg-[#1C1E26] border border-[#C8A96E]/40 text-[#C8A96E] font-semibold flex items-center justify-center gap-2 hover:bg-[#C8A96E]/15 transition-colors"
+            >
+              <svg className="w-4 h-4 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>Llamar a taller: (310) 563-4509</span>
+            </a>
           </nav>
         </div>
       )}
