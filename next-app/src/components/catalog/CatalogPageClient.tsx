@@ -30,22 +30,40 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
 
   const allProducts = initialProducts;
 
+  // Expande cada producto con cada una de sus fotos reales como card independiente en el catálogo
+  const allCatalogItems = useMemo(() => {
+    return allProducts.flatMap((product) => {
+      const rawImages = [product.featuredImage, ...(product.images || [])].filter(Boolean) as string[];
+      const uniqueImages = Array.from(new Set(rawImages));
+      const effectiveImages = uniqueImages.length > 0 ? uniqueImages : ['/assets/hero-main.jpg'];
+
+      return effectiveImages.map((img, idx) => ({
+        id: `${product.id}-img-${idx}`,
+        product,
+        image: img,
+        imageIndex: idx,
+        totalImages: effectiveImages.length,
+      }));
+    });
+  }, [allProducts]);
+
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {
-      todos: allProducts.length,
+      todos: allCatalogItems.length,
     };
     EDITORIAL_FILTERS.forEach((f) => {
       if (f.id !== 'todos') {
-        counts[f.id] = allProducts.filter((p) => {
-          return p.categorySlug === f.id || p.categoryId === f.id;
+        counts[f.id] = allCatalogItems.filter((item) => {
+          return item.product.categorySlug === f.id || item.product.categoryId === f.id;
         }).length;
       }
     });
     return counts;
-  }, [allProducts]);
+  }, [allCatalogItems]);
 
-  const filteredProducts = useMemo(() => {
-    return allProducts.filter((product) => {
+  const filteredItems = useMemo(() => {
+    return allCatalogItems.filter((item) => {
+      const product = item.product;
       if (activeCategory !== 'todos') {
         const matchesCat =
           product.categorySlug === activeCategory || product.categoryId === activeCategory;
@@ -58,14 +76,15 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
           product.title.toLowerCase().includes(q) ||
           product.description.toLowerCase().includes(q) ||
           product.code.toLowerCase().includes(q) ||
-          product.tag.toLowerCase().includes(q);
+          product.tag.toLowerCase().includes(q) ||
+          (product.materialName && product.materialName.toLowerCase().includes(q));
 
         if (!matchesQuery) return false;
       }
 
       return true;
     });
-  }, [allProducts, activeCategory, searchQuery]);
+  }, [allCatalogItems, activeCategory, searchQuery]);
 
   return (
     <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-28">
@@ -88,7 +107,7 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
 
           <div className="flex flex-col lg:items-end text-left lg:text-right font-sans text-xs text-[#8A8A92]">
             <span className="font-semibold text-sm text-[#C8A96E]">
-              {filteredProducts.length} {filteredProducts.length === 1 ? 'modelo disponible' : 'modelos disponibles'}
+              {filteredItems.length} {filteredItems.length === 1 ? 'prenda disponible' : 'prendas disponibles'}
             </span>
             <span className="text-xs text-[#A0A0A5] mt-1 font-light">
               Pedidos individuales y al por mayor · Envíos a todo el país
@@ -170,7 +189,7 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
 
       {/* 3. RETÍCULA EDITORIAL DE PRODUCTOS */}
       <section className="wrap">
-        {filteredProducts.length === 0 ? (
+        {filteredItems.length === 0 ? (
           <div className="py-24 text-center border-t border-b border-white/10 flex flex-col items-center justify-center">
             <span className="font-sans font-medium text-xl text-[#8A8A92] mb-2">
               No se encontraron piezas registradas
@@ -190,10 +209,14 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProducts.map((product) => (
+            {filteredItems.map((item, idx) => (
               <EditorialProductItem
-                key={product.id}
-                product={product}
+                key={item.id}
+                product={item.product}
+                displayImage={item.image}
+                imageIndex={item.imageIndex}
+                totalImages={item.totalImages}
+                priority={idx < 4}
                 onQuickView={(prod) => setSelectedProduct(prod)}
               />
             ))}

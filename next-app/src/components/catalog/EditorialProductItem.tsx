@@ -1,12 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/domain';
 
 interface EditorialProductItemProps {
   product: Product;
+  displayImage?: string;
+  imageIndex?: number;
+  totalImages?: number;
   aspect?: 'portrait' | 'tall' | 'classic' | 'wide';
   priority?: boolean;
   onQuickView?: (product: Product) => void;
@@ -14,11 +17,13 @@ interface EditorialProductItemProps {
 
 export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
   product,
+  displayImage,
+  imageIndex,
+  totalImages,
   aspect = 'portrait',
   priority = false,
   onQuickView,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const productHref = `/catalogo/${product.categorySlug || 'ropa'}/${product.slug}`;
 
   // Proporción controlada: default aspect-[3/4] para alineación armónica de retícula
@@ -31,64 +36,39 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
       ? 'aspect-[4/3]'
       : 'aspect-[3/4]';
 
-  const image1 = product.featuredImage || product.images[0] || '/assets/hero-main.jpg';
-  const image2 = product.images.length > 1 ? product.images[1] : null;
+  const imageSrc = displayImage || product.featuredImage || product.images[0] || '/assets/hero-main.jpg';
 
   return (
-    <article
-      className="group relative flex flex-col justify-between"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* 1. Protagonist Fashion Image Frame (Clic navega directamente a la ficha/configurador) */}
-      <div className={`relative w-full ${aspectClass} overflow-hidden bg-[#141419] block select-none group/frame`}>
+    <article className="group relative flex flex-col justify-between">
+      {/* 1. Protagonist Fashion Image Frame (Sin intercambio de imagen en hover) */}
+      <div className={`relative w-full ${aspectClass} overflow-hidden bg-[#141419] block select-none rounded-xs border border-white/10 group-hover:border-[#C8A96E]/50 transition-colors duration-300`}>
         {/* Full card link to product customizer */}
         <Link
           href={productHref}
           className="absolute inset-0 z-10"
           aria-label={`Personalizar ${product.title}`}
         >
-          {/* Primary Image */}
+          {/* Main Clean Image */}
           <Image
-            src={image1}
+            src={imageSrc}
             alt={product.title}
             fill
             priority={priority}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className={`object-cover object-center transition-all duration-700 ease-out ${
-              image2 && isHovered ? 'opacity-0 scale-[1.03]' : 'opacity-100 group-hover/frame:scale-[1.03]'
-            }`}
+            className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out"
           />
 
-          {/* Secondary Image on Hover if available */}
-          {image2 && (
-            <Image
-              src={image2}
-              alt={`${product.title} vista alterna`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className={`object-cover object-center transition-all duration-700 ease-out ${
-                isHovered ? 'opacity-100 scale-[1.03]' : 'opacity-0 scale-100'
-              }`}
-            />
-          )}
+          {/* Discreet Bottom Vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/60 via-transparent to-transparent opacity-60" />
 
-          {/* Discreet Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/80 via-transparent to-transparent opacity-60 group-hover/frame:opacity-40 transition-opacity duration-500" />
-
-          {/* Overlay interactivo en Hover: Invita a personalizar */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/95 via-black/20 to-transparent opacity-0 group-hover/frame:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-5">
-            <div className="flex items-center justify-between font-sans text-xs font-medium text-[#F4F1EA] bg-[#0C0D10]/85 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 shadow-xl">
-              <span className="flex items-center gap-2">
-                <svg className="w-3.5 h-3.5 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                <span>Ver prenda</span>
+          {/* Badge sutil de vista si tiene múltiples imágenes */}
+          {typeof imageIndex === 'number' && typeof totalImages === 'number' && totalImages > 1 && (
+            <div className="absolute top-2.5 right-2.5 z-20 pointer-events-none">
+              <span className="bg-[#0C0D10]/80 backdrop-blur-md text-[#A0A0A5] text-[10px] font-mono px-2 py-0.5 rounded-full border border-white/10">
+                {imageIndex + 1}/{totalImages}
               </span>
-              <span className="text-[#C8A96E] font-semibold">Pedir o Cotizar →</span>
             </div>
-          </div>
+          )}
         </Link>
       </div>
 

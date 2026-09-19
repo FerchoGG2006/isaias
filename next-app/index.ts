@@ -18,6 +18,22 @@ config({
   credentials,
 });
 
+interface ExtendedResult {
+  request_id?: string;
+  status: string;
+  video?: { url?: string };
+  output?: { video?: { url?: string } };
+  url?: string;
+  error?: string;
+}
+
+interface ApiError {
+  response?: {
+    data?: unknown;
+  };
+  message?: string;
+}
+
 async function main() {
   console.log("Submitting Seedance 2.5 text-to-video request to Higgsfield API...");
 
@@ -37,14 +53,16 @@ async function main() {
       }
     );
 
+    const resObj = result as unknown as ExtendedResult;
+
     console.log(`Request ID: ${result.request_id}`);
     console.log(`Status: ${result.status}`);
 
     if (result.status === "completed") {
       const videoUrl =
         result.video?.url ||
-        (result as any).output?.video?.url ||
-        (result as any).url;
+        resObj.output?.video?.url ||
+        resObj.url;
 
       if (videoUrl) {
         console.log(`Generated video URL: ${videoUrl}`);
@@ -57,23 +75,24 @@ async function main() {
         process.exit(1);
       }
     } else if (result.status === "failed") {
-      console.error("Request failed:", (result as any).error || "Unknown error");
+      console.error("Request failed:", resObj.error || "Unknown error");
       process.exit(1);
     } else if (result.status === "nsfw") {
       console.error("Request was rejected by moderation (NSFW).");
       process.exit(1);
-    } else if (result.status === "canceled" || (result.status as any) === "cancelled") {
+    } else if ((result.status as string) === "canceled" || (result.status as string) === "cancelled") {
       console.error("Request was canceled.");
       process.exit(1);
     } else {
       console.error(`Request finished with status: ${result.status}`);
       process.exit(1);
     }
-  } catch (error: any) {
-    if (error.response?.data) {
-      console.error("API error response:", error.response.data);
+  } catch (error: unknown) {
+    const err = error as ApiError;
+    if (err.response?.data) {
+      console.error("API error response:", err.response.data);
     } else {
-      console.error("Error generating video:", error.message || error);
+      console.error("Error generating video:", err.message || error);
     }
     process.exit(1);
   }

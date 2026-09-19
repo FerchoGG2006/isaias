@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Product } from '@/domain';
 import { EditorialProductItem } from '@/components/catalog/EditorialProductItem';
@@ -17,7 +17,24 @@ export const CategoryProductGrid: React.FC<CategoryProductGridProps> = ({
 }) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  if (products.length === 0) {
+  // Expande cada prenda por cada una de sus imágenes reales como card independiente
+  const catalogItems = useMemo(() => {
+    return products.flatMap((product) => {
+      const rawImages = [product.featuredImage, ...(product.images || [])].filter(Boolean) as string[];
+      const uniqueImages = Array.from(new Set(rawImages));
+      const effectiveImages = uniqueImages.length > 0 ? uniqueImages : ['/assets/hero-main.jpg'];
+
+      return effectiveImages.map((img, idx) => ({
+        id: `${product.id}-img-${idx}`,
+        product,
+        image: img,
+        imageIndex: idx,
+        totalImages: effectiveImages.length,
+      }));
+    });
+  }, [products]);
+
+  if (catalogItems.length === 0) {
     return (
       <div className="py-24 text-center border-t border-b border-white/10 flex flex-col items-center justify-center">
         <span className="font-sans font-bold text-xl text-[#8A8A92] mb-2">
@@ -40,10 +57,13 @@ export const CategoryProductGrid: React.FC<CategoryProductGridProps> = ({
     <>
       {/* Retícula Editorial Equilibrada de 3 Columnas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 items-start">
-        {products.map((product, idx) => (
-          <div key={product.id} className="w-full">
+        {catalogItems.map((item, idx) => (
+          <div key={item.id} className="w-full">
             <EditorialProductItem
-              product={product}
+              product={item.product}
+              displayImage={item.image}
+              imageIndex={item.imageIndex}
+              totalImages={item.totalImages}
               aspect="portrait"
               priority={idx < 3}
               onQuickView={(p) => setSelectedProduct(p)}
