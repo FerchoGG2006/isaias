@@ -113,7 +113,11 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-[#8A8A92] font-light">
           <span>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil en Valledupar · Envíos asegurados a toda Colombia.</span>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <Link href="/terminos-y-condiciones" className="hover:text-[#C8A96E] underline-offset-4 hover:underline transition-colors">
+              Términos y Condiciones
+            </Link>
+            <span className="text-white/20">·</span>
             <Link href="/politica-de-privacidad" className="hover:text-[#C8A96E] underline-offset-4 hover:underline transition-colors">
               Política de Privacidad
             </Link>

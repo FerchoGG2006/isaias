@@ -5,6 +5,7 @@ import { QuoteProvider } from '@/context/QuoteContext';
 import { Toast } from '@/components/ui/Toast';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import { MobileStickyBar } from '@/components/layout/MobileStickyBar';
+import { CookieConsentBanner } from '@/components/ui/CookieConsentBanner';
 import { isaiasBusiness } from '@/config/brand';
 import { generateLocalBusinessSchema } from '@/lib/seo/schema';
 
@@ -42,6 +43,15 @@ export const metadata: Metadata = {
   creator: 'Variedades Isaías',
   publisher: 'Variedades Isaías',
   metadataBase: new URL('https://variedadesisaias.com'),
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/assets/logo-isaias-3.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/assets/logo-isaias-3.png' },
+    ],
+  },
   alternates: {
     canonical: '/',
   },
@@ -94,6 +104,7 @@ export default function RootLayout({
           {children}
           <Toast />
           <MobileStickyBar />
+          <CookieConsentBanner />
         </QuoteProvider>
       </body>
     </html>

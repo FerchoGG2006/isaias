@@ -25,6 +25,7 @@ export const QuotePageContent: React.FC = () => {
 
   const [copied, setCopied] = useState(false);
   const [isPrintSheetOpen, setIsPrintSheetOpen] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
 
   const { url, message, isConfigured } = getWhatsAppUrl();
 
@@ -244,12 +245,30 @@ export const QuotePageContent: React.FC = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                // Verificación antispam honeypot: Si el campo oculto tiene contenido, es un bot
+                if (honeypot) {
+                  return;
+                }
                 if (url && url !== '#') {
                   window.open(url, '_blank', 'noopener,noreferrer');
                 }
               }}
               className="flex flex-col gap-4 font-sans text-xs"
             >
+              {/* Campo Honeypot Oculto Antispam */}
+              <div aria-hidden="true" style={{ display: 'none', position: 'absolute', left: '-9999px' }}>
+                <label htmlFor="website_check_hp">No llenar si eres humano:</label>
+                <input
+                  id="website_check_hp"
+                  type="text"
+                  name="website_check_hp"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div className="flex flex-col gap-1.5">
                 <label className="text-[#A0A0A5] text-xs">
                   Tu nombre o contacto (Opcional):
