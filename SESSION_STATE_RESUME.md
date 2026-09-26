@@ -52,9 +52,17 @@ Durante la auditoría profunda del repositorio se corrigieron las siguientes fal
 
 ---
 
-## 5. Estado de Compilación y Git
+## 5. Integración de Fotografías Reales y Nuevos Productos (Septiembre 2026)
+Se agregaron 4 fotografías reales de taller y tienda tomadas en Variedades Isaías:
+1. `camiseta_oversize_anime_obanai.jpg`: Muro de exhibición anime (Demon Slayer / Iguro Obanai, Dragon Ball, One Piece, Jujutsu Kaisen). Producto: `Camiseta Oversize Colección Anime & Manga`.
+2. `camiseta_streetwear_2pac_legend.jpg`: Gráfica editorial 90s con acentos verde neón. Producto: `Camiseta Streetwear Tributo 2Pac & Leyendas Rap`.
+3. `camiseta_streetwear_canserbero_tributo.jpg`: Gráfica piramidal tributo conmemorativo Canserbero. Producto: `Camiseta Homenaje Canserbero (Tyrone González)`.
+4. `gorra_polo_dotacion_rincon_pescado.jpg`: Fotografía real sobre bolsa oficial Variedades Isaías con gorra dril bordada 3D y polo corporativa "El Rincón Del Pescado Criollo". Productos: `Combo Dotación Gastronómica: Polo Piqué + Gorra Dril` y `Gorra Dril Personalizada Bordado 3D`.
+
+---
+
+## 6. Estado de Compilación y Git
 - `npm run lint`: **0 errores, 0 warnings**.
 - `npx tsc --noEmit`: **0 errores de tipos**.
-- `npm run build`: **46 páginas SSG generadas exitosamente en 10.6 segundos** con Turbopack.
-- **Git Commit:** `ea14be5` (*fix(audit): resolve linter errors, refactor useSyncExternalStore hooks, remove unused gsap dep and duplicate asset*).
-- **Working Tree:** Limpio.
+- `npm run build`: **52 páginas SSG generadas exitosamente** (subió de 46 a 52 páginas pre-renderizadas).
+
