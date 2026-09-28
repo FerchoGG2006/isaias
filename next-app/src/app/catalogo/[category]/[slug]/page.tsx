@@ -27,6 +27,8 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
   const business = getBusiness(product.businessId);
 
+  const primaryImg = product.featuredImage || product.images?.[0] || '/assets/logo-isaias-3.png';
+
   return {
     title: `${product.title} | ${business.name} · Valledupar`,
     description: product.description,
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       description: product.description,
       images: [
         {
-          url: product.featuredImage || product.images[0],
+          url: primaryImg,
           width: 1200,
           height: 630,
           alt: product.title,
@@ -47,7 +49,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       card: 'summary_large_image',
       title: product.title,
       description: product.description,
-      images: [product.featuredImage || product.images[0]],
+      images: [primaryImg],
     },
   };
 }
@@ -76,13 +78,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   ).slice(0, 3);
 
   const business = getBusiness(product.businessId);
+  const primaryImg = product.featuredImage || product.images?.[0] || '/assets/logo-isaias-3.png';
 
   // Schema.org Product Rich Snippet
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
-    image: product.images.map((img) =>
+    image: (product.images.length > 0 ? product.images : [primaryImg]).map((img) =>
       img.startsWith('http') ? img : `https://variedadesisaias.com${img}`
     ),
     description: product.description,

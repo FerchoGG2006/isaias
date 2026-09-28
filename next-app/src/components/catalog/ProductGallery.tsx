@@ -16,21 +16,19 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const displayImages = images.length > 0 ? images : ['/assets/hero-main.jpg'];
-  const activeImage = displayImages[selectedIndex] || displayImages[0];
-
   // Cerrar lightbox con tecla Escape
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
+      if (images.length === 0) return;
       if (e.key === 'Escape') {
         setIsLightboxOpen(false);
       } else if (e.key === 'ArrowRight') {
-        setSelectedIndex((prev) => (prev + 1) % displayImages.length);
+        setSelectedIndex((prev) => (prev + 1) % images.length);
       } else if (e.key === 'ArrowLeft') {
-        setSelectedIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
+        setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
       }
     },
-    [displayImages.length]
+    [images.length]
   );
 
   useEffect(() => {
@@ -46,6 +44,27 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isLightboxOpen, handleKeyDown]);
+
+  if (images.length === 0) {
+    return (
+      <div className="aspect-[4/5] w-full bg-[#101116] border border-white/10 rounded-xs flex flex-col items-center justify-center p-8 text-center select-none shadow-2xl">
+        <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-[#C8A96E]/80 mb-4 bg-white/5">
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h4 className="font-sans font-bold text-sm text-[#F4F1EA] uppercase tracking-wider">
+          Muestra en Producción
+        </h4>
+        <p className="font-sans text-xs text-[#8A8A92] mt-2 max-w-xs font-light leading-relaxed">
+          Fotografía de taller en preparación. Confección disponible bajo pedido con corte personalizado en piel de durazno spandex 220g.
+        </p>
+      </div>
+    );
+  }
+
+  const displayImages = images;
+  const activeImage = displayImages[selectedIndex] || displayImages[0];
 
   return (
     <>

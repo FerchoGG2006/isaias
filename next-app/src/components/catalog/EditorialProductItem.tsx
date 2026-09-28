@@ -32,11 +32,12 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
       ? 'aspect-[4/3]'
       : 'aspect-[3/4]';
 
-  const imageSrc = displayImage || product.featuredImage || product.images[0] || '/assets/hero-main.jpg';
+  const imageSrc = displayImage || product.featuredImage || product.images?.[0] || '';
+  const hasImage = Boolean(imageSrc && imageSrc.trim() !== '');
 
   return (
     <article className="group relative flex flex-col justify-between">
-      {/* 1. Protagonist Fashion Image Frame (Sin intercambio de imagen en hover) */}
+      {/* 1. Protagonist Fashion Image Frame */}
       <div className={`relative w-full ${aspectClass} overflow-hidden bg-[#141419] block select-none rounded-xs border border-white/10 group-hover:border-[#C8A96E]/50 transition-colors duration-300`}>
         {/* Full card link to product customizer */}
         <Link
@@ -44,18 +45,35 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
           className="absolute inset-0 z-10"
           aria-label={`Personalizar ${product.title}`}
         >
-          {/* Main Clean Image */}
-          <Image
-            src={imageSrc}
-            alt={product.title}
-            fill
-            priority={priority}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out"
-          />
-
-          {/* Discreet Bottom Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/60 via-transparent to-transparent opacity-60" />
+          {hasImage ? (
+            <>
+              {/* Main Clean Image */}
+              <Image
+                src={imageSrc}
+                alt={product.title}
+                fill
+                priority={priority}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out"
+              />
+              {/* Discreet Bottom Vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/60 via-transparent to-transparent opacity-60" />
+            </>
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-[#101116]">
+              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#C8A96E]/70 mb-3 bg-white/5">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="font-sans text-[11px] uppercase tracking-wider text-[#C8A96E] font-medium">
+                Confección en taller
+              </span>
+              <span className="font-sans text-[10px] text-[#8A8A92] mt-1 font-light">
+                Fotografía en producción
+              </span>
+            </div>
+          )}
 
           {/* Badges superiores elegantes: Tag y cantidad de fotos */}
           <div className="absolute top-2.5 inset-x-2.5 flex items-center justify-between z-20 pointer-events-none gap-2">
