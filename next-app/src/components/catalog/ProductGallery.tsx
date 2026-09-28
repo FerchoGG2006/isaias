@@ -54,7 +54,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
         <div
           onClick={() => setIsLightboxOpen(true)}
           className="group relative aspect-[4/5] w-full bg-[#141419] border border-white/10 rounded-xs overflow-hidden shadow-2xl cursor-zoom-in select-none"
-          title="Click para ampliar e inspeccionar textura"
+          title="Click para ampliar imagen"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -78,16 +78,6 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
 
           {/* Soft Vignette Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-          {/* Botón flotante para inspección de textura */}
-          <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="flex items-center gap-1.5 font-mono text-[11px] text-[#F4F1EA] bg-black/80 backdrop-blur-md px-3 py-1.5 border border-white/20 rounded-full shadow-lg">
-              <svg className="w-3.5 h-3.5 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-              </svg>
-              <span>Ver textura HD</span>
-            </span>
-          </div>
 
           {/* Image index counter */}
           {displayImages.length > 1 && (
