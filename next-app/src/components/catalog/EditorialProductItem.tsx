@@ -8,8 +8,6 @@ import { Product } from '@/domain';
 interface EditorialProductItemProps {
   product: Product;
   displayImage?: string;
-  imageIndex?: number;
-  totalImages?: number;
   aspect?: 'portrait' | 'tall' | 'classic' | 'wide';
   priority?: boolean;
   onQuickView?: (product: Product) => void;
@@ -18,8 +16,6 @@ interface EditorialProductItemProps {
 export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
   product,
   displayImage,
-  imageIndex,
-  totalImages,
   aspect = 'portrait',
   priority = false,
   onQuickView,
@@ -61,14 +57,20 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
           {/* Discreet Bottom Vignette */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10]/60 via-transparent to-transparent opacity-60" />
 
-          {/* Badge sutil de vista si tiene múltiples imágenes */}
-          {typeof imageIndex === 'number' && typeof totalImages === 'number' && totalImages > 1 && (
-            <div className="absolute top-2.5 right-2.5 z-20 pointer-events-none">
-              <span className="bg-[#0C0D10]/80 backdrop-blur-md text-[#A0A0A5] text-[10px] font-mono px-2 py-0.5 rounded-full border border-white/10">
-                {imageIndex + 1}/{totalImages}
+          {/* Badges superiores elegantes: Tag y cantidad de fotos */}
+          <div className="absolute top-2.5 inset-x-2.5 flex items-center justify-between z-20 pointer-events-none gap-2">
+            {product.tag ? (
+              <span className="bg-[#0C0D10]/85 backdrop-blur-md text-[#C8A96E] text-[10px] font-sans font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full border border-[#C8A96E]/30 truncate max-w-[70%]">
+                {product.tag}
               </span>
-            </div>
-          )}
+            ) : <span />}
+
+            {product.images && product.images.length > 1 && (
+              <span className="bg-[#0C0D10]/85 backdrop-blur-md text-[#D0CFC9] text-[10px] font-sans font-medium px-2 py-0.5 rounded-full border border-white/15 shrink-0">
+                {product.images.length} vistas
+              </span>
+            )}
+          </div>
         </Link>
       </div>
 
