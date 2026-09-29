@@ -307,7 +307,6 @@ export const PRODUCTS: Product[] = [
     images: [
       '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
       '/assets/telas/reflectivos_ninos/reflectivo-2.jpg',
-      '/assets/img-36.jpg',
       '/assets/telas/reflectivos_ninos/reflectivo-4.jpg',
     ],
     featuredImage: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
