@@ -26,24 +26,21 @@ export const Header: React.FC = () => {
     <header className="sticky top-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-b border-white/10 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[68px] flex items-center justify-between gap-6">
 
-        {/* Left: Brand Logo & Name */}
-        <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0 group-hover:scale-105 transition-transform bg-[#141419] shadow-md flex items-center justify-center p-0.5">
+        {/* Left: Brand Logo Only */}
+        <Link
+          href="/"
+          className="flex items-center group shrink-0"
+          aria-label="Variedades Isaías — Ir al inicio"
+          title="Variedades Isaías"
+        >
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-white/20 shrink-0 group-hover:scale-105 group-hover:border-[#C8A96E]/50 transition-all bg-[#141419] shadow-md flex items-center justify-center p-0.5">
             <Image
               src="/assets/logo-isaias-3.png"
               alt="Variedades Isaías"
               fill
-              sizes="40px"
+              sizes="44px"
               className="object-contain p-1"
             />
-          </div>
-          <div className="flex flex-col uppercase font-sans font-extrabold tracking-wider leading-none">
-            <span className="text-xs sm:text-sm text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
-              Variedades
-            </span>
-            <span className="text-xs sm:text-sm text-[#C8A96E] mt-0.5">
-              Isaías
-            </span>
           </div>
         </Link>
 
