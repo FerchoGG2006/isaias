@@ -193,10 +193,7 @@ export const PRODUCTS: Product[] = [
     },
     images: [
       '/assets/img-4.jpg',
-      '/assets/telas/cuello_tejido/cuello-1.jpg',
-      '/assets/img-5.jpg',
-      '/assets/telas/cuello_tejido/cuello-2.jpg',
-      '/assets/telas/cuello_tejido/cuello-3.jpg',
+      '/assets/img-22.jpg',
     ],
     featuredImage: '/assets/img-4.jpg',
     materialId: 'algodon-pique-heavy',
@@ -215,6 +212,7 @@ export const PRODUCTS: Product[] = [
       availableSizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
       availableColors: [
         { id: 'azul-rey', colorName: 'Azul Rey', colorHex: '#144b9a', inStock: true },
+        { id: 'fucsia', colorName: 'Fucsia', colorHex: '#e91e63', inStock: true },
         { id: 'negro', colorName: 'Negro Noche', colorHex: '#121313', inStock: true },
         { id: 'marfil', colorName: 'Marfil', colorHex: '#e8e0d1', inStock: true },
       ],
