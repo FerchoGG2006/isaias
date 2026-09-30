@@ -74,21 +74,6 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
               </span>
             </div>
           )}
-
-          {/* Badges superiores elegantes: Tag y cantidad de fotos */}
-          <div className="absolute top-2.5 inset-x-2.5 flex items-center justify-between z-20 pointer-events-none gap-2">
-            {product.tag ? (
-              <span className="bg-[#0C0D10]/85 backdrop-blur-md text-[#C8A96E] text-[10px] font-sans font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full border border-[#C8A96E]/30 truncate max-w-[70%]">
-                {product.tag}
-              </span>
-            ) : <span />}
-
-            {product.images && product.images.length > 1 && (
-              <span className="bg-[#0C0D10]/85 backdrop-blur-md text-[#D0CFC9] text-[10px] font-sans font-medium px-2 py-0.5 rounded-full border border-white/15 shrink-0">
-                {product.images.length} vistas
-              </span>
-            )}
-          </div>
         </Link>
       </div>
 
