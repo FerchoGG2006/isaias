@@ -1,36 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  /* Maison Editorial Palette — Warm Bone & Cyan Logo Colorimetry */
-  --bg-main: #F6F4EE;              /* Color Hueso Editorial Principal */
-  --bg-surface: #FFFFFF;           /* Superficie Blanco Cálido / Tarjetas */
-  --bg-surface-elevated: #EDE8DE;  /* Hueso Elevado / Insets */
-  --bg-surface-subtle: #EFECE5;    /* Fondo Bajo */
+  /* ==========================================================================
+     PALETA DE MARCA VARIEDADES ISAÍAS — FONDO BLANCO & AZUL CIAN OFICIAL
+     ========================================================================== */
+  --bg-main: #FFFFFF;              /* Fondo Blanco Limpio y Lindo */
+  --bg-surface: #FFFFFF;           /* Superficie Tarjetas y Contenedores */
+  --bg-surface-elevated: #F8FAFC;  /* Slate 50 — Insets, Toggles, Inputs */
+  --bg-surface-subtle: #F1F5F9;    /* Slate 100 — Secciones Alternantes */
   
-  /* Azul Cian Isaías — Extraído fielmente del Logo Oficial (#00AFEF) */
-  --brand-cyan: #0284C7;           /* Azul Cian para texto con contraste óptimo */
-  --brand-cyan-hover: #0369A1;     /* Azul Cian profundo para hover */
-  --brand-cyan-vibrant: #00AFEF;   /* Cian Eléctrico Primario del Logo */
-  --brand-cyan-subtle: rgba(0, 175, 239, 0.12); /* Tintes suaves para badges */
+  /* Azul Cian Isaías — Fiel al Logo Oficial (#00AFEF) */
+  --brand-cyan: #0284C7;           /* Sky 600 — Contraste óptimo (4.8:1) para texto y precios */
+  --brand-cyan-hover: #0369A1;     /* Sky 700 — Hover de botones y enlaces */
+  --brand-cyan-vibrant: #00AFEF;   /* Cian Eléctrico Oficial del Logo */
+  --brand-cyan-subtle: rgba(0, 175, 239, 0.08); /* Fondo sutil para chips e insignias */
   
-  --border-subtle: rgba(22, 23, 27, 0.09);
-  --border-medium: rgba(22, 23, 27, 0.16);
-  --border-cyan: rgba(0, 175, 239, 0.38);
+  /* Bordes de alta definición */
+  --border-subtle: #E2E8F0;        /* Slate 200 — Líneas suaves de estructura */
+  --border-medium: #CBD5E1;        /* Slate 300 — Bordes de controles interactivos */
+  --border-cyan: rgba(0, 175, 239, 0.45);
   
-  --text-main: #18191D;           /* Carbón Profundo Editorial */
-  --text-muted: #5F6068;          /* Gris Neutro Cálido */
-  --text-dim: #8A8B94;
-  --wa-green: #15803D;
+  /* Tipografía auditada en alto contraste y descanso visual */
+  --text-main: #0F172A;           /* Slate 900 — Títulos y texto de máxima jerarquía */
+  --text-body: #1E293B;           /* Slate 800 — Párrafos y descripciones principales */
+  --text-muted: #475569;          /* Slate 600 — Subtítulos y metadatos (5.5:1 contraste) */
+  --text-dim: #64748B;            /* Slate 500 — Microcopy y etiquetas secundarias */
+  --wa-green: #15803D;            /* Verde institucional con contraste */
   
-  --radius-xs: 4px;
+  --radius-xs: 6px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-full: 9999px;
   
-  --font-editorial: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  --font-code: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-editorial: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-code: var(--font-mono), monospace;
 }
 
 * {
@@ -46,20 +51,21 @@ html {
 body {
   margin: 0;
   background-color: var(--bg-main);
-  color: var(--text-main);
+  color: var(--text-body);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Typography: Headings default to clean modern Sans-serif */
+/* Tipografía de Encabezados: Auditoría de legibilidad, peso y espaciado */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color: var(--text-main);
   letter-spacing: -0.025em;
+  font-weight: 700;
 }
 
-/* Typography Helpers (Clean, Professional & Modern Stacks) */
 .font-serif {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   letter-spacing: -0.02em;
@@ -73,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Containers */
+/* Contenedores con anchos generosos y padding equilibrado */
 .wrap, .editorial-shell {
   width: 100%;
   max-width: 1320px;
@@ -83,18 +89,18 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: clamp(20px, 4vw, 48px);
 }
 
-/* Custom Editorial Scrollbars */
+/* Barra de scroll en Azul Cian Isaías */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-surface-elevated);
+  background: #CBD5E1;
   border-radius: var(--radius-xs);
 }
 
@@ -102,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--brand-cyan-vibrant);
 }
 
-/* Animations */
+/* Animaciones */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -126,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   COLORIMETRÍA OFICIAL DEL LOGO ISAIAS (#00AFEF) + FONDO COLOR HUESO (#F6F4EE)
+   REGLAS DEL SISTEMA DE DISEÑO — FONDO BLANCO PURO & AZUL CIAN
    ========================================================================== */
 
 /* 1. FONDOS GENERALES DE PÁGINAS Y CONTENEDORES */
@@ -148,7 +154,7 @@ main {
   background-color: var(--bg-surface) !important;
 }
 
-/* 3. SUPERFICIES ELEVADAS, BOTONES INACTIVOS E INSETS */
+/* 3. SUPERFICIES ELEVADAS, BOTONES INACTIVOS, INPUTS Y CONTROLES */
 .bg-\[\#1C1E26\],
 .bg-\[\#1C1C24\],
 .bg-\[\#1C1D24\],
@@ -161,15 +167,17 @@ main {
 .bg-\[\#0C0D10\]\/95,
 .bg-\[\#0C0D10\]\/90,
 .bg-\[\#0C0D10\]\/80 {
-  background-color: rgba(246, 244, 238, 0.94) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
 }
 
 .bg-\[\#141419\]\/95,
 .bg-\[\#141419\]\/90 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: rgba(255, 255, 255, 0.98) !important;
 }
 
-/* 5. TEXTOS EN ALTO CONTRASTE */
+/* 5. AUDITORÍA DE TIPOGRAFÍAS Y CONTRASTE */
+/* Textos principales (Títulos y llamadas principales) */
 .text-\[\#F4F1EA\],
 .text-\[\#F5F5F7\],
 .text-\[\#FBFBFB\],
@@ -177,11 +185,13 @@ main {
   color: var(--text-main) !important;
 }
 
+/* Textos de cuerpo y lectura */
 .text-\[\#D0CFC9\],
 .text-\[\#C5C3BC\] {
-  color: #2D2E35 !important;
+  color: var(--text-body) !important;
 }
 
+/* Textos secundarios y muted (legibilidad garantizada) */
 .text-\[\#A0A0A5\],
 .text-\[\#8A8A92\],
 .text-\[\#606068\] {
@@ -192,12 +202,15 @@ main {
 .text-\[\#C8A96E\],
 .hover\:text-\[\#C8A96E\]:hover {
   color: var(--brand-cyan) !important;
+  font-weight: 600;
 }
 
-/* Botones principales en Azul Cian Isaías */
+/* Botones principales en Azul Cian Isaías con texto blanco nítido */
 .bg-\[\#C8A96E\] {
   background-color: var(--brand-cyan-vibrant) !important;
   color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(0, 175, 239, 0.28) !important;
 }
 
 .hover\:bg-\[\#B8985D\]:hover,
@@ -232,61 +245,78 @@ main {
   --tw-shadow-color: rgba(0, 175, 239, 0.22) !important;
 }
 
-/* Tintes suaves para badges */
+/* Chips, badges e insignias con fondo cian sutil */
 .bg-\[\#C8A96E\]\/15,
 .bg-\[\#C8A96E\]\/20 {
   background-color: var(--brand-cyan-subtle) !important;
   color: var(--brand-cyan) !important;
+  border-color: rgba(0, 175, 239, 0.25) !important;
 }
 
-/* 7. BORDES SUAVES Y CÁLIDOS */
+/* 7. ESTRUCTURA DE BORDES SLATE EN FONDO BLANCO */
 .border-white\/5,
 .border-white\/10,
 .border-white\/15,
-.border-white\/20,
-.border-white\/25,
-.border-white\/30 {
-  border-color: rgba(24, 25, 29, 0.12) !important;
+.border-white\/20 {
+  border-color: var(--border-subtle) !important;
 }
 
+.border-white\/25,
+.border-white\/30,
 .border-white\/40,
 .border-white\/50 {
-  border-color: rgba(24, 25, 29, 0.22) !important;
+  border-color: var(--border-medium) !important;
 }
 
 .divide-white\/5,
 .divide-white\/10,
 .divide-white\/15 {
-  border-color: rgba(24, 25, 29, 0.10) !important;
+  border-color: var(--border-subtle) !important;
 }
 
-/* 8. SOMBRAS Y CAPAS SUTILES PARA TARJETAS */
+/* 8. SOMBRAS REFINADAS PARA TARJETAS SOBRE FONDO BLANCO */
 article.group,
 .border-white\/10 {
-  box-shadow: 0 1px 3px rgba(24, 25, 29, 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
 }
 
+article.group:hover {
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Interacción de botones secundarios y hover */
 .bg-white\/5,
 .bg-white\/10 {
-  background-color: rgba(24, 25, 29, 0.05) !important;
+  background-color: #F8FAFC !important;
+  color: var(--text-body) !important;
 }
 
 .bg-white\/15,
 .bg-white\/20 {
-  background-color: rgba(24, 25, 29, 0.08) !important;
+  background-color: #F1F5F9 !important;
+  color: var(--text-main) !important;
 }
 
 .hover\:bg-white\/10:hover {
-  background-color: rgba(24, 25, 29, 0.07) !important;
+  background-color: #F1F5F9 !important;
 }
 
 .hover\:bg-white\/5:hover {
-  background-color: rgba(24, 25, 29, 0.04) !important;
+  background-color: #F8FAFC !important;
 }
 
-/* 9. EXCEPCIÓN HERO FOTOGRÁFICO: Conserva legibilidad blanca sobre foto oscura */
+/* Inputs de texto en formularios y cotizador */
+input, textarea, select {
+  color: var(--text-main) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-dim) !important;
+}
+
+/* 9. EXCEPCIÓN HERO FOTOGRÁFICO: Conserva legibilidad blanca sobre la fotografía */
 #inicio {
-  background-color: #0C0D10 !important;
+  background-color: #0F172A !important;
   color: #FFFFFF !important;
 }
 
@@ -297,7 +327,7 @@ article.group,
 }
 
 #inicio .bg-gradient-to-t {
-  background-image: linear-gradient(to top, var(--bg-main) 0%, rgba(12, 13, 16, 0.6) 35%, rgba(12, 13, 16, 0.85) 100%) !important;
+  background-image: linear-gradient(to top, #FFFFFF 0%, rgba(15, 23, 42, 0.6) 35%, rgba(15, 23, 42, 0.85) 100%) !important;
 }
 
 #inicio a.bg-\[\#C8A96E\] {
@@ -306,13 +336,13 @@ article.group,
 }
 
 #inicio a.bg-\[\#141419\]\/90 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: #FFFFFF !important;
   color: var(--text-main) !important;
-  border-color: rgba(24, 25, 29, 0.15) !important;
+  border-color: #CBD5E1 !important;
 }
 
-/* 10. MODALES Y OVERLAYS TRASLÚCIDOS */
+/* 10. MODALES, DRAWERS Y OVERLAYS */
 .bg-black\/50, .bg-black\/60, .bg-black\/70, .bg-black\/80 {
-  background-color: rgba(24, 25, 29, 0.5) !important;
+  background-color: rgba(15, 23, 42, 0.45) !important;
   backdrop-filter: blur(8px);
 }

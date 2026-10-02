@@ -27,7 +27,8 @@ export const LogoIsaias: React.FC<LogoIsaiasProps> = ({ className = '', size = '
           alt="Variedades Isaías Logo"
           fill
           priority
-          className="object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+          sizes="(max-width: 640px) 224px, 288px"
+          className="object-contain"
         />
       </div>
     </div>

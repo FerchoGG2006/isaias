@@ -33,13 +33,14 @@ export const Header: React.FC = () => {
           aria-label="Variedades Isaías — Ir al inicio"
           title="Variedades Isaías"
         >
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-white/20 shrink-0 group-hover:scale-105 group-hover:border-[#C8A96E]/50 transition-all bg-[#141419] shadow-md flex items-center justify-center p-0.5">
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 group-hover:scale-105 transition-transform flex items-center justify-center">
             <Image
               src="/assets/logo-isaias-3.png"
               alt="Variedades Isaías"
               fill
-              sizes="44px"
-              className="object-contain p-1"
+              sizes="48px"
+              className="object-contain"
+              priority
             />
           </div>
         </Link>
