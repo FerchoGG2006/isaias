@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-slate-500 font-normal">
-          <span>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil en Valledupar · Envíos asegurados a toda Colombia.</span>
+          <span suppressHydrationWarning>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil en Valledupar · Envíos asegurados a toda Colombia.</span>
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/terminos-y-condiciones" className="hover:text-[#0284C7] underline-offset-4 hover:underline transition-colors">
               Términos y Condiciones

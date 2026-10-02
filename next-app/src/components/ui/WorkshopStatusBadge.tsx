@@ -97,7 +97,15 @@ export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
   variant = 'compact',
   className = '',
 }) => {
-  const status = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [mounted, setMounted] = React.useState(false);
+  const liveStatus = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Durante SSR y la primera hidratación de cliente, usar SERVER_STATE idéntico
+  const status = mounted ? liveStatus : SERVER_STATE;
 
   if (variant === 'inline') {
     return (
