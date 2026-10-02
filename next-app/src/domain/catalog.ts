@@ -175,6 +175,7 @@ export interface QuoteItem {
   title: string;
   code?: string;
   image?: string;
+  materialName?: string;
   selectedVariant?: ProductVariant;
   selectedTechnique?: string;
   selectedPlacements?: string[];

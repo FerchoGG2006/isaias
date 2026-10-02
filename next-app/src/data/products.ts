@@ -8,11 +8,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Licrada Estampada (Dama)',
-    subtitle: 'Tela piel de durazno suave · Ajustada al cuerpo',
+    subtitle: 'Tela Piel de Durazno Spandex 220g · Ajustada al cuerpo',
     description:
-      'Camiseta licrada en tela piel de durazno, muy suave y fresca para el calor de Valledupar. Se adapta cómodo al cuerpo sin apretar. El estampado queda nítido, no se cuartea y resiste todas las lavadas.',
+      'Camiseta licrada en tela piel de durazno (220 g/m² con spandex), muy suave al tacto y fresca para el calor de Valledupar. Se adapta cómodo a la silueta sin apretar. El estampado queda nítido, no se cuartea y resiste todas las lavadas.',
     code: 'CAM-AJ-001',
-    tag: 'TELA LICRADA',
+    tag: 'PIEL DE DURAZNO 220G',
     pricing: {
       type: 'fixed',
       basePrice: 38000,
@@ -30,8 +30,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/img-6.jpg',
     materialId: 'piel-durazno-220g',
-    materialName: 'Tela Piel de Durazno Licrada',
-    materialSpecs: ['Suave al tacto', 'Tela licrada', 'Fresca y ligera'],
+    materialName: 'Piel de Durazno Spandex 220g',
+    materialSpecs: ['Piel de durazno 220g', '8% Spandex licrado', 'Fresca y suave'],
     customCapabilities: {
       allowedTechniques: ['dtf-full-color', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -53,7 +53,8 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: 'Piel de durazno licrada suave' },
+      { label: 'Tela', value: 'Piel de durazno spandex 220 g (licrada, no se deforma)' },
+      { label: 'Composición', value: '92% Poliéster microfibra, 8% Spandex' },
       { label: 'Estampado', value: 'Estampado suave que no se cae ni se raja' },
       { label: 'Horma', value: 'Ajustada y cómoda al cuerpo' },
       { label: 'Lavado', value: 'Apta para lavadora, no destiñe' },
@@ -68,11 +69,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Corta a la Cintura (Dama)',
-    subtitle: 'Corte ombliguero juvenil · Tela piel de durazno',
+    subtitle: 'Tela Piel de Durazno Spandex 220g · Corte ombliguero juvenil',
     description:
-      'Camiseta corta a la cintura para mujer, en tela piel de durazno suave y fresca. Ideal para lucir con jeans o shorts, con tu diseño o frase preferida estampada a todo color.',
+      'Camiseta corta a la cintura para mujer, en tela piel de durazno spandex 220g suave y fresca. Ideal para lucir con jeans o shorts, con tu diseño o frase preferida estampada a todo color.',
     code: 'CAM-BB-002',
-    tag: 'CORTE A LA CINTURA',
+    tag: 'PIEL DE DURAZNO 220G',
     pricing: {
       type: 'fixed',
       basePrice: 36000,
@@ -84,8 +85,8 @@ export const PRODUCTS: Product[] = [
     images: [],
     featuredImage: '',
     materialId: 'piel-durazno-220g',
-    materialName: 'Tela Piel de Durazno Licrada',
-    materialSpecs: ['Corte a la cintura', 'Tela fresca'],
+    materialName: 'Piel de Durazno Spandex 220g',
+    materialSpecs: ['Piel de durazno 220g', 'Corte a la cintura', 'Tela licrada'],
     customCapabilities: {
       allowedTechniques: ['dtf-full-color', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -105,7 +106,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: 'Piel de durazno licrada suave' },
+      { label: 'Tela', value: 'Piel de durazno spandex 220 g (licrada suave)' },
       { label: 'Corte', value: 'Corto a la cintura' },
       { label: 'Estampado', value: 'A todo color con acabado suave' },
     ],
@@ -119,11 +120,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Tipo Polo con Cuello Tejido',
-    subtitle: 'Tela piqué resistente · Ideal para bordar tu logo',
+    subtitle: 'Tela Algodón Piqué 230g · Cuello tejido para bordado',
     description:
-      'Camiseta polo tradicional con cuello y puños tejidos de excelente confección. Hecha en tela piqué gruesa y resistente, ideal para trabajo diario, eventos o uniformes. La mejor opción para bordar el logo de tu empresa o negocio.',
+      'Camiseta polo tradicional con cuello y puños tejidos de excelente confección. Hecha en tela algodón piqué grueso de 230 g/m², ideal para trabajo diario, eventos o uniformes. La mejor opción para bordar el logo de tu empresa o negocio.',
     code: 'POL-CT-001',
-    tag: 'POLO RESISTENTE',
+    tag: 'ALGODÓN PIQUÉ 230G',
     pricing: {
       type: 'fixed',
       basePrice: 48000,
@@ -140,8 +141,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/telas/cuello_tejido/cuello-1.jpg',
     materialId: 'algodon-pique-heavy',
-    materialName: 'Tela Piqué Resistente',
-    materialSpecs: ['Tela gruesa', 'Cuello tejido', 'Aguanta uso diario'],
+    materialName: 'Algodón Piqué Pesado 230g',
+    materialSpecs: ['Algodón piqué 230g', 'Cuello tejido', 'Aguanta uso diario'],
     customCapabilities: {
       allowedTechniques: ['bordado-3d', 'dtf-full-color'],
       allowedPlacements: [
@@ -163,7 +164,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: 'Piqué resistente para uso diario' },
+      { label: 'Tela', value: 'Algodón piqué 230 g (tela gruesa resistente para polo)' },
       { label: 'Cuello', value: 'Cuello y puños tejidos reforzados' },
       { label: 'Personalización', value: 'Bordado a máquina o estampado de tu logo' },
     ],
@@ -177,11 +178,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'dotaciones',
     categorySlug: 'dotaciones',
     title: 'Camiseta Polo para Dotación y Uniformes',
-    subtitle: 'Confección resistente para trabajo diario · No se motosea',
+    subtitle: 'Tela Algodón Piqué 230g · Alto tráfico empresarial',
     description:
-      'Camisetas tipo polo hechas para uniformes de empresas, negocios y almacenes. Tela de alta resistencia que no se motosea ni pierde el color con las lavadas continuas. Bordamos o estampamos el logo de tu marca en el pecho, mangas o espalda.',
+      'Camisetas tipo polo hechas para uniformes de empresas, negocios y almacenes. Confeccionadas en algodón piqué de 230 g/m² de alta resistencia que no se motosea ni pierde el color con las lavadas continuas. Bordamos o estampamos el logo de tu marca.',
     code: 'POL-CORP-002',
-    tag: 'UNIFORMES Y DOTACIÓN',
+    tag: 'ALGODÓN PIQUÉ 230G',
     pricing: {
       type: 'fixed',
       basePrice: 46000,
@@ -197,8 +198,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/img-4.jpg',
     materialId: 'algodon-pique-heavy',
-    materialName: 'Tela Piqué para Dotación',
-    materialSpecs: ['Resistente al trabajo diario', 'No se motosea', 'Colores firmes'],
+    materialName: 'Algodón Piqué para Dotación (230g)',
+    materialSpecs: ['Algodón piqué 230g', 'No se motosea', 'Colores firmes'],
     customCapabilities: {
       allowedTechniques: ['bordado-3d', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -220,6 +221,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 12,
     },
     specifications: [
+      { label: 'Tela', value: 'Algodón piqué pesado 230 g (no se motosea)' },
       { label: 'Uso ideal', value: 'Uniformes de trabajo, oficina, almacén y atención al cliente' },
       { label: 'Costuras', value: 'Reforzadas para mayor durabilidad' },
       { label: 'Pedido mínimo', value: 'Desde 6 unidades para dotación' },
@@ -234,11 +236,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Deportiva Fresca (Secado Rápido)',
-    subtitle: 'Tela liviana que no acalora · Estampado que no se borra',
+    subtitle: 'Tela Poliéster Qatar DryFit · Secado rápido y liviana',
     description:
-      'Camiseta en tela deportiva muy liviana y fresca, especial para el clima caliente de Valledupar. El estampado se absorbe directamente en la tela, no se siente al tacto, no pesa y nunca se borra con el sudor ni los lavados. Perfecta para equipos de fútbol, carreras, gimnasio o eventos.',
+      'Camiseta en tela deportiva poliéster Qatar DryFit muy liviana y fresca, especial para el clima caliente de Valledupar. El estampado se absorbe directamente en la tela, no se siente al tacto, no pesa y nunca se borra con el sudor ni los lavados.',
     code: 'DEP-QT-001',
-    tag: 'TELA DEPORTIVA FRESCA',
+    tag: 'POLIÉSTER QATAR',
     pricing: {
       type: 'fixed',
       basePrice: 35000,
@@ -253,8 +255,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/telas/qatar/qatar-1.jpg',
     materialId: 'poliester-qatar-dryfit',
-    materialName: 'Tela Deportiva Transpirable',
-    materialSpecs: ['Secado rápido', 'Fresca y liviana', 'Colores vivos'],
+    materialName: 'Poliéster Qatar DryFit (160g)',
+    materialSpecs: ['Poliéster Qatar 160g', 'Secado rápido', 'Fresca y liviana'],
     customCapabilities: {
       allowedTechniques: ['sublimacion-4k', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -276,7 +278,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: 'Deportiva transpirable de secado rápido' },
+      { label: 'Tela', value: 'Poliéster técnico Qatar 160 g (transpirable DryFit)' },
       { label: 'Estampado', value: 'Queda fundido en la tela, no se borra jamás' },
       { label: 'Sensación', value: 'No pesa, no acalora y no pica' },
     ],
@@ -290,11 +292,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta para Niños con Estampado Reflectivo',
-    subtitle: 'Algodón suave para niños · Estampado que brilla de noche',
+    subtitle: '100% Algodón suave para niños · Estampado que brilla de noche',
     description:
-      'Camiseta en algodón fresco y suave, pensada para la comodidad de los niños. Lleva un estampado especial que brilla al iluminarlo de noche o al tomar fotos con flash. No pica ni maltrata la piel de los más pequeños.',
+      'Camiseta en 100% algodón fresco y suave, pensada para la comodidad de los niños. Lleva un estampado especial que brilla al iluminarlo de noche o al tomar fotos con flash. No pica ni maltrata la piel de los más pequeños.',
     code: 'INF-RF-001',
-    tag: 'PARA NIÑOS',
+    tag: '100% ALGODÓN',
     pricing: {
       type: 'fixed',
       basePrice: 35000,
@@ -311,8 +313,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/telas/reflectivos_ninos/reflectivo-1.jpg',
     materialId: 'algodon-peinado-100',
-    materialName: 'Algodón Suave para Niños',
-    materialSpecs: ['100% Algodón', 'Tacto suave', 'Brilla en la oscuridad'],
+    materialName: '100% Algodón Suave (180g)',
+    materialSpecs: ['100% Algodón 180g', 'Tacto suave', 'Brilla en la oscuridad'],
     customCapabilities: {
       allowedTechniques: ['dtf-reflectivo', 'dtf-full-color'],
       allowedPlacements: [
@@ -332,8 +334,8 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: '100% Algodón suave y fresco' },
-      { label: 'Estampado', value: 'Reflectivo suave que no raspa ni pica' },
+      { label: 'Tela', value: '100% Algodón suave y fresco (no pica)' },
+      { label: 'Estampado', value: 'Reflectivo suave que no raspa ni acalora' },
       { label: 'Lavado', value: 'Apto para lavar en casa normalmente' },
     ],
     featured: true,
@@ -346,11 +348,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'accesorios',
     categorySlug: 'accesorios',
     title: 'Gorra de Malla Personalizada (Trucker)',
-    subtitle: 'Frente acolchado con malla fresca · Bordada o estampada',
+    subtitle: 'Frente en Dril acolchado con malla fresca · Ajustable',
     description:
-      'Gorra clásica con frente acolchado y malla trasera para no acalorar. Trae broche ajustable en la parte trasera. La personalizamos con el logo de tu negocio, marca o grupo bordado con relieve o estampado a todo color.',
+      'Gorra clásica con frente estructurado en dril acolchado y malla trasera para no acalorar. Trae broche ajustable en la parte trasera. La personalizamos con el logo de tu negocio, marca o grupo bordado con relieve o estampado.',
     code: 'ACC-GR-001',
-    tag: 'GORRA PERSONALIZADA',
+    tag: 'DRIL & MALLA',
     pricing: {
       type: 'fixed',
       basePrice: 25000,
@@ -367,8 +369,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/img-3.jpg',
     materialId: 'gorra-trucker',
-    materialName: 'Gorra con Malla Ajustable',
-    materialSpecs: ['Frente acolchado', 'Malla fresca', 'Broche ajustable'],
+    materialName: 'Frente en Dril con Malla Transpirable',
+    materialSpecs: ['Frente en dril', 'Malla fresca', 'Broche ajustable'],
     customCapabilities: {
       allowedTechniques: ['bordado-3d', 'sublimacion-4k', 'dtf-full-color'],
       allowedPlacements: [
@@ -388,6 +390,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
+      { label: 'Material', value: 'Frente en dril acolchado con malla trasera fresca' },
       { label: 'Ajuste', value: 'Broche regulable trasero (sirve para cualquier cabeza)' },
       { label: 'Personalización', value: 'Bordada con relieve o estampada a todo color' },
       { label: 'Uso ideal', value: 'Uso diario, eventos, publicidad o uniformes' },
@@ -402,11 +405,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta Casual para Dama',
-    subtitle: 'Algodón suave y fresco · Horma cómoda',
+    subtitle: '100% Algodón fresco · Horma cómoda para clima cálido',
     description:
-      'Camiseta fresca y liviana para mujer, ideal para el clima de Valledupar. Tiene una horma cómoda para el día a día. La puedes pedir lisa o personalizada con tu frase, dibujo o logo favorito.',
+      'Camiseta femenina confeccionada en 100% algodón suave y transpirable (170 g/m²). Horma cómoda y holgada para el día a día en Valledupar. La puedes pedir lisa o personalizada con tu estampado o frase preferida.',
     code: 'CAM-CF-004',
-    tag: 'ALGODÓN FRESCO',
+    tag: '100% ALGODÓN',
     pricing: {
       type: 'fixed',
       basePrice: 32000,
@@ -421,8 +424,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/img-42.jpg',
     materialId: 'algodon-peinado-100',
-    materialName: 'Algodón Suave y Fresco',
-    materialSpecs: ['Algodón fresco', 'Horma cómoda'],
+    materialName: '100% Algodón Fresco (170g)',
+    materialSpecs: ['100% Algodón 170g', 'Tacto fresco', 'Horma cómoda'],
     customCapabilities: {
       allowedTechniques: ['dtf-full-color', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -442,7 +445,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: 'Algodón suave y transpirable' },
+      { label: 'Tela', value: '100% Algodón suave y transpirable (170 g)' },
       { label: 'Horma', value: 'Cómoda y relajada para mujer' },
       { label: 'Sensación', value: 'Fresca y suave para clima cálido' },
     ],
@@ -456,11 +459,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta con Diseños Estampados',
-    subtitle: 'Estampados a todo color · Diseños modernos y personalizados',
+    subtitle: 'Tela Piel de Durazno Spandex 220g · Estampados a todo color',
     description:
-      'Camiseta con estampados a todo color de alta definición. El estampado no se siente acartonado, no se raja al estirar la tela y mantiene sus colores vivos después de muchas lavadas. Elige uno de nuestros diseños o envíanos el tuyo.',
+      'Camiseta en tela piel de durazno spandex 220g con estampados a todo color de alta definición. El estampado no se siente acartonado, no se raja al estirar la tela y mantiene sus colores vivos después de muchas lavadas.',
     code: 'CAM-GF-002',
-    tag: 'ESTAMPADOS A TODO COLOR',
+    tag: 'PIEL DE DURAZNO 220G',
     pricing: {
       type: 'fixed',
       basePrice: 38000,
@@ -478,8 +481,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/mockups/modelo_diseno1_amor.jpg',
     materialId: 'piel-durazno-220g',
-    materialName: 'Tela Suave para Estampados',
-    materialSpecs: ['Estampado a full color', 'Tacto suave', 'No se cuartea'],
+    materialName: 'Piel de Durazno Spandex 220g',
+    materialSpecs: ['Piel de durazno 220g', 'Estampado full color', 'Tacto suave'],
     customCapabilities: {
       allowedTechniques: ['dtf-full-color', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -501,6 +504,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
+      { label: 'Tela', value: 'Piel de durazno spandex 220 g (suave y elástica)' },
       { label: 'Estampado', value: 'Estampado digital suave y duradero' },
       { label: 'Colores', value: 'Tonos vivos que no se caen al lavar' },
       { label: 'Diseño', value: 'Modelos disponibles o tu propio diseño' },
@@ -515,11 +519,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta para Niños con Diseño de Jirafa',
-    subtitle: '100% Algodón suave · Estampado delicado que no pica',
+    subtitle: '100% Algodón peinado suave · Estampado que no pica',
     description:
-      'Camiseta infantil en tela de algodón muy suavecita y fresca para los niños. El dibujo de la jirafa va estampado con un acabado suave que no maltrata la piel ni da calor. Aguanta el trajín y los lavados de los pequeños.',
+      'Camiseta infantil en tela 100% algodón peinado, delicada y fresca para los niños. El dibujo de la jirafa va estampado con un acabado suave que no maltrata la piel ni da calor. Aguanta el trajín y los lavados de los pequeños.',
     code: 'INF-JF-003',
-    tag: 'PARA NIÑOS',
+    tag: '100% ALGODÓN',
     pricing: {
       type: 'fixed',
       basePrice: 28000,
@@ -534,8 +538,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/mockups/nino_diseno13_jirafa.jpg',
     materialId: 'algodon-peinado-100',
-    materialName: 'Algodón Suave Infantil',
-    materialSpecs: ['100% Algodón', 'Tacto suave', 'Para niños'],
+    materialName: '100% Algodón Peinado Suave',
+    materialSpecs: ['100% Algodón peinado', 'Tacto suave', 'Para niños'],
     customCapabilities: {
       allowedTechniques: ['dtf-full-color', 'dtf-reflectivo'],
       allowedPlacements: [
@@ -555,7 +559,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
-      { label: 'Tela', value: '100% Algodón suave y transpirable' },
+      { label: 'Tela', value: '100% Algodón peinado transpirable y delicado' },
       { label: 'Estampado', value: 'Tacto suave que no pica la piel' },
       { label: 'Cuello', value: 'Elástico suave que no aprieta al poner' },
     ],
@@ -569,11 +573,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'ropa',
     categorySlug: 'ropa',
     title: 'Camiseta con Estampado Reflectivo (Adulto)',
-    subtitle: 'Brilla de noche con la luz y las fotos · Horma cómoda',
+    subtitle: '100% Algodón grueso 200g · Brilla con la luz y fotos con flash',
     description:
-      'Camiseta en algodón grueso y resistente con estampado reflectivo que brilla cuando le da la luz de los carros en la noche o el flash del celular. Horma amplia y cómoda, ideal para la noche, paseos en moto, bici o salir con estilo.',
+      'Camiseta en 100% algodón peinado grueso de alto gramaje (200 g/m²), con estampado reflectivo que brilla cuando le da la luz de los carros en la noche o el flash del celular. Horma amplia y tela duradera.',
     code: 'REF-ADU-001',
-    tag: 'BRILLA DE NOCHE',
+    tag: '100% ALGODÓN 200G',
     pricing: {
       type: 'fixed',
       basePrice: 50000,
@@ -590,8 +594,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/mockups/camiseta_oversize_anime_obanai.jpg',
     materialId: 'algodon-peinado-100',
-    materialName: 'Algodón Grueso Resistente',
-    materialSpecs: ['Algodón resistente', 'Estampado reflectivo', 'Horma cómoda'],
+    materialName: '100% Algodón Grueso (200g)',
+    materialSpecs: ['100% Algodón 200g', 'Estampado reflectivo', 'Horma cómoda'],
     customCapabilities: {
       allowedTechniques: ['dtf-reflectivo', 'dtf-full-color'],
       allowedPlacements: [
@@ -612,8 +616,8 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 1,
     },
     specifications: [
+      { label: 'Tela', value: '100% Algodón peinado grueso de alto gramaje (200 g)' },
       { label: 'Efecto', value: 'Brilla en la oscuridad con luz directa o flash' },
-      { label: 'Tela', value: 'Algodón grueso de buena calidad' },
       { label: 'Horma', value: 'Cómoda y holgada' },
       { label: 'Durabilidad', value: 'No se despega ni se borra con las lavadas' },
     ],
@@ -627,11 +631,11 @@ export const PRODUCTS: Product[] = [
     categoryId: 'dotaciones',
     categorySlug: 'dotaciones',
     title: 'Combo Uniforme: Camiseta Polo + Gorra a Juego',
-    subtitle: 'Camiseta polo en piqué + gorra con el logo de tu negocio',
+    subtitle: 'Camiseta en Algodón Piqué 230g + Gorra en Dril con logo bordado',
     description:
-      'El combo completo de uniforme para tu negocio, restaurante, cafetería o empresa. Incluye camiseta tipo polo en tela piqué resistente y gorra a juego, ambas personalizadas con el logo de tu marca bordado o estampado.',
+      'El combo completo de uniforme para tu negocio, restaurante, cafetería o empresa. Incluye camiseta tipo polo en tela algodón piqué 230g resistente y gorra estructurada en dril a juego, ambas personalizadas con el logo de tu marca bordado o estampado.',
     code: 'DOT-COM-002',
-    tag: 'COMBO UNIFORME',
+    tag: 'ALGODÓN PIQUÉ & DRIL',
     pricing: {
       type: 'from',
       basePrice: 58000,
@@ -647,8 +651,8 @@ export const PRODUCTS: Product[] = [
     ],
     featuredImage: '/assets/mockups/gorra_polo_dotacion_rincon_pescado.jpg',
     materialId: 'algodon-pique-heavy',
-    materialName: 'Polo en Piqué + Gorra Resistente',
-    materialSpecs: ['Camiseta polo piqué', 'Gorra a juego', 'Logo bordado o estampado'],
+    materialName: 'Polo en Algodón Piqué 230g + Gorra en Dril',
+    materialSpecs: ['Algodón piqué 230g', 'Gorra en dril estructurada', 'Logo bordado o estampado'],
     customCapabilities: {
       allowedTechniques: ['bordado-3d', 'dtf-full-color'],
       allowedPlacements: [
@@ -671,6 +675,7 @@ export const PRODUCTS: Product[] = [
       defaultQuantity: 12,
     },
     specifications: [
+      { label: 'Telas', value: 'Camiseta polo en algodón piqué 230 g + Gorra en dril estructurado' },
       { label: 'Incluye', value: '1 Camiseta Tipo Polo + 1 Gorra a juego' },
       { label: 'Personalización', value: 'Bordado a máquina o estampado de tu logo' },
       { label: 'Para quién es', value: 'Restaurantes, cafeterías, talleres y negocios' },

@@ -14,6 +14,10 @@ export function formatQuoteItemText(item: QuoteItem, index?: number): string {
     parts.push(`• *Código:* ${item.code}`);
   }
 
+  if (item.materialName) {
+    parts.push(`• *Tela / Confección:* ${item.materialName}`);
+  }
+
   parts.push(`• *Cantidad total:* ${item.totalQuantity} ${item.totalQuantity === 1 ? 'unidad' : 'unidades'}`);
 
   if (item.selectedVariant) {

@@ -82,6 +82,7 @@ export function buildProductQuoteItem(state: ProductConfigState): QuoteItem {
     title: product.title,
     code: product.code,
     image: selectedVariant?.image || product.featuredImage,
+    materialName: product.materialName,
     selectedVariant: selectedVariant || product.customCapabilities.availableColors[0],
     selectedTechnique: selectedTechnique || product.customCapabilities.allowedTechniques[0],
     selectedPlacements: selectedPlacements || [product.customCapabilities.allowedPlacements[0]?.label].filter(Boolean),
