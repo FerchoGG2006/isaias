@@ -103,11 +103,11 @@ export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
     return (
       <span
         suppressHydrationWarning
-        className={`inline-flex items-center gap-1.5 text-[11px] font-sans ${
-          status.isOpen ? 'text-[#25D366]' : 'text-[#C8A96E]'
+        className={`inline-flex items-center gap-1.5 text-[11px] font-sans font-medium ${
+          status.isOpen ? 'text-emerald-700' : 'text-amber-800'
         } ${className}`}
       >
-        <span className={`w-2 h-2 rounded-full ${status.isOpen ? 'bg-[#25D366] animate-pulse' : 'bg-[#C8A96E]'}`} />
+        <span className={`w-2 h-2 rounded-full ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
         <span>{status.isOpen ? 'En línea ahora' : 'Taller en descanso'}</span>
       </span>
     );
@@ -119,8 +119,8 @@ export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
         suppressHydrationWarning
         className={`p-3 rounded-xl border transition-all ${
           status.isOpen
-            ? 'bg-[#121A15] border-[#25D366]/30 text-[#F4F1EA]'
-            : 'bg-[#17161E] border-[#C8A96E]/30 text-[#D0CFC9]'
+            ? 'bg-emerald-50 border-emerald-200 text-slate-900 shadow-xs'
+            : 'bg-amber-50 border-amber-200 text-slate-900 shadow-xs'
         } ${className}`}
       >
         <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
             {status.label}
           </span>
         </div>
-        <p className="font-sans text-[11px] text-[#A0A0A5] mt-1 pl-6">
+        <p className="font-sans text-[11px] text-slate-600 mt-1 pl-6">
           {status.sublabel}
         </p>
       </div>
@@ -142,13 +142,13 @@ export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
       suppressHydrationWarning
       className={`flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg border text-center transition-all ${
         status.isOpen
-          ? 'bg-[#0E1511] border-[#25D366]/20 text-[#A0E0B0]'
-          : 'bg-[#14151C] border-[#C8A96E]/25 text-[#E0D5B5]'
+          ? 'bg-emerald-50/90 border-emerald-200 text-emerald-950 shadow-xs'
+          : 'bg-amber-50/90 border-amber-200 text-amber-950 shadow-xs'
       } ${className}`}
     >
       <span className="text-xs shrink-0">{status.isOpen ? '🟢' : '🌙'}</span>
       <span className="font-sans text-[11px] font-medium leading-tight">
-        <strong className={status.isOpen ? 'text-[#25D366]' : 'text-[#C8A96E]'}>
+        <strong className={status.isOpen ? 'text-emerald-700 font-bold' : 'text-amber-800 font-bold'}>
           {status.label}
         </strong>{' '}
         · {status.sublabel}

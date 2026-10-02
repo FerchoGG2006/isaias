@@ -217,17 +217,17 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   return (
     <>
       {/* CONTENEDOR PRINCIPAL: INTERFAZ LIGERA Y DIRECTA */}
-      <div className="flex flex-col gap-4 sm:gap-5 bg-[#0E1015] border border-white/10 rounded-xl p-4 sm:p-5 shadow-2xl">
+      <div className="flex flex-col gap-4 sm:gap-5 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm">
 
         {/* PASO 1: COLOR (BOTONES AMPLIOS Y CÓMODOS) */}
         {capabilities.availableColors.length > 0 && (
           <div className="flex flex-col gap-2.5">
-            <label className="font-sans text-xs text-[#F4F1EA] font-semibold flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#C8A96E] text-[#0C0D10] text-[11px] font-bold flex items-center justify-center">
+            <label className="font-sans text-xs text-slate-900 font-bold flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#00AFEF] text-white text-[11px] font-bold flex items-center justify-center">
                 1
               </span>
               <span>Elige tu color:</span>
-              <strong className="text-[#C8A96E] ml-1">{selectedVariant.colorName}</strong>
+              <strong className="text-[#0284C7] ml-1">{selectedVariant.colorName}</strong>
             </label>
 
             <div className="flex flex-wrap gap-2 sm:gap-2.5">
@@ -240,13 +240,13 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                     onClick={() => handleVariantSelect(col)}
                     className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border text-xs font-sans transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#1C1E26] border-[#C8A96E] text-[#F4F1EA] shadow-md shadow-[#C8A96E]/15 ring-2 ring-[#C8A96E]/50 scale-[1.02]'
-                        : 'bg-[#14151C] border-white/10 text-[#8A8A92] hover:border-white/25 hover:text-[#F4F1EA]'
+                        ? 'bg-[#00AFEF]/10 border-2 border-[#00AFEF] text-slate-900 shadow-xs ring-2 ring-[#00AFEF]/30 scale-[1.02] font-bold'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300 hover:text-slate-900 hover:bg-slate-100'
                     }`}
                     aria-pressed={isSelected}
                   >
                     <span
-                      className="w-4 h-4 rounded-full border border-white/30 shrink-0 shadow-sm"
+                      className="w-4 h-4 rounded-full border border-slate-300 shrink-0 shadow-xs"
                       style={{ backgroundColor: col.colorHex }}
                     />
                     <span className="font-medium text-xs">{col.colorName}</span>
@@ -258,10 +258,10 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         )}
 
         {/* PASO 2: TALLA Y CANTIDAD (RÁPIDO, CLARO Y CON BOTONES AMPLIOS) */}
-        <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
+        <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <label className="font-sans text-xs text-[#F4F1EA] font-semibold flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#C8A96E] text-[#0C0D10] text-[11px] font-bold flex items-center justify-center">
+            <label className="font-sans text-xs text-slate-900 font-bold flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#00AFEF] text-white text-[11px] font-bold flex items-center justify-center">
                 2
               </span>
               <span>Talla y Cantidad:</span>
@@ -276,7 +276,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                   setOrderMode(newMode);
                   if (newMode === 'bulk') setShowAdvancedOptions(true);
                 }}
-                className="text-xs text-[#C8A96E] hover:underline cursor-pointer flex items-center gap-1 font-medium"
+                className="text-xs text-[#0284C7] hover:underline cursor-pointer flex items-center gap-1 font-bold"
               >
                 <span>{orderMode === 'quick' ? '¿Vas a pedir varias tallas para un equipo? Toca aquí' : '← Volver a pedir una sola talla'}</span>
               </button>
@@ -284,19 +284,19 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           </div>
 
           {orderMode === 'quick' ? (
-            <div className="flex flex-col gap-4 p-4 bg-[#14151C] border border-white/10 rounded-xl">
+            <div className="flex flex-col gap-4 p-4 bg-slate-50/80 border border-slate-200 rounded-xl">
               
               {/* Selector de tallas con botones cómodos y acceso a guía de medidas */}
               {capabilities.availableSizes.length > 0 && (
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="font-sans text-[11px] text-[#A0A0A5]">
+                    <span className="font-sans text-[11px] text-slate-600 font-medium">
                       Toca tu talla:
                     </span>
                     <button
                       type="button"
                       onClick={() => setIsSizeGuideOpen(true)}
-                      className="text-[11px] text-[#C8A96E] hover:underline cursor-pointer flex items-center gap-1 font-medium transition-colors"
+                      className="text-[11px] text-[#0284C7] hover:underline cursor-pointer flex items-center gap-1 font-bold transition-colors"
                       aria-label="Ver guía de medidas en centímetros"
                     >
                       <span>📐 Ver guía de medidas (cm)</span>
@@ -312,8 +312,8 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                           onClick={() => setQuickSize(size)}
                           className={`min-w-[48px] h-11 px-3 rounded-xl font-mono text-sm font-bold transition-all cursor-pointer flex items-center justify-center ${
                             isSelected
-                              ? 'bg-[#C8A96E] text-[#0C0D10] shadow-lg shadow-[#C8A96E]/25 scale-105 ring-2 ring-[#C8A96E]'
-                              : 'bg-[#0F1015] border border-white/15 text-[#F4F1EA] hover:border-[#C8A96E]/60'
+                              ? 'bg-[#00AFEF] text-white shadow-md shadow-[#00AFEF]/25 scale-105 ring-2 ring-[#00AFEF]'
+                              : 'bg-white border border-slate-200 text-slate-700 hover:border-[#00AFEF]/60 hover:text-slate-900'
                           }`}
                         >
                           {size}
@@ -321,25 +321,25 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                       );
                     })}
                   </div>
-                  <p className="font-sans text-[11px] text-[#8A8A92] pt-1">
+                  <p className="font-sans text-[11px] text-slate-600 pt-1">
                     Horma clásica colombiana (cómoda, no apretada). Medidas exactas verificadas en tu cotización.
                   </p>
                 </div>
               )}
 
               {/* Selector de cantidad con atajos rápidos de 1 clic */}
-              <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
-                <span className="font-sans text-[11px] text-[#A0A0A5]">
+              <div className="flex flex-col gap-2 pt-2 border-t border-slate-200">
+                <span className="font-sans text-[11px] text-slate-600 font-medium">
                   ¿Cuántas prendas necesitas?
                 </span>
 
                 <div className="flex flex-wrap items-center gap-3">
                   {/* Stepper manual */}
-                  <div className="flex items-center bg-[#0C0D10] border border-white/20 rounded-xl overflow-hidden shadow-inner">
+                  <div className="flex items-center bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
                     <button
                       type="button"
                       onClick={() => setQuickQuantity(Math.max(1, quickQuantity - 1))}
-                      className="w-11 h-11 flex items-center justify-center font-bold text-lg text-[#8A8A92] hover:text-[#F4F1EA] hover:bg-white/10 transition-colors cursor-pointer"
+                      className="w-11 h-11 flex items-center justify-center font-bold text-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
                       aria-label="Disminuir unidades"
                     >
                       −
@@ -349,12 +349,12 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                       min="1"
                       value={quickQuantity}
                       onChange={(e) => setQuickQuantity(Math.max(1, parseInt(e.target.value, 10) || 1))}
-                      className="w-14 text-center font-mono font-bold text-base bg-transparent text-[#F4F1EA] outline-none"
+                      className="w-14 text-center font-mono font-bold text-base bg-transparent text-slate-900 outline-none"
                     />
                     <button
                       type="button"
                       onClick={() => setQuickQuantity(quickQuantity + 1)}
-                      className="w-11 h-11 flex items-center justify-center font-bold text-lg text-[#8A8A92] hover:text-[#F4F1EA] hover:bg-white/10 transition-colors cursor-pointer"
+                      className="w-11 h-11 flex items-center justify-center font-bold text-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
                       aria-label="Aumentar unidades"
                     >
                       +
@@ -370,8 +370,8 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                         onClick={() => setQuickQuantity(preset)}
                         className={`px-3 py-2 rounded-lg text-xs font-sans font-medium transition-all cursor-pointer ${
                           quickQuantity === preset
-                            ? 'bg-[#C8A96E]/20 text-[#C8A96E] border border-[#C8A96E]/50 font-bold'
-                            : 'bg-white/5 text-[#8A8A92] hover:text-[#F4F1EA] border border-transparent hover:border-white/10'
+                            ? 'bg-[#00AFEF]/15 text-[#0284C7] border border-[#00AFEF]/50 font-bold'
+                            : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300'
                         }`}
                       >
                         {preset === 12 ? '12 (Docena)' : `${preset} ${preset === 1 ? 'prenda' : 'prendas'}`}
@@ -384,12 +384,12 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             </div>
           ) : (
             /* MATRIZ DE DISTRIBUCIÓN POR MAYOR (SOLO SI SE ACTIVA) */
-            <div className="p-4 bg-[#14151C] border border-white/10 rounded-xl">
+            <div className="p-4 bg-slate-50/80 border border-slate-200 rounded-xl">
               <div className="flex justify-end mb-2">
                 <button
                   type="button"
                   onClick={() => setIsSizeGuideOpen(true)}
-                  className="text-[11px] text-[#C8A96E] hover:underline cursor-pointer flex items-center gap-1 font-medium transition-colors"
+                  className="text-[11px] text-[#0284C7] hover:underline cursor-pointer flex items-center gap-1 font-bold transition-colors"
                   aria-label="Ver guía de medidas en centímetros"
                 >
                   <span>📐 Ver guía de medidas (cm)</span>
@@ -407,9 +407,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         </div>
 
         {/* PASO 3: ¿CÓMO LA QUIERES PERSONALIZADA? (EN LENGUAJE HUMANO Y COTIDIANO) */}
-        <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
-          <label className="font-sans text-xs text-[#F4F1EA] font-semibold flex items-center gap-2">
-            <span className="w-5 h-5 rounded-full bg-[#C8A96E] text-[#0C0D10] text-[11px] font-bold flex items-center justify-center">
+        <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
+          <label className="font-sans text-xs text-slate-900 font-bold flex items-center gap-2">
+            <span className="w-5 h-5 rounded-full bg-[#00AFEF] text-white text-[11px] font-bold flex items-center justify-center">
               3
             </span>
             <span>¿Cómo quieres tu prenda?</span>
@@ -422,24 +422,24 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               onClick={() => handleCustomTypeChange('print')}
               className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all flex flex-col gap-1 ${
                 customType === 'print'
-                  ? 'bg-[#1C1E26] border-[#C8A96E] text-[#F4F1EA] shadow-md shadow-[#C8A96E]/15 ring-1 ring-[#C8A96E]/40'
-                  : 'bg-[#14151C] border-white/10 text-[#8A8A92] hover:border-white/25 hover:text-[#F4F1EA]'
+                  ? 'bg-[#00AFEF]/10 border-2 border-[#00AFEF] text-slate-900 shadow-xs ring-1 ring-[#00AFEF]/30 font-bold'
+                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <div className="flex items-center justify-between">
-                <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                <svg className="w-4 h-4 text-[#00AFEF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7 4V2h10v2m4 4l-4-3H7L3 8l3 3v11h12V11l3-3z" />
                 </svg>
                 <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                  customType === 'print' ? 'border-[#C8A96E] bg-[#C8A96E]' : 'border-white/30'
+                  customType === 'print' ? 'border-[#00AFEF] bg-[#00AFEF]' : 'border-slate-300 bg-white'
                 }`}>
-                  {customType === 'print' && <span className="w-1.5 h-1.5 rounded-full bg-[#0C0D10]" />}
+                  {customType === 'print' && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                 </span>
               </div>
-              <span className="font-sans font-bold text-xs text-[#F4F1EA] mt-1">
+              <span className="font-sans font-bold text-xs text-slate-900 mt-1">
                 Con Estampado / Logo
               </span>
-              <span className="text-[11px] text-[#A0A0A5]">
+              <span className="text-[11px] text-slate-600 font-normal">
                 Estampado suave a todo color que no se cae con las lavadas
               </span>
             </button>
@@ -451,24 +451,24 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                 onClick={() => handleCustomTypeChange('embroidery')}
                 className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all flex flex-col gap-1 ${
                   customType === 'embroidery'
-                    ? 'bg-[#1C1E26] border-[#C8A96E] text-[#F4F1EA] shadow-md shadow-[#C8A96E]/15 ring-1 ring-[#C8A96E]/40'
-                    : 'bg-[#14151C] border-white/10 text-[#8A8A92] hover:border-white/25 hover:text-[#F4F1EA]'
+                    ? 'bg-[#00AFEF]/10 border-2 border-[#00AFEF] text-slate-900 shadow-xs ring-1 ring-[#00AFEF]/30 font-bold'
+                    : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                  <svg className="w-4 h-4 text-[#00AFEF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                   </svg>
                   <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                    customType === 'embroidery' ? 'border-[#C8A96E] bg-[#C8A96E]' : 'border-white/30'
+                    customType === 'embroidery' ? 'border-[#00AFEF] bg-[#00AFEF]' : 'border-slate-300 bg-white'
                   }`}>
-                    {customType === 'embroidery' && <span className="w-1.5 h-1.5 rounded-full bg-[#0C0D10]" />}
+                    {customType === 'embroidery' && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                   </span>
                 </div>
-                <span className="font-sans font-bold text-xs text-[#F4F1EA] mt-1">
+                <span className="font-sans font-bold text-xs text-slate-900 mt-1">
                   Con Bordado
                 </span>
-                <span className="text-[11px] text-[#A0A0A5]">
+                <span className="text-[11px] text-slate-600 font-normal">
                   Bordado fino en relieve que dura para siempre
                 </span>
               </button>
@@ -480,24 +480,24 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               onClick={() => handleCustomTypeChange('plain')}
               className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all flex flex-col gap-1 ${
                 customType === 'plain'
-                  ? 'bg-[#1C1E26] border-[#C8A96E] text-[#F4F1EA] shadow-md shadow-[#C8A96E]/15 ring-1 ring-[#C8A96E]/40'
-                  : 'bg-[#14151C] border-white/10 text-[#8A8A92] hover:border-white/25 hover:text-[#F4F1EA]'
+                  ? 'bg-[#00AFEF]/10 border-2 border-[#00AFEF] text-slate-900 shadow-xs ring-1 ring-[#00AFEF]/30 font-bold'
+                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <div className="flex items-center justify-between">
-                <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                <svg className="w-4 h-4 text-[#00AFEF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
                 <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                  customType === 'plain' ? 'border-[#C8A96E] bg-[#C8A96E]' : 'border-white/30'
+                  customType === 'plain' ? 'border-[#00AFEF] bg-[#00AFEF]' : 'border-slate-300 bg-white'
                 }`}>
-                  {customType === 'plain' && <span className="w-1.5 h-1.5 rounded-full bg-[#0C0D10]" />}
+                  {customType === 'plain' && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                 </span>
               </div>
-              <span className="font-sans font-bold text-xs text-[#F4F1EA] mt-1">
+              <span className="font-sans font-bold text-xs text-slate-900 mt-1">
                 Prenda Lisa (Sin Estampar)
               </span>
-              <span className="text-[11px] text-[#A0A0A5]">
+              <span className="text-[11px] text-slate-600 font-normal">
                 Prenda lista para usar en color sólido
               </span>
             </button>
@@ -509,29 +509,29 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           <button
             type="button"
             onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
-            className="w-full py-2.5 px-3.5 bg-[#14151C] hover:bg-[#1A1C24] border border-white/10 hover:border-white/20 rounded-xl text-left flex items-center justify-between text-xs text-[#A0A0A5] hover:text-[#F4F1EA] transition-all cursor-pointer"
+            className="w-full py-2.5 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 rounded-xl text-left flex items-center justify-between text-xs text-slate-700 hover:text-slate-900 transition-all cursor-pointer font-medium"
           >
             <span className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+              <svg className="w-4 h-4 text-[#00AFEF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
               </svg>
-              <span className="font-medium">
+              <span>
                 {showAdvancedOptions ? 'Ocultar opciones adicionales' : '¿Quieres agregar tu logo, notas o elegir ubicación? (Opcional)'}
               </span>
             </span>
-            <svg className={`w-4 h-4 text-[#C8A96E] transition-transform duration-200 ${showAdvancedOptions ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <svg className={`w-4 h-4 text-[#00AFEF] transition-transform duration-200 ${showAdvancedOptions ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
 
           {/* CONTENIDO DEL PANEL AVANZADO */}
           {showAdvancedOptions && (
-            <div className="mt-3 p-4 bg-[#12141A] border border-white/10 rounded-xl flex flex-col gap-4 animate-in fade-in duration-200">
+            <div className="mt-3 p-4 bg-slate-50/80 border border-slate-200 rounded-xl flex flex-col gap-4 animate-in fade-in duration-200">
               
               {/* A. Ubicación del estampado */}
               {customType !== 'plain' && capabilities.allowedPlacements.length > 0 && (
                 <div className="flex flex-col gap-2">
-                  <span className="font-sans text-xs font-semibold text-[#F4F1EA]">
+                  <span className="font-sans text-xs font-bold text-slate-900">
                     Ubicación preferida del logo:
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -544,11 +544,11 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                           onClick={() => togglePlacement(plc.label)}
                           className={`px-3 py-1.5 rounded-lg border font-sans text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
                             isSelected
-                              ? 'bg-[#181A22] border-[#C8A96E] text-[#F4F1EA]'
-                              : 'bg-[#0E1015] border-white/10 text-[#8A8A92] hover:border-white/25'
+                              ? 'bg-[#00AFEF]/15 border-2 border-[#00AFEF] text-slate-900 font-bold'
+                              : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
                           }`}
                         >
-                          <span className={isSelected ? 'text-[#C8A96E]' : 'text-white/30'}>
+                          <span className={isSelected ? 'text-[#00AFEF] font-bold' : 'text-slate-400'}>
                             {isSelected ? '✓' : '○'}
                           </span>
                           <span>{plc.label}</span>
@@ -561,22 +561,22 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 
               {/* B. Subida de archivo vs WhatsApp */}
               {customType !== 'plain' && (
-                <div className="flex flex-col gap-2.5 pt-2 border-t border-white/5">
+                <div className="flex flex-col gap-2.5 pt-2 border-t border-slate-200">
                   <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="font-sans text-xs font-semibold text-[#F4F1EA]">
+                    <span className="font-sans text-xs font-bold text-slate-900">
                       ¿Cómo nos entregas tu diseño?
                     </span>
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#C8A96E]/15 border border-[#C8A96E]/40 text-[#C8A96E] text-[10px] font-semibold">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#00AFEF]/10 border border-[#00AFEF]/30 text-[#0284C7] text-[10px] font-bold">
                       ✨ Digitalización y ajuste de arte incluido
                     </span>
                   </div>
 
                   {/* Banner reductor de ansiedad sobre el archivo */}
-                  <div className="p-3 bg-[#161720] border border-[#C8A96E]/25 rounded-xl flex flex-col gap-1">
-                    <span className="font-sans font-semibold text-[11px] text-[#F4F1EA]">
+                  <div className="p-3 bg-cyan-50/70 border border-[#00AFEF]/30 rounded-xl flex flex-col gap-1">
+                    <span className="font-sans font-bold text-xs text-slate-900">
                       ¿No tienes tu logo en alta calidad o vectorizado?
                     </span>
-                    <p className="font-sans text-[11px] text-[#A0A0A5] leading-relaxed">
+                    <p className="font-sans text-xs text-slate-700 leading-relaxed font-normal">
                       No te preocupes: nuestro equipo de diseño digitaliza, vectoriza y optimiza tu arte sin costo adicional para tu pedido.
                     </p>
                   </div>
@@ -586,16 +586,16 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                       onClick={() => setDesignDeliveryMode('whatsapp')}
                       className={`p-2.5 rounded-xl border text-left cursor-pointer transition-all flex items-center gap-2.5 ${
                         designDeliveryMode === 'whatsapp'
-                          ? 'bg-[#141D17] border-[#25D366]/60 text-[#F4F1EA]'
-                          : 'bg-[#0E1015] border-white/10 text-[#8A8A92]'
+                          ? 'bg-emerald-50 border-2 border-[#25D366] text-slate-900 shadow-xs font-bold'
+                          : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                       }`}
                     >
                       <svg className="w-4 h-4 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />
                       </svg>
                       <div>
-                        <span className="font-bold block">Por el chat de WhatsApp</span>
-                        <span className="text-[10px] text-[#A0A0A5]">Nos envías la foto directamente (Más fácil)</span>
+                        <span className="font-bold block text-slate-900">Por el chat de WhatsApp</span>
+                        <span className="text-[10px] text-slate-600 font-normal">Nos envías la foto directamente (Más fácil)</span>
                       </div>
                     </button>
 
@@ -604,16 +604,16 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                       onClick={() => setDesignDeliveryMode('upload')}
                       className={`p-2.5 rounded-xl border text-left cursor-pointer transition-all flex items-center gap-2.5 ${
                         designDeliveryMode === 'upload'
-                          ? 'bg-[#181A22] border-[#C8A96E] text-[#F4F1EA]'
-                          : 'bg-[#0E1015] border-white/10 text-[#8A8A92]'
+                          ? 'bg-[#00AFEF]/10 border-2 border-[#00AFEF] text-slate-900 shadow-xs font-bold'
+                          : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                       }`}
                     >
-                      <svg className="w-4 h-4 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <svg className="w-4 h-4 text-[#00AFEF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                       </svg>
                       <div>
-                        <span className="font-bold block">Subir archivo aquí</span>
-                        <span className="text-[10px] text-[#A0A0A5]">Foto o imagen de tu celular</span>
+                        <span className="font-bold block text-slate-900">Subir archivo aquí</span>
+                        <span className="text-[10px] text-slate-600 font-normal">Foto o imagen de tu celular</span>
                       </div>
                     </button>
                   </div>
@@ -640,8 +640,8 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               )}
 
               {/* C. Notas adicionales */}
-              <div className="flex flex-col gap-1.5 pt-2 border-t border-white/5">
-                <span className="font-sans text-xs font-semibold text-[#F4F1EA]">
+              <div className="flex flex-col gap-1.5 pt-2 border-t border-slate-200">
+                <span className="font-sans text-xs font-bold text-slate-900">
                   Comentarios o indicaciones:
                 </span>
                 <input
@@ -649,7 +649,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Ej: Necesito entrega para el viernes, logo al frente..."
-                  className="w-full bg-[#0E1015] border border-white/15 focus:border-[#C8A96E] text-[#F4F1EA] px-3 py-2 text-xs rounded-lg outline-none"
+                  className="w-full bg-white border border-slate-300 focus:border-[#00AFEF] text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs rounded-lg outline-none shadow-xs"
                 />
               </div>
 
@@ -658,10 +658,10 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         </div>
 
         {/* RESUMEN Y BOTÓN PROTAGÓNICO DE WHATSAPP (SIN RODEOS) */}
-        <div className="pt-3.5 border-t border-white/15 flex flex-col gap-3.5 bg-[#14151C] p-4 rounded-xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+        <div className="pt-3.5 border-t border-slate-200 flex flex-col gap-3.5 bg-slate-50/80 p-4 rounded-xl border border-slate-200 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
             <div>
-              <span suppressHydrationWarning className="text-sm font-semibold text-[#F4F1EA]">
+              <span suppressHydrationWarning className="text-sm font-bold text-slate-900">
                 {effectiveTotalQuantity} {effectiveTotalQuantity === 1 ? 'prenda' : 'prendas'}
                 {orderMode === 'quick' ? ` · Talla ${quickSize}` : ''} · {selectedVariant.colorName} ·{' '}
                 {readableTechnique}
@@ -671,15 +671,15 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             <div className="text-left sm:text-right">
               {product.pricing.type === 'fixed' && estimatedSubtotal !== undefined ? (
                 <>
-                  <span suppressHydrationWarning className="font-mono text-[11px] text-[#8A8A92] block">
+                  <span suppressHydrationWarning className="font-mono text-[11px] text-slate-500 block">
                     ${(effectiveUnitPrice || 0).toLocaleString('es-CO')} c/u (ref.)
                   </span>
-                  <span suppressHydrationWarning className="font-mono font-bold text-xl sm:text-2xl text-[#C8A96E]">
+                  <span suppressHydrationWarning className="font-mono font-bold text-xl sm:text-2xl text-[#0284C7]">
                     ${estimatedSubtotal.toLocaleString('es-CO')} COP
                   </span>
                 </>
               ) : (
-                <span className="font-mono text-xs font-semibold text-[#C8A96E] bg-black/50 px-3 py-1.5 border border-[#C8A96E]/30 rounded-full">
+                <span className="font-mono text-xs font-bold text-[#0284C7] bg-[#00AFEF]/10 px-3 py-1.5 border border-[#00AFEF]/30 rounded-full">
                   Precio exacto por cotización
                 </span>
               )}
@@ -690,9 +690,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           {validationError && (
             <div
               role="alert"
-              className="p-3 bg-red-950/80 border border-red-500/60 rounded-xl text-red-200 text-xs font-mono flex items-center gap-2.5 animate-in fade-in duration-200"
+              className="p-3 bg-red-50 border border-red-300 rounded-xl text-red-700 text-xs font-mono flex items-center gap-2.5 animate-in fade-in duration-200"
             >
-              <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
               <span>{validationError}</span>
@@ -704,7 +704,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             <button
               type="button"
               onClick={handleDirectWhatsApp}
-              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-sans font-bold text-sm sm:text-base py-4 px-6 rounded-xl shadow-xl shadow-[#25D366]/20 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-3 cursor-pointer"
+              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans font-bold text-sm sm:text-base py-4 px-6 rounded-xl shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-3 cursor-pointer"
             >
               <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />
@@ -719,7 +719,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             <button
               type="button"
               onClick={handleAddToQuote}
-              className="w-full bg-[#181A22] hover:bg-[#20222B] text-[#D0CFC9] hover:text-[#F4F1EA] border border-white/15 hover:border-[#C8A96E]/50 font-sans font-semibold text-xs uppercase tracking-wider py-3 px-4 rounded-xl transition-colors cursor-pointer"
+              className="w-full bg-white hover:bg-slate-100 text-slate-800 hover:text-slate-950 border border-slate-300 hover:border-slate-400 font-sans font-bold text-xs uppercase tracking-wider py-3 px-4 rounded-xl transition-colors cursor-pointer shadow-xs"
             >
               + Guardar en mi lista de cotización
             </button>

@@ -75,13 +75,13 @@ export const FaqSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center flex flex-col items-center gap-3 mb-12 sm:mb-16">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A96E] font-semibold">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#0284C7] font-bold">
             Claridad Comercial · Preguntas Frecuentes
           </span>
-          <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight">
+          <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight">
             Todo lo que necesitas saber antes de ordenar.
           </h2>
-          <p className="font-sans text-sm sm:text-base text-[#8A8A92] font-light max-w-xl leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-slate-600 font-normal max-w-xl leading-relaxed">
             Resolvemos las dudas más habituales sobre confección, bordados Wilcom, técnicas de estampado y despachos desde Valledupar.
           </p>
         </div>
@@ -94,10 +94,10 @@ export const FaqSection: React.FC = () => {
             return (
               <div
                 key={faq.id}
-                className={`border rounded-xs transition-colors overflow-hidden ${
+                className={`border rounded-xl transition-all overflow-hidden ${
                   isOpen
-                    ? 'bg-[#14151C] border-[#C8A96E]/40 shadow-xl'
-                    : 'bg-[#0E0F14] border-white/10 hover:border-white/20'
+                    ? 'bg-slate-50/90 border-[#00AFEF]/50 shadow-md ring-1 ring-[#00AFEF]/20'
+                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
                 }`}
               >
                 <button
@@ -107,16 +107,16 @@ export const FaqSection: React.FC = () => {
                   className="w-full text-left p-5 sm:p-6 flex items-start sm:items-center justify-between gap-4 cursor-pointer"
                 >
                   <div className="text-left">
-                    <span className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA] tracking-tight">
+                    <span className="font-sans font-bold text-base sm:text-lg text-slate-900 tracking-tight">
                       {faq.question}
                     </span>
                   </div>
 
                   <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 text-sm ${
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 text-sm font-bold ${
                       isOpen
-                        ? 'rotate-180 bg-[#C8A96E] text-[#0C0D10] border-[#C8A96E]'
-                        : 'bg-white/5 text-[#8A8A92] border-white/10'
+                        ? 'rotate-180 bg-[#00AFEF] text-white border-[#00AFEF]'
+                        : 'bg-slate-100 text-slate-600 border-slate-200'
                     }`}
                   >
                     ↓
@@ -124,7 +124,7 @@ export const FaqSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#D0CFC9] leading-relaxed font-light border-t border-white/5 animate-in fade-in duration-200">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal border-t border-slate-100 animate-in fade-in duration-200">
                     <p>{faq.answer}</p>
                   </div>
                 )}
@@ -134,19 +134,19 @@ export const FaqSection: React.FC = () => {
         </div>
 
         {/* Extra Question Assistance */}
-        <div className="mt-12 text-center p-6 bg-[#12131A] border border-white/10 rounded-xs flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs">
+        <div className="mt-12 text-center p-6 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs shadow-xs">
           <div className="flex flex-col sm:text-left gap-1">
-            <span className="text-[#F4F1EA] font-semibold text-sm">
+            <span className="text-slate-900 font-bold text-sm">
               ¿Tienes un requerimiento especial o diseño complejo?
             </span>
-            <span className="text-[#8A8A92] font-light">
+            <span className="text-slate-600 font-normal">
               Escríbenos directamente y te respondemos en menos de 15 minutos en horario hábil.
             </span>
           </div>
 
           <Link
             href="/cotizar"
-            className="shrink-0 font-bold bg-[#C8A96E] hover:bg-[#dbbe82] text-[#0C0D10] px-5 py-2.5 rounded-xs uppercase tracking-wider transition-colors shadow-md"
+            className="shrink-0 font-bold bg-[#00AFEF] hover:bg-[#0284C7] text-white px-5 py-2.5 rounded-lg uppercase tracking-wider transition-colors shadow-md text-xs"
           >
             Preguntar al Taller
           </Link>

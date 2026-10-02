@@ -177,12 +177,17 @@ main {
 }
 
 /* 5. AUDITORÍA DE TIPOGRAFÍAS Y CONTRASTE */
-/* Textos principales (Títulos y llamadas principales) */
+/* Textos de títulos en el tema general */
 .text-\[\#F4F1EA\],
 .text-\[\#F5F5F7\],
-.text-\[\#FBFBFB\],
+.text-\[\#FBFBFB\] {
+  color: var(--text-main);
+}
+
+/* Regla estricta: Todo texto explícitamente blanco permanece blanco puro */
+.text-white,
 .text-\[\#FFFFFF\] {
-  color: var(--text-main) !important;
+  color: #FFFFFF !important;
 }
 
 /* Textos de cuerpo y lectura */
