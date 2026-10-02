@@ -100,7 +100,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#0C0D10] text-[#F4F1EA] antialiased selection:bg-[#C8A96E] selection:text-[#0C0D10] pb-16 md:pb-0">
+      <body className="bg-[#F6F4EE] text-[#18191D] antialiased selection:bg-[#967438] selection:text-[#FFFFFF] pb-16 md:pb-0">
         <GoogleAnalytics />
         <QuoteProvider>
           {children}

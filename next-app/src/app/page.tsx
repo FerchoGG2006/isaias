@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main id="top" className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] selection:bg-[#C8A96E] selection:text-[#0C0D10]">
+      <main id="top" className="min-h-screen bg-[#F6F4EE] text-[#18191D] selection:bg-[#967438] selection:text-[#FFFFFF]">
         {/* 01 · HERO EDITORIAL (CTA & PROMESA ABOVE THE FOLD) */}
         <HeroSection />
 

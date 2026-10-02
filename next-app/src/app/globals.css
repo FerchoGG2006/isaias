@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Maison Editorial Palette — Variedades Isaías & El Palacio */
-  --bg-main: #0C0D10;              /* Negro Profundo Taller */
-  --bg-surface: #141419;           /* Superficie Carbón */
-  --bg-surface-elevated: #1C1C24;  /* Superficie Elevada */
-  --bg-surface-subtle: #08080A;    /* Fondo Bajo */
+  /* Maison Editorial Palette — Warm Bone & Light Editorial Mode */
+  --bg-main: #F6F4EE;              /* Color Hueso Editorial Principal */
+  --bg-surface: #FFFFFF;           /* Superficie Blanco Cálido / Tarjetas */
+  --bg-surface-elevated: #EDE8DE;  /* Hueso Elevado / Insets */
+  --bg-surface-subtle: #EFECE5;    /* Fondo Bajo */
   
-  --brand-gold: #C8A96E;          /* Oro Champaña Editorial */
-  --brand-gold-hover: #B8985D;
-  --brand-gold-subtle: rgba(200, 169, 110, 0.12);
+  --brand-gold: #967438;          /* Oro Cálido Editorial para fondo claro */
+  --brand-gold-hover: #7E602A;
+  --brand-gold-subtle: rgba(150, 116, 56, 0.12);
   
-  --border-subtle: rgba(255, 255, 255, 0.10);
-  --border-medium: rgba(255, 255, 255, 0.18);
-  --border-gold: rgba(200, 169, 110, 0.35);
+  --border-subtle: rgba(22, 23, 27, 0.09);
+  --border-medium: rgba(22, 23, 27, 0.16);
+  --border-gold: rgba(150, 116, 56, 0.35);
   
-  --text-main: #F4F1EA;           /* Marfil Editorial */
-  --text-muted: #8A8A92;          /* Gris Neutro Piedra */
-  --text-dim: #606068;
-  --wa-green: #25D366;
+  --text-main: #18191D;           /* Carbón Profundo Editorial */
+  --text-muted: #5F6068;          /* Gris Neutro Cálido */
+  --text-dim: #8A8B94;
+  --wa-green: #15803D;
   
   --radius-xs: 4px;
   --radius-sm: 8px;
@@ -37,7 +37,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
   background-color: var(--bg-main);
 }
 
@@ -121,4 +121,160 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ==========================================================================
+   PALETA EDITORIAL COLOR HUESO (#F6F4EE) — REGLAS DE TEMA Y CONTRASTE
+   ========================================================================== */
+
+/* 1. FONDOS GENERALES DE PÁGINAS Y CONTENEDORES */
+.bg-\[\#0C0D10\],
+.bg-\[\#08080A\],
+.bg-\[\#080809\],
+.bg-\[\#070708\],
+.bg-\[\#0e0e11\],
+main {
+  background-color: var(--bg-main) !important;
+}
+
+/* 2. SUPERFICIES DE TARJETAS, CAJAS Y FICHA DE PRODUCTO */
+.bg-\[\#141419\],
+.bg-\[\#14151C\],
+.bg-\[\#101116\],
+.bg-\[\#12131A\],
+.bg-\[\#111217\] {
+  background-color: var(--bg-surface) !important;
+}
+
+/* 3. SUPERFICIES ELEVADAS, BOTONES INACTIVOS E INSETS */
+.bg-\[\#1C1E26\],
+.bg-\[\#1C1C24\],
+.bg-\[\#1C1D24\],
+.bg-\[\#0F1015\],
+.bg-\[\#0E1015\] {
+  background-color: var(--bg-surface-elevated) !important;
+}
+
+/* 4. CABECERAS Y ELEMENTOS TRASLÚCIDOS */
+.bg-\[\#0C0D10\]\/95,
+.bg-\[\#0C0D10\]\/90,
+.bg-\[\#0C0D10\]\/80 {
+  background-color: rgba(246, 244, 238, 0.94) !important;
+}
+
+.bg-\[\#141419\]\/95,
+.bg-\[\#141419\]\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 5. TEXTOS EN ALTO CONTRASTE */
+.text-\[\#F4F1EA\],
+.text-\[\#F5F5F7\],
+.text-\[\#FBFBFB\],
+.text-\[\#FFFFFF\] {
+  color: var(--text-main) !important;
+}
+
+.text-\[\#D0CFC9\],
+.text-\[\#C5C3BC\] {
+  color: #2D2E35 !important;
+}
+
+.text-\[\#A0A0A5\],
+.text-\[\#8A8A92\],
+.text-\[\#606068\] {
+  color: var(--text-muted) !important;
+}
+
+/* 6. DORADO EDITORIAL DE MARCA CON ALTO CONTRASTE */
+.text-\[\#C8A96E\] {
+  color: var(--brand-gold) !important;
+}
+
+.bg-\[\#C8A96E\] {
+  background-color: var(--brand-gold) !important;
+  color: #FFFFFF !important;
+}
+
+.hover\:bg-\[\#B8985D\]:hover,
+.hover\:bg-\[\#dbbe82\]:hover {
+  background-color: var(--brand-gold-hover) !important;
+}
+
+/* 7. BORDES SUAVES Y CÁLIDOS */
+.border-white\/5,
+.border-white\/10,
+.border-white\/15,
+.border-white\/20,
+.border-white\/25,
+.border-white\/30 {
+  border-color: rgba(24, 25, 29, 0.12) !important;
+}
+
+.border-white\/40,
+.border-white\/50 {
+  border-color: rgba(24, 25, 29, 0.22) !important;
+}
+
+.divide-white\/5,
+.divide-white\/10,
+.divide-white\/15 {
+  border-color: rgba(24, 25, 29, 0.10) !important;
+}
+
+/* 8. SOMBRAS Y CAPAS SUTILES PARA TARJETAS */
+article.group,
+.border-white\/10 {
+  box-shadow: 0 1px 3px rgba(24, 25, 29, 0.04);
+}
+
+.bg-white\/5,
+.bg-white\/10 {
+  background-color: rgba(24, 25, 29, 0.05) !important;
+}
+
+.bg-white\/15,
+.bg-white\/20 {
+  background-color: rgba(24, 25, 29, 0.08) !important;
+}
+
+.hover\:bg-white\/10:hover {
+  background-color: rgba(24, 25, 29, 0.07) !important;
+}
+
+.hover\:bg-white\/5:hover {
+  background-color: rgba(24, 25, 29, 0.04) !important;
+}
+
+/* 9. EXCEPCIÓN HERO FOTOGRÁFICO: Conserva legibilidad blanca sobre foto oscura */
+#inicio {
+  background-color: #0C0D10 !important;
+  color: #FFFFFF !important;
+}
+
+#inicio p,
+#inicio span,
+#inicio a {
+  color: inherit;
+}
+
+#inicio .bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--bg-main) 0%, rgba(12, 13, 16, 0.6) 35%, rgba(12, 13, 16, 0.85) 100%) !important;
+}
+
+#inicio a.bg-\[\#C8A96E\] {
+  background-color: var(--brand-gold) !important;
+  color: #FFFFFF !important;
+}
+
+#inicio a.bg-\[\#141419\]\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: var(--text-main) !important;
+  border-color: rgba(24, 25, 29, 0.15) !important;
+}
+
+/* 10. MODALES Y OVERLAYS TRASLÚCIDOS */
+.bg-black\/50, .bg-black\/60, .bg-black\/70, .bg-black\/80 {
+  background-color: rgba(24, 25, 29, 0.5) !important;
+  backdrop-filter: blur(8px);
 }
