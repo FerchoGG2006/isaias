@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  /* Maison Editorial Palette — Warm Bone & Light Editorial Mode */
+  /* Maison Editorial Palette — Warm Bone & Cyan Logo Colorimetry */
   --bg-main: #F6F4EE;              /* Color Hueso Editorial Principal */
   --bg-surface: #FFFFFF;           /* Superficie Blanco Cálido / Tarjetas */
   --bg-surface-elevated: #EDE8DE;  /* Hueso Elevado / Insets */
   --bg-surface-subtle: #EFECE5;    /* Fondo Bajo */
   
-  --brand-gold: #967438;          /* Oro Cálido Editorial para fondo claro */
-  --brand-gold-hover: #7E602A;
-  --brand-gold-subtle: rgba(150, 116, 56, 0.12);
+  /* Azul Cian Isaías — Extraído fielmente del Logo Oficial (#00AFEF) */
+  --brand-cyan: #0284C7;           /* Azul Cian para texto con contraste óptimo */
+  --brand-cyan-hover: #0369A1;     /* Azul Cian profundo para hover */
+  --brand-cyan-vibrant: #00AFEF;   /* Cian Eléctrico Primario del Logo */
+  --brand-cyan-subtle: rgba(0, 175, 239, 0.12); /* Tintes suaves para badges */
   
   --border-subtle: rgba(22, 23, 27, 0.09);
   --border-medium: rgba(22, 23, 27, 0.16);
-  --border-gold: rgba(150, 116, 56, 0.35);
+  --border-cyan: rgba(0, 175, 239, 0.38);
   
   --text-main: #18191D;           /* Carbón Profundo Editorial */
   --text-muted: #5F6068;          /* Gris Neutro Cálido */
@@ -97,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-gold);
+  background: var(--brand-cyan-vibrant);
 }
 
 /* Animations */
@@ -124,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   PALETA EDITORIAL COLOR HUESO (#F6F4EE) — REGLAS DE TEMA Y CONTRASTE
+   COLORIMETRÍA OFICIAL DEL LOGO ISAIAS (#00AFEF) + FONDO COLOR HUESO (#F6F4EE)
    ========================================================================== */
 
 /* 1. FONDOS GENERALES DE PÁGINAS Y CONTENEDORES */
@@ -186,19 +188,55 @@ main {
   color: var(--text-muted) !important;
 }
 
-/* 6. DORADO EDITORIAL DE MARCA CON ALTO CONTRASTE */
-.text-\[\#C8A96E\] {
-  color: var(--brand-gold) !important;
+/* 6. ACENTO DE MARCA ACORDE AL LOGO (AZUL CIAN #00AFEF / #0284C7) */
+.text-\[\#C8A96E\],
+.hover\:text-\[\#C8A96E\]:hover {
+  color: var(--brand-cyan) !important;
 }
 
+/* Botones principales en Azul Cian Isaías */
 .bg-\[\#C8A96E\] {
-  background-color: var(--brand-gold) !important;
+  background-color: var(--brand-cyan-vibrant) !important;
   color: #FFFFFF !important;
 }
 
 .hover\:bg-\[\#B8985D\]:hover,
 .hover\:bg-\[\#dbbe82\]:hover {
-  background-color: var(--brand-gold-hover) !important;
+  background-color: var(--brand-cyan-hover) !important;
+}
+
+/* Bordes en Azul Cian */
+.border-\[\#C8A96E\],
+.border-\[\#C8A96E\]\/50,
+.border-\[\#C8A96E\]\/40,
+.border-\[\#C8A96E\]\/30 {
+  border-color: var(--border-cyan) !important;
+}
+
+.group-hover\:border-\[\#C8A96E\]\/50:hover,
+.hover\:border-\[\#C8A96E\]\/60:hover,
+.hover\:border-\[\#C8A96E\]:hover {
+  border-color: var(--brand-cyan-vibrant) !important;
+}
+
+/* Anillos y sombreados en Azul Cian */
+.ring-\[\#C8A96E\],
+.ring-\[\#C8A96E\]\/50,
+.ring-\[\#C8A96E\]\/40 {
+  --tw-ring-color: rgba(0, 175, 239, 0.45) !important;
+}
+
+.shadow-\[\#C8A96E\]\/15,
+.shadow-\[\#C8A96E\]\/20,
+.shadow-\[\#C8A96E\]\/25 {
+  --tw-shadow-color: rgba(0, 175, 239, 0.22) !important;
+}
+
+/* Tintes suaves para badges */
+.bg-\[\#C8A96E\]\/15,
+.bg-\[\#C8A96E\]\/20 {
+  background-color: var(--brand-cyan-subtle) !important;
+  color: var(--brand-cyan) !important;
 }
 
 /* 7. BORDES SUAVES Y CÁLIDOS */
@@ -263,7 +301,7 @@ article.group,
 }
 
 #inicio a.bg-\[\#C8A96E\] {
-  background-color: var(--brand-gold) !important;
+  background-color: var(--brand-cyan-vibrant) !important;
   color: #FFFFFF !important;
 }
 

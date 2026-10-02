@@ -39,8 +39,8 @@ export const HeroSection: React.FC = () => {
         {/* Gradient Mask: soft vignette leaving the photo clearly visible while ensuring text contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D10] via-black/35 to-[#0C0D10]/50" />
 
-        {/* Ambient Gold Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full blur-[130px] bg-gradient-to-b from-[#C8A96E]/15 pointer-events-none" />
+        {/* Ambient Cyan Glow acorde al Logo */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full blur-[130px] bg-gradient-to-b from-[#00AFEF]/20 pointer-events-none" />
       </div>
 
       {/* 2. HERO CONTENT */}

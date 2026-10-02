@@ -19,8 +19,8 @@ export const BUSINESSES: Record<string, Business> = {
     whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '573105634509',
     email: 'contacto@variedadesisaias.com',
     logoUrl: '/assets/logo-isaias-3.png',
-    primaryColor: '#C8A96E',
-    accentHoverColor: '#dbbe82',
+    primaryColor: '#00AFEF',
+    accentHoverColor: '#0284C7',
     specialties: [
       'Confección en tela fresca piel de durazno',
       'Estampado reflectivo de alta visibilidad',
