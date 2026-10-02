@@ -412,7 +412,6 @@ export const PRODUCTS: Product[] = [
     },
     images: [
       '/assets/img-42.jpg',
-      '/assets/img-43.jpg',
       '/assets/img-21.jpg',
     ],
     featuredImage: '/assets/img-42.jpg',
