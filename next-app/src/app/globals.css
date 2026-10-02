@@ -168,6 +168,7 @@ main {
 .bg-\[\#0C0D10\]\/90,
 .bg-\[\#0C0D10\]\/80 {
   background-color: rgba(255, 255, 255, 0.95) !important;
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
@@ -345,5 +346,6 @@ input::placeholder, textarea::placeholder {
 /* 10. MODALES, DRAWERS Y OVERLAYS */
 .bg-black\/50, .bg-black\/60, .bg-black\/70, .bg-black\/80 {
   background-color: rgba(15, 23, 42, 0.45) !important;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }

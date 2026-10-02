@@ -93,19 +93,17 @@ function subscribe(callback: () => void): () => void {
   return () => clearInterval(interval);
 }
 
+const emptySubscribe = () => () => {};
+
 export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
   variant = 'compact',
   className = '',
 }) => {
-  const [mounted, setMounted] = React.useState(false);
+  const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const liveStatus = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Durante SSR y la primera hidratación de cliente, usar SERVER_STATE idéntico
-  const status = mounted ? liveStatus : SERVER_STATE;
+  const status = isClient ? liveStatus : SERVER_STATE;
 
   if (variant === 'inline') {
     return (
