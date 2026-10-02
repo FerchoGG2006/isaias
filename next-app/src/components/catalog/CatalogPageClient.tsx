@@ -70,7 +70,7 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
   }, [allProducts, activeCategory, searchQuery]);
 
   return (
-    <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-28">
+    <main className="min-h-screen bg-white text-slate-900 pt-8 pb-28">
       
       {/* 1. CABECERA EDITORIAL Y MIGAS DE PAN */}
       <section className="wrap mb-8 sm:mb-10">
@@ -78,21 +78,21 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
           <Breadcrumbs items={[{ label: 'Catálogo de Prendas' }]} />
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
           <div>
-            <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
+            <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight leading-[1.1]">
               Catálogo de Prendas & Dotaciones
             </h1>
-            <p className="font-sans text-sm text-[#A0A0A5] mt-2 max-w-xl font-light">
+            <p className="font-sans text-sm text-slate-600 mt-2 max-w-xl font-normal">
               Prendas confeccionadas con telas de alto rendimiento, estampados suaves DTF y bordado fino Wilcom para uso diario y dotaciones empresariales en Valledupar.
             </p>
           </div>
 
-          <div className="flex flex-col lg:items-end text-left lg:text-right font-sans text-xs text-[#8A8A92]">
-            <span className="font-semibold text-sm text-[#C8A96E]">
+          <div className="flex flex-col lg:items-end text-left lg:text-right font-sans text-xs text-slate-500">
+            <span className="font-bold text-sm text-[#0284C7]">
               {filteredProducts.length} {filteredProducts.length === 1 ? 'prenda registrada' : 'prendas registradas'}
             </span>
-            <span className="text-xs text-[#A0A0A5] mt-1 font-light">
+            <span className="text-xs text-slate-500 mt-1 font-normal">
               Pedidos individuales y al por mayor · Envíos a todo el país
             </span>
           </div>
@@ -115,20 +115,20 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
                   onClick={() => setActiveCategory(f.id)}
                   className={`pb-2.5 flex items-center gap-2 whitespace-nowrap transition-colors cursor-pointer relative ${
                     isActive
-                      ? 'text-[#C8A96E] font-semibold'
-                      : 'text-[#8A8A92] hover:text-[#F4F1EA]'
+                      ? 'text-[#0284C7] font-bold'
+                      : 'text-slate-600 hover:text-slate-900 font-medium'
                   }`}
                 >
                   <span>{f.label}</span>
-                  <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium transition-colors ${
+                  <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold transition-colors ${
                     isActive
-                      ? 'bg-[#C8A96E]/25 text-[#C8A96E]'
-                      : 'bg-white/5 text-[#8A8A92]'
+                      ? 'bg-[#00AFEF]/15 text-[#0284C7]'
+                      : 'bg-slate-100 text-slate-600'
                   }`}>
                     {count}
                   </span>
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C8A96E]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00AFEF]" />
                   )}
                 </button>
               );
@@ -142,10 +142,10 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscar por nombre o material..."
-              className="w-full bg-[#141419] border border-white/15 text-[#F4F1EA] pl-9 pr-4 py-2 rounded-lg font-sans text-xs outline-none transition-colors placeholder:text-[#8A8A92] focus:border-[#C8A96E]"
+              className="w-full bg-slate-50 border border-slate-200 text-slate-900 pl-9 pr-8 py-2 rounded-xl font-sans text-xs outline-none transition-colors placeholder:text-slate-400 focus:border-[#00AFEF] focus:bg-white shadow-xs"
             />
             <svg
-              className="w-4 h-4 text-[#8A8A92] absolute left-3 top-1/2 -translate-y-1/2"
+              className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -160,7 +160,7 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-[#8A8A92] hover:text-white text-xs cursor-pointer font-sans"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-xs cursor-pointer font-sans p-1"
               >
                 ✕
               </button>

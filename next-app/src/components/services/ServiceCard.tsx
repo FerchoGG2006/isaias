@@ -38,56 +38,54 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   };
 
   return (
-    <article className="group bg-[#121316] border border-white/10 hover:border-[#C8A96E]/50 rounded-sm overflow-hidden flex flex-col transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#C8A96E]/5">
+    <article className="group bg-white rounded-2xl overflow-hidden flex flex-col transition-all duration-300 shadow-sm hover:shadow-lg">
       {/* Service Header / Media */}
-      <Link href={serviceHref} className="relative aspect-[16/10] w-full overflow-hidden bg-[#0C0D10] block">
+      <Link href={serviceHref} className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block">
         <Image
           src={service.image}
           alt={service.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 contrast-[1.05]"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
         />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/40 to-transparent" />
       </Link>
 
       {/* Service Content */}
       <div className="p-6 flex flex-col flex-1 justify-between gap-5">
         <div className="flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
-            <Link href={serviceHref} className="group-hover:text-[#C8A96E] transition-colors">
-              <h3 className="font-sans font-bold text-xl text-[#F4F1EA] tracking-tight">
+            <Link href={serviceHref} className="group-hover:text-[#0284C7] transition-colors">
+              <h3 className="font-sans font-bold text-xl text-slate-900 tracking-tight">
                 {service.title}
               </h3>
             </Link>
             {renderPricing()}
           </div>
 
-          <p className="text-xs text-[#A0A0A5] leading-relaxed">
+          <p className="text-xs text-slate-600 leading-relaxed font-normal">
             {service.shortDescription}
           </p>
 
           {/* Quick Specs */}
-          <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/5 font-mono text-[11px] text-[#A0A0A5]">
+          <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 font-mono text-[11px] text-slate-600">
             <div>
-              <span className="text-[#F4F1EA] font-semibold">Entrega: </span>
+              <span className="text-slate-900 font-bold">Entrega: </span>
               <span>{service.turnaroundTime}</span>
             </div>
             <div>
-              <span className="text-[#F4F1EA] font-semibold">Mínimo: </span>
+              <span className="text-slate-900 font-bold">Mínimo: </span>
               <span>{service.minUnits} {service.minUnits === 1 ? 'unidad' : 'unidades'}</span>
             </div>
           </div>
         </div>
 
-        <div className="pt-3 border-t border-white/5 flex items-center justify-end">
+        <div className="pt-3 border-t border-slate-100 flex items-center justify-end">
           <Link
             href={serviceHref}
-            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest font-bold text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors"
+            className="inline-flex items-center gap-1.5 font-sans text-xs uppercase tracking-widest font-bold text-slate-900 group-hover:text-[#0284C7] transition-colors"
           >
             <span>Cotizar servicio</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="group-hover:translate-x-1 transition-transform text-[#0284C7]">→</span>
           </Link>
         </div>
       </div>

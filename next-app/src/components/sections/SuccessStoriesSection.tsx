@@ -106,27 +106,26 @@ export const SuccessStoriesSection: React.FC = () => {
           {SUCCESS_STORIES.map((story) => (
             <article
               key={story.id}
-              className="bg-[#12131A] border border-white/10 hover:border-[#C8A96E]/40 rounded-xs overflow-hidden transition-all group flex flex-col justify-between"
+              className="bg-white rounded-2xl overflow-hidden transition-all group flex flex-col justify-between shadow-sm hover:shadow-lg"
             >
               <div>
                 {/* Photo Header */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0C0D10]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
                   <Image
                     src={story.image}
                     alt={`Proyecto textil para ${story.client} - Variedades Isaías`}
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#12131A] via-transparent to-transparent opacity-80" />
                   
                   {/* Category Pill */}
-                  <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#C8A96E] font-mono text-[11px] px-3 py-1 border border-white/15 rounded-xs">
+                  <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white font-mono text-[11px] px-3 py-1 rounded-full font-bold">
                     {story.category}
                   </span>
 
                   {/* Volume Spec */}
-                  <span className="absolute bottom-4 right-4 bg-[#14151C]/90 text-[#F4F1EA] font-mono text-[11px] px-3 py-1 border border-white/10 rounded-xs">
+                  <span className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white font-mono text-[11px] px-3 py-1 rounded-full font-bold">
                     {story.volume}
                   </span>
                 </div>
@@ -134,31 +133,31 @@ export const SuccessStoriesSection: React.FC = () => {
                 {/* Content */}
                 <div className="p-6 sm:p-7 flex flex-col gap-4">
                   <div>
-                    <h3 className="font-sans font-bold text-lg sm:text-xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                    <h3 className="font-sans font-bold text-lg sm:text-xl text-slate-900 group-hover:text-[#0284C7] transition-colors">
                       {story.client}
                     </h3>
                     <div className="flex flex-wrap items-center gap-2 mt-2">
-                      <span className="font-mono text-[10px] bg-white/5 text-[#D0CFC9] px-2.5 py-1 border border-white/10 rounded-xs">
+                      <span className="font-mono text-[10px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-medium">
                         {story.technique}
                       </span>
-                      <span className="font-mono text-[10px] bg-white/5 text-[#D0CFC9] px-2.5 py-1 border border-white/10 rounded-xs">
+                      <span className="font-mono text-[10px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-medium">
                         {story.fabric}
                       </span>
                     </div>
                   </div>
 
-                  <p className="font-sans text-xs sm:text-sm text-[#8A8A92] leading-relaxed font-light">
+                  <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                     {story.description}
                   </p>
                 </div>
               </div>
 
               {/* Card Footer */}
-              <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] font-mono">
-                <span className="text-[#C8A96E] font-medium">
+              <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] font-mono">
+                <span className="text-[#0284C7] font-bold">
                   {story.highlight}
                 </span>
-                <span className="text-[#8A8A92]">
+                <span className="text-slate-500">
                   Tiempo: {story.turnaround}
                 </span>
               </div>
@@ -167,7 +166,7 @@ export const SuccessStoriesSection: React.FC = () => {
         </div>
 
         {/* Bottom Callout */}
-        <div className="mt-12 bg-[#14151C] border border-white/10 p-6 sm:p-8 rounded-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-12 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs">
           <div className="flex flex-col gap-1 text-center sm:text-left">
             <h4 className="font-sans font-bold text-base sm:text-lg text-[#F4F1EA]">
               ¿Tienes una idea o necesitas dotación para tu empresa?
