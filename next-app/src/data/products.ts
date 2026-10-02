@@ -364,8 +364,6 @@ export const PRODUCTS: Product[] = [
       '/assets/img-3.jpg',
       '/assets/img-2.jpg',
       '/assets/img-31.jpg',
-      '/assets/img-11.jpg',
-      '/assets/img-12.jpg',
     ],
     featuredImage: '/assets/img-3.jpg',
     customCapabilities: {
