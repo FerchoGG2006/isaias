@@ -107,7 +107,7 @@ export const WorkshopStatusBadge: React.FC<WorkshopStatusBadgeProps> = ({
           status.isOpen ? 'text-emerald-700' : 'text-amber-800'
         } ${className}`}
       >
-        <span className={`w-2 h-2 rounded-full ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
+        <span suppressHydrationWarning className={`w-2 h-2 rounded-full ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
         <span>{status.isOpen ? 'En línea ahora' : 'Taller en descanso'}</span>
       </span>
     );
