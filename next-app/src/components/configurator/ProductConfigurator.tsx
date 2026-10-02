@@ -661,7 +661,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         <div className="pt-3.5 border-t border-white/15 flex flex-col gap-3.5 bg-[#14151C] p-4 rounded-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
-              <span className="text-sm font-semibold text-[#F4F1EA]">
+              <span suppressHydrationWarning className="text-sm font-semibold text-[#F4F1EA]">
                 {effectiveTotalQuantity} {effectiveTotalQuantity === 1 ? 'prenda' : 'prendas'}
                 {orderMode === 'quick' ? ` · Talla ${quickSize}` : ''} · {selectedVariant.colorName} ·{' '}
                 {readableTechnique}
