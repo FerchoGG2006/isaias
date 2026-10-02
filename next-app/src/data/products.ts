@@ -363,7 +363,6 @@ export const PRODUCTS: Product[] = [
       '/assets/mockups/gorra_polo_dotacion_rincon_pescado.jpg',
       '/assets/img-3.jpg',
       '/assets/img-2.jpg',
-      '/assets/img-31.jpg',
     ],
     featuredImage: '/assets/img-3.jpg',
     customCapabilities: {
