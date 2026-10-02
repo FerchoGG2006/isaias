@@ -13,9 +13,9 @@ export const Footer: React.FC = () => {
     : 'Disponible vía chat';
 
   return (
-    <footer className="bg-[#070708] border-t border-white/10 pt-16 pb-12 text-[#8A8A92]">
+    <footer className="bg-white border-t border-slate-200 pt-16 pb-12 text-slate-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-200">
           
           {/* Brand Column */}
           <div className="md:col-span-2 flex flex-col gap-4">
@@ -23,60 +23,53 @@ export const Footer: React.FC = () => {
               <div className="relative w-11 h-11 shrink-0 flex items-center justify-center">
                 <Image src={business.logoUrl || '/assets/logo-isaias-3.png'} alt={`Logo ${business.name}`} fill sizes="44px" className="object-contain" />
               </div>
-              <span className="font-mono font-bold text-base text-[#F4F1EA] uppercase tracking-wider">
+              <span className="font-mono font-bold text-base text-slate-900 uppercase tracking-wider">
                 {business.name}
               </span>
             </div>
-            <p className="text-xs text-[#8A8A92] leading-relaxed max-w-md font-sans font-light">
+            <p className="text-xs text-slate-600 leading-relaxed max-w-md font-sans font-normal">
               {business.description}
             </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              {business.specialties.map((spec) => (
-                <span key={spec} className="font-mono text-[10px] bg-[#141419] text-[#C8A96E] px-2.5 py-1 border border-white/10 rounded-xs">
-                  {spec}
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Navigation Column */}
           <div className="flex flex-col gap-2.5 font-sans text-xs">
-            <h5 className="font-bold text-[#F4F1EA] uppercase tracking-[0.16em] mb-1">
+            <h5 className="font-bold text-slate-900 uppercase tracking-[0.16em] mb-1">
               Catálogo & Taller
             </h5>
-            <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/catalogo" className="hover:text-[#0284C7] transition-colors">
               Catálogo de Colección
             </Link>
-            <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/servicios" className="hover:text-[#0284C7] transition-colors">
               Servicios de Estampado & Bordado
             </Link>
-            <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/tecnicas" className="hover:text-[#0284C7] transition-colors">
               Técnicas (DTF, Wilcom, Sublimación)
             </Link>
-            <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/personaliza" className="hover:text-[#0284C7] transition-colors">
               ¿Cómo hacer tu pedido?
             </Link>
-            <Link href="/cotizar" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/cotizar" className="hover:text-[#0284C7] transition-colors">
               Solicitud de Cotización Formal
             </Link>
-            <Link href="/casos" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/casos" className="hover:text-[#0284C7] transition-colors">
               Casos de Éxito y Dotaciones
             </Link>
-            <Link href="/personaliza#faq" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/personaliza#faq" className="hover:text-[#0284C7] transition-colors">
               Preguntas Frecuentes (FAQ)
             </Link>
-            <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
+            <Link href="/#taller" className="hover:text-[#0284C7] transition-colors">
               Maquinaria & Taller Propio
             </Link>
           </div>
 
           {/* Contact Column */}
           <div className="flex flex-col gap-3 font-sans text-xs">
-            <h5 className="font-bold text-[#F4F1EA] uppercase tracking-[0.16em] mb-1">
+            <h5 className="font-bold text-slate-900 uppercase tracking-[0.16em] mb-1">
               Ubicación & Atención
             </h5>
-            <div className="flex flex-col gap-1 text-[#8A8A92] font-light">
-              <span className="text-[#F4F1EA] font-medium">Taller Textil y Estudio:</span>
+            <div className="flex flex-col gap-1 text-slate-600 font-normal">
+              <span className="text-slate-900 font-bold">Taller Textil y Estudio:</span>
               <span>{business.streetAddress || 'Calle 16 # 19A - 45'}</span>
               <span>{business.city}, {business.department} · {business.country}</span>
               {business.googleMapsUrl && (
@@ -84,9 +77,9 @@ export const Footer: React.FC = () => {
                   href={business.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[#C8A96E] hover:underline mt-1 font-mono text-[11px]"
+                  className="inline-flex items-center gap-1.5 text-[#0284C7] hover:underline mt-1 font-mono text-[11px] font-bold"
                 >
-                  <svg className="w-3.5 h-3.5 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-3.5 h-3.5 text-[#0284C7] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -96,13 +89,13 @@ export const Footer: React.FC = () => {
               )}
             </div>
 
-            <div className="pt-1 border-t border-white/10 flex flex-col gap-1">
-              <span className="text-white/80 font-medium">Horario de Taller:</span>
-              <span className="text-[#8A8A92] font-light">{business.schedule || 'Lunes a Sábado: 8:00 AM – 6:00 PM'}</span>
+            <div className="pt-1 border-t border-slate-200 flex flex-col gap-1">
+              <span className="text-slate-900 font-bold">Horario de Taller:</span>
+              <span className="text-slate-600 font-normal">{business.schedule || 'Lunes a Sábado: 8:00 AM – 6:00 PM'}</span>
             </div>
 
             {business.whatsappPhone && (
-              <p className="text-[#C8A96E] font-medium font-mono text-xs pt-1">
+              <p className="text-[#0284C7] font-bold font-mono text-xs pt-1">
                 WhatsApp Directo: {formattedPhone}
               </p>
             )}
@@ -111,17 +104,17 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-[#8A8A92] font-light">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-slate-500 font-normal">
           <span>&copy; {new Date().getFullYear()} {business.name}. Confección y personalización textil en Valledupar · Envíos asegurados a toda Colombia.</span>
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <Link href="/terminos-y-condiciones" className="hover:text-[#C8A96E] underline-offset-4 hover:underline transition-colors">
+            <Link href="/terminos-y-condiciones" className="hover:text-[#0284C7] underline-offset-4 hover:underline transition-colors">
               Términos y Condiciones
             </Link>
-            <span className="text-white/20">·</span>
-            <Link href="/politica-de-privacidad" className="hover:text-[#C8A96E] underline-offset-4 hover:underline transition-colors">
+            <span className="text-slate-300">·</span>
+            <Link href="/politica-de-privacidad" className="hover:text-[#0284C7] underline-offset-4 hover:underline transition-colors">
               Política de Privacidad
             </Link>
-            <span className="text-white/20">·</span>
+            <span className="text-slate-300">·</span>
             <span>Habeas Data Ley 1581</span>
           </div>
         </div>
