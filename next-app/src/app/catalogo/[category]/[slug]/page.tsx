@@ -218,16 +218,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   )}
                 </div>
 
-                {/* Especificación clara de la tela */}
-                {product.materialName && (
-                  <div className="flex items-center gap-2 pt-1">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#C8A96E]/15 border border-[#C8A96E]/40 text-[#C8A96E] font-sans text-xs font-bold tracking-wide">
-                      <span>🧵 Tela:</span>
-                      <span className="text-[#F4F1EA] font-semibold">{product.materialName}</span>
-                    </span>
-                  </div>
-                )}
-
                 {product.subtitle && (
                   <span className="font-mono text-xs text-[#A0A0A5] tracking-wider">
                     {product.subtitle}

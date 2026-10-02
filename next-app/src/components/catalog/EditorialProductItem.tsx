@@ -86,10 +86,9 @@ export const EditorialProductItem: React.FC<EditorialProductItemProps> = ({
           </h3>
         </Link>
 
-        {/* Especificación clara y visible de la tela */}
-        <p className="font-sans text-xs text-[#C8A96E]/90 font-medium line-clamp-1 flex items-center gap-1.5">
-          <span className="text-[11px] text-[#A0A0A5] font-normal">Tela:</span>
-          <span>{product.materialName ? product.materialName : 'Confección en taller propio'}</span>
+        {/* Material de confección */}
+        <p className="font-sans text-xs text-[#A0A0A5] line-clamp-1">
+          {product.materialName ? product.materialName : 'Confección en taller propio'}
         </p>
 
         {/* Precio visible + Descuento + Acción rápida compacta */}
