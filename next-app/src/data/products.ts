@@ -530,8 +530,6 @@ export const PRODUCTS: Product[] = [
     },
     images: [
       '/assets/mockups/nino_diseno13_jirafa.jpg',
-      '/assets/telas/reflectivos_ninos/reflectivo-13.jpg',
-      '/assets/telas/reflectivos_ninos/reflectivo-2.jpg',
     ],
     featuredImage: '/assets/mockups/nino_diseno13_jirafa.jpg',
     materialId: 'algodon-peinado-100',
