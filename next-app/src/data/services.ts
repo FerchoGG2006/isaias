@@ -114,7 +114,7 @@ export const SERVICES: Service[] = [
     tag: 'PROYECTOS CORPORATIVOS',
     iconSvg:
       'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
-    image: '/assets/telas/cuello_tejido/cuello-2.jpg',
+    image: '/assets/mockups/gorra_polo_dotacion_rincon_pescado.jpg',
     techniques: ['bordado-3d', 'dtf-reflectivo', 'dtf-full-color'],
     pricing: {
       type: 'on_quote',
