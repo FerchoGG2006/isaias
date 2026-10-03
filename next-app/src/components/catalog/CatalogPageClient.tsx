@@ -185,7 +185,7 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
                 setActiveCategory('todos');
                 setSearchQuery('');
               }}
-              className="bg-[#141419] border border-white/15 hover:border-[#C8A96E] text-[#F4F1EA] font-sans text-xs px-6 py-2.5 rounded-xs transition-colors cursor-pointer"
+              className="bg-slate-100 border border-slate-200 hover:border-[#0284C7] text-slate-800 font-sans text-xs px-6 py-2.5 rounded-lg transition-colors cursor-pointer font-medium"
             >
               Restablecer Filtros
             </button>
@@ -206,19 +206,19 @@ export const CatalogPageClient: React.FC<CatalogPageClientProps> = ({
 
       {/* 4. FOOTER CALLOUT SOBRE EL TALLER */}
       <section className="wrap mt-20">
-        <div className="p-8 sm:p-10 bg-[#12131A] border border-white/10 rounded-xs flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-8 sm:p-10 bg-slate-50 border border-slate-200 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col gap-1 max-w-xl">
-            <h3 className="font-sans font-bold text-lg text-[#F4F1EA]">
+            <h3 className="font-sans font-bold text-lg text-slate-900">
               ¿Buscas una confección personalizada o uniforme específico?
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#8A8A92] font-light">
+            <p className="font-sans text-xs sm:text-sm text-slate-600 font-normal">
               Producimos sobre pedido a partir de 1 unidad con asesoría directa en telas, bordado Wilcom 3D y DTF textil en Valledupar.
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/personaliza"
-              className="font-sans text-xs font-semibold uppercase tracking-wider bg-[#C8A96E] hover:bg-[#dbbe82] text-[#0C0D10] px-6 py-3.5 rounded-xs transition-colors shadow-lg"
+              className="font-sans text-xs font-bold uppercase tracking-wider bg-[#00AFEF] hover:bg-[#0284C7] text-white px-6 py-3.5 rounded-lg transition-colors shadow-md"
             >
               ¿Cómo ordenar? →
             </Link>
