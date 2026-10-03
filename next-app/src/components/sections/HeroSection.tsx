@@ -24,7 +24,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section id="inicio" className="relative w-full min-h-[calc(100svh-68px)] bg-white overflow-hidden text-slate-900 flex items-center justify-center py-10 sm:py-16 border-b border-slate-200">
-      
+
       {/* 1. EDITORIAL BACKGROUND PHOTO CON VELO BLANCO LUMINOSO */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <Image
@@ -33,19 +33,19 @@ export const HeroSection: React.FC = () => {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_25%] sm:object-[center_20%] opacity-20 filter grayscale contrast-125"
+          className="object-cover object-[center_25%] sm:object-[center_20%] opacity-90 filter grayscale contrast-125"
         />
 
         {/* Velo blanco puro luminoso que elimina el fondo negro difuminado */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/85 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/80 to-slate-100" />
 
         {/* Resplandor sutil cian acorde a la identidad del logo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full blur-[140px] bg-[#00AFEF]/10 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full blur-[140px] pointer-events-none" />
       </div>
 
       {/* 2. HERO CONTENT */}
       <div className="wrap relative z-10 w-full flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-4 my-auto">
-        
+
         {/* Emblem / Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94, y: 10 }}
@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-sans text-sm sm:text-base md:text-lg text-slate-700 font-normal max-w-2xl mb-8 sm:mb-10 leading-relaxed tracking-normal"
+          className="font-sans text-sm sm:text-base md:text-lg text-slate-900 font-medium max-w-2xl mb-8 sm:mb-10 leading-relaxed tracking-normal"
         >
           Confección propia sin intermediarios, telas frescas de alta resistencia y acabados industriales en bordado computarizado Wilcom y estampado DTF elástico.
         </motion.p>
@@ -95,7 +95,7 @@ export const HeroSection: React.FC = () => {
           {/* Button 2: Outline Catalog CTA */}
           <Link
             href="/catalogo"
-            className="w-full sm:w-auto bg-white hover:bg-slate-50 border border-slate-300 hover:border-[#00AFEF] text-slate-800 hover:text-[#00AFEF] font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md text-center shrink-0 hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full sm:w-auto bg-white hover:bg-slate-50 border-2 border-slate-300 hover:border-[#00AFEF] text-slate-900 hover:text-[#00AFEF] font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md text-center shrink-0 hover:scale-[1.02] active:scale-[0.98]"
           >
             Ver Catálogo de Colección
           </Link>

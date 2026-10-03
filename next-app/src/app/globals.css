@@ -316,31 +316,9 @@ input::placeholder, textarea::placeholder {
   color: var(--text-dim) !important;
 }
 
-/* 9. EXCEPCIÓN HERO FOTOGRÁFICO: Conserva legibilidad blanca sobre la fotografía */
+/* 9. HERO SECTION (TEMA CLARO & EDITORIAL) */
 #inicio {
-  background-color: #0F172A !important;
-  color: #FFFFFF !important;
-}
-
-#inicio p,
-#inicio span,
-#inicio a {
-  color: inherit;
-}
-
-#inicio .bg-gradient-to-t {
-  background-image: linear-gradient(to top, #FFFFFF 0%, rgba(15, 23, 42, 0.6) 35%, rgba(15, 23, 42, 0.85) 100%) !important;
-}
-
-#inicio a.bg-\[\#C8A96E\] {
-  background-color: var(--brand-cyan-vibrant) !important;
-  color: #FFFFFF !important;
-}
-
-#inicio a.bg-\[\#141419\]\/90 {
-  background-color: #FFFFFF !important;
-  color: var(--text-main) !important;
-  border-color: #CBD5E1 !important;
+  color: var(--text-main);
 }
 
 /* 10. MODALES, DRAWERS Y OVERLAYS */
