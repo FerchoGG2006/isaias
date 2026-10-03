@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
     title: `${service.title} | Servicios de Personalización · Valledupar`,
     description: service.shortDescription,
     openGraph: {
-      title: `${service.title} — Estampación & Bordado en Valledupar`,
+      title: `${service.title} — Estampado & Bordado en Valledupar`,
       description: service.shortDescription,
       images: [
         {

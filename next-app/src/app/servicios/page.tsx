@@ -34,7 +34,7 @@ export default function ServiciosPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200">
             <div>
               <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight leading-[1.1]">
-                Servicios de Estampación & Bordado
+                Servicios de Estampado & Bordado
               </h1>
               <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed mt-2 font-normal">
                 ¿Tienes tus propias prendas o necesitas producción por volumen? Atendemos talleres de confección, diseñadores, empresas e instituciones con maquinaria industrial.

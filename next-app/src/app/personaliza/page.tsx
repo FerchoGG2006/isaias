@@ -85,7 +85,7 @@ export default function PersonalizaPage() {
               </Link>
             </div>
 
-            {/* Camino 2: Servicios de Estampación y Maquila */}
+            {/* Camino 2: Servicios de Estampado y Maquila */}
             <div className="group bg-white border border-slate-200 hover:border-[#00AFEF]/60 hover:shadow-lg rounded-2xl p-7 flex flex-col justify-between gap-6 transition-all duration-300 shadow-sm">
               <div className="flex flex-col gap-5">
                 <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
