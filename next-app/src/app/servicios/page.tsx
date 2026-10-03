@@ -19,7 +19,7 @@ export default function ServiciosPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-8 pb-24">
+      <main className="min-h-screen bg-white text-slate-800 pt-8 pb-24">
         
         {/* Breadcrumbs & Header */}
         <div className="wrap mb-12">
@@ -31,12 +31,12 @@ export default function ServiciosPage() {
             />
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200">
             <div>
-              <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-[#F4F1EA] tracking-tight leading-[1.1]">
+              <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight leading-[1.1]">
                 Servicios de Estampación & Bordado
               </h1>
-              <p className="text-sm sm:text-base text-[#A0A0A5] max-w-2xl leading-relaxed mt-2 font-light">
+              <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed mt-2 font-normal">
                 ¿Tienes tus propias prendas o necesitas producción por volumen? Atendemos talleres de confección, diseñadores, empresas e instituciones con maquinaria industrial.
               </p>
             </div>
@@ -44,7 +44,7 @@ export default function ServiciosPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/catalogo"
-                className="font-mono text-xs uppercase tracking-wider text-[#F4F1EA] hover:text-[#C8A96E] bg-[#141419] border border-white/15 px-5 py-3 rounded-xs transition-colors font-medium"
+                className="font-sans text-xs uppercase tracking-wider text-slate-800 hover:text-[#0284C7] bg-white hover:bg-slate-50 border border-slate-300 px-5 py-3 rounded-xl transition-colors font-semibold shadow-xs"
               >
                 Ver Catálogo de Prendas →
               </Link>

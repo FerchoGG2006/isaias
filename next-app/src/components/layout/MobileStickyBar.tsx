@@ -26,7 +26,7 @@ export const MobileStickyBar: React.FC = () => {
   return (
     <aside
       aria-label="Acciones rápidas de contacto"
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0B0E]/95 backdrop-blur-lg border-t border-[#C8A96E]/20 px-3 pt-2 pb-[max(0.6rem,env(safe-area-inset-bottom))] shadow-[0_-8px_25px_rgba(0,0,0,0.6)]"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200 px-3 pt-2 pb-[max(0.6rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.08)]"
     >
       <div className="max-w-md mx-auto flex flex-col gap-1.5">
         <div className="flex items-center justify-center">
@@ -39,21 +39,21 @@ export const MobileStickyBar: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsQuoteDrawerOpen(true)}
-            className="relative flex items-center justify-center gap-1.5 bg-[#14151C] hover:bg-[#1A1C26] border border-[#C8A96E]/40 text-[#F4F1EA] px-3.5 py-2.5 rounded-lg text-xs font-sans shrink-0 transition-colors"
+            className="relative flex items-center justify-center gap-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 text-slate-800 px-3.5 py-2.5 rounded-lg text-xs font-sans shrink-0 transition-colors shadow-xs"
             title="Ver lista de cotización"
           >
-            <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <svg className="w-4 h-4 text-[#0284C7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <span className="font-semibold text-xs text-[#C8A96E] font-mono">{totalUnits}</span>
+            <span className="font-semibold text-xs text-[#0284C7] font-mono">{totalUnits}</span>
           </button>
         ) : (
           <Link
             href="/catalogo"
-            className="flex items-center justify-center gap-1.5 bg-[#14151C] hover:bg-[#1A1C26] border border-white/10 text-[#D0CFC9] px-3.5 py-2.5 rounded-lg text-xs font-sans shrink-0 transition-colors"
+            className="flex items-center justify-center gap-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 text-slate-700 px-3.5 py-2.5 rounded-lg text-xs font-sans shrink-0 transition-colors shadow-xs"
             title="Ver catálogo"
           >
-            <svg className="w-4 h-4 text-[#C8A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+            <svg className="w-4 h-4 text-[#0284C7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
             </svg>
             <span>Catálogo</span>
@@ -66,7 +66,7 @@ export const MobileStickyBar: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleWhatsAppClick}
-          className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-sans font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg shadow-lg shadow-[#25D366]/20 active:scale-[0.98] transition-all"
+          className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg shadow-md shadow-emerald-500/10 active:scale-[0.98] transition-all"
         >
           <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.27-5.04-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.75 1.25 1.62 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.35.08.13.08.72-.17 1.42z" />

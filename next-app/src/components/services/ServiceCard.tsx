@@ -14,15 +14,15 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     switch (service.pricing.type) {
       case 'fixed':
         return (
-          <span className="font-mono font-bold text-sm text-[#C8A96E]">
+          <span className="font-mono font-bold text-sm text-[#0284C7]">
             ${(service.pricing.basePrice || 0).toLocaleString('es-CO')} COP / {service.pricing.unit}
           </span>
         );
       case 'from':
         return (
           <div className="flex flex-col items-end">
-            <span className="font-mono text-[10px] text-[#A0A0A5] uppercase">Desde</span>
-            <span className="font-mono font-bold text-sm text-[#C8A96E]">
+            <span className="font-mono text-[10px] text-slate-500 uppercase">Desde</span>
+            <span className="font-mono font-bold text-sm text-[#0284C7]">
               ${(service.pricing.basePrice || 0).toLocaleString('es-CO')} COP
             </span>
           </div>
@@ -30,7 +30,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       case 'on_quote':
       default:
         return (
-          <span className="font-mono text-xs text-[#C8A96E] uppercase bg-black/40 px-2.5 py-1 border border-[#C8A96E]/20 rounded-xs">
+          <span className="font-mono text-xs text-[#0284C7] uppercase bg-[#00AFEF]/10 px-2.5 py-1 border border-[#00AFEF]/30 rounded-lg font-bold">
             Bajo cotización
           </span>
         );

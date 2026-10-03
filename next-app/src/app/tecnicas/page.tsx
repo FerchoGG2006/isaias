@@ -19,20 +19,20 @@ export default function TecnicasPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#0C0D10] text-[#F4F1EA] pt-8 pb-32">
+      <main className="min-h-screen bg-white text-slate-800 pt-8 pb-32">
         {/* Editorial Header */}
         <section className="wrap mb-12">
           <div className="mb-4">
             <Breadcrumbs items={[{ label: 'Técnicas de Producción' }]} />
           </div>
-          <div className="pb-8 border-b border-white/10 max-w-4xl">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A96E] block mb-3 font-semibold">
+          <div className="pb-8 border-b border-slate-200 max-w-4xl">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#0284C7] block mb-3 font-bold">
               Procesos Industriales & Artesanales · Valledupar
             </span>
-            <h1 className="font-sans font-bold text-3xl sm:text-5xl md:text-6xl text-[#F4F1EA] tracking-tight leading-[1.08]">
+            <h1 className="font-sans font-bold text-3xl sm:text-5xl md:text-6xl text-slate-900 tracking-tight leading-[1.08]">
               Técnicas de personalización de alta costura y durabilidad.
             </h1>
-            <p className="font-sans text-base sm:text-lg text-[#A0A0A5] mt-4 leading-relaxed">
+            <p className="font-sans text-base sm:text-lg text-slate-600 mt-4 leading-relaxed font-normal">
               Cada prenda exige una técnica idónea. Combinamos calibración térmica precisa, digitalización computarizada y tintas de fijación elástica para asegurar estampados que no se cuartean y bordados con relieve imponente.
             </p>
           </div>
@@ -44,21 +44,21 @@ export default function TecnicasPage() {
             {TECHNIQUES.map((tech, idx) => (
               <article
                 key={tech.id}
-                className="group relative bg-[#141419] border border-white/10 rounded-2xl overflow-hidden flex flex-col hover:border-[#C8A96E]/50 transition-all duration-300 shadow-xl"
+                className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-[#00AFEF]/50 hover:shadow-lg transition-all duration-300 shadow-sm"
               >
                 {/* Media Image */}
-                <div className="relative w-full aspect-[16/10] overflow-hidden bg-black/40">
+                <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100">
                   <Image
                     src={tech.image}
                     alt={tech.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#141419] via-[#141419]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                   {/* Number index */}
-                  <div className="absolute bottom-4 left-6 font-mono text-xs text-[#C8A96E] uppercase tracking-wider font-bold">
+                  <div className="absolute bottom-4 left-6 font-mono text-xs text-white uppercase tracking-wider font-bold">
                     0{idx + 1} · TÉCNICA TEXTIL
                   </div>
                 </div>
@@ -66,34 +66,34 @@ export default function TecnicasPage() {
                 {/* Content */}
                 <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow gap-6">
                   <div>
-                    <h2 className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA] group-hover:text-[#C8A96E] transition-colors">
+                    <h2 className="font-sans font-bold text-2xl sm:text-3xl text-slate-900 group-hover:text-[#0284C7] transition-colors">
                       {tech.name}
                     </h2>
-                    <p className="font-sans text-sm text-[#A0A0A5] mt-2.5 leading-relaxed">
+                    <p className="font-sans text-sm text-slate-600 mt-2.5 leading-relaxed font-normal">
                       {tech.fullDescription}
                     </p>
 
                     {/* Technical details pill tags */}
                     <div className="mt-5 flex flex-wrap gap-2 font-mono text-xs">
                       {tech.machinery && (
-                        <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-[#D0CFC9]">
-                          Maquinaria: <strong className="text-[#F4F1EA]">{tech.machinery}</strong>
+                        <span className="bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg text-slate-700">
+                          Maquinaria: <strong className="text-slate-900">{tech.machinery}</strong>
                         </span>
                       )}
-                      <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-[#D0CFC9]">
-                        Pedido mín: <strong className="text-[#C8A96E]">{tech.minUnits} {tech.minUnits === 1 ? 'unidad' : 'unidades'}</strong>
+                      <span className="bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg text-slate-700">
+                        Pedido mín: <strong className="text-[#0284C7]">{tech.minUnits} {tech.minUnits === 1 ? 'unidad' : 'unidades'}</strong>
                       </span>
                     </div>
 
                     {/* Advantages List */}
-                    <div className="mt-6 pt-5 border-t border-white/5">
-                      <span className="font-mono text-xs text-[#F4F1EA] uppercase tracking-wider font-semibold block mb-2.5">
+                    <div className="mt-6 pt-5 border-t border-slate-100">
+                      <span className="font-mono text-xs text-slate-900 uppercase tracking-wider font-bold block mb-2.5">
                         Ventajas de Producción:
                       </span>
-                      <ul className="space-y-1.5 font-sans text-xs text-[#A0A0A5]">
+                      <ul className="space-y-1.5 font-sans text-xs text-slate-600">
                         {tech.advantages.map((adv, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="text-[#C8A96E] font-bold">✓</span>
+                            <span className="text-[#00AFEF] font-bold">✓</span>
                             <span>{adv}</span>
                           </li>
                         ))}
@@ -101,17 +101,17 @@ export default function TecnicasPage() {
                     </div>
 
                     {/* Fabrics */}
-                    <div className="mt-5 font-mono text-[11px] text-[#8A8A92]">
-                      <span className="text-[#C8A96E]">Telas recomendadas: </span>
+                    <div className="mt-5 font-mono text-[11px] text-slate-500">
+                      <span className="text-[#0284C7] font-semibold">Telas recomendadas: </span>
                       <span>{tech.recommendedMaterials.join(' · ')}</span>
                     </div>
                   </div>
 
                   {/* Actions */}
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
                     <Link
                       href={`/tecnicas/${tech.slug}`}
-                      className="font-mono text-xs text-[#C8A96E] hover:text-[#F4F1EA] font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+                      className="font-sans text-xs text-[#0284C7] hover:text-[#0369A1] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
                     >
                       <span>Ver Ficha Técnica Completa</span>
                       <span>→</span>
@@ -119,7 +119,7 @@ export default function TecnicasPage() {
 
                     <Link
                       href={`/catalogo`}
-                      className="bg-white/10 hover:bg-[#C8A96E] text-[#F4F1EA] hover:text-[#0C0D10] font-mono text-xs font-semibold px-4 py-2 rounded-lg transition-all"
+                      className="bg-slate-100 hover:bg-[#00AFEF] text-slate-800 hover:text-white font-sans text-xs font-semibold px-4 py-2 rounded-lg transition-all shadow-xs"
                     >
                       Ver Prendas
                     </Link>
@@ -132,15 +132,15 @@ export default function TecnicasPage() {
 
         {/* Tailored Quote Banner */}
         <section className="wrap mt-20">
-          <div className="bg-[#141419] border border-[#C8A96E]/40 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left shadow-sm">
             <div>
-              <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-wider font-bold block mb-2">
+              <span className="font-mono text-xs text-[#0284C7] uppercase tracking-wider font-bold block mb-2">
                 ¿No estás seguro de cuál técnica conviene a tu proyecto?
               </span>
-              <h3 className="font-sans font-bold text-2xl sm:text-3xl text-[#F4F1EA]">
+              <h3 className="font-sans font-bold text-2xl sm:text-3xl text-slate-900">
                 Te asesoramos directamente según tu tela y diseño.
               </h3>
-              <p className="font-sans text-sm text-[#A0A0A5] mt-2 max-w-xl">
+              <p className="font-sans text-sm text-slate-600 mt-2 max-w-xl font-normal">
                 Envíanos tu archivo gráfico por WhatsApp y nuestros técnicos te indicarán si conviene DTF, bordado o sublimación para optimizar costos y resultado final.
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function TecnicasPage() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-sans font-bold text-sm px-8 py-4 rounded-xl shadow-xl transition-transform hover:scale-105 shrink-0"
+              className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans font-bold text-sm px-8 py-4 rounded-xl shadow-md transition-transform hover:scale-105 shrink-0"
             >
               Consultar con un Técnico
             </a>

@@ -39,11 +39,11 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto p-4 sm:p-8 flex items-center justify-center">
       
       {/* Barra flotante de acciones (se oculta al imprimir) */}
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-3 print:hidden bg-[#14151C] border border-white/20 p-2 rounded-xl shadow-2xl">
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-3 print:hidden bg-white border border-slate-300 p-2 rounded-xl shadow-2xl">
         <button
           type="button"
           onClick={handlePrint}
-          className="bg-[#25D366] hover:bg-[#20bd5a] text-[#0C0D10] font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg flex items-center gap-2 shadow-lg transition-all cursor-pointer"
+          className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg flex items-center gap-2 shadow-md transition-all cursor-pointer"
         >
           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-4 11H9v-5h6v5zm4-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm2-9H3v4h18V3z" />
@@ -54,7 +54,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
         <button
           type="button"
           onClick={onClose}
-          className="bg-white/10 hover:bg-white/20 text-[#F4F1EA] text-xs font-mono px-3.5 py-2.5 rounded-lg transition-colors cursor-pointer"
+          className="bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs font-mono px-3.5 py-2.5 rounded-lg transition-colors cursor-pointer"
         >
           Cerrar ✕
         </button>
@@ -64,7 +64,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
       <div className="w-full max-w-4xl bg-white text-[#111] p-8 sm:p-12 rounded-sm shadow-2xl my-auto print:m-0 print:p-8 print:shadow-none print:w-full print:max-w-none">
         
         {/* Encabezado Membretado */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b-2 border-[#C8A96E]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b-2 border-[#00AFEF]">
           <div className="flex items-center gap-4">
             <div className="relative w-16 h-16 rounded-full overflow-hidden border border-gray-300 bg-gray-50 shrink-0">
               <Image
@@ -205,7 +205,7 @@ export const PrintableQuoteSheet: React.FC<PrintableQuoteSheetProps> = ({
             {estimatedTotal && estimatedTotal > 0 && (
               <div className="flex justify-between text-sm border-t border-gray-300 pt-2 font-bold text-gray-900">
                 <span>Total Estimado:</span>
-                <span className="text-[#B8985D]">${estimatedTotal.toLocaleString('es-CO')} COP</span>
+                <span className="text-[#0284C7]">${estimatedTotal.toLocaleString('es-CO')} COP</span>
               </div>
             )}
             <span className="text-[10px] text-gray-500 pt-1 font-sans">

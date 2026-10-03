@@ -52,9 +52,6 @@ export const Footer: React.FC = () => {
             <Link href="/cotizar" className="hover:text-[#0284C7] transition-colors">
               Solicitud de Cotización Formal
             </Link>
-            <Link href="/casos" className="hover:text-[#0284C7] transition-colors">
-              Casos de Éxito y Dotaciones
-            </Link>
             <Link href="/personaliza#faq" className="hover:text-[#0284C7] transition-colors">
               Preguntas Frecuentes (FAQ)
             </Link>

@@ -14,7 +14,7 @@ export default function CotizarPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#070708] text-[#F4F1EA] pt-12 pb-32">
+      <main className="min-h-screen bg-white text-slate-800 pt-12 pb-32">
         <QuotePageContent />
       </main>
       <Footer />
