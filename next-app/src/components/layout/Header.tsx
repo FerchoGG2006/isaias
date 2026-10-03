@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0C0D10]/95 backdrop-blur-xl border-b border-white/10 transition-all">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[68px] flex items-center justify-between gap-6">
 
         {/* Left: Brand Logo Only */}
@@ -46,23 +46,23 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Center: Clean & Spaced Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7 xl:gap-8 text-xs uppercase tracking-[0.14em] font-sans font-medium text-[#D0CFC9]">
-          <Link href="/catalogo" className="hover:text-[#C8A96E] transition-colors">
+        <nav className="hidden lg:flex items-center gap-7 xl:gap-8 text-xs uppercase tracking-[0.14em] font-sans font-medium text-slate-700">
+          <Link href="/catalogo" className="hover:text-[#0284C7] transition-colors">
             Catálogo
           </Link>
-          <Link href="/servicios" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/servicios" className="hover:text-[#0284C7] transition-colors">
             Servicios
           </Link>
-          <Link href="/tecnicas" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/tecnicas" className="hover:text-[#0284C7] transition-colors">
             Técnicas
           </Link>
-          <Link href="/personaliza" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/personaliza" className="hover:text-[#0284C7] transition-colors">
             ¿Cómo pedir?
           </Link>
-          <Link href="/#taller" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/#taller" className="hover:text-[#0284C7] transition-colors">
             Taller
           </Link>
-          <Link href="/#contacto" className="hover:text-[#C8A96E] transition-colors">
+          <Link href="/#contacto" className="hover:text-[#0284C7] transition-colors">
             Contacto
           </Link>
         </nav>
@@ -73,11 +73,11 @@ export const Header: React.FC = () => {
           {/* Direct Phone Call Button (Desktop & Tablet) */}
           <a
             href="tel:+573105634509"
-            className="hidden sm:flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-white/5 hover:bg-[#C8A96E]/15 border border-white/10 hover:border-[#C8A96E]/40 text-[#D0CFC9] hover:text-[#C8A96E] text-xs font-sans transition-all cursor-pointer shadow-sm"
+            className="hidden sm:flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-slate-50 hover:bg-[#00AFEF]/10 border border-slate-200 hover:border-[#00AFEF]/40 text-slate-700 hover:text-[#0284C7] text-xs font-sans transition-all cursor-pointer shadow-xs"
             title="Llamar a taller: (310) 563-4509"
             aria-label="Llamar directamente al taller"
           >
-            <svg className="w-3.5 h-3.5 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <svg className="w-3.5 h-3.5 text-[#00AFEF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
           </a>
@@ -87,7 +87,7 @@ export const Header: React.FC = () => {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-[#F4F1EA] hover:text-[#C8A96E] transition-all cursor-pointer shadow-md"
+            className="w-10 h-10 rounded-full bg-slate-50 hover:bg-[#25D366]/10 border border-slate-200 flex items-center justify-center text-[#25D366] transition-all cursor-pointer shadow-xs"
             title="Escribir por WhatsApp"
             aria-label="Contactar por WhatsApp"
           >
@@ -99,18 +99,18 @@ export const Header: React.FC = () => {
           {/* Cart / Quote Drawer Button */}
           <button
             onClick={() => setIsQuoteDrawerOpen(true)}
-            className="relative h-10 px-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center gap-1.5 text-[#F4F1EA] hover:text-[#C8A96E] transition-all cursor-pointer shadow-md"
+            className="relative h-10 px-3.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center gap-2 text-slate-800 hover:text-[#0284C7] transition-all cursor-pointer shadow-xs"
             aria-label="Ver lista de cotización"
             title="Ver lista de cotización"
           >
-            <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <svg className="w-4 h-4 shrink-0 text-[#00AFEF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <span suppressHydrationWarning className="hidden sm:inline font-sans text-xs tracking-normal font-medium">
+            <span suppressHydrationWarning className="hidden sm:inline font-sans text-xs tracking-normal font-bold">
               Cotización{totalUnits > 0 ? ` (${totalUnits})` : ''}
             </span>
             {totalUnits > 0 && (
-              <span suppressHydrationWarning className="sm:hidden absolute -top-1 -right-1 w-5 h-5 bg-[#C8A96E] text-[#0C0D10] text-[10px] font-bold rounded-full flex items-center justify-center font-mono shadow-sm">
+              <span suppressHydrationWarning className="sm:hidden absolute -top-1 -right-1 w-5 h-5 bg-[#00AFEF] text-white text-[10px] font-bold rounded-full flex items-center justify-center font-mono shadow-xs">
                 {totalUnits}
               </span>
             )}
@@ -120,7 +120,7 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-[#F4F1EA] p-2 hover:bg-white/10 rounded-full transition-colors"
+            className="lg:hidden text-slate-800 p-2 hover:bg-slate-100 rounded-full transition-colors"
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             {isMobileMenuOpen ? (
@@ -139,24 +139,24 @@ export const Header: React.FC = () => {
 
       {/* Mobile Navigation Dropdown */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[#141419]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4">
-          <nav className="flex flex-col gap-3 font-sans text-xs uppercase tracking-[0.16em] text-[#F4F1EA]">
-            <Link href="/catalogo" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+        <div className="lg:hidden bg-white/98 backdrop-blur-2xl border-b border-slate-200 px-6 py-6 flex flex-col gap-4 shadow-xl">
+          <nav className="flex flex-col gap-3 font-sans text-xs uppercase tracking-[0.16em] text-slate-800">
+            <Link href="/catalogo" onClick={closeMobileMenu} className="py-2 border-b border-slate-100 hover:text-[#0284C7]">
               Catálogo de Prendas
             </Link>
-            <Link href="/servicios" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+            <Link href="/servicios" onClick={closeMobileMenu} className="py-2 border-b border-slate-100 hover:text-[#0284C7]">
               Servicios de Estampado & Bordado
             </Link>
-            <Link href="/tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+            <Link href="/tecnicas" onClick={closeMobileMenu} className="py-2 border-b border-slate-100 hover:text-[#0284C7]">
               Técnicas de Producción (DTF, Wilcom)
             </Link>
-            <Link href="/personaliza" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+            <Link href="/personaliza" onClick={closeMobileMenu} className="py-2 border-b border-slate-100 hover:text-[#0284C7]">
               ¿Cómo hacer tu pedido?
             </Link>
-            <Link href="/#taller" onClick={closeMobileMenu} className="py-2 border-b border-white/5 hover:text-[#C8A96E]">
+            <Link href="/#taller" onClick={closeMobileMenu} className="py-2 border-b border-slate-100 hover:text-[#0284C7]">
               Sobre el Taller Textil
             </Link>
-            <Link href="/#contacto" onClick={closeMobileMenu} className="py-2 hover:text-[#C8A96E]">
+            <Link href="/#contacto" onClick={closeMobileMenu} className="py-2 hover:text-[#0284C7]">
               Contacto & Cotización
             </Link>
 
@@ -164,9 +164,9 @@ export const Header: React.FC = () => {
             <a
               href="tel:+573105634509"
               onClick={closeMobileMenu}
-              className="mt-2 py-3 px-4 rounded-xl bg-[#1C1E26] border border-[#C8A96E]/40 text-[#C8A96E] font-semibold flex items-center justify-center gap-2 hover:bg-[#C8A96E]/15 transition-colors"
+              className="mt-2 py-3 px-4 rounded-xl bg-slate-50 border border-slate-200 text-[#0284C7] font-bold flex items-center justify-center gap-2 hover:bg-[#00AFEF]/10 transition-colors"
             >
-              <svg className="w-4 h-4 text-[#C8A96E] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <svg className="w-4 h-4 text-[#00AFEF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <span>Llamar a taller: (310) 563-4509</span>

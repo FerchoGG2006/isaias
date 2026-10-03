@@ -16,12 +16,12 @@ export const AboutSection: React.FC = () => {
   );
 
   return (
-    <section id="taller" className="wrap py-12 sm:py-16 border-t border-white/10 scroll-mt-24">
+    <section id="taller" className="wrap py-12 sm:py-16 border-t border-slate-200 scroll-mt-24">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         {/* Media Frame (Compact & Quiet) */}
         <div className="lg:col-span-5 flex flex-col gap-3 max-w-md mx-auto w-full">
-          <div className="relative aspect-[4/3] rounded-xs overflow-hidden border border-white/15 bg-[#070709] shadow-xl group">
+          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 bg-slate-950 shadow-md group">
             
             {activeMedia === 'video' && (
               <div className="relative w-full h-full flex items-center justify-center bg-black">
@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsMuted(!isMuted)}
-                  className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/70 hover:bg-black border border-white/20 text-[#F4F1EA] hover:text-[#C8A96E] transition-all cursor-pointer z-10"
+                  className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/70 hover:bg-black border border-white/20 text-white hover:text-[#00AFEF] transition-all cursor-pointer z-10"
                   title={isMuted ? 'Activar sonido' : 'Silenciar'}
                   aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}
                 >
@@ -78,27 +78,27 @@ export const AboutSection: React.FC = () => {
             )}
 
             {/* Discreet caption pill */}
-            <div className="absolute bottom-2.5 left-2.5 right-2.5 z-10 text-[11px] text-[#F4F1EA] bg-black/75 backdrop-blur-sm px-3 py-1.5 rounded-xs border border-white/10 font-sans flex items-center justify-between">
-              <span className="text-[#C8A96E] font-medium truncate">
+            <div className="absolute bottom-2.5 left-2.5 right-2.5 z-10 text-[11px] text-white bg-slate-900/85 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10 font-sans flex items-center justify-between">
+              <span className="text-[#00AFEF] font-bold truncate">
                 {activeMedia === 'video'
                   ? 'Producción textil directa'
                   : activeMedia === 'embroidery'
                   ? 'Bordadora industrial Wilcom'
                   : 'Mesa de corte y confección'}
               </span>
-              <span className="text-[#8A8A92] text-[10px] shrink-0 ml-2">Sin intermediarios</span>
+              <span className="text-slate-300 text-[10px] shrink-0 ml-2">Sin intermediarios</span>
             </div>
           </div>
 
           {/* Minimal Tab Switchers */}
-          <div className="flex items-center justify-center gap-1.5 font-sans text-xs text-[#A0A0A5]">
+          <div className="flex items-center justify-center gap-1.5 font-sans text-xs text-slate-500">
             <button
               type="button"
               onClick={() => setActiveMedia('video')}
-              className={`px-3 py-1 rounded-xs transition-colors cursor-pointer text-[11px] ${
+              className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer text-[11px] ${
                 activeMedia === 'video'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-semibold'
-                  : 'bg-[#141419] hover:text-[#F4F1EA]'
+                  ? 'bg-[#00AFEF] text-white font-bold shadow-xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
               }`}
             >
               Video
@@ -106,10 +106,10 @@ export const AboutSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveMedia('embroidery')}
-              className={`px-3 py-1 rounded-xs transition-colors cursor-pointer text-[11px] ${
+              className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer text-[11px] ${
                 activeMedia === 'embroidery'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-semibold'
-                  : 'bg-[#141419] hover:text-[#F4F1EA]'
+                  ? 'bg-[#00AFEF] text-white font-bold shadow-xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
               }`}
             >
               Bordadora
@@ -117,10 +117,10 @@ export const AboutSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveMedia('workshop')}
-              className={`px-3 py-1 rounded-xs transition-colors cursor-pointer text-[11px] ${
+              className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer text-[11px] ${
                 activeMedia === 'workshop'
-                  ? 'bg-[#C8A96E] text-[#0C0D10] font-semibold'
-                  : 'bg-[#141419] hover:text-[#F4F1EA]'
+                  ? 'bg-[#00AFEF] text-white font-bold shadow-xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
               }`}
             >
               Confección
@@ -131,15 +131,15 @@ export const AboutSection: React.FC = () => {
         {/* Story & Workshop Capabilities */}
         <div className="lg:col-span-7 flex flex-col gap-5">
           <div className="flex flex-col gap-1.5">
-            <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-widest">
+            <span className="font-mono text-xs text-[#0284C7] font-bold uppercase tracking-widest">
               Taller de Producción Propia
             </span>
-            <h2 className="font-sans font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F4F1EA] tracking-tight">
+            <h2 className="font-sans font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight">
               Confección directa y maquinaria industrial.
             </h2>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#D0CFC9] leading-relaxed font-light">
+          <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
             En <strong>Variedades Isaías</strong> producimos y personalizamos directamente cada prenda en nuestro taller en Valledupar. Ofrecemos bordado computarizado de alta definición, estampado DTF suave que no se cuartea y sublimación nítida, garantizando acabados impecables y precios directos de taller sin intermediarios.
           </p>
 
@@ -148,7 +148,7 @@ export const AboutSection: React.FC = () => {
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#C8A96E] hover:underline font-semibold transition-colors"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#0284C7] hover:underline font-bold transition-colors"
             >
               <span>Consultar disponibilidad y tiempos de taller</span>
               <span>→</span>
