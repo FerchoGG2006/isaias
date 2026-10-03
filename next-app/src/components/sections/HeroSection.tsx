@@ -100,27 +100,6 @@ export const HeroSection: React.FC = () => {
             Ver Catálogo de Colección
           </Link>
         </motion.div>
-
-        {/* Mini Trust Highlights */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
-          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-sans text-slate-500 font-medium"
-        >
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00AFEF]" />
-            Taller propio en Valledupar
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00AFEF]" />
-            Confección desde 1 unidad y por mayor
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00AFEF]" />
-            Envíos asegurados a toda Colombia
-          </span>
-        </motion.div>
       </div>
 
     </section>
