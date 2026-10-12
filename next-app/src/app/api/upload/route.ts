@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import os from 'os';
 
 // Max file size: 15MB
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
@@ -107,11 +108,24 @@ export async function POST(req: NextRequest) {
     const uniqueFilename = `${cleanBase}-${timestamp}-${randomSuffix}${ext}`;
 
     const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'designs');
-    await mkdir(uploadDir, { recursive: true });
-
-    const filePath = path.join(uploadDir, uniqueFilename);
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(filePath, buffer);
+    try {
+      await mkdir(uploadDir, { recursive: true });
+      const filePath = path.join(uploadDir, uniqueFilename);
+      const buffer = Buffer.from(await file.arrayBuffer());
+      await writeFile(filePath, buffer);
+    } catch {
+      // In serverless environments with read-only root filesystems (e.g. Vercel),
+      // we write to os.tmpdir() to avoid EROFS errors
+      try {
+        const tmpDir = path.join(os.tmpdir(), 'uploads', 'designs');
+        await mkdir(tmpDir, { recursive: true });
+        const filePath = path.join(tmpDir, uniqueFilename);
+        const buffer = Buffer.from(await file.arrayBuffer());
+        await writeFile(filePath, buffer);
+      } catch (tmpErr) {
+        console.warn('Fallback temporary file write warning:', tmpErr);
+      }
+    }
 
     // Compute origin or relative URL
     const relativeUrl = `/uploads/designs/${uniqueFilename}`;

@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
 
 export const alt = 'Variedades Isaías — Confección, Bordados & Estampados en Valledupar';
 export const size = {
@@ -44,7 +43,6 @@ export default async function Image() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            zIndex: 10,
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -115,7 +113,6 @@ export default async function Image() {
             display: 'flex',
             flexDirection: 'column',
             gap: '16px',
-            zIndex: 10,
             maxWidth: '1000px',
           }}
         >
@@ -152,7 +149,6 @@ export default async function Image() {
             gap: '14px',
             borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             paddingTop: '24px',
-            zIndex: 10,
           }}
         >
           {[
