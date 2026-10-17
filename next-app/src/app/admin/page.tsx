@@ -22,7 +22,7 @@ export default function AdminDashboardPage() {
     showToast,
   } = useQuote();
 
-  const [phoneInput, setPhoneInput] = useState(customPhone || business.whatsappPhone || '573105634509');
+  const [phoneInput, setPhoneInput] = useState(customPhone || business.whatsappPhone || '573108912919');
   const [activeTab, setActiveTab] = useState<'resumen' | 'whatsapp' | 'catalogo'>('resumen');
 
   const handleSavePhone = (e: React.FormEvent) => {
@@ -311,7 +311,7 @@ export default function AdminDashboardPage() {
               <form onSubmit={handleSavePhone} className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
                   <label className="font-mono text-xs text-[#C8A96E] uppercase">
-                    Número de WhatsApp con código de país (Ej: 573105634509):
+                    Número de WhatsApp con código de país (Ej: 573108912919):
                   </label>
                   <input
                     type="text"

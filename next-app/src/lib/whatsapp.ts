@@ -114,7 +114,7 @@ export function buildQuoteMessage(quote: QuoteRequest, business?: Business): str
 }
 
 export const DEFAULT_WHATSAPP_PHONE =
-  process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '573105634509';
+  process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, '') || '573108912919';
 
 /**
  * Genera un enlace directo a WhatsApp con sanitización y mensaje opcional.

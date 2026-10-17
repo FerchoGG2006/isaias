@@ -72,9 +72,9 @@ export const Header: React.FC = () => {
 
           {/* Direct Phone Call Button (Desktop & Tablet) */}
           <a
-            href="tel:+573105634509"
+            href={`tel:+${business?.whatsappPhone || '573108912919'}`}
             className="hidden sm:flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-slate-50 hover:bg-[#00AFEF]/10 border border-slate-200 hover:border-[#00AFEF]/40 text-slate-700 hover:text-[#0284C7] text-xs font-sans transition-all cursor-pointer shadow-xs"
-            title="Llamar a taller: (310) 563-4509"
+            title="Llamar a taller: (310) 891-2919"
             aria-label="Llamar directamente al taller"
           >
             <svg className="w-3.5 h-3.5 text-[#00AFEF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -162,14 +162,14 @@ export const Header: React.FC = () => {
 
             {/* Enlace de llamada directa en móvil */}
             <a
-              href="tel:+573105634509"
+              href={`tel:+${business?.whatsappPhone || '573108912919'}`}
               onClick={closeMobileMenu}
               className="mt-2 py-3 px-4 rounded-xl bg-slate-50 border border-slate-200 text-[#0284C7] font-bold flex items-center justify-center gap-2 hover:bg-[#00AFEF]/10 transition-colors"
             >
               <svg className="w-4 h-4 text-[#00AFEF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span>Llamar a taller: (310) 563-4509</span>
+              <span>Llamar a taller: (310) 891-2919</span>
             </a>
           </nav>
         </div>

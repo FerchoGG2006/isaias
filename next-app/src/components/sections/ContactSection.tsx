@@ -50,13 +50,13 @@ export const ContactSection: React.FC = () => {
 
           {/* Enlace de llamada directa B2B */}
           <a
-            href="tel:+573105634509"
+            href={`tel:+${business?.whatsappPhone || '573108912919'}`}
             className="w-full sm:w-auto uppercase tracking-[0.14em] text-[#0284C7] hover:text-[#0369A1] bg-white hover:bg-slate-50 border-2 border-[#00AFEF]/30 hover:border-[#00AFEF] px-6 py-3.5 rounded-xl transition-all text-center font-bold flex items-center justify-center gap-2 shadow-xs"
           >
             <svg className="w-4 h-4 text-[#00AFEF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            <span>Llamar a taller: (310) 563-4509</span>
+            <span>Llamar a taller: (310) 891-2919</span>
           </a>
 
           <Link

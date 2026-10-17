@@ -39,7 +39,7 @@ Para cerrar cualquier brecha comercial frente a la competencia se implementaron:
 2. **Micro-insignia Dinámica de Horario y Tiempo de Respuesta:** Creado `src/components/ui/WorkshopStatusBadge.tsx` con horario en tiempo real de Valledupar/Colombia (`America/Bogota`, Lunes a Sábado 8am-6pm). Muestra `🟢 Taller y asesores en línea · Respuesta < 15 min` o aviso nocturno de atención prioritaria a las 8am.
 3. **Reductor de Ansiedad sobre Logos/Diseños:** Añadido en `FileUploader.tsx` y `ProductConfigurator.tsx` aviso explícito: *"¿No tienes tu logo en alta calidad? Nuestro equipo lo digitaliza y vectoriza gratis para tu pedido."*
 4. **Tarjeta de Garantía en 3 Pasos:** Creado `src/components/ui/TrustGuaranteeCard.tsx` (Muestra virtual previa, revisión prenda por prenda, envíos asegurados Servientrega/Interrapidísimo).
-5. **Marcación Telefónica Directa B2B:** Enlace `tel:+573105634509` en `Header.tsx` y `ContactSection.tsx`.
+5. **Marcación Telefónica Directa B2B:** Enlace `tel:+573108912919` en `Header.tsx` y `ContactSection.tsx`.
 
 ---
 

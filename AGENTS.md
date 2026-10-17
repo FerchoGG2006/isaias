@@ -224,7 +224,7 @@ En móvil no limitarse a escalar desktop: adaptar navegación, configurador, car
   - `WorkshopStatusBadge.tsx` con horario dinámico de Valledupar/Colombia y tiempo de respuesta en tiempo real vía `useSyncExternalStore`.
   - `FileUploader.tsx` con garantía de digitalización/vectorización gratuita de logotipos.
   - `TrustGuaranteeCard.tsx` (garantía en 3 pasos: muestra virtual previa, revisión prenda por prenda, envíos asegurados).
-  - Enlaces de llamada directa `tel:+573105634509` en Header y Contacto.
+  - Enlaces de llamada directa `tel:+573108912919` en Header y Contacto.
 - **Calidad de Código:**
   - ESLint: 0 errores, 0 warnings.
   - TypeScript: 0 errores.
